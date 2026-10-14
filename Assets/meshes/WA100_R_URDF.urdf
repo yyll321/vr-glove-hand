@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="WA100_R_URDF">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.000626010716053904 -0.00140649631039491 0.00539006379831401"
+        rpy="0 0 0" />
+      <mass
+        value="0.717331794305958" />
+      <inertia
+        ixx="0.000549873518280773"
+        ixy="6.87778543698438E-07"
+        ixz="-4.66718526412392E-06"
+        iyy="0.000650716134601741"
+        iyz="-5.62842933105271E-08"
+        izz="0.000421389123398478" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Thumb_L1">
+    <inertial>
+      <origin
+        xyz="8.09417308633726E-05 -0.00426603670997565 0.00563801941830797"
+        rpy="0 0 0" />
+      <mass
+        value="0.0191042422837553" />
+      <inertia
+        ixx="1.70524571128316E-06"
+        ixy="-5.62224248175123E-09"
+        ixz="1.54818204246149E-08"
+        iyy="1.61783660609275E-06"
+        iyz="-2.31896055447415E-09"
+        izz="6.1652308218827E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Thumb_L1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Thumb_L1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Thumb_J1"
+    type="revolute">
+    <origin
+      xyz="0.031 -0.0134 0.05325"
+      rpy="0 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Thumb_L1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Thumb_L2">
+    <inertial>
+      <origin
+        xyz="0.000517096369608519 -0.0192624513937582 -0.00665717830884877"
+        rpy="0 0 0" />
+      <mass
+        value="0.0115935506375476" />
+      <inertia
+        ixx="1.59612476757783E-06"
+        ixy="1.69541930225473E-07"
+        ixz="-1.84952010330859E-10"
+        iyy="7.1769464057777E-07"
+        iyz="7.26782423928891E-10"
+        izz="1.6786457765457E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Thumb_L2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Thumb_L2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Thumb_J2"
+    type="revolute">
+    <origin
+      xyz="-0.00665 -0.015 0.007"
+      rpy="0 -1.5708 0" />
+    <parent
+      link="Thumb_L1" />
+    <child
+      link="Thumb_L2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Thumb_L3">
+    <inertial>
+      <origin
+        xyz="-0.000542244287510325 -0.0193722744372028 -0.00665842919040342"
+        rpy="0 0 0" />
+      <mass
+        value="0.0111103513362537" />
+      <inertia
+        ixx="1.32285983046665E-06"
+        ixy="1.1773825464965E-08"
+        ixz="-6.54011632075309E-11"
+        iyy="4.8108243556725E-07"
+        iyz="7.34392528747794E-10"
+        izz="1.27396044738491E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Thumb_L3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Thumb_L3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Thumb_J3"
+    type="revolute">
+    <origin
+      xyz="0 -0.03 0"
+      rpy="0 0 0" />
+    <parent
+      link="Thumb_L2" />
+    <child
+      link="Thumb_L3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Index Finger_L1">
+    <inertial>
+      <origin
+        xyz="0.000517097516793092 0.0192624493682456 0.00665717697108986"
+        rpy="0 0 0" />
+      <mass
+        value="0.0115935489527692" />
+      <inertia
+        ixx="1.59612444126235E-06"
+        ixy="-1.69542053996159E-07"
+        ixz="1.8489125268323E-10"
+        iyy="7.17694560393899E-07"
+        iyz="7.26820700466964E-10"
+        izz="1.67864549346862E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Index Finger_L1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Index Finger_L1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Index Finger_J1"
+    type="revolute">
+    <origin
+      xyz="0.040269 0.0013 0.12364"
+      rpy="1.5184 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Index Finger_L1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Index Finger_L2">
+    <inertial>
+      <origin
+        xyz="0.0009644974481041 0.0266482283542968 0.00665642014792638"
+        rpy="0 0 0" />
+      <mass
+        value="0.0167948821490491" />
+      <inertia
+        ixx="1.48922317181085E-06"
+        ixy="-1.30637250163324E-07"
+        ixz="2.47920966079985E-11"
+        iyy="8.21095291411919E-07"
+        iyz="4.81328506752862E-11"
+        izz="1.51340979787328E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Index Finger_L2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Index Finger_L2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Index Finger_J2"
+    type="revolute">
+    <origin
+      xyz="0 0.0300000000000001 0"
+      rpy="0 0 0" />
+    <parent
+      link="Index Finger_L1" />
+    <child
+      link="Index Finger_L2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Middle Finger_L1">
+    <inertial>
+      <origin
+        xyz="0.000517097085666789 0.0192624510985676 0.00665717791882567"
+        rpy="0 0 0" />
+      <mass
+        value="0.0115935518048379" />
+      <inertia
+        ixx="1.59612480244838E-06"
+        ixy="-1.69541907722104E-07"
+        ixz="1.84985773255188E-10"
+        iyy="7.17694720949856E-07"
+        iyz="7.26768725748206E-10"
+        izz="1.67864585488896E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Middle Finger_L1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Middle Finger_L1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Middle Finger_J1"
+    type="revolute">
+    <origin
+      xyz="0.01765 0 0.129"
+      rpy="1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Middle Finger_L1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Middle Finger_L2">
+    <inertial>
+      <origin
+        xyz="0.000964546583147548 0.0266484021070519 0.00665646340130591"
+        rpy="0 0 0" />
+      <mass
+        value="0.0167951410539712" />
+      <inertia
+        ixx="1.48923543417843E-06"
+        ixy="-1.30641828547921E-07"
+        ixz="2.36115696417267E-11"
+        iyy="8.21099046910428E-07"
+        iyz="4.69606862001018E-11"
+        izz="1.5134224603646E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Middle Finger_L2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Middle Finger_L2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Middle Finger_J2"
+    type="revolute">
+    <origin
+      xyz="0 0.03 0"
+      rpy="0 0 0" />
+    <parent
+      link="Middle Finger_L1" />
+    <child
+      link="Middle Finger_L2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Ring Finger_L1">
+    <inertial>
+      <origin
+        xyz="0.000517096948895168 0.0192624526159974 0.0066571786279168"
+        rpy="0 0 0" />
+      <mass
+        value="0.0115935550235304" />
+      <inertia
+        ixx="1.5961252481253E-06"
+        ixy="-1.69541693536682E-07"
+        ixz="1.85081177648089E-10"
+        iyy="7.17694912575149E-07"
+        iyz="7.26691978355923E-10"
+        izz="1.67864632339103E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Ring Finger_L1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Ring Finger_L1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Ring Finger_J1"
+    type="revolute">
+    <origin
+      xyz="-0.0049871 0 0.12433"
+      rpy="1.6232 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Ring Finger_L1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Ring Finger_L2">
+    <inertial>
+      <origin
+        xyz="0.000964593750226559 0.0266486222500418 0.00665649641863043"
+        rpy="0 0 0" />
+      <mass
+        value="0.016795411394528" />
+      <inertia
+        ixx="1.48924715159156E-06"
+        ixy="-1.30647565252465E-07"
+        ixz="2.24186033412322E-11"
+        iyy="8.21102565283494E-07"
+        iyz="4.68951897979589E-11"
+        izz="1.51343502852151E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Ring Finger_L2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Ring Finger_L2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Ring Finger_J2"
+    type="revolute">
+    <origin
+      xyz="0 0.03 0"
+      rpy="0 0 0" />
+    <parent
+      link="Ring Finger_L1" />
+    <child
+      link="Ring Finger_L2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Little Finger_L1">
+    <inertial>
+      <origin
+        xyz="0.000517091154256472 0.0192624597064403 0.00665718128547047"
+        rpy="0 0 0" />
+      <mass
+        value="0.0115935489456856" />
+      <inertia
+        ixx="1.59612468239247E-06"
+        ixy="-1.69542112558014E-07"
+        ixz="1.84894330472034E-10"
+        iyy="7.17694458533823E-07"
+        iyz="7.26891086913979E-10"
+        izz="1.67864530413587E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Little Finger_L1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Little Finger_L1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Little Finger_J1"
+    type="revolute">
+    <origin
+      xyz="-0.0274211741706633 0 0.114533922066373"
+      rpy="1.65806278939462 0 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="Little Finger_L1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Little Finger_L2">
+    <inertial>
+      <origin
+        xyz="0.000964644101322726 0.0266487970295876 0.0066564787504365"
+        rpy="0 0 0" />
+      <mass
+        value="0.0167956479157241" />
+      <inertia
+        ixx="1.48925701870429E-06"
+        ixy="-1.30652014737848E-07"
+        ixz="2.37587106794787E-11"
+        iyy="8.21109283398688E-07"
+        iyz="4.82180847282995E-11"
+        izz="1.51344314009625E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Little Finger_L2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://WA100_R_URDF/meshes/Little Finger_L2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Little Finger_J2"
+    type="revolute">
+    <origin
+      xyz="0 0.03 0"
+      rpy="0 0 0" />
+    <parent
+      link="Little Finger_L1" />
+    <child
+      link="Little Finger_L2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
