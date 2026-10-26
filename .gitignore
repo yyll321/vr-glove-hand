@@ -8,6 +8,11 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
+/Packages/UnityGaussianSplatting/
+/TrainingData/
+/Assets/Underwater/Backups/
+/__pycache__/
+*.py[cod]
 /[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
@@ -123,3 +128,4 @@ Assets/Plugins/Sirenix/Demos/*
 # Gaia
 Assets/Procedural*Worlds/Gaia/Asset*Samples/*
 Assets/Samples/Terrain*Tools/*
+Assets/Resources/PXR_*

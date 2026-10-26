@@ -157,7 +157,7 @@ public class Network : MonoBehaviour
     private bool TryGetValue(string role_name, string key, out string value)
     {
         value = null;
-        if (string.IsNullOrEmpty(key))
+        if (_deviceReadMessages==null || string.IsNullOrEmpty(key))
         {
             return false;
         }

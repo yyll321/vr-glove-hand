@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Underwater/Scenes/UnderwaterResearchEditable.unity
+    guid: 1b6146dcc5791154d875c9306f943bd4
+  - enabled: 1
+    path: Assets/Underwater/Scenes/UnderwaterBaseline.unity
+    guid: 9ff8a7c8099b8564aaa5e84e9afed6a0
+  - enabled: 1
     path: Assets/HandDriver/Scenes/Sample.unity
     guid: c9b621f62f7be4c42a90d1971e952711
-  m_configObjects: {}
+  - enabled: 0
+    path: Assets/Reconstruction/Scenes/UnderwaterReconstruction.unity
+    guid: db975a5ecbcb0a341b9e5e1fd88fbc50
+  m_configObjects:
+    Unity.XR.PICO.LivePreview.Settings: {fileID: 11400000, guid: bd3eca75d01bce74a826cb2fe9590668, type: 2}
+    Unity.XR.PXR.Settings: {fileID: 11400000, guid: b9c5fc31a1ec6c04e939b85495b439b3, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7175224cd863ff14f806dcd4bf6ac3dd, type: 2}

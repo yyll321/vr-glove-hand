@@ -27,6 +27,14 @@ public static class Wa100OfficialUrdfImport
                 return;
             }
 
+            // The underwater acceptance scene owns its camera and rig.
+            string activeScenePath = UnityEngine.SceneManagement.SceneManager.GetActiveScene().path;
+            if (activeScenePath.StartsWith("Assets/Underwater/Scenes/", StringComparison.Ordinal) ||
+                activeScenePath.StartsWith("Assets/Reconstruction/Scenes/", StringComparison.Ordinal))
+            {
+                return;
+            }
+
             try
             {
                 if (!File.Exists(PrefabPath))

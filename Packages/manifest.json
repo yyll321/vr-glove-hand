@@ -1,7 +1,15 @@
 {
   "dependencies": {
+    "org.nesnausk.gaussian-splatting": "file:org.nesnausk.gaussian-splatting",
     "com.unity.collab-proxy": "2.12.4",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.inputsystem": "1.7.0",
+    "com.unity.render-pipelines.universal": "14.0.9",
+    "com.unity.xr.interaction.toolkit": "2.5.2",
+    "com.unity.xr.management": "4.4.0",
+    "com.unity.xr.core-utils": "2.3.0",
+    "com.unity.xr.picoxr": "file:F:/UserData/softwaredownload/pico/PICO-Unity-Integration-SDK-release_3.4.0",
+    "com.unity.pico.livepreview": "file:F:/Browser Download/Unity Live Preview Plugin-1.0.5-20250211",
     "com.unity.robotics.urdf-importer": "https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.6",

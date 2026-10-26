@@ -1,0 +1,29 @@
+#pragma kernel Initialize
+#pragma kernel Bitonic
+StructuredBuffer<float4> _Splats;
+RWStructuredBuffer<uint2> _Order;
+float4x4 _LocalToWorld;
+float3 _CameraPosition, _CameraForward;
+uint _Count, _Padded, _K, _J;
+
+[numthreads(256,1,1)]
+void Initialize(uint id : SV_DispatchThreadID)
+{
+    if (id >= _Padded) return;
+    float depth = id < _Count ? dot(mul(_LocalToWorld, float4(_Splats[id*4].xyz,1)).xyz - _CameraPosition, _CameraForward) : -3.402823e+38;
+    // Map IEEE floats into monotonically increasing unsigned integers, including negative depth.
+    uint bits = asuint(depth);
+    uint key = bits ^ ((bits & 0x80000000u) ? 0xffffffffu : 0x80000000u);
+    _Order[id] = uint2(key, id);
+}
+[numthreads(256,1,1)]
+void Bitonic(uint id : SV_DispatchThreadID)
+{
+    if (id >= _Padded) return;
+    uint other = id ^ _J;
+    if (other <= id || other >= _Padded) return;
+    uint2 a = _Order[id], b = _Order[other];
+    bool descending = (id & _K) == 0;
+    if ((descending && a.x < b.x) || (!descending && a.x > b.x))
+    { _Order[id] = b; _Order[other] = a; }
+}
