@@ -91,6 +91,12 @@ namespace UnderwaterBaseline
             var puff=plumes[at];puff.mass=Mathf.Min(2.5f,puff.mass+amount*0.65f);puff.age=0;
             // Short-lived entrainment at impact lifts grains before gravity dominates.
             puff.lift=Mathf.Max(puff.lift,0.14f+amount*0.08f);plumes[at]=puff;
+            // Feed the same local impulse into the bounded fluid grid.  The visual
+            // wake and the velocity sampled by particles/vehicles therefore share
+            // one source instead of becoming two independent effects.
+            // Include the adjacent fluid layer: the nearest grid node at the bed
+            // can be solid on this coarse grid and must not swallow the impulse.
+            if(presence)presence.AddFluidImpulse(bottom+Vector3.up*0.25f,Vector3.up*(amount*0.35f),2);
             ActivePlumes=0;for(int i=0;i<Capacity;i++)if(plumes[i].mass>0)ActivePlumes++;
             if(!sedimentParticles)return;
             int count=Mathf.Clamp(Mathf.RoundToInt(amount*50),1,50);

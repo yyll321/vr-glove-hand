@@ -45,7 +45,8 @@ namespace UnderwaterBaseline
         {
             yield return new WaitForSeconds(4);
             var motor=FindObjectOfType<UnderwaterMotor>();var env=FindObjectOfType<UnderwaterEnvironment>();
-            Check(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name=="UnderwaterResearchEditable","New saved scene is loaded");
+            string sceneName=UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            Check(sceneName=="UnderwaterResearchEditable" || sceneName=="UnderwaterHydrodynamicsEditable","Editable research or hydrodynamics scene is loaded");
             Check(GameObject.Find("ROVp - Pool") && GameObject.Find("ROVp - Seabed") && GameObject.Find("Pool_Accessories"),"ROVp and pool accessories exist in the saved hierarchy");
             int budget=0;foreach(var ps in env.snow)budget+=ps.main.maxParticles;
             Check(env.budgets.Sum()==10800 && budget>=5900 && env.ParticleCount>4000,"Suspended particle density increased within a fixed budget (including automatic quality fallback)");

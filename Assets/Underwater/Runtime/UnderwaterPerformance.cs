@@ -105,6 +105,9 @@ namespace UnderwaterBaseline
                 if(arm.Contact)readout+="\n"+arm.Contact.HapticStatus;
             }
             if(interaction)readout+=$"\nFlow {interaction.ListenerFlow:F2} m/s | Silt {interaction.ActivePlumes}/12 | Grains {interaction.sedimentParticles.particleCount}\nWake demo {(interaction.wakeDemo?"ON":"OFF")} [N / R B] | Lamps {(interaction.lightsEnabled?"ON":"OFF")} [L / R A]";
+            if(motor.presence)foreach(var volume in motor.presence.fluidVolumes)
+                if(volume && volume.Contains(motor.origin.Camera.transform.position))
+                    readout+=$"\nFluid grid {volume.CellCount} cells | {volume.EffectiveHz:F0} Hz | CPU last step {volume.LastStepMilliseconds:F2} ms";
             if (worldReadout) worldReadout.text = readout;
         }
 

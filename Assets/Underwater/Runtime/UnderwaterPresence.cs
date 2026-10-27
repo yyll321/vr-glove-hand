@@ -15,6 +15,7 @@ namespace UnderwaterBaseline
         public bool gentleBodyDrift;
         public Transform[] grass = Array.Empty<Transform>();
         public UnderwaterInteraction interaction;
+        public UnderwaterFluidVolume[] fluidVolumes = Array.Empty<UnderwaterFluidVolume>();
         Quaternion[] grassRest;
         ParticleSystem.Particle[][] particles;
         float nextParticleUpdate;
@@ -28,7 +29,17 @@ namespace UnderwaterBaseline
         }
         public Vector3 CurrentAt(Vector3 world,float time)
         {
-            return AmbientCurrentAt(world,time)+(interaction ? interaction.WakeAt(world,time)*flowStrength : Vector3.zero);
+            if(flowStrength<=0)return Vector3.zero;
+            Vector3 current=AmbientCurrentAt(world,time);
+            for(int i=0;i<fluidVolumes.Length;i++)
+                if(fluidVolumes[i] && fluidVolumes[i].isActiveAndEnabled && fluidVolumes[i].simulate && fluidVolumes[i].Contains(world))
+                {current=fluidVolumes[i].SampleVelocity(world);break;}
+            return current+(interaction ? interaction.WakeAt(world,time)*flowStrength : Vector3.zero);
+        }
+        public void AddFluidImpulse(Vector3 world,Vector3 impulse,float spread=1)
+        {
+            for(int i=0;i<fluidVolumes.Length;i++)
+                if(fluidVolumes[i] && fluidVolumes[i].Contains(world))fluidVolumes[i].AddImpulse(world,impulse,spread);
         }
         public Vector3 AmbientCurrentAt(Vector3 world,float time)
         {

@@ -59,6 +59,7 @@ namespace UnderwaterBaseline.Editor
                 else if (command == "flowupgrade") UnderwaterFlowInteractionUpgrade.Apply();
                 else if (command == "seabedvisibility") UnderwaterSeabedVisibilityUpgrade.Apply();
                 else if (command == "headposeupgrade") UnderwaterHeadPoseUpgrade.Apply();
+                else if (command == "physicsupgrade") UnderwaterPhysicsUpgrade.Apply();
                 else throw new Exception("Unknown command " + command);
                 File.WriteAllText("Logs/UnderwaterCommandResult.txt", "PASS " + DateTime.Now.ToString("O"));
             }

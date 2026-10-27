@@ -4,6 +4,25 @@ using UnityEngine;
 
 namespace UnderwaterBaseline.Editor
 {
+    [CustomEditor(typeof(UnderwaterHydrodynamics))]
+    public sealed class UnderwaterHydrodynamicsInspector : UnityEditor.Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();var model=(UnderwaterHydrodynamics)target;
+            EditorGUILayout.HelpBox("Reduced-order drag and buoyancy estimates with uncalibrated coefficients. Force application is opt-in. Reference ROVs remain fixed.",MessageType.Info);
+            using(new EditorGUI.DisabledScope(true))
+            {
+                EditorGUILayout.Vector3Field("Relative velocity m/s",model.EstimatedRelativeVelocity);
+                EditorGUILayout.Vector3Field("Estimated drag N",model.EstimatedDragForce);
+                EditorGUILayout.Vector3Field("Estimated buoyancy N",model.EstimatedBuoyancy);
+                EditorGUILayout.Vector3Field("Angular resistance Nm",model.EstimatedTorque);
+                EditorGUILayout.FloatField("Dynamic pressure Pa",model.DynamicPressure);
+                EditorGUILayout.FloatField("Submerged fraction",model.SubmergedFraction);
+            }
+        }
+        public override bool RequiresConstantRepaint()=>Application.isPlaying;
+    }
     [CustomEditor(typeof(UnderwaterCaustics))]
     public sealed class UnderwaterCausticsInspector : UnityEditor.Editor
     {

@@ -129,3 +129,8 @@ Assets/Plugins/Sirenix/Demos/*
 Assets/Procedural*Worlds/Gaia/Asset*Samples/*
 Assets/Samples/Terrain*Tools/*
 Assets/Resources/PXR_*
+
+# Local preview logs and the ignored scene-backup folder metadata.
+/ps_driver_sdk*.log
+/UserSettings/Search.index
+/Assets/Underwater/Backups.meta
