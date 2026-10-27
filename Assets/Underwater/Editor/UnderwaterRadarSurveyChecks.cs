@@ -55,19 +55,27 @@ namespace UnderwaterBaseline.Editor
                 radar.profiles[0].columns=33;radar.SelectProfile(0);radar.StartScan();tick.Invoke(radar,null);scanner.transform.position+=Vector3.right*2;tick.Invoke(radar,null);tick.Invoke(radar,null);
                 check(radar.Latest.origin==origin,"Scan origin changed halfway through budgeted frame");
                 bool rejected=false;try{radar.ApplyConfiguration("{}");}catch(ArgumentException){rejected=true;}check(rejected,"Incomplete ROS configuration accepted");
-                // All button combinations retain the same single-purpose rising edges.
+                // Chord wins in either order. Singles are committed only on release.
                 using(var controls=new UnderwaterControllerInput())for(int mask=0;mask<256;mask++)
                 {
                     controls.ApplyState(default);
                     var state=new UnderwaterControllerInput.State{a=(mask&1)!=0,b=(mask&2)!=0,x=(mask&4)!=0,y=(mask&8)!=0,
                         leftClick=(mask&16)!=0,leftGrip=(mask&32)!=0,leftTrigger=(mask&64)!=0,rightTrigger=(mask&128)!=0};
-                    controls.ApplyState(state);
+                    controls.ApplyState(state);bool chord=state.y&&state.leftGrip;
                     check(controls.LightPressed==state.a && controls.WakePressed==state.b && controls.AreaPressed==state.x &&
-                        controls.BubblePressed==state.y && controls.QualityPressed==state.leftClick && controls.RadarPressed==state.leftGrip &&
-                        controls.MutePressed==state.leftTrigger && controls.SoundTestPressed==state.rightTrigger,"A button changed meaning with a simultaneous grip/button");
+                        !controls.BubblePressed && controls.QualityPressed==state.leftClick && !controls.RadarPressed && controls.PanelPressed==chord &&
+                        controls.MutePressed==state.leftTrigger && controls.SoundTestPressed==state.rightTrigger,"Panel chord did not suppress its two single actions");
                     controls.ApplyState(state);
-                    check(!controls.LightPressed && !controls.WakePressed && !controls.AreaPressed && !controls.BubblePressed &&
-                        !controls.QualityPressed && !controls.RadarPressed && !controls.MutePressed && !controls.SoundTestPressed,"Held button repeated a one-shot action");
+                    check(!controls.PanelPressed && !controls.RadarPressed && !controls.BubblePressed && !controls.LightPressed,"Held chord/button repeated");
+                    controls.ApplyState(default);
+                    check(controls.RadarPressed==(state.leftGrip&&!chord) && controls.BubblePressed==(state.y&&!chord),"Single release mapping incorrect");
+                }
+                using(var controls=new UnderwaterControllerInput())foreach(bool gripFirst in new[]{true,false})
+                {
+                    controls.ApplyState(default);controls.ApplyState(new UnderwaterControllerInput.State{leftGrip=gripFirst,y=!gripFirst});
+                    controls.ApplyState(new UnderwaterControllerInput.State{leftGrip=true,y=true});
+                    check(controls.PanelPressed && !controls.RadarPressed && !controls.BubblePressed,"Chord depended on press order");
+                    controls.ApplyState(default);check(!controls.RadarPressed&&!controls.BubblePressed,"Chord leaked a release action");
                 }
                 check(UnderwaterControllerInput.MapMovement(Vector2.up)==Vector3.up && UnderwaterControllerInput.MapMovement(Vector2.down)==Vector3.down &&
                     UnderwaterControllerInput.MapMovement(Vector2.left)==Vector3.forward && UnderwaterControllerInput.MapMovement(Vector2.right)==Vector3.back,"User left-stick mapping changed");

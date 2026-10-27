@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.XR;
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using TrackedPoseDriver=UnityEngine.InputSystem.XR.TrackedPoseDriver;
 
 namespace UnderwaterBaseline
@@ -14,6 +15,7 @@ namespace UnderwaterBaseline
     {
         public Camera eye;
         public bool SessionActive { get; private set; }
+        public bool StereoFramesAvailable {get;private set;}
         public bool PoseValid { get; private set; }
         public int AppliedPoses { get; private set; }
         public int LegacyFallbackPoses { get; private set; }
@@ -47,8 +49,26 @@ namespace UnderwaterBaseline
             eye.stereoTargetEye=StereoTargetEyeMask.Both;
             eye.useOcclusionCulling=false;
         }
-        void OnEnable(){Application.onBeforeRender+=BeforeRender;RenderPipelineManager.beginCameraRendering+=BeforeCamera;}
-        void OnDisable(){Application.onBeforeRender-=BeforeRender;RenderPipelineManager.beginCameraRendering-=BeforeCamera;if(previousDriver)previousDriver.enabled=previousEnabled;}
+        void OnEnable(){Application.onBeforeRender+=BeforeRender;RenderPipelineManager.beginCameraRendering+=BeforeCamera;RenderPipelineManager.beginContextRendering+=BeforeContext;}
+        void OnDisable(){Application.onBeforeRender-=BeforeRender;RenderPipelineManager.beginCameraRendering-=BeforeCamera;RenderPipelineManager.beginContextRendering-=BeforeContext;if(previousDriver)previousDriver.enabled=previousEnabled;}
+        void BeforeContext(ScriptableRenderContext context,List<Camera> cameras)
+        {
+#if UNITY_EDITOR
+            if(!cameras.Contains(eye))return;
+            bool valid=false;displays.Clear();SubsystemManager.GetInstances(displays);
+            foreach(var display in displays)if(display.running)
+            {
+                try
+                {
+                    int count=display.GetRenderPassCount();bool readable=count>0;
+                    for(int i=0;i<count;i++){display.GetRenderPass(i,out var pass);readable&=pass.GetRenderParameterCount()>0;}
+                    valid|=readable;
+                }
+                catch(System.IndexOutOfRangeException){/* Preview provider has not supplied this advertised pass yet. */}
+            }
+            StereoFramesAvailable=valid;eye.GetUniversalAdditionalCameraData().allowXRRendering=valid;
+#endif
+        }
         void BeforeCamera(ScriptableRenderContext context,Camera camera)
         {
             if(camera!=eye || !SessionActive)return;
@@ -63,7 +83,18 @@ namespace UnderwaterBaseline
         {
             displays.Clear();SubsystemManager.GetInstances(displays);
             SessionActive=XRSettings.isDeviceActive;
-            foreach(var display in displays)SessionActive|=display.running;
+            StereoFramesAvailable=false;
+            foreach(var display in displays)
+            {
+                SessionActive|=display.running;
+                if(display.running && display.GetRenderPassCount()>0)StereoFramesAvailable=true;
+            }
+#if UNITY_EDITOR
+            // Live Preview may report running with zero render passes while the HMD
+            // sleeps/disconnects. URP 14 otherwise calls GetRenderPass(0) and throws.
+            // Preserve tracking and restore stereo automatically when frames resume.
+            var data=eye.GetUniversalAdditionalCameraData();if(data)data.allowXRRendering=StereoFramesAvailable;
+#endif
             if(!SessionActive){PoseValid=false;return;}
             if(preferTrackedPoseDriver && previousDriver && previousDriver.enabled)
             {

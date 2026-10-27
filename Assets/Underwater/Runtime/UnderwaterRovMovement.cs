@@ -78,6 +78,9 @@ namespace UnderwaterBaseline
                 allowed=Mathf.Min(allowed,Mathf.Max(0,hits[i].distance-.025f));
             }
             Vector3 accepted=direction*allowed;
+            var armGuard=GetComponent<UnderwaterArmSurfaceGuard>();
+            if(armGuard && accepted.sqrMagnitude>1e-10f && armGuard.WouldTranslate(accepted))
+            {ContactObstacle=armGuard.LastSurface;if(handContact)handContact.Pulse();return Vector3.zero;}
             if(handContact && handContact.Arm && handContact.Arm.Wrist && accepted.sqrMagnitude>1e-10f)
             {
                 handContact.BeginMotion();var wrist=handContact.Arm.Wrist;

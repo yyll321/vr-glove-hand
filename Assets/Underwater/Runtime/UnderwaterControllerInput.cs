@@ -16,7 +16,7 @@ namespace UnderwaterBaseline
         readonly InputAction lGrip = Button("LeftHand", "gripPressed"), rGrip = Button("RightHand", "gripPressed");
         public Vector2 Move, Turn;
         public bool Up, Down, Bubbles, Quality, Compare;
-        public bool LightPressed, WakePressed, BubblePressed, QualityPressed, AreaPressed, RadarPressed, SoundTestPressed, MutePressed;
+        public bool LightPressed, WakePressed, BubblePressed, QualityPressed, AreaPressed, RadarPressed, SoundTestPressed, MutePressed, PanelPressed;
         public bool LeftTrigger, RightTrigger, LeftGrip, RightGrip, TeleportHeld;
         public struct State
         {
@@ -24,6 +24,7 @@ namespace UnderwaterBaseline
             public bool a,b,x,y,leftClick,rightClick,leftTrigger,rightTrigger,leftGrip,rightGrip;
         }
         State previous;
+        bool gripPending,yPending,chordUsed;
 #if UNITY_EDITOR
         // Used only by the automated Editor Play check; never present in builds.
         public State? EditorInputOverride;
@@ -64,8 +65,17 @@ namespace UnderwaterBaseline
             Move=s.leftStick;Turn=s.rightStick;Up=s.a;Down=s.b;Compare=s.x;Bubbles=s.y;Quality=s.leftClick;
             LeftTrigger=s.leftTrigger;RightTrigger=s.rightTrigger;LeftGrip=s.leftGrip;RightGrip=s.rightGrip;TeleportHeld=s.rightClick;
             LightPressed=s.a&&!previous.a;WakePressed=s.b&&!previous.b;AreaPressed=s.x&&!previous.x;
-            BubblePressed=s.y&&!previous.y;QualityPressed=s.leftClick&&!previous.leftClick;
-            RadarPressed=s.leftGrip&&!previous.leftGrip;SoundTestPressed=s.rightTrigger&&!previous.rightTrigger;MutePressed=s.leftTrigger&&!previous.leftTrigger;
+            // Defer the two single-key actions until release so either order of the
+            // requested chord cannot also fire bubbles or toggle the radar.
+            PanelPressed=false;BubblePressed=false;RadarPressed=false;
+            if(s.leftGrip&&!previous.leftGrip)gripPending=true;
+            if(s.y&&!previous.y)yPending=true;
+            if(s.leftGrip && s.y && !chordUsed){PanelPressed=true;chordUsed=true;gripPending=yPending=false;}
+            if(!s.leftGrip && previous.leftGrip){RadarPressed=gripPending&&!chordUsed;gripPending=false;}
+            if(!s.y && previous.y){BubblePressed=yPending&&!chordUsed;yPending=false;}
+            if(!s.leftGrip && !s.y)chordUsed=false;
+            QualityPressed=s.leftClick&&!previous.leftClick;
+            SoundTestPressed=s.rightTrigger&&!previous.rightTrigger;MutePressed=s.leftTrigger&&!previous.leftTrigger;
             previous=s;
         }
         // Left stick: up/down = world height; left/right = approach/retreat.

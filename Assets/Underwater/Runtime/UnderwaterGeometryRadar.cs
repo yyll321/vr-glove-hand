@@ -36,6 +36,12 @@ namespace UnderwaterBaseline
         public float targetTilt, currentTilt;
         public float tiltSpeed=25;
         public bool automaticTilt, scanning, showPanel=true, showRays;
+        public bool useTaskConsole;
+        public Texture RangeImage=>Latest!=null?image:null;
+        public Transform graspWrist;
+        public Vector3 graspPalmLocal;
+        public bool graspScan;
+        int frontProfile;
         public int selectedProfile;
         public int Frames {get;private set;}
         public float LastScanMs {get;private set;}
@@ -53,6 +59,7 @@ namespace UnderwaterBaseline
         {
             public int sequence,profile,columns,rows;
             public string model,frame="radar_flu";
+            public string scanMode;
             public double time; public float minimumRange,range,azimuthDegrees,elevationDegrees,tiltDegrees;
             public Vector3 origin; public Quaternion rotation;
             public float[] ranges; public bool[] hits; public Vector3[] points;
@@ -78,6 +85,13 @@ namespace UnderwaterBaseline
         public void SetTilt(float degrees){targetTilt=Mathf.Clamp(degrees,-60,60);}
         void UpdateMount()
         {
+            if(graspScan && graspWrist)
+            {
+                // A separate, explicitly selected ideal geometry scan beside the wrist.
+                // The saved snapshot contains this origin; it is not fused with the front scan.
+                var palm=graspWrist.TransformPoint(graspPalmLocal);
+                transform.SetPositionAndRotation(palm+Vector3.up*.20f,Quaternion.LookRotation(Vector3.down,Vector3.forward));return;
+            }
             if(!vehicle)return;
             Quaternion axes=vehicle.rotation*vehicleAxesCorrection;
             transform.SetPositionAndRotation(vehicle.position+axes*mountOffsetMetres,axes*Quaternion.Euler(-currentTilt,0,0));
@@ -86,7 +100,7 @@ namespace UnderwaterBaseline
         void Update()
         {
             bool active=!motor || motor.InSeabed==seabed;
-            if(panel)panel.gameObject.SetActive(active && showPanel);
+            if(panel)panel.gameObject.SetActive(active && showPanel && !useTaskConsole);
             if(!active){pending=null;previousActive=false;return;}
             if(!previousActive){nextScan=0;previousActive=true;}
             var key=Keyboard.current;
@@ -103,6 +117,7 @@ namespace UnderwaterBaseline
                 if(key.f8Key.wasPressedThisFrame)automaticTilt=!automaticTilt;
                 if(key.f9Key.wasPressedThisFrame)ExportLatest();
                 if(key.f10Key.wasPressedThisFrame)SelectProfile((selectedProfile+1)%profiles.Length);
+                if(key.f11Key.wasPressedThisFrame)SetGraspScan(!graspScan);
                 if(key.leftBracketKey.isPressed){automaticTilt=false;SetTilt(targetTilt-tiltSpeed*Time.deltaTime);}
                 if(key.rightBracketKey.isPressed){automaticTilt=false;SetTilt(targetTilt+tiltSpeed*Time.deltaTime);}
             }
@@ -121,6 +136,14 @@ namespace UnderwaterBaseline
             }
         }
         public void ToggleScan(){if(scanning)StopScan();else StartScan();}
+        public void SetGraspScan(bool enabled)
+        {
+            enabled=enabled && graspWrist;if(enabled==graspScan)return;
+            graspScan=enabled;
+            if(enabled){frontProfile=selectedProfile;for(int i=0;i<profiles.Length;i++)if(profiles[i].name=="Grasp close")SelectProfile(i);}
+            else SelectProfile(frontProfile);
+            pending=null;Latest=null;nextScan=0;
+        }
         public static Vector3 BeamDirection(int column,int row,int columns,int rows,float azimuth,float elevation)
         {
             float a=(columns>1?(float)column/(columns-1)-0.5f:0)*azimuth*Mathf.Deg2Rad;
@@ -135,7 +158,7 @@ namespace UnderwaterBaseline
                 var p=Selected;int columns=Mathf.Clamp(p.columns,3,241),rows=Mathf.Clamp(p.rows,1,31),n=columns*rows;
                 pending=new Snapshot{sequence=Frames+1,profile=selectedProfile,model=p.name,time=Time.timeAsDouble,
                     columns=columns,rows=rows,minimumRange=minimumRange,range=Mathf.Clamp(p.range,minimumRange+0.01f,100),
-                    azimuthDegrees=Mathf.Clamp(p.azimuth,1,170),elevationDegrees=Mathf.Clamp(p.elevation,0,120),tiltDegrees=currentTilt,
+                    azimuthDegrees=Mathf.Clamp(p.azimuth,1,170),elevationDegrees=Mathf.Clamp(p.elevation,0,120),tiltDegrees=graspScan?-90:currentTilt,scanMode=graspScan?"wrist_down":"front",
                     origin=transform.position,rotation=transform.rotation,ranges=new float[n],hits=new bool[n],points=new Vector3[n]};
                 rayIndex=0;workMs=0; // Freeze one pose for a complete, budgeted scan.
             }
@@ -209,6 +232,7 @@ namespace UnderwaterBaseline
         }
         void BuildPanel()
         {
+            if(useTaskConsole)return;
             if(!motor || !motor.origin || !motor.origin.Camera)return;
             var root=new GameObject("Geometry Radar Display",typeof(RectTransform),typeof(Canvas));root.transform.SetParent(transform,false);
             root.transform.localScale=Vector3.one*0.0014f;
@@ -233,6 +257,7 @@ namespace UnderwaterBaseline
         }
         void OnGUI()
         {
+            if(useTaskConsole)return;
             if(!showPanel || (motor && motor.InSeabed!=seabed))return;
             float x=Mathf.Max(5,Screen.width-350);GUI.Box(new Rect(x,12,340,460),"Geometry RADAR | F7 start | F10 preset");
             for(int i=0;i<profiles.Length;i++)if(GUI.Button(new Rect(x+10,40+i*27,320,25),profiles[i].name+(i==selectedProfile?" [selected]":"")))SelectProfile(i);

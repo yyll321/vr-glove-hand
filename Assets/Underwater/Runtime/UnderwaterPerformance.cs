@@ -32,6 +32,7 @@ namespace UnderwaterBaseline
         public UnderwaterSoundscape soundscape;
         public UnderwaterInteraction interaction;
         public float minimumPreviewScale=0.9f;
+        public bool useTaskConsole;
         PicoArmPoseDriver[] arms;
 
         void Awake()
@@ -52,7 +53,7 @@ namespace UnderwaterBaseline
 
         void Update()
         {
-            if (worldReadout) worldReadout.transform.parent.gameObject.SetActive(motor.XrActive && showHud);
+            if (worldReadout) worldReadout.transform.parent.gameObject.SetActive(motor.XrActive && showHud && !useTaskConsole);
             FrameTimingManager.CaptureFrameTimings();
             timeSum += Time.unscaledDeltaTime;
             frameCount++;
@@ -115,6 +116,7 @@ namespace UnderwaterBaseline
 
         void OnGUI()
         {
+            if(useTaskConsole)return;
             if (motor.XrActive) return;
             if (!showHud)
             {

@@ -19,6 +19,7 @@ namespace UnderwaterBaseline.Editor
         static int controlStep;static double nextControl;static bool controlsDone,controlsPassed;
         static bool oldLights,oldWake,oldMute,oldAutomatic,originalArea;static int oldTier,oldBubbles,oldTests,oldProfile;static float oldTilt;
         static Vector3 controlRov,controlEye,holdRov;
+        static bool oldPanelVisible;
         static readonly List<string> errors=new List<string>();
         static UnderwaterRadarSurveySmoke(){EditorApplication.playModeStateChanged+=Mode;EditorApplication.update+=Tick;}
         [MenuItem("Tools/Underwater/Research/18 Run Geometry Radar Play Smoke Check")]
@@ -132,21 +133,24 @@ namespace UnderwaterBaseline.Editor
                     oldLights=interaction.lightsEnabled;oldWake=interaction.wakeDemo;oldMute=sound.muted;oldAutomatic=performance.automatic;
                     oldTier=motor.environment.quality;oldBubbles=motor.environment.BubbleBursts;oldTests=sound.TestCount;
                     oldProfile=radar.selectedProfile;oldTilt=radar.targetTilt;originalArea=motor.InSeabed;
+                    oldPanelVisible=Object.FindObjectOfType<UnderwaterTaskConsole>().visible;
                     radar.StopScan();c.EditorInputOverride=neutral;break;
                 case 1:c.EditorInputOverride=new UnderwaterControllerInput.State{leftGrip=true};break;
                 case 2:
-                    VerifyControl(radar.scanning,"left grip alone did not start radar");
+                    VerifyControl(!radar.scanning,"left grip fired before chord decision");
                     c.EditorInputOverride=new UnderwaterControllerInput.State{leftGrip=true,a=true,b=true,y=true,leftClick=true};break;
                 case 3:case 4:
-                    VerifyControl(radar.scanning && radar.selectedProfile==oldProfile && radar.targetTilt==oldTilt && radar.LastExportPath==null,"old radar combination still active");
+                    VerifyControl(Object.FindObjectOfType<UnderwaterTaskConsole>().visible!=oldPanelVisible,"Grip+Y did not toggle exactly one panel state");
+                    VerifyControl(!radar.scanning && radar.selectedProfile==oldProfile && radar.targetTilt==oldTilt && radar.LastExportPath==null,"old radar combination still active");
                     VerifyControl(interaction.lightsEnabled!=oldLights && interaction.wakeDemo!=oldWake,"A/B changed purpose with left grip");
-                    VerifyControl(motor.environment.BubbleBursts==oldBubbles+1 && motor.environment.quality==(oldTier+1)%3,"Y / left click repeated or changed purpose");
+                    VerifyControl(motor.environment.BubbleBursts==oldBubbles && motor.environment.quality==(oldTier+1)%3,"Y / left click repeated or changed purpose");
                     if(controlStep==5)c.EditorInputOverride=neutral;break;
                 case 5:c.EditorInputOverride=new UnderwaterControllerInput.State{leftGrip=true};break;
                 case 6:
-                    VerifyControl(!radar.scanning,"second left grip press did not stop radar");
+                    VerifyControl(!radar.scanning,"held left grip fired before release");
                     c.EditorInputOverride=new UnderwaterControllerInput.State{rightTrigger=true};break;
                 case 7:
+                    VerifyControl(radar.scanning,"single left grip release did not start radar");
                     VerifyControl(sound.TestCount==oldTests+1 && !sound.muted,"right trigger did not produce exactly one audio test");
                     c.EditorInputOverride=new UnderwaterControllerInput.State{rightTrigger=true,leftTrigger=true};break;
                 case 8:
@@ -170,6 +174,7 @@ namespace UnderwaterBaseline.Editor
                     c.EditorInputOverride=neutral;break;
                 default:
                     c.EditorInputOverride=null;interaction.lightsEnabled=oldLights;interaction.SetWakeDemo(oldWake);
+                    Object.FindObjectOfType<UnderwaterTaskConsole>().visible=oldPanelVisible;
                     if(sound.muted!=oldMute)sound.ToggleMute();performance.SelectQuality(oldTier);performance.automatic=oldAutomatic;
                     radar.vehicle.position=controlRov;Physics.SyncTransforms();controlsDone=true;break;
             }

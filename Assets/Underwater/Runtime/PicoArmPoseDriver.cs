@@ -56,12 +56,14 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
     public bool GripHeld { get; private set; }
     public bool ControllerTracked { get; private set; }
     public int AppliedPoseCount { get; private set; }
+    public UnderwaterBaseline.UnderwaterArmSurfaceGuard WholeArmContact;
 
     public void ResolveBindings()
     {
         if (ArmBase == null && Joints != null && Joints.Length > 0 && Joints[0] != null)
             ArmBase = Joints[0].parent;
         if (!Contact) Contact = GetComponent<Wa100SurfaceContact>();
+        if (!WholeArmContact) WholeArmContact=GetComponent<UnderwaterBaseline.UnderwaterArmSurfaceGuard>();
         if (!initialized && Joints != null && Joints.Length == 4 && !System.Array.Exists(Joints,j=>!j))
         {
             for (int i=0;i<4;i++) neutral[i]=Joints[i].localRotation;
@@ -122,6 +124,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
     // The same path is exercised by the editor's rig regression check.
     public void ApplyControllerPose(Vector3 localPosition, Quaternion localRotation, bool grip, float deltaTime)
     {
+        SurfaceContact=false;
         ResolveBindings();
         if (!grip)
         {
@@ -155,6 +158,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
         filteredRotation = Quaternion.Slerp(filteredRotation,targetRotation,blend);
         CaptureJointState();
         if (PreventSurfacePenetration && Contact) { Contact.SurfaceMask=ContactMask; Contact.BeginMotion(); }
+        if (PreventSurfacePenetration && WholeArmContact) WholeArmContact.BeginMotion();
         SolvePosition(filteredTarget, dt);
         SolveWristRotation(filteredRotation, dt);
         ApplyContactConstraint();
@@ -205,20 +209,27 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
     {
         MaximumAppliedJointStep=0;
         for(int i=0;i<4;i++) proposed[i]=Joints[i].localRotation;
-        if(PreventSurfacePenetration && Contact && Contact.ShapeCount>0)
+        if(PreventSurfacePenetration && ((WholeArmContact && WholeArmContact.ShapeCount>0) || (Contact && Contact.ShapeCount>0)))
         {
             for(int i=0;i<4;i++)Joints[i].localRotation=frameStart[i];
             Vector3 previous=Wrist.position;Quaternion previousRotation=Wrist.rotation;
             float greatest=0;for(int i=0;i<4;i++)greatest+=Quaternion.Angle(frameStart[i],proposed[i]);
-            int steps=Mathf.Clamp(Mathf.CeilToInt(greatest/0.5f),1,80);
+            int steps=Mathf.Clamp(Mathf.CeilToInt(greatest/0.25f),1,160);
             // A pose already inside a contact skin may move out of it. Never snap the
             // entire robot or translate the head to repair a contact.
-            bool startedBlocked=Contact.Blocked(previous,previousRotation);
+            bool startedBlocked=Contact && Contact.Blocked(previous,previousRotation);
             float accepted=0;
             for(int step=1;step<=steps;step++)
             {
                 float fraction=step/(float)steps;
                 for(int i=0;i<4;i++)Joints[i].localRotation=Quaternion.Slerp(frameStart[i],proposed[i],fraction);
+                if(WholeArmContact && WholeArmContact.RejectStep())
+                {
+                    SurfaceContact=true;
+                    for(int i=0;i<4;i++)Joints[i].localRotation=Quaternion.Slerp(frameStart[i],proposed[i],accepted);
+                    if(Contact && Contact.Hand)Contact.Hand.SyncMountedRoot();
+                    break;
+                }
                 bool blocked=Contact.Blocked(Wrist.position,Wrist.rotation);
                 // Allow withdrawal from a physical contact, but do not allow a new
                 // overlap or sweep through a thin surface.
