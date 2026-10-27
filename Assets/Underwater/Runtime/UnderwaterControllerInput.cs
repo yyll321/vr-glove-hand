@@ -13,9 +13,11 @@ namespace UnderwaterBaseline
         readonly InputAction x = Button("LeftHand", "primaryButton"), y = Button("LeftHand", "secondaryButton");
         readonly InputAction lClick = Button("LeftHand", "thumbstickClicked"), rClick = Button("RightHand", "thumbstickClicked");
         readonly InputAction lTrigger = Button("LeftHand", "trigger"), rTrigger = Button("RightHand", "trigger");
+        readonly InputAction lGrip = Button("LeftHand", "gripPressed"), rGrip = Button("RightHand", "gripPressed");
         public Vector2 Move, Turn;
         public bool Up, Down, Surface, Bubbles, Quality, Compare;
-        public bool LeftTrigger, RightTrigger, RightGrip, TeleportHeld;
+        public bool LeftTrigger, RightTrigger, LeftGrip, RightGrip, TeleportHeld;
+        public bool RadarModifier => LeftGrip && UnderwaterGeometryRadar.ActiveForInput;
         public string Status { get; private set; } = "Controllers: waiting";
         static InputAction Axis(string hand)
         {
@@ -41,7 +43,9 @@ namespace UnderwaterBaseline
             Quality = ReadButton(lClick, l, CommonUsages.primary2DAxisClick); Compare = ReadButton(x,l,CommonUsages.primaryButton);
             LeftTrigger = ReadButton(lTrigger,l,CommonUsages.triggerButton);
             RightTrigger = ReadButton(rTrigger,r,CommonUsages.triggerButton);
-            r.TryGetFeatureValue(CommonUsages.gripButton,out RightGrip);
+            LeftGrip=ReadButton(lGrip,l,CommonUsages.gripButton);
+            if(l.TryGetFeatureValue(CommonUsages.grip,out float leftGrip))LeftGrip|=leftGrip>=0.5f;
+            RightGrip=ReadButton(rGrip,r,CommonUsages.gripButton);
             if(r.TryGetFeatureValue(CommonUsages.grip,out float grip))RightGrip|=grip>=0.5f;
             TeleportHeld=ReadButton(rClick,r,CommonUsages.primary2DAxisClick);
             Status = $"L {(left.activeControl?.device.displayName ?? (l.isValid ? l.name : "disconnected"))} {Move:F2}\nR {(right.activeControl?.device.displayName ?? (r.isValid ? r.name : "disconnected"))} {Turn:F2}";
@@ -51,6 +55,6 @@ namespace UnderwaterBaseline
         {return Vector3.ClampMagnitude(new Vector3(0,stick.y,-stick.x),1);}
         static bool ReadButton(InputAction a, UnityEngine.XR.InputDevice device, InputFeatureUsage<bool> feature)
         { device.TryGetFeatureValue(feature, out bool pressed); return a.IsPressed() || pressed; }
-        public void Dispose() { foreach (var action in new[] {left,right,a,b,x,y,lClick,rClick,lTrigger,rTrigger}) action.Dispose(); }
+        public void Dispose() { foreach (var action in new[] {left,right,a,b,x,y,lClick,rClick,lTrigger,rTrigger,lGrip,rGrip}) action.Dispose(); }
     }
 }

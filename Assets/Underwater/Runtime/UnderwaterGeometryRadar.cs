@@ -1,5 +1,8 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -37,7 +40,15 @@ namespace UnderwaterBaseline
         public int Frames {get;private set;}
         public float LastScanMs {get;private set;}
         public string Status {get;private set;}="Select a geometry profile then Start";
-        bool horizontalLatched;
+        bool previousStart,previousProfile,previousTilt,previousExport;
+        static readonly HashSet<UnderwaterGeometryRadar> enabledRadars=new HashSet<UnderwaterGeometryRadar>();
+        public static bool ActiveForInput
+        {
+            get{foreach(var r in enabledRadars)if(r && r.isActiveAndEnabled && (!r.motor ||
+                (r.motor.origin && r.motor.origin.Camera && r.motor.InSeabed==r.seabed)))return true;return false;}
+        }
+        void OnEnable(){enabledRadars.Add(this);}
+        void OnDisable(){enabledRadars.Remove(this);StopScan();if(panel)panel.gameObject.SetActive(false);previousActive=false;}
         public event Action<Snapshot> ScanCompleted;
         [Serializable] public sealed class Snapshot
         {
@@ -48,6 +59,7 @@ namespace UnderwaterBaseline
             public float[] ranges; public bool[] hits; public Vector3[] points;
         }
         public Snapshot Latest {get;private set;}
+        public string LastExportPath {get;private set;}
         Snapshot pending; int rayIndex; float nextScan,workMs;
         Texture2D image; Color32[] pixels;
         RawImage display; Text label; Canvas panel; bool previousActive;
@@ -71,6 +83,7 @@ namespace UnderwaterBaseline
             Quaternion axes=vehicle.rotation*vehicleAxesCorrection;
             transform.SetPositionAndRotation(vehicle.position+axes*mountOffsetMetres,axes*Quaternion.Euler(-currentTilt,0,0));
         }
+        public void RefreshMount(){UpdateMount();}
         void Update()
         {
             bool active=!motor || motor.InSeabed==seabed;
@@ -78,12 +91,12 @@ namespace UnderwaterBaseline
             if(!active){pending=null;previousActive=false;return;}
             if(!previousActive){nextScan=0;previousActive=true;}
             var key=Keyboard.current;
-            // Right stick axes are free. Preserve A/B for lights/wake, grip for
-            // the arm clutch and stick click for teleportation.
+            // Reserve the right stick for ROV motion. Only unused left-grip
+            // combinations operate this instrument; plain A/B/Y keep their roles.
             if(motor && motor.XrActive && motor.Controllers!=null)
             {
                 var controls=motor.Controllers;
-                HandleStick(controls.Turn,controls.RightGrip || controls.TeleportHeld,Time.deltaTime);
+                HandleButtons(controls.LeftGrip,controls.Up,controls.Down,controls.Bubbles,controls.Quality);
             }
             if(key!=null)
             {
@@ -98,19 +111,32 @@ namespace UnderwaterBaseline
             if(automaticTilt)targetTilt=Mathf.Sin(Time.time*0.25f)*45;
             currentTilt=Mathf.MoveTowards(currentTilt,targetTilt,tiltSpeed*Time.deltaTime);UpdateMount();
             if(scanning)TickScan();
-            if(label)label.text=$"IDEAL GEOMETRY RADAR | {Selected.name}\n{Selected.range:F0} m | {Selected.azimuth:F0} x {Selected.elevation:F0} deg | Tilt {currentTilt:F1} deg\n{Status}\nR stick: up/down tilt | left start/stop | right profile";
-        }
-        public void HandleStick(Vector2 stick,bool armOrTeleportBusy,float dt)
-        {
-            if(armOrTeleportBusy){horizontalLatched=true;return;}
-            if(Mathf.Abs(stick.x)<0.3f)horizontalLatched=false;
-            if(!horizontalLatched && Mathf.Abs(stick.x)>0.7f && Mathf.Abs(stick.y)<0.4f)
+            if(label)
             {
-                horizontalLatched=true;
-                if(stick.x<0){if(scanning)StopScan();else StartScan();}
-                else {EnsureProfiles();SelectProfile((selectedProfile+1)%profiles.Length);}
+                int hits=0;float nearest=float.PositiveInfinity;string centre="--";
+                if(Latest!=null)
+                {
+                    for(int i=0;i<Latest.hits.Length;i++)if(Latest.hits[i]){hits++;nearest=Mathf.Min(nearest,Latest.ranges[i]);}
+                    int at=(Latest.rows/2)*Latest.columns+Latest.columns/2;if(Latest.hits[at])centre=Latest.ranges[at].ToString("F2")+" m";
+                }
+                label.text=$"GEOMETRY RADAR | {Selected.name} | {(scanning?"RUN":"STOP")}\n{Selected.range:F0} m | Tilt {currentTilt:F0} deg (positive = up)\nCentre {centre} | Nearest {(hits>0?nearest.ToString("F2")+" m":"--")} | Hits {hits}\nLeft grip + A start | B preset | Y tilt | L click export\n{Status}";
             }
-            if(Mathf.Abs(stick.y)>0.2f && Mathf.Abs(stick.x)<0.4f)SetTilt(targetTilt+stick.y*tiltSpeed*Mathf.Clamp(dt,0,0.1f));
+        }
+        public void HandleButtons(bool modifier,bool start,bool profile,bool tilt,bool export)
+        {
+            if(modifier)
+            {
+                if(start && !previousStart){if(scanning)StopScan();else StartScan();}
+                if(profile && !previousProfile){EnsureProfiles();SelectProfile((selectedProfile+1)%profiles.Length);}
+                if(tilt && !previousTilt)
+                {
+                    float[] angles={0,15,30,45,-15,-30,-45};int nearest=0;
+                    for(int i=1;i<angles.Length;i++)if(Mathf.Abs(targetTilt-angles[i])<Mathf.Abs(targetTilt-angles[nearest]))nearest=i;
+                    automaticTilt=false;SetTilt(angles[(nearest+1)%angles.Length]);
+                }
+                if(export && !previousExport)ExportLatest();
+            }
+            previousStart=start;previousProfile=profile;previousTilt=tilt;previousExport=export;
         }
         public static Vector3 BeamDirection(int column,int row,int columns,int rows,float azimuth,float elevation)
         {
@@ -181,32 +207,66 @@ namespace UnderwaterBaseline
         {
             if(Latest==null){Status="No completed frame to export";return;}
             string dir=Path.Combine(Application.persistentDataPath,"GeometryRadar");Directory.CreateDirectory(dir);
-            string path=Path.Combine(dir,$"radar-{DateTime.Now:yyyyMMdd-HHmmss-fff}-{Latest.sequence}.json");
-            File.WriteAllText(path,JsonUtility.ToJson(Latest,true));File.WriteAllText(Path.Combine(dir,"radar-config.json"),ConfigurationJson());Status="Exported "+path;
+            string stem=Path.Combine(dir,$"radar-{DateTime.Now:yyyyMMdd-HHmmss-fff}-{Latest.sequence}");
+            File.WriteAllText(stem+".json",JsonUtility.ToJson(Latest,true));
+            var csv=new StringBuilder("row,column,azimuth_deg,elevation_deg,hit,range_m,forward_m,left_m,up_m\n");
+            var cloud=new StringBuilder();int count=0;var ci=CultureInfo.InvariantCulture;
+            for(int i=0;i<Latest.ranges.Length;i++)
+            {
+                int row=i/Latest.columns,column=i%Latest.columns;var p=Latest.points[i];
+                float a=((float)column/(Latest.columns-1)-.5f)*Latest.azimuthDegrees;
+                float e=Latest.rows>1?((float)row/(Latest.rows-1)-.5f)*Latest.elevationDegrees:0;
+                csv.AppendFormat(ci,"{0},{1},{2:F4},{3:F4},{4},{5:F5},{6:F5},{7:F5},{8:F5}\n",row,column,a,e,Latest.hits[i]?1:0,Latest.ranges[i],p.x,p.y,p.z);
+                if(Latest.hits[i]){count++;cloud.AppendFormat(ci,"{0:F5} {1:F5} {2:F5}\n",p.x,p.y,p.z);}
+            }
+            File.WriteAllText(stem+".csv",csv.ToString());
+            File.WriteAllText(stem+"-local-FLU.ply",$"ply\nformat ascii 1.0\ncomment local radar FLU metres; x forward y left z up\nelement vertex {count}\nproperty float x\nproperty float y\nproperty float z\nend_header\n"+cloud);
+            LastExportPath=stem+".json";Status=$"Exported frame {Latest.sequence}: JSON / CSV / PLY";
+            Debug.Log("[GeometryRadar] Exported "+stem+" (.json, .csv, -local-FLU.ply)");
         }
         void BuildPanel()
         {
             if(!motor || !motor.origin || !motor.origin.Camera)return;
-            var root=new GameObject("Geometry Radar Display",typeof(RectTransform),typeof(Canvas));root.transform.SetParent(motor.origin.Camera.transform,false);
-            root.transform.localPosition=new Vector3(0.5f,-0.1f,1.5f);root.transform.localScale=Vector3.one*0.0012f;
+            var root=new GameObject("Geometry Radar Display",typeof(RectTransform),typeof(Canvas));root.transform.SetParent(transform,false);
+            root.transform.localScale=Vector3.one*0.0014f;
             panel=root.GetComponent<Canvas>();panel.renderMode=RenderMode.WorldSpace;root.GetComponent<RectTransform>().sizeDelta=new Vector2(560,400);
             var state=new GameObject("State",typeof(RectTransform),typeof(Text));state.transform.SetParent(root.transform,false);
-            var rect=state.GetComponent<RectTransform>();rect.anchoredPosition=new Vector2(0,135);rect.sizeDelta=new Vector2(540,110);
-            label=state.GetComponent<Text>();label.font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");label.fontSize=16;label.color=Color.white;
+            var rect=state.GetComponent<RectTransform>();rect.anchoredPosition=new Vector2(0,135);rect.sizeDelta=new Vector2(550,130);
+            label=state.GetComponent<Text>();label.font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");label.fontSize=18;label.color=Color.white;
             var go=new GameObject("Angular range image",typeof(RectTransform),typeof(RawImage));go.transform.SetParent(root.transform,false);
             var rt=go.GetComponent<RectTransform>();rt.anchoredPosition=new Vector2(0,-40);rt.sizeDelta=new Vector2(530,210);display=go.GetComponent<RawImage>();
-            // Only the instrument Canvas follows the head. The scanner follows the vehicle.
+            var legend=new GameObject("Distance legend",typeof(RectTransform),typeof(Text));legend.transform.SetParent(root.transform,false);
+            var lr=legend.GetComponent<RectTransform>();lr.anchoredPosition=new Vector2(0,-170);lr.sizeDelta=new Vector2(540,45);
+            var text=legend.GetComponent<Text>();text.font=label.font;text.fontSize=17;text.color=Color.white;
+            text.text="LEFT < azimuth > RIGHT | TOP = UP\nOrange = near | Blue = far | Dark = no valid hit";
+            FollowDisplay();
+        }
+        void LateUpdate(){FollowDisplay();}
+        void FollowDisplay()
+        {
+            if(!panel || !motor || !motor.origin || !motor.origin.Camera)return;
+            var head=motor.origin.Camera.transform;
+            panel.transform.SetPositionAndRotation(head.TransformPoint(new Vector3(.48f,-.12f,1.65f)),head.rotation);
         }
         void OnGUI()
         {
-            if(!showPanel || (motor && (motor.XrActive || motor.InSeabed!=seabed)))return;
-            float x=Mathf.Max(5,Screen.width-350);GUI.Box(new Rect(x,12,340,390),"Ideal geometry RADAR (no EM propagation)");
+            if(!showPanel || (motor && motor.InSeabed!=seabed))return;
+            float x=Mathf.Max(5,Screen.width-350);GUI.Box(new Rect(x,12,340,460),"Geometry RADAR | F7 start | F10 preset");
             for(int i=0;i<profiles.Length;i++)if(GUI.Button(new Rect(x+10,40+i*27,320,25),profiles[i].name+(i==selectedProfile?" [selected]":"")))SelectProfile(i);
             if(GUI.Button(new Rect(x+10,156,155,28),scanning?"Stop":"Start")){if(scanning)StopScan();else StartScan();}
-            if(GUI.Button(new Rect(x+175,156,155,28),"Export JSON"))ExportLatest();
+            if(GUI.Button(new Rect(x+175,156,155,28),"Export 3 files"))ExportLatest();
             SetTilt(GUI.HorizontalSlider(new Rect(x+15,197,310,18),targetTilt,-60,60));
-            GUI.Label(new Rect(x+10,215,320,40),$"Tilt {currentTilt:F1} deg | {Selected.range} m | {Status}");
+            string centre="--";
+            if(Latest!=null){int at=(Latest.rows/2)*Latest.columns+Latest.columns/2;if(Latest.hits[at])centre=Latest.ranges[at].ToString("F2")+" m";}
+            GUI.Label(new Rect(x+10,215,320,40),$"Centre {centre} | Tilt {currentTilt:F1} deg\n{Status}");
             if(image)GUI.DrawTexture(new Rect(x+10,260,320,120),image,ScaleMode.StretchToFill);
+            var system=GetComponentInParent<UnderwaterRadarSystem>();
+            if(system)
+            {
+                if(GUI.Button(new Rect(x+10,392,155,28),"Place 5 m check target"))system.ShowFiveMetreTarget(this);
+                if(GUI.Button(new Rect(x+175,392,155,28),"Hide check target"))system.HideTarget();
+                GUI.Label(new Rect(x+10,425,320,40),system.CalibrationStatus);
+            }
         }
         void OnDrawGizmosSelected()
         {

@@ -1,1126 +1,3574 @@
 {
-  "seed": 20261027,
-  "seabedSize": [
-    50,
-    80
-  ],
-  "protectedRovRadius": 5,
-  "items": [
-    {
-      "name": "Reef 01 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        42.295072941098525,
-        1.8981546178803737,
-        17.107623651798022
-      ],
-      "scale": [
-        1.4431926882063664,
-        1.23260843174783,
-        1.1501748740122442
-      ],
-      "yaw": 9.967108795661947,
-      "zone": 1,
-      "radius": 1.4431926882063664
-    },
-    {
-      "name": "Reef 02 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        75.29930014397156,
-        1.7959368031119958,
-        21.485273030791973
-      ],
-      "scale": [
-        2.8007578651692926,
-        1.535657557739448,
-        3.8233140350930648
-      ],
-      "yaw": 267.8008055981008,
-      "zone": 2,
-      "radius": 3.8233140350930648
-    },
-    {
-      "name": "Reef 03 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        57.89864155337917,
-        1.770608004141478,
-        25.768570133976276
-      ],
-      "scale": [
-        1.4112471979938606,
-        1.7510159957239373,
-        1.5658606645053503
-      ],
-      "yaw": 93.45743546342986,
-      "zone": 3,
-      "radius": 1.5658606645053503
-    },
-    {
-      "name": "Reef 04 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        55.49116183963404,
-        3.269351196441475,
-        -23.28095499236789
-      ],
-      "scale": [
-        1.3113379894523147,
-        3.170197644926019,
-        1.0823481813497333
-      ],
-      "yaw": 203.0445169872252,
-      "zone": 4,
-      "radius": 1.3113379894523147
-    },
-    {
-      "name": "Reef 05 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        49.39452884966421,
-        2.13092863871511,
-        -16.27261153474763
-      ],
-      "scale": [
-        1.6481671755685556,
-        1.8983790363526682,
-        1.8953407226431942
-      ],
-      "yaw": 131.75561260951903,
-      "zone": 1,
-      "radius": 1.8953407226431942
-    },
-    {
-      "name": "Reef 06 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        82.94941226726147,
-        2.3027672457639654,
-        -7.023625739398685
-      ],
-      "scale": [
-        2.1730803018063845,
-        1.8849555050905844,
-        2.9442016864756853
-      ],
-      "yaw": 270.23581800942975,
-      "zone": 2,
-      "radius": 2.9442016864756853
-    },
-    {
-      "name": "Reef 07 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        67.35606848611417,
-        2.5123941845863484,
-        32.06623792690229
-      ],
-      "scale": [
-        1.6387785675610183,
-        2.9166960793446717,
-        1.3225958441628463
-      ],
-      "yaw": 228.19463303602637,
-      "zone": 3,
-      "radius": 1.6387785675610183
-    },
-    {
-      "name": "Reef 08 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        55.05406524059703,
-        2.501563608636582,
-        -34.660041506399175
-      ],
-      "scale": [
-        2.8229783045969787,
-        2.6514507479519533,
-        4.0730466792568665
-      ],
-      "yaw": 107.44205540969706,
-      "zone": 4,
-      "radius": 4.0730466792568665
-    },
-    {
-      "name": "Reef 09 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        54.25663718036479,
-        2.0467208764294926,
-        20.432939893922203
-      ],
-      "scale": [
-        2.0685139222300757,
-        1.786159997288241,
-        3.0442642554088115
-      ],
-      "yaw": 254.92507601949765,
-      "zone": 1,
-      "radius": 3.0442642554088115
-    },
-    {
-      "name": "Reef 10 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        79.32634884216927,
-        2.0477998529427563,
-        10.407034133210715
-      ],
-      "scale": [
-        1.820753890489194,
-        3.002853862759834,
-        1.631989000757629
-      ],
-      "yaw": 318.9435165255331,
-      "zone": 2,
-      "radius": 1.820753890489194
-    },
-    {
-      "name": "Reef 11 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        68.90276709973597,
-        2.3660330161796783,
-        21.74575524723857
-      ],
-      "scale": [
-        1.5017130160943537,
-        2.0898693537670967,
-        1.6378266828885129
-      ],
-      "yaw": 59.78911389135355,
-      "zone": 3,
-      "radius": 1.6378266828885129
-    },
-    {
-      "name": "Reef 12 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        65.57681178201217,
-        2.5975154808073273,
-        -30.27458778091683
-      ],
-      "scale": [
-        1.49636445739436,
-        1.533655904061149,
-        1.6908261087629908
-      ],
-      "yaw": 190.0893593003267,
-      "zone": 4,
-      "radius": 1.6908261087629908
-    },
-    {
-      "name": "Reef 13 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        51.74214542677528,
-        1.9657454929753908,
-        6.443657755991367
-      ],
-      "scale": [
-        1.62069336210037,
-        2.2488059104688194,
-        2.6741043582510717
-      ],
-      "yaw": 129.2755596620183,
-      "zone": 1,
-      "radius": 2.6741043582510717
-    },
-    {
-      "name": "Reef 14 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        73.98261044102063,
-        0.8305787043259052,
-        11.714149164373012
-      ],
-      "scale": [
-        1.391006162831091,
-        1.0232664516335777,
-        1.583743778414448
-      ],
-      "yaw": 260.0429786236469,
-      "zone": 2,
-      "radius": 1.583743778414448
-    },
-    {
-      "name": "Reef 15 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        57.46241871848549,
-        1.2652834714574208,
-        32.18249706268645
-      ],
-      "scale": [
-        2.0353171545948365,
-        1.3485605781535455,
-        2.4752454793561576
-      ],
-      "yaw": 224.17842233821446,
-      "zone": 3,
-      "radius": 2.4752454793561576
-    },
-    {
-      "name": "Reef 16 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        67.0001898970559,
-        1.8289448109910822,
-        -24.87377936883216
-      ],
-      "scale": [
-        2.433985727686067,
-        1.036659284487499,
-        1.7180669409050027
-      ],
-      "yaw": 114.1162003880151,
-      "zone": 4,
-      "radius": 2.433985727686067
-    },
-    {
-      "name": "Reef 17 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        49.60894554183424,
-        2.1639103959809654,
-        -27.516612317224208
-      ],
-      "scale": [
-        2.845271336891323,
-        2.8376539554877986,
-        2.67880240137646
-      ],
-      "yaw": 185.44654233387828,
-      "zone": 1,
-      "radius": 2.845271336891323
-    },
-    {
-      "name": "Reef 18 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        75.86535357265745,
-        1.8988180674222657,
-        -3.8200820702580955
-      ],
-      "scale": [
-        1.2622399368590203,
-        1.2893980389957678,
-        1.7360840255613696
-      ],
-      "yaw": 228.12224709844054,
-      "zone": 2,
-      "radius": 1.7360840255613696
-    },
-    {
-      "name": "Reef 19 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        66.18875608643822,
-        2.1459922384899595,
-        27.123930830488874
-      ],
-      "scale": [
-        1.412582870655262,
-        1.938854289811735,
-        1.4883697911590275
-      ],
-      "yaw": 309.70179317220556,
-      "zone": 3,
-      "radius": 1.4883697911590275
-    },
-    {
-      "name": "Reef 20 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        57.09271382269926,
-        1.9135032827127134,
-        -26.942280215929202
-      ],
-      "scale": [
-        1.6016908744894955,
-        1.2942911035169264,
-        1.0325259536330622
-      ],
-      "yaw": 281.60757949286193,
-      "zone": 4,
-      "radius": 1.6016908744894955
-    },
-    {
-      "name": "Reef 21 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        47.76334881549301,
-        3.370845004891189,
-        27.45468201471399
-      ],
-      "scale": [
-        2.682590084815716,
-        2.5457077566062347,
-        4.195204526195869
-      ],
-      "yaw": 224.85627700050128,
-      "zone": 1,
-      "radius": 4.195204526195869
-    },
-    {
-      "name": "Reef 22 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        82.01707595798644,
-        2.1552722169202303,
-        -2.3436895783266323
-      ],
-      "scale": [
-        1.1594405166721355,
-        2.0308663042007793,
-        0.7177683519089979
-      ],
-      "yaw": 55.65015399894718,
-      "zone": 2,
-      "radius": 1.1594405166721355
-    },
-    {
-      "name": "Reef 23 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        62.695636789953625,
-        2.0191662220248325,
-        22.77395245008405
-      ],
-      "scale": [
-        1.9148900841689682,
-        2.2423516824320737,
-        1.9087605245874195
-      ],
-      "yaw": 313.79072046035895,
-      "zone": 3,
-      "radius": 1.9148900841689682
-    },
-    {
-      "name": "Reef 24 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        70.4106094762097,
-        2.2296091572044006,
-        -33.16354817176976
-      ],
-      "scale": [
-        2.018474088670497,
-        1.8512759027213512,
-        1.9509700033582167
-      ],
-      "yaw": 303.9462453431181,
-      "zone": 4,
-      "radius": 2.018474088670497
-    },
-    {
-      "name": "Reef 25 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        46.80859341561434,
-        1.4976125429147031,
-        -21.29162804818465
-      ],
-      "scale": [
-        2.6684199073407004,
-        1.2456474310121604,
-        2.0605954260710937
-      ],
-      "yaw": 56.87707992413542,
-      "zone": 1,
-      "radius": 2.6684199073407004
-    },
-    {
-      "name": "Reef 26 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        76.13598215647887,
-        3.2370087506769774,
-        28.837814813474644
-      ],
-      "scale": [
-        2.0919644232814445,
-        3.1337939565495794,
-        1.698156462761611
-      ],
-      "yaw": 96.97034918743083,
-      "zone": 2,
-      "radius": 2.0919644232814445
-    },
-    {
-      "name": "Reef 27 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        61.45132448209308,
-        1.775211434157964,
-        34.621226651160875
-      ],
-      "scale": [
-        1.4342387156720444,
-        2.0029619121049427,
-        1.2224057313606895
-      ],
-      "yaw": 316.60677480345987,
-      "zone": 3,
-      "radius": 1.4342387156720444
-    },
-    {
-      "name": "Reef 28 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        58.909218531001784,
-        2.446687990711753,
-        -23.01136925136396
-      ],
-      "scale": [
-        1.371238557746824,
-        1.495705845502153,
-        1.3778373320066877
-      ],
-      "yaw": 319.79372732422985,
-      "zone": 4,
-      "radius": 1.3778373320066877
-    },
-    {
-      "name": "Reef 29 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        44.20320660849931,
-        1.2886697560963354,
-        -30.01274710053451
-      ],
-      "scale": [
-        1.4312549255961318,
-        1.5100355624722166,
-        1.191128189486376
-      ],
-      "yaw": 16.254278768860246,
-      "zone": 1,
-      "radius": 1.4312549255961318
-    },
-    {
-      "name": "Reef 30 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        82.57823667694748,
-        2.5703204978428285,
-        -15.945385279693017
-      ],
-      "scale": [
-        1.3066908889103048,
-        2.2928123838858623,
-        1.6231931024825583
-      ],
-      "yaw": 265.1947254188152,
-      "zone": 2,
-      "radius": 1.6231931024825583
-    },
-    {
-      "name": "Reef 31 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        59.210812489760386,
-        2.312165953976231,
-        20.457554948650447
-      ],
-      "scale": [
-        1.149335029230181,
-        2.249314293785706,
-        0.9022296917713551
-      ],
-      "yaw": 250.76383273624356,
-      "zone": 3,
-      "radius": 1.149335029230181
-    },
-    {
-      "name": "Reef 32 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        61.29269415057014,
-        2.5021431981467894,
-        -28.34629588747253
-      ],
-      "scale": [
-        1.5739096919596418,
-        1.9362212915379635,
-        2.0336119933626797
-      ],
-      "yaw": 238.13859221809,
-      "zone": 4,
-      "radius": 2.0336119933626797
-    },
-    {
-      "name": "Reef 33 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        47.47077579611014,
-        1.8239708875006466,
-        12.205857293404172
-      ],
-      "scale": [
-        2.1178414595432637,
-        1.0988153159011904,
-        3.1920498099714827
-      ],
-      "yaw": 263.8822728682928,
-      "zone": 1,
-      "radius": 3.1920498099714827
-    },
-    {
-      "name": "Reef 34 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        75.50266948116621,
-        1.172577963599942,
-        8.105334150049188
-      ],
-      "scale": [
-        1.1006965535318276,
-        1.0803088983837867,
-        1.6301377601782272
-      ],
-      "yaw": 165.36753405862547,
-      "zone": 2,
-      "radius": 1.6301377601782272
-    },
-    {
-      "name": "Reef 35 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        61.587546273248925,
-        1.808447995838265,
-        29.312352178464703
-      ],
-      "scale": [
-        1.7173115578864389,
-        1.8877297292839157,
-        1.043300249057956
-      ],
-      "yaw": 63.526502600664074,
-      "zone": 3,
-      "radius": 1.7173115578864389
-    },
-    {
-      "name": "Reef 36 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        65.26865154658344,
-        2.9984291413743396,
-        -34.39389389755347
-      ],
-      "scale": [
-        1.1955741248780292,
-        2.619934601477418,
-        0.9622078712492432
-      ],
-      "yaw": 357.10474741154724,
-      "zone": 4,
-      "radius": 1.1955741248780292
-    },
-    {
-      "name": "Reef 37 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        40.27552604067564,
-        2.4874075350850746,
-        -25.242012887970564
-      ],
-      "scale": [
-        1.5753507929313864,
-        2.777171852863184,
-        1.1938621758098626
-      ],
-      "yaw": 124.96728021570706,
-      "zone": 1,
-      "radius": 1.5753507929313864
-    },
-    {
-      "name": "Reef 38 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        76.32338644801236,
-        1.494320114394462,
-        -24.921611198274523
-      ],
-      "scale": [
-        2.4489666655590945,
-        1.4277497587559798,
-        3.644311411557405
-      ],
-      "yaw": 202.08155596987893,
-      "zone": 2,
-      "radius": 3.644311411557405
-    },
-    {
-      "name": "Reef 39 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        55.061158144400466,
-        1.9851368366899431,
-        28.043286492863114
-      ],
-      "scale": [
-        1.1360269001179508,
-        1.7013824665447563,
-        1.0392404370809005
-      ],
-      "yaw": 227.25953719059302,
-      "zone": 3,
-      "radius": 1.1360269001179508
-    },
-    {
-      "name": "Reef 40 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        70.77796066574369,
-        1.619294261160355,
-        -28.03365249464554
-      ],
-      "scale": [
-        1.2435347332271682,
-        1.3676751978810684,
-        1.4582380256562124
-      ],
-      "yaw": 230.82945278198096,
-      "zone": 4,
-      "radius": 1.4582380256562124
-    },
-    {
-      "name": "Reef 41 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        42.30638602774951,
-        1.8191381577636465,
-        22.65026632450057
-      ],
-      "scale": [
-        1.0872803321616096,
-        0.48269227894548195,
-        1.7615651334205238
-      ],
-      "yaw": 58.27564074436788,
-      "zone": 1,
-      "radius": 1.7615651334205238
-    },
-    {
-      "name": "Reef 42 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        81.47811765643536,
-        1.3216893145641755,
-        -31.191157208864535
-      ],
-      "scale": [
-        0.5793090476818928,
-        0.5993789972512801,
-        0.9106711732256974
-      ],
-      "yaw": 281.3080317489687,
-      "zone": 2,
-      "radius": 0.9106711732256974
-    },
-    {
-      "name": "Reef 43 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        65.8239043733551,
-        0.9783999278056921,
-        34.90026357161609
-      ],
-      "scale": [
-        0.747804358418419,
-        0.6895714503045035,
-        0.7709404471507151
-      ],
-      "yaw": 124.34177623158637,
-      "zone": 3,
-      "radius": 0.7709404471507151
-    },
-    {
-      "name": "Reef 44 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        60.69990718952698,
-        1.6042735023025814,
-        -32.69879774825517
-      ],
-      "scale": [
-        0.9980815674242152,
-        0.8807196903690941,
-        1.0944081453673722
-      ],
-      "yaw": 241.23245271489554,
-      "zone": 4,
-      "radius": 1.0944081453673722
-    },
-    {
-      "name": "Reef 45 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        43.18555335698653,
-        1.7736166012532777,
-        -14.626058677201264
-      ],
-      "scale": [
-        1.0514750158678934,
-        0.952329075499915,
-        0.6775401001035849
-      ],
-      "yaw": 36.77715355714333,
-      "zone": 1,
-      "radius": 1.0514750158678934
-    },
-    {
-      "name": "Reef 46 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        80.62720268781169,
-        1.1135956097850666,
-        7.140566087148862
-      ],
-      "scale": [
-        0.696170478913352,
-        0.6453489327922093,
-        0.4601388128918867
-      ],
-      "yaw": 286.6237498428603,
-      "zone": 2,
-      "radius": 0.696170478913352
-    },
-    {
-      "name": "Reef 47 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        63.96146546939237,
-        1.0465618677807564,
-        32.275973607964985
-      ],
-      "scale": [
-        1.0182911613208465,
-        0.9469005619298881,
-        0.6943524684153856
-      ],
-      "yaw": 267.32922208162245,
-      "zone": 3,
-      "radius": 1.0182911613208465
-    },
-    {
-      "name": "Reef 48 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        62.12647057123406,
-        1.7251138116864495,
-        -23.81447422658836
-      ],
-      "scale": [
-        0.6993129627595933,
-        0.5831933945849672,
-        0.8916014125249851
-      ],
-      "yaw": 135.1619422138113,
-      "zone": 4,
-      "radius": 0.8916014125249851
-    },
-    {
-      "name": "Reef 49 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        53.38152191410829,
-        1.1158885486363612,
-        -8.08187903928447
-      ],
-      "scale": [
-        0.5571767223635352,
-        0.8235640805625426,
-        0.4678610455811628
-      ],
-      "yaw": 25.37739270756465,
-      "zone": 1,
-      "radius": 0.5571767223635352
-    },
-    {
-      "name": "Reef 50 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        77.64945571068881,
-        1.4126084928953426,
-        -9.05784761135262
-      ],
-      "scale": [
-        1.0167511264760019,
-        0.9210107613740546,
-        1.1114408922535595
-      ],
-      "yaw": 172.5311168827254,
-      "zone": 2,
-      "radius": 1.1114408922535595
-    },
-    {
-      "name": "Reef 51 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        62.980274115784574,
-        1.1093087530690235,
-        26.549639620095878
-      ],
-      "scale": [
-        0.5570652756950225,
-        0.8974344556429035,
-        0.4479788174755585
-      ],
-      "yaw": 251.7940968105347,
-      "zone": 3,
-      "radius": 0.5570652756950225
-    },
-    {
-      "name": "Reef 52 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        54.12052544098009,
-        1.2805198776114295,
-        -27.81889292034566
-      ],
-      "scale": [
-        0.6325467309366973,
-        0.9727477063284786,
-        0.5555376193593429
-      ],
-      "yaw": 331.0134716620549,
-      "zone": 4,
-      "radius": 0.6325467309366973
-    },
-    {
-      "name": "Reef 53 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        40.86009518294798,
-        1.1179844584789007,
-        0.027147771998784265
-      ],
-      "scale": [
-        1.0292734953833804,
-        0.8426874092449547,
-        1.6353785445963491
-      ],
-      "yaw": 26.37538924962754,
-      "zone": 1,
-      "radius": 1.6353785445963491
-    },
-    {
-      "name": "Reef 54 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        77.3859137318262,
-        1.3441691066838843,
-        4.629427258371521
-      ],
-      "scale": [
-        0.6530508900110777,
-        0.5186160398598771,
-        0.9128420070571334
-      ],
-      "yaw": 216.97670757089196,
-      "zone": 2,
-      "radius": 0.9128420070571334
-    },
-    {
-      "name": "Reef 55 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        68.36976202760947,
-        1.5500179204013311,
-        24.989564098255556
-      ],
-      "scale": [
-        0.6313791051652505,
-        0.7992553974642735,
-        0.6318272684665661
-      ],
-      "yaw": 205.78715224958546,
-      "zone": 3,
-      "radius": 0.6318272684665661
-    },
-    {
-      "name": "Reef 56 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        69.13070551076488,
-        1.2732468799559795,
-        -21.240187532177536
-      ],
-      "scale": [
-        0.8709568259696686,
-        0.949037331747822,
-        0.8920480125699038
-      ],
-      "yaw": 125.39096222297893,
-      "zone": 4,
-      "radius": 0.8920480125699038
-    },
-    {
-      "name": "Reef 57 - Zone 1",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
-      "position": [
-        40.97894324826625,
-        1.2738325083124455,
-        5.088189917976386
-      ],
-      "scale": [
-        0.8259188421993546,
-        0.5608454576156289,
-        1.2880141978826642
-      ],
-      "yaw": 97.90564038848075,
-      "zone": 1,
-      "radius": 1.2880141978826642
-    },
-    {
-      "name": "Reef 58 - Zone 2",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
-      "position": [
-        72.65499371770755,
-        1.9103743443181616,
-        32.9932743782779
-      ],
-      "scale": [
-        0.6681997105526127,
-        0.863349699607187,
-        0.8369059782294188
-      ],
-      "yaw": 52.57438516240227,
-      "zone": 2,
-      "radius": 0.8369059782294188
-    },
-    {
-      "name": "Reef 59 - Zone 3",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        59.154775698617364,
-        1.0078311329220309,
-        23.03493637548376
-      ],
-      "scale": [
-        0.5819181014972235,
-        0.5755355750956397,
-        0.3609415117609023
-      ],
-      "yaw": 27.36328902025941,
-      "zone": 3,
-      "radius": 0.5819181014972235
-    },
-    {
-      "name": "Reef 60 - Zone 4",
-      "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
-      "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
-      "position": [
-        63.79910805968529,
-        1.8382817451901625,
-        -21.192206714092848
-      ],
-      "scale": [
-        0.7896711132946963,
-        0.8771200934911307,
-        0.9254810548356204
-      ],
-      "yaw": 237.44763866980506,
-      "zone": 4,
-      "radius": 0.9254810548356204
-    },
-    {
-      "name": "Bent Inspection Pipe 1",
-      "mesh": "Assets/Underwater/RadarSurvey/BentInspectionPipe.asset",
-      "material": "Assets/Underwater/Materials/LadderSteel.mat",
-      "position": [
-        65.8,
-        1.2266655467583483,
-        15
-      ],
-      "scale": [
-        1,
-        1,
-        1
-      ],
-      "yaw": 24,
-      "zone": 0,
-      "radius": 0
-    },
-    {
-      "name": "Bent Inspection Pipe 2",
-      "mesh": "Assets/Underwater/RadarSurvey/BentInspectionPipe.asset",
-      "material": "Assets/Underwater/Materials/LadderSteel.mat",
-      "position": [
-        50,
-        0.8435995640415446,
-        -16
-      ],
-      "scale": [
-        1,
-        1,
-        1
-      ],
-      "yaw": -35,
-      "zone": 0,
-      "radius": 0
-    }
-  ]
+    "seed": 20261028,
+    "seabedSize": [
+        50.0,
+        80.0
+    ],
+    "protectedRovRadius": 3.0,
+    "items": [
+        {
+            "name": "Reef 001 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                51.969539642333987,
+                1.5202189683914185,
+                -11.905646324157715
+            ],
+            "scale": [
+                0.4095892608165741,
+                1.260481357574463,
+                0.49698173999786379
+            ],
+            "yaw": 62.918724060058597,
+            "radius": 0.49698173999786379,
+            "zone": 1
+        },
+        {
+            "name": "Reef 002 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                74.00138854980469,
+                1.5135140419006348,
+                3.6416518688201906
+            ],
+            "scale": [
+                0.6578900814056397,
+                1.6951227188110352,
+                0.7989693284034729
+            ],
+            "yaw": 184.3921661376953,
+            "radius": 0.7989693284034729,
+            "zone": 1
+        },
+        {
+            "name": "Reef 003 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                51.88577651977539,
+                1.5972954034805298,
+                -3.069826364517212
+            ],
+            "scale": [
+                0.8389706015586853,
+                1.3901127576828004,
+                0.674207866191864
+            ],
+            "yaw": 285.3885498046875,
+            "radius": 0.8389706015586853,
+            "zone": 1
+        },
+        {
+            "name": "Reef 004 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                56.23868179321289,
+                1.5767170190811158,
+                14.627007484436036
+            ],
+            "scale": [
+                0.693532407283783,
+                1.5104061365127564,
+                0.5760038495063782
+            ],
+            "yaw": 185.92153930664063,
+            "radius": 0.693532407283783,
+            "zone": 1
+        },
+        {
+            "name": "Reef 005 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                53.004032135009769,
+                1.309647560119629,
+                5.425434589385986
+            ],
+            "scale": [
+                0.9276711344718933,
+                1.113684058189392,
+                0.7429165244102478
+            ],
+            "yaw": 197.72618103027345,
+            "radius": 0.9276711344718933,
+            "zone": 1
+        },
+        {
+            "name": "Reef 006 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                72.34677124023438,
+                2.2311978340148927,
+                -11.003692626953125
+            ],
+            "scale": [
+                0.8258972764015198,
+                1.7008219957351685,
+                0.8475245833396912
+            ],
+            "yaw": 352.078369140625,
+            "radius": 0.8475245833396912,
+            "zone": 1
+        },
+        {
+            "name": "Reef 007 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                61.47358322143555,
+                1.1639015674591065,
+                12.541462898254395
+            ],
+            "scale": [
+                0.7297802567481995,
+                0.7719658613204956,
+                0.5814200043678284
+            ],
+            "yaw": 45.40671920776367,
+            "radius": 0.7297802567481995,
+            "zone": 1
+        },
+        {
+            "name": "Reef 008 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                67.48180389404297,
+                2.3900680541992189,
+                -5.97849702835083
+            ],
+            "scale": [
+                0.6731241941452026,
+                1.7240605354309083,
+                0.4962978661060333
+            ],
+            "yaw": 37.3038215637207,
+            "radius": 0.6731241941452026,
+            "zone": 1
+        },
+        {
+            "name": "Reef 009 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                62.10739517211914,
+                2.336350440979004,
+                -17.88560676574707
+            ],
+            "scale": [
+                0.6776692271232605,
+                1.4368280172348023,
+                0.6823497414588928
+            ],
+            "yaw": 183.75135803222657,
+            "radius": 0.6823497414588928,
+            "zone": 1
+        },
+        {
+            "name": "Reef 010 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                70.90229797363281,
+                1.08501136302948,
+                11.467650413513184
+            ],
+            "scale": [
+                0.6166573762893677,
+                1.1955983638763428,
+                0.631975531578064
+            ],
+            "yaw": 322.3211975097656,
+            "radius": 0.631975531578064,
+            "zone": 1
+        },
+        {
+            "name": "Reef 011 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                58.056976318359378,
+                1.472589373588562,
+                -9.901151657104493
+            ],
+            "scale": [
+                0.7251806259155273,
+                1.3229416608810425,
+                0.4826120138168335
+            ],
+            "yaw": 200.80953979492188,
+            "radius": 0.7251806259155273,
+            "zone": 1
+        },
+        {
+            "name": "Reef 012 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                50.235897064208987,
+                1.9336116313934327,
+                -5.762083053588867
+            ],
+            "scale": [
+                0.9996535778045654,
+                1.5957168340682984,
+                0.980566680431366
+            ],
+            "yaw": 251.62066650390626,
+            "radius": 0.9996535778045654,
+            "zone": 1
+        },
+        {
+            "name": "Reef 013 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                55.70904541015625,
+                1.9985377788543702,
+                -16.872224807739259
+            ],
+            "scale": [
+                0.6827436089515686,
+                1.7377705574035645,
+                0.5860638618469238
+            ],
+            "yaw": 31.273941040039064,
+            "radius": 0.6827436089515686,
+            "zone": 1
+        },
+        {
+            "name": "Reef 014 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                76.76836395263672,
+                2.4443166255950929,
+                -3.807413339614868
+            ],
+            "scale": [
+                0.45494598150253298,
+                2.053307056427002,
+                0.546068549156189
+            ],
+            "yaw": 312.97650146484377,
+            "radius": 0.546068549156189,
+            "zone": 1
+        },
+        {
+            "name": "Reef 015 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                63.08346939086914,
+                2.0938408374786379,
+                -14.995384216308594
+            ],
+            "scale": [
+                0.527653694152832,
+                1.1538211107254029,
+                0.3438100218772888
+            ],
+            "yaw": 257.00799560546877,
+            "radius": 0.527653694152832,
+            "zone": 1
+        },
+        {
+            "name": "Reef 016 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                50.92891311645508,
+                1.7973003387451172,
+                -8.48270034790039
+            ],
+            "scale": [
+                0.7061059474945068,
+                1.9528380632400513,
+                0.5280851125717163
+            ],
+            "yaw": 169.58370971679688,
+            "radius": 0.7061059474945068,
+            "zone": 1
+        },
+        {
+            "name": "Reef 017 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                49.68402099609375,
+                2.0939102172851564,
+                5.382981300354004
+            ],
+            "scale": [
+                0.9392186403274536,
+                1.5850014686584473,
+                1.295474648475647
+            ],
+            "yaw": 330.8821716308594,
+            "radius": 1.295474648475647,
+            "zone": 1
+        },
+        {
+            "name": "Reef 018 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                78.73892211914063,
+                2.000103235244751,
+                1.8214691877365113
+            ],
+            "scale": [
+                0.5650265216827393,
+                1.3838109970092774,
+                0.7042087316513062
+            ],
+            "yaw": 137.21949768066407,
+            "radius": 0.7042087316513062,
+            "zone": 1
+        },
+        {
+            "name": "Reef 019 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                70.78767395019531,
+                1.3531856536865235,
+                9.148393630981446
+            ],
+            "scale": [
+                0.6340023279190064,
+                1.650683879852295,
+                0.8662253022193909
+            ],
+            "yaw": 14.268854141235352,
+            "radius": 0.8662253022193909,
+            "zone": 1
+        },
+        {
+            "name": "Reef 020 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                55.9288330078125,
+                1.9504495859146119,
+                6.767079830169678
+            ],
+            "scale": [
+                0.6384350061416626,
+                1.668819546699524,
+                0.42920172214508059
+            ],
+            "yaw": 286.1258239746094,
+            "radius": 0.6384350061416626,
+            "zone": 1
+        },
+        {
+            "name": "Reef 021 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                67.39039611816406,
+                2.4965736865997316,
+                -14.311625480651856
+            ],
+            "scale": [
+                0.6798467636108398,
+                2.04235577583313,
+                0.7631650567054749
+            ],
+            "yaw": 94.91883087158203,
+            "radius": 0.7631650567054749,
+            "zone": 1
+        },
+        {
+            "name": "Reef 022 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                51.791419982910159,
+                1.566089153289795,
+                -13.833627700805664
+            ],
+            "scale": [
+                0.7634238004684448,
+                1.3327134847640992,
+                0.6274470090866089
+            ],
+            "yaw": 216.27532958984376,
+            "radius": 0.7634238004684448,
+            "zone": 1
+        },
+        {
+            "name": "Reef 023 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                59.25748062133789,
+                1.655686855316162,
+                -14.56440544128418
+            ],
+            "scale": [
+                0.6984104514122009,
+                0.9078644514083862,
+                0.6481491327285767
+            ],
+            "yaw": 44.3004035949707,
+            "radius": 0.6984104514122009,
+            "zone": 1
+        },
+        {
+            "name": "Reef 024 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                61.31277084350586,
+                2.12650990486145,
+                -14.87646198272705
+            ],
+            "scale": [
+                0.7959164381027222,
+                0.9887209534645081,
+                0.9458165764808655
+            ],
+            "yaw": 158.02947998046876,
+            "radius": 0.9458165764808655,
+            "zone": 1
+        },
+        {
+            "name": "Reef 025 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                51.69750213623047,
+                1.953588604927063,
+                -10.565128326416016
+            ],
+            "scale": [
+                0.5531922578811646,
+                1.8932329416275025,
+                0.44056686758995058
+            ],
+            "yaw": 236.64376831054688,
+            "radius": 0.5531922578811646,
+            "zone": 1
+        },
+        {
+            "name": "Reef 026 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                58.41830825805664,
+                1.3267781734466553,
+                5.972606182098389
+            ],
+            "scale": [
+                0.4317997395992279,
+                0.9044777154922485,
+                0.3530219793319702
+            ],
+            "yaw": 237.6852569580078,
+            "radius": 0.4317997395992279,
+            "zone": 1
+        },
+        {
+            "name": "Reef 027 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                43.672367095947269,
+                1.8598779439926148,
+                3.4399936199188234
+            ],
+            "scale": [
+                0.7051029205322266,
+                1.517377257347107,
+                0.5041836500167847
+            ],
+            "yaw": 191.58091735839845,
+            "radius": 0.7051029205322266,
+            "zone": 1
+        },
+        {
+            "name": "Reef 028 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                70.34656524658203,
+                2.2570815086364748,
+                -6.089083194732666
+            ],
+            "scale": [
+                0.9155142903327942,
+                1.6485824584960938,
+                1.0521647930145264
+            ],
+            "yaw": 155.93450927734376,
+            "radius": 1.0521647930145264,
+            "zone": 1
+        },
+        {
+            "name": "Reef 029 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                75.18189239501953,
+                0.6799768805503845,
+                10.527737617492676
+            ],
+            "scale": [
+                0.43472820520401,
+                0.7715939283370972,
+                0.5264649391174316
+            ],
+            "yaw": 247.74575805664063,
+            "radius": 0.5264649391174316,
+            "zone": 1
+        },
+        {
+            "name": "Reef 030 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                49.71263122558594,
+                2.405755043029785,
+                8.316137313842774
+            ],
+            "scale": [
+                1.0313124656677247,
+                1.7816283702850342,
+                0.6798571348190308
+            ],
+            "yaw": 323.9224853515625,
+            "radius": 1.0313124656677247,
+            "zone": 1
+        },
+        {
+            "name": "Reef 031 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                54.00709915161133,
+                2.021378517150879,
+                16.099990844726564
+            ],
+            "scale": [
+                0.5072758793830872,
+                1.631696105003357,
+                0.3327152132987976
+            ],
+            "yaw": 134.8431396484375,
+            "radius": 0.5072758793830872,
+            "zone": 1
+        },
+        {
+            "name": "Reef 032 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                73.06449127197266,
+                1.4733434915542603,
+                6.030536651611328
+            ],
+            "scale": [
+                0.7832049131393433,
+                1.8466662168502808,
+                0.6008724570274353
+            ],
+            "yaw": 167.17198181152345,
+            "radius": 0.7832049131393433,
+            "zone": 1
+        },
+        {
+            "name": "Reef 033 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                45.837215423583987,
+                1.2395597696304322,
+                1.7186534404754639
+            ],
+            "scale": [
+                0.9956280589103699,
+                1.0101932287216187,
+                0.9966924786567688
+            ],
+            "yaw": 336.6178894042969,
+            "radius": 0.9966924786567688,
+            "zone": 1
+        },
+        {
+            "name": "Reef 034 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                46.952816009521487,
+                1.7829103469848633,
+                7.782069683074951
+            ],
+            "scale": [
+                0.5652375221252441,
+                0.9274227619171143,
+                0.6443694829940796
+            ],
+            "yaw": 127.4389419555664,
+            "radius": 0.6443694829940796,
+            "zone": 1
+        },
+        {
+            "name": "Reef 035 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                72.2786865234375,
+                2.0640828609466554,
+                -7.6378889083862309
+            ],
+            "scale": [
+                0.6035193800926209,
+                1.6133480072021485,
+                0.6986099481582642
+            ],
+            "yaw": 199.60955810546876,
+            "radius": 0.6986099481582642,
+            "zone": 1
+        },
+        {
+            "name": "Reef 036 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                49.90574264526367,
+                1.1700053215026856,
+                -13.723580360412598
+            ],
+            "scale": [
+                0.8342784643173218,
+                0.8634661436080933,
+                0.6823503971099854
+            ],
+            "yaw": 332.2691650390625,
+            "radius": 0.8342784643173218,
+            "zone": 1
+        },
+        {
+            "name": "Reef 037 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                63.98199462890625,
+                2.0846452713012697,
+                11.230132102966309
+            ],
+            "scale": [
+                0.45922690629959109,
+                1.5597530603408814,
+                0.42321085929870608
+            ],
+            "yaw": 124.20994567871094,
+            "radius": 0.45922690629959109,
+            "zone": 1
+        },
+        {
+            "name": "Reef 038 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                70.89929962158203,
+                1.7734992504119874,
+                -9.367060661315918
+            ],
+            "scale": [
+                0.7608100175857544,
+                1.3301661014556885,
+                0.5301728844642639
+            ],
+            "yaw": 32.93463897705078,
+            "radius": 0.7608100175857544,
+            "zone": 1
+        },
+        {
+            "name": "Reef 039 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                65.94224548339844,
+                2.2409236431121828,
+                -15.021279335021973
+            ],
+            "scale": [
+                0.49221110343933108,
+                1.332181453704834,
+                0.336457222700119
+            ],
+            "yaw": 305.6856384277344,
+            "radius": 0.49221110343933108,
+            "zone": 1
+        },
+        {
+            "name": "Reef 040 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                45.071834564208987,
+                1.9752715826034547,
+                -8.677908897399903
+            ],
+            "scale": [
+                0.7752926349639893,
+                1.5925145149230958,
+                0.7862309813499451
+            ],
+            "yaw": 295.0516052246094,
+            "radius": 0.7862309813499451,
+            "zone": 1
+        },
+        {
+            "name": "Reef 041 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                62.98406982421875,
+                2.0650627613067629,
+                13.90831184387207
+            ],
+            "scale": [
+                0.6507129669189453,
+                1.787319540977478,
+                0.4677355885505676
+            ],
+            "yaw": 114.96336364746094,
+            "radius": 0.6507129669189453,
+            "zone": 1
+        },
+        {
+            "name": "Reef 042 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                56.71275329589844,
+                1.4875293970108033,
+                16.46254539489746
+            ],
+            "scale": [
+                0.4230680763721466,
+                1.0487558841705323,
+                0.5094887018203735
+            ],
+            "yaw": 316.333740234375,
+            "radius": 0.5094887018203735,
+            "zone": 1
+        },
+        {
+            "name": "Reef 043 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                57.88411331176758,
+                1.4493283033370972,
+                -17.003644943237306
+            ],
+            "scale": [
+                0.6218312978744507,
+                0.7642686367034912,
+                0.5518965125083923
+            ],
+            "yaw": 234.317626953125,
+            "radius": 0.6218312978744507,
+            "zone": 1
+        },
+        {
+            "name": "Reef 044 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                59.38029098510742,
+                1.757768154144287,
+                12.54121208190918
+            ],
+            "scale": [
+                0.5828315019607544,
+                1.6844470500946046,
+                0.40953317284584048
+            ],
+            "yaw": 332.4380798339844,
+            "radius": 0.5828315019607544,
+            "zone": 1
+        },
+        {
+            "name": "Reef 045 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                47.824527740478519,
+                1.837417483329773,
+                -9.677970886230469
+            ],
+            "scale": [
+                0.8256562352180481,
+                1.6903698444366456,
+                1.046615719795227
+            ],
+            "yaw": 102.01610565185547,
+            "radius": 1.046615719795227,
+            "zone": 1
+        },
+        {
+            "name": "Reef 046 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                65.27906799316406,
+                1.8196437358856202,
+                -17.17142105102539
+            ],
+            "scale": [
+                0.6373922824859619,
+                0.7393264770507813,
+                0.5788349509239197
+            ],
+            "yaw": 273.2847900390625,
+            "radius": 0.6373922824859619,
+            "zone": 1
+        },
+        {
+            "name": "Reef 047 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                75.74156951904297,
+                2.0501503944396974,
+                5.362252712249756
+            ],
+            "scale": [
+                0.7915438413619995,
+                1.6102426052093506,
+                1.0259130001068116
+            ],
+            "yaw": 15.890679359436036,
+            "radius": 1.0259130001068116,
+            "zone": 1
+        },
+        {
+            "name": "Reef 048 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                58.322628021240237,
+                1.7131954431533814,
+                4.173887729644775
+            ],
+            "scale": [
+                0.4213828146457672,
+                2.0043270587921144,
+                0.45553866028785708
+            ],
+            "yaw": 158.75164794921876,
+            "radius": 0.45553866028785708,
+            "zone": 1
+        },
+        {
+            "name": "Reef 049 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                71.92767333984375,
+                2.7403206825256349,
+                -13.789824485778809
+            ],
+            "scale": [
+                1.0470554828643799,
+                1.9550312757492066,
+                1.4048993587493897
+            ],
+            "yaw": 203.7184295654297,
+            "radius": 1.4048993587493897,
+            "zone": 1
+        },
+        {
+            "name": "Reef 050 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                43.089149475097659,
+                1.5187710523605347,
+                0.527290940284729
+            ],
+            "scale": [
+                0.7811456322669983,
+                1.2368288040161133,
+                0.6539149284362793
+            ],
+            "yaw": 109.72227478027344,
+            "radius": 0.7811456322669983,
+            "zone": 1
+        },
+        {
+            "name": "Reef 051 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                72.34062957763672,
+                1.1457663774490357,
+                3.2565207481384279
+            ],
+            "scale": [
+                0.48876863718032839,
+                0.8874446749687195,
+                0.565396249294281
+            ],
+            "yaw": 28.50483512878418,
+            "radius": 0.565396249294281,
+            "zone": 1
+        },
+        {
+            "name": "Reef 052 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                61.92399597167969,
+                1.7813444137573243,
+                15.750636100769043
+            ],
+            "scale": [
+                0.7592315077781677,
+                1.8391098976135255,
+                0.7660791873931885
+            ],
+            "yaw": 47.50461959838867,
+            "radius": 0.7660791873931885,
+            "zone": 1
+        },
+        {
+            "name": "Reef 053 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                53.76469802856445,
+                1.7465277910232545,
+                7.920264720916748
+            ],
+            "scale": [
+                0.9420735836029053,
+                1.4409377574920655,
+                0.7599964737892151
+            ],
+            "yaw": 204.48202514648438,
+            "radius": 0.9420735836029053,
+            "zone": 1
+        },
+        {
+            "name": "Reef 054 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                66.7252426147461,
+                2.1216540336608888,
+                16.16615867614746
+            ],
+            "scale": [
+                0.9655845761299133,
+                1.975504755973816,
+                0.7536786794662476
+            ],
+            "yaw": 90.4600830078125,
+            "radius": 0.9655845761299133,
+            "zone": 1
+        },
+        {
+            "name": "Reef 055 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                53.96881866455078,
+                0.8663701415061951,
+                -0.27073875069618227
+            ],
+            "scale": [
+                0.44080331921577456,
+                0.6603817939758301,
+                0.4302210807800293
+            ],
+            "yaw": 83.88259887695313,
+            "radius": 0.44080331921577456,
+            "zone": 1
+        },
+        {
+            "name": "Reef 056 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                66.16036987304688,
+                1.4931968450546265,
+                -7.218156337738037
+            ],
+            "scale": [
+                0.6749368906021118,
+                1.5252803564071656,
+                0.8584144711494446
+            ],
+            "yaw": 195.4778289794922,
+            "radius": 0.8584144711494446,
+            "zone": 1
+        },
+        {
+            "name": "Reef 057 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                47.6790885925293,
+                2.0742504596710207,
+                3.5509085655212404
+            ],
+            "scale": [
+                0.48739343881607058,
+                1.7262362241744996,
+                0.6750968098640442
+            ],
+            "yaw": 88.12799835205078,
+            "radius": 0.6750968098640442,
+            "zone": 1
+        },
+        {
+            "name": "Reef 058 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                47.7295036315918,
+                1.6446917057037354,
+                -0.3448789417743683
+            ],
+            "scale": [
+                0.682911217212677,
+                2.099320888519287,
+                0.6073230504989624
+            ],
+            "yaw": 231.26161193847657,
+            "radius": 0.682911217212677,
+            "zone": 1
+        },
+        {
+            "name": "Reef 059 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                53.95452117919922,
+                2.026845693588257,
+                14.692989349365235
+            ],
+            "scale": [
+                0.5245991349220276,
+                1.6103178262710572,
+                0.3757687211036682
+            ],
+            "yaw": 302.231689453125,
+            "radius": 0.5245991349220276,
+            "zone": 1
+        },
+        {
+            "name": "Reef 060 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                74.21398162841797,
+                1.3765541315078736,
+                -10.12793254852295
+            ],
+            "scale": [
+                0.5049765706062317,
+                0.8019493818283081,
+                0.642974853515625
+            ],
+            "yaw": 350.44329833984377,
+            "radius": 0.642974853515625,
+            "zone": 1
+        },
+        {
+            "name": "Reef 061 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                69.6656723022461,
+                1.0838433504104615,
+                13.396808624267579
+            ],
+            "scale": [
+                0.5458101630210877,
+                0.6602451205253601,
+                0.4893026649951935
+            ],
+            "yaw": 264.17431640625,
+            "radius": 0.5458101630210877,
+            "zone": 1
+        },
+        {
+            "name": "Reef 062 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                75.67724609375,
+                1.3842179775238038,
+                -2.052605628967285
+            ],
+            "scale": [
+                0.9156030416488648,
+                1.0239639282226563,
+                0.7962464690208435
+            ],
+            "yaw": 51.247520446777347,
+            "radius": 0.9156030416488648,
+            "zone": 1
+        },
+        {
+            "name": "Reef 063 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                58.06494140625,
+                1.215433955192566,
+                13.575840950012207
+            ],
+            "scale": [
+                0.5354916453361511,
+                0.77773118019104,
+                0.4508237838745117
+            ],
+            "yaw": 15.601516723632813,
+            "radius": 0.5354916453361511,
+            "zone": 1
+        },
+        {
+            "name": "Reef 064 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                59.48290252685547,
+                1.8900988101959229,
+                16.260709762573243
+            ],
+            "scale": [
+                0.9349787831306458,
+                1.8439648151397706,
+                1.0075857639312745
+            ],
+            "yaw": 133.55105590820313,
+            "radius": 1.0075857639312745,
+            "zone": 1
+        },
+        {
+            "name": "Reef 065 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                70.91588592529297,
+                1.4851365089416505,
+                2.916778564453125
+            ],
+            "scale": [
+                0.6161653995513916,
+                1.4074665307998658,
+                0.6032678484916687
+            ],
+            "yaw": 109.79002380371094,
+            "radius": 0.6161653995513916,
+            "zone": 1
+        },
+        {
+            "name": "Reef 066 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                46.87771224975586,
+                2.4308629035949709,
+                9.183686256408692
+            ],
+            "scale": [
+                0.41939300298690798,
+                1.8276561498641968,
+                0.49831467866897585
+            ],
+            "yaw": 156.41358947753907,
+            "radius": 0.49831467866897585,
+            "zone": 1
+        },
+        {
+            "name": "Reef 067 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                60.548797607421878,
+                2.215747117996216,
+                10.824323654174805
+            ],
+            "scale": [
+                0.40257683396339419,
+                2.0305662155151369,
+                0.5612983703613281
+            ],
+            "yaw": 10.268949508666993,
+            "radius": 0.5612983703613281,
+            "zone": 1
+        },
+        {
+            "name": "Reef 068 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                64.84637451171875,
+                1.3702037334442139,
+                17.080059051513673
+            ],
+            "scale": [
+                0.6151871085166931,
+                0.886381208896637,
+                0.4764975607395172
+            ],
+            "yaw": 221.592529296875,
+            "radius": 0.6151871085166931,
+            "zone": 1
+        },
+        {
+            "name": "Reef 069 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                47.91527557373047,
+                1.2365820407867432,
+                -7.423412799835205
+            ],
+            "scale": [
+                0.8734472393989563,
+                0.7075225114822388,
+                0.9356514811515808
+            ],
+            "yaw": 183.54994201660157,
+            "radius": 0.9356514811515808,
+            "zone": 1
+        },
+        {
+            "name": "Reef 070 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                49.68769836425781,
+                1.8691335916519166,
+                10.630663871765137
+            ],
+            "scale": [
+                0.5116437077522278,
+                1.3955456018447877,
+                0.509128987789154
+            ],
+            "yaw": 24.236032485961915,
+            "radius": 0.5116437077522278,
+            "zone": 1
+        },
+        {
+            "name": "Reef 071 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                55.419349670410159,
+                1.6578197479248047,
+                13.161499977111817
+            ],
+            "scale": [
+                0.4609437882900238,
+                1.2662348747253419,
+                0.5035063028335571
+            ],
+            "yaw": 352.3895568847656,
+            "radius": 0.5035063028335571,
+            "zone": 1
+        },
+        {
+            "name": "Reef 072 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                45.93137741088867,
+                2.053431749343872,
+                4.097379207611084
+            ],
+            "scale": [
+                0.5187249183654785,
+                1.6520569324493409,
+                0.5951326489448547
+            ],
+            "yaw": 52.9855842590332,
+            "radius": 0.5951326489448547,
+            "zone": 1
+        },
+        {
+            "name": "Reef 073 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                73.40786743164063,
+                1.8434160947799683,
+                9.410103797912598
+            ],
+            "scale": [
+                0.8572314977645874,
+                2.065040111541748,
+                0.8556092977523804
+            ],
+            "yaw": 273.6343994140625,
+            "radius": 0.8572314977645874,
+            "zone": 1
+        },
+        {
+            "name": "Reef 074 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                63.9730224609375,
+                1.6226862668991089,
+                9.527774810791016
+            ],
+            "scale": [
+                0.42327919602394106,
+                1.3329168558120728,
+                0.3267750144004822
+            ],
+            "yaw": 206.36691284179688,
+            "radius": 0.42327919602394106,
+            "zone": 1
+        },
+        {
+            "name": "Reef 075 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                45.400970458984378,
+                1.5328887701034547,
+                -6.577800750732422
+            ],
+            "scale": [
+                0.4165000915527344,
+                0.9535208940505981,
+                0.2800670862197876
+            ],
+            "yaw": 204.8736114501953,
+            "radius": 0.4165000915527344,
+            "zone": 1
+        },
+        {
+            "name": "Reef 076 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                75.88501739501953,
+                1.8909823894500733,
+                -6.498426914215088
+            ],
+            "scale": [
+                0.40135857462882998,
+                1.530216097831726,
+                0.3788745403289795
+            ],
+            "yaw": 313.4476318359375,
+            "radius": 0.40135857462882998,
+            "zone": 1
+        },
+        {
+            "name": "Reef 077 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                63.49067306518555,
+                2.638580799102783,
+                -13.737750053405762
+            ],
+            "scale": [
+                0.46118903160095217,
+                1.999879240989685,
+                0.487729012966156
+            ],
+            "yaw": 25.354978561401368,
+            "radius": 0.487729012966156,
+            "zone": 1
+        },
+        {
+            "name": "Reef 078 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                78.40958404541016,
+                1.303173303604126,
+                -1.3556089401245118
+            ],
+            "scale": [
+                0.6962141990661621,
+                0.706255316734314,
+                0.7040926814079285
+            ],
+            "yaw": 87.60807037353516,
+            "radius": 0.7040926814079285,
+            "zone": 1
+        },
+        {
+            "name": "Reef 079 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                71.72477722167969,
+                1.8791786432266236,
+                0.5339903831481934
+            ],
+            "scale": [
+                0.44834378361701968,
+                1.4997994899749756,
+                0.3032989799976349
+            ],
+            "yaw": 293.7056884765625,
+            "radius": 0.44834378361701968,
+            "zone": 1
+        },
+        {
+            "name": "Reef 080 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                49.69025802612305,
+                1.281057357788086,
+                -11.208334922790528
+            ],
+            "scale": [
+                0.9024853110313416,
+                0.840239405632019,
+                1.180487036705017
+            ],
+            "yaw": 279.44873046875,
+            "radius": 1.180487036705017,
+            "zone": 1
+        },
+        {
+            "name": "Reef 081 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                49.68107986450195,
+                1.6769071817398072,
+                12.3804292678833
+            ],
+            "scale": [
+                1.022018313407898,
+                0.7211738228797913,
+                0.7806840538978577
+            ],
+            "yaw": 131.6421356201172,
+            "radius": 1.022018313407898,
+            "zone": 1
+        },
+        {
+            "name": "Reef 082 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                76.70748138427735,
+                1.2363113164901734,
+                8.220392227172852
+            ],
+            "scale": [
+                1.038737416267395,
+                1.105190396308899,
+                0.7857621312141419
+            ],
+            "yaw": 15.640156745910645,
+            "radius": 1.038737416267395,
+            "zone": 1
+        },
+        {
+            "name": "Reef 083 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                68.91735076904297,
+                1.716500163078308,
+                -15.696505546569825
+            ],
+            "scale": [
+                0.6275345683097839,
+                0.7864567041397095,
+                0.41694948077201846
+            ],
+            "yaw": 245.80836486816407,
+            "radius": 0.6275345683097839,
+            "zone": 1
+        },
+        {
+            "name": "Reef 084 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                51.921791076660159,
+                1.227288007736206,
+                6.761203289031982
+            ],
+            "scale": [
+                0.48358505964279177,
+                0.7798477411270142,
+                0.4165641665458679
+            ],
+            "yaw": 5.270911693572998,
+            "radius": 0.48358505964279177,
+            "zone": 1
+        },
+        {
+            "name": "Reef 085 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                51.962913513183597,
+                2.7192511558532717,
+                15.038293838500977
+            ],
+            "scale": [
+                0.49843233823776247,
+                1.8246638774871827,
+                0.5609062910079956
+            ],
+            "yaw": 270.4931335449219,
+            "radius": 0.5609062910079956,
+            "zone": 1
+        },
+        {
+            "name": "Reef 086 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                47.53286361694336,
+                2.091290235519409,
+                -4.959262847900391
+            ],
+            "scale": [
+                0.42753756046295168,
+                1.9043757915496827,
+                0.5818629264831543
+            ],
+            "yaw": 153.35829162597657,
+            "radius": 0.5818629264831543,
+            "zone": 1
+        },
+        {
+            "name": "Reef 087 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                44.78833770751953,
+                1.5714683532714844,
+                5.0041069984436039
+            ],
+            "scale": [
+                0.6239372491836548,
+                0.7808979153633118,
+                0.4790544807910919
+            ],
+            "yaw": 237.9513397216797,
+            "radius": 0.6239372491836548,
+            "zone": 1
+        },
+        {
+            "name": "Reef 088 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                53.22843551635742,
+                1.3666635751724244,
+                -15.67138671875
+            ],
+            "scale": [
+                0.709007978439331,
+                1.0150232315063477,
+                0.877863883972168
+            ],
+            "yaw": 134.7804412841797,
+            "radius": 0.877863883972168,
+            "zone": 1
+        },
+        {
+            "name": "Reef 089 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                69.43875885009766,
+                1.878683090209961,
+                -7.5806684494018559
+            ],
+            "scale": [
+                0.5069841742515564,
+                0.9202234148979187,
+                0.4510442018508911
+            ],
+            "yaw": 166.79046630859376,
+            "radius": 0.5069841742515564,
+            "zone": 1
+        },
+        {
+            "name": "Reef 090 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                76.38642883300781,
+                1.9520785808563233,
+                -8.910161018371582
+            ],
+            "scale": [
+                0.44888120889663699,
+                1.3666274547576905,
+                0.3650326430797577
+            ],
+            "yaw": 133.2250213623047,
+            "radius": 0.44888120889663699,
+            "zone": 1
+        },
+        {
+            "name": "Reef 091 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                49.51058578491211,
+                1.6650968790054322,
+                -3.07189679145813
+            ],
+            "scale": [
+                0.4155522882938385,
+                1.7697787284851075,
+                0.5249572992324829
+            ],
+            "yaw": 168.26145935058595,
+            "radius": 0.5249572992324829,
+            "zone": 1
+        },
+        {
+            "name": "Reef 092 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                69.85443115234375,
+                1.4125924110412598,
+                3.9366981983184816
+            ],
+            "scale": [
+                0.6752774715423584,
+                1.118180513381958,
+                0.6456086039543152
+            ],
+            "yaw": 137.8131561279297,
+            "radius": 0.6752774715423584,
+            "zone": 1
+        },
+        {
+            "name": "Reef 093 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                68.87794494628906,
+                1.7025268077850342,
+                0.43259090185165408
+            ],
+            "scale": [
+                0.448454350233078,
+                1.0948256254196168,
+                0.6187207102775574
+            ],
+            "yaw": 182.41307067871095,
+            "radius": 0.6187207102775574,
+            "zone": 1
+        },
+        {
+            "name": "Reef 094 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                73.6740951538086,
+                1.4905924797058106,
+                -1.5879716873168946
+            ],
+            "scale": [
+                0.6356642842292786,
+                0.8782393336296082,
+                0.4364722669124603
+            ],
+            "yaw": 280.2195739746094,
+            "radius": 0.6356642842292786,
+            "zone": 1
+        },
+        {
+            "name": "Reef 095 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                65.0480728149414,
+                1.8386297225952149,
+                -13.513813018798829
+            ],
+            "scale": [
+                0.5244758129119873,
+                0.7557243704795837,
+                0.35237956047058108
+            ],
+            "yaw": 177.74171447753907,
+            "radius": 0.5244758129119873,
+            "zone": 1
+        },
+        {
+            "name": "Reef 096 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                72.78175354003906,
+                1.079365849494934,
+                11.694456100463868
+            ],
+            "scale": [
+                0.9699413180351257,
+                1.350785493850708,
+                0.6330861449241638
+            ],
+            "yaw": 165.5586700439453,
+            "radius": 0.9699413180351257,
+            "zone": 1
+        },
+        {
+            "name": "Reef 097 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                53.34068298339844,
+                1.496596097946167,
+                -10.724440574645996
+            ],
+            "scale": [
+                0.5572794079780579,
+                1.1513258218765259,
+                0.5239725708961487
+            ],
+            "yaw": 346.1119384765625,
+            "radius": 0.5572794079780579,
+            "zone": 1
+        },
+        {
+            "name": "Reef 098 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                60.54623794555664,
+                1.4850817918777466,
+                -13.137381553649903
+            ],
+            "scale": [
+                0.42955541610717776,
+                0.7219153642654419,
+                0.43796995282173159
+            ],
+            "yaw": 130.5603485107422,
+            "radius": 0.43796995282173159,
+            "zone": 1
+        },
+        {
+            "name": "Reef 099 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                70.55564880371094,
+                1.2952367067337037,
+                7.311337947845459
+            ],
+            "scale": [
+                0.5281882882118225,
+                1.1793859004974366,
+                0.4003754258155823
+            ],
+            "yaw": 55.630794525146487,
+            "radius": 0.5281882882118225,
+            "zone": 1
+        },
+        {
+            "name": "Reef 100 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                63.064815521240237,
+                2.118215799331665,
+                12.579463005065918
+            ],
+            "scale": [
+                0.4397895038127899,
+                2.0784053802490236,
+                0.44925782084465029
+            ],
+            "yaw": 151.6182098388672,
+            "radius": 0.44925782084465029,
+            "zone": 1
+        },
+        {
+            "name": "Reef 101 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                67.22315216064453,
+                2.4765899181365969,
+                -8.711124420166016
+            ],
+            "scale": [
+                0.7279465794563294,
+                1.9644440412521363,
+                0.5550089478492737
+            ],
+            "yaw": 69.23632049560547,
+            "radius": 0.7279465794563294,
+            "zone": 1
+        },
+        {
+            "name": "Reef 102 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                59.5767822265625,
+                1.850277304649353,
+                -12.473231315612793
+            ],
+            "scale": [
+                0.4111839830875397,
+                1.280895709991455,
+                0.3257744312286377
+            ],
+            "yaw": 37.80535125732422,
+            "radius": 0.4111839830875397,
+            "zone": 1
+        },
+        {
+            "name": "Reef 103 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                58.749473571777347,
+                0.8080169558525086,
+                -3.8633697032928469
+            ],
+            "scale": [
+                0.4180751144886017,
+                1.1794755458831788,
+                0.3948807716369629
+            ],
+            "yaw": 341.1736755371094,
+            "radius": 0.4180751144886017,
+            "zone": 1
+        },
+        {
+            "name": "Reef 104 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                73.63899230957031,
+                2.857255697250366,
+                -6.013939380645752
+            ],
+            "scale": [
+                0.5669260025024414,
+                2.0611281394958498,
+                0.515225350856781
+            ],
+            "yaw": 54.70146560668945,
+            "radius": 0.5669260025024414,
+            "zone": 1
+        },
+        {
+            "name": "Reef 105 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                68.19905090332031,
+                1.7924271821975709,
+                -1.4820828437805176
+            ],
+            "scale": [
+                0.4893375039100647,
+                1.2875473499298096,
+                0.5448001623153687
+            ],
+            "yaw": 49.989376068115237,
+            "radius": 0.5448001623153687,
+            "zone": 1
+        },
+        {
+            "name": "Reef 106 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                63.56218719482422,
+                2.3935539722442629,
+                -16.58332061767578
+            ],
+            "scale": [
+                0.6145248413085938,
+                1.5577791929244996,
+                0.5469127297401428
+            ],
+            "yaw": 282.9230651855469,
+            "radius": 0.6145248413085938,
+            "zone": 1
+        },
+        {
+            "name": "Reef 107 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                57.05145263671875,
+                2.140261173248291,
+                -15.452141761779786
+            ],
+            "scale": [
+                0.6891230940818787,
+                1.7414828538894654,
+                0.5436292290687561
+            ],
+            "yaw": 107.65341186523438,
+            "radius": 0.6891230940818787,
+            "zone": 1
+        },
+        {
+            "name": "Reef 108 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                60.12997817993164,
+                2.7820446491241457,
+                -16.516355514526368
+            ],
+            "scale": [
+                0.5938687920570374,
+                1.9183820486068726,
+                0.473145067691803
+            ],
+            "yaw": 43.949317932128909,
+            "radius": 0.5938687920570374,
+            "zone": 1
+        },
+        {
+            "name": "Reef 109 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                69.44254302978516,
+                1.3841075897216797,
+                15.504626274108887
+            ],
+            "scale": [
+                0.4512467086315155,
+                1.2029467821121216,
+                0.6299036741256714
+            ],
+            "yaw": 238.78753662109376,
+            "radius": 0.6299036741256714,
+            "zone": 1
+        },
+        {
+            "name": "Reef 110 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                44.40526580810547,
+                1.1624631881713868,
+                -3.6398370265960695
+            ],
+            "scale": [
+                0.8496841788291931,
+                0.8086090087890625,
+                0.8713899850845337
+            ],
+            "yaw": 158.00271606445313,
+            "radius": 0.8713899850845337,
+            "zone": 1
+        },
+        {
+            "name": "Reef 111 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                71.54749298095703,
+                1.4823272228240967,
+                4.824390888214111
+            ],
+            "scale": [
+                0.9090282320976257,
+                1.256878137588501,
+                0.7820551991462708
+            ],
+            "yaw": 199.87667846679688,
+            "radius": 0.9090282320976257,
+            "zone": 1
+        },
+        {
+            "name": "Reef 112 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                43.216896057128909,
+                1.127684235572815,
+                -1.3549468517303467
+            ],
+            "scale": [
+                0.6588123440742493,
+                0.7415668368339539,
+                0.7210613489151001
+            ],
+            "yaw": 49.20695495605469,
+            "radius": 0.7210613489151001,
+            "zone": 1
+        },
+        {
+            "name": "Reef 113 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                63.866111755371097,
+                1.5421745777130128,
+                15.626111030578614
+            ],
+            "scale": [
+                0.5177280902862549,
+                1.398252248764038,
+                0.39405539631843569
+            ],
+            "yaw": 268.4612731933594,
+            "radius": 0.5177280902862549,
+            "zone": 1
+        },
+        {
+            "name": "Reef 114 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                65.60919952392578,
+                1.6191036701202393,
+                -12.076882362365723
+            ],
+            "scale": [
+                0.5517324805259705,
+                0.98375403881073,
+                0.5690513849258423
+            ],
+            "yaw": 357.23077392578127,
+            "radius": 0.5690513849258423,
+            "zone": 1
+        },
+        {
+            "name": "Reef 115 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                48.93708419799805,
+                1.3080177307128907,
+                0.5203555822372437
+            ],
+            "scale": [
+                0.40430039167404177,
+                1.440083622932434,
+                0.48410654067993166
+            ],
+            "yaw": 273.3453674316406,
+            "radius": 0.48410654067993166,
+            "zone": 1
+        },
+        {
+            "name": "Reef 116 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                74.46859741210938,
+                2.43220591545105,
+                -8.057486534118653
+            ],
+            "scale": [
+                0.4058667719364166,
+                1.6865323781967164,
+                0.3370976746082306
+            ],
+            "yaw": 256.822265625,
+            "radius": 0.4058667719364166,
+            "zone": 1
+        },
+        {
+            "name": "Reef 117 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                78.30509948730469,
+                2.27609920501709,
+                4.233809471130371
+            ],
+            "scale": [
+                0.6964947581291199,
+                1.6553797721862794,
+                0.8496453166007996
+            ],
+            "yaw": 194.0899200439453,
+            "radius": 0.8496453166007996,
+            "zone": 1
+        },
+        {
+            "name": "Reef 118 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                61.974708557128909,
+                1.8719009160995484,
+                -12.321752548217774
+            ],
+            "scale": [
+                0.722348153591156,
+                2.093038558959961,
+                0.7506501078605652
+            ],
+            "yaw": 207.20838928222657,
+            "radius": 0.7506501078605652,
+            "zone": 1
+        },
+        {
+            "name": "Reef 119 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                71.95307922363281,
+                0.7897920608520508,
+                7.947956085205078
+            ],
+            "scale": [
+                0.438608318567276,
+                0.6781911253929138,
+                0.5935153961181641
+            ],
+            "yaw": 345.4615783691406,
+            "radius": 0.5935153961181641,
+            "zone": 1
+        },
+        {
+            "name": "Reef 120 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                76.82352447509766,
+                1.8443065881729127,
+                -7.3201093673706059
+            ],
+            "scale": [
+                0.5854124426841736,
+                1.5948654413223267,
+                0.566423237323761
+            ],
+            "yaw": 265.1689758300781,
+            "radius": 0.5854124426841736,
+            "zone": 1
+        },
+        {
+            "name": "Reef 121 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                61.05479431152344,
+                1.5455291271209717,
+                14.151317596435547
+            ],
+            "scale": [
+                0.40701037645339968,
+                1.4070476293563843,
+                0.4351293742656708
+            ],
+            "yaw": 261.7918701171875,
+            "radius": 0.4351293742656708,
+            "zone": 1
+        },
+        {
+            "name": "Reef 122 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                58.40226745605469,
+                1.555909514427185,
+                -13.049605369567871
+            ],
+            "scale": [
+                0.54494309425354,
+                0.6899241805076599,
+                0.5605285167694092
+            ],
+            "yaw": 234.07089233398438,
+            "radius": 0.5605285167694092,
+            "zone": 1
+        },
+        {
+            "name": "Reef 123 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                46.61909103393555,
+                1.3617055416107178,
+                -6.350939750671387
+            ],
+            "scale": [
+                0.5170143842697144,
+                1.0197646617889405,
+                0.5423316359519959
+            ],
+            "yaw": 60.07654571533203,
+            "radius": 0.5423316359519959,
+            "zone": 1
+        },
+        {
+            "name": "Reef 124 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                62.118919372558597,
+                1.4425987005233765,
+                8.292778968811036
+            ],
+            "scale": [
+                0.6558969020843506,
+                1.0178604125976563,
+                0.8423952460289002
+            ],
+            "yaw": 107.15579223632813,
+            "radius": 0.8423952460289002,
+            "zone": 1
+        },
+        {
+            "name": "Reef 125 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                66.6675033569336,
+                2.117922067642212,
+                -10.058406829833985
+            ],
+            "scale": [
+                0.5343863368034363,
+                1.8966467380523682,
+                0.4447571337223053
+            ],
+            "yaw": 194.3341827392578,
+            "radius": 0.5343863368034363,
+            "zone": 1
+        },
+        {
+            "name": "Reef 126 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                65.67705535888672,
+                1.7592939138412476,
+                9.328801155090332
+            ],
+            "scale": [
+                1.0083121061325074,
+                1.3225291967391968,
+                0.8459813594818115
+            ],
+            "yaw": 114.16426849365235,
+            "radius": 1.0083121061325074,
+            "zone": 1
+        },
+        {
+            "name": "Reef 127 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                69.38619995117188,
+                1.300837516784668,
+                2.2237088680267336
+            ],
+            "scale": [
+                0.8492504358291626,
+                0.6984825730323792,
+                0.612166166305542
+            ],
+            "yaw": 321.3759460449219,
+            "radius": 0.8492504358291626,
+            "zone": 1
+        },
+        {
+            "name": "Reef 128 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                70.00840759277344,
+                2.1459946632385256,
+                -14.751795768737793
+            ],
+            "scale": [
+                0.4334215819835663,
+                1.4929486513137818,
+                0.5328892469406128
+            ],
+            "yaw": 330.4557800292969,
+            "radius": 0.5328892469406128,
+            "zone": 1
+        },
+        {
+            "name": "Reef 129 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                51.84560012817383,
+                1.4575588703155518,
+                -4.802330017089844
+            ],
+            "scale": [
+                0.429471492767334,
+                1.4347670078277588,
+                0.5217711329460144
+            ],
+            "yaw": 7.075787544250488,
+            "radius": 0.5217711329460144,
+            "zone": 1
+        },
+        {
+            "name": "Reef 130 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                74.24661254882813,
+                1.9035649299621583,
+                -12.181716918945313
+            ],
+            "scale": [
+                0.76864093542099,
+                1.3798444271087647,
+                0.63881516456604
+            ],
+            "yaw": 342.1051940917969,
+            "radius": 0.76864093542099,
+            "zone": 1
+        },
+        {
+            "name": "Reef 131 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                77.85881805419922,
+                1.6441997289657593,
+                -5.076839447021484
+            ],
+            "scale": [
+                0.6701821088790894,
+                1.4781743288040162,
+                0.7086570858955383
+            ],
+            "yaw": 228.36285400390626,
+            "radius": 0.7086570858955383,
+            "zone": 1
+        },
+        {
+            "name": "Reef 132 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                74.39679718017578,
+                1.7694329023361207,
+                -3.0900673866271974
+            ],
+            "scale": [
+                0.4877052307128906,
+                1.225940227508545,
+                0.345125675201416
+            ],
+            "yaw": 28.83669662475586,
+            "radius": 0.4877052307128906,
+            "zone": 1
+        },
+        {
+            "name": "Reef 133 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                55.390289306640628,
+                1.1825069189071656,
+                0.27389654517173769
+            ],
+            "scale": [
+                0.4440653622150421,
+                1.181111216545105,
+                0.4269031286239624
+            ],
+            "yaw": 133.35568237304688,
+            "radius": 0.4440653622150421,
+            "zone": 1
+        },
+        {
+            "name": "Reef 134 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                74.80960845947266,
+                2.570927143096924,
+                -4.896027088165283
+            ],
+            "scale": [
+                0.5290716886520386,
+                2.0095319747924806,
+                0.6732791662216187
+            ],
+            "yaw": 1.7849560976028443,
+            "radius": 0.6732791662216187,
+            "zone": 1
+        },
+        {
+            "name": "Reef 135 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                71.23504638671875,
+                1.4926565885543824,
+                13.509428977966309
+            ],
+            "scale": [
+                0.4906087815761566,
+                2.0071988105773927,
+                0.5860671997070313
+            ],
+            "yaw": 44.92390441894531,
+            "radius": 0.5860671997070313,
+            "zone": 1
+        },
+        {
+            "name": "Reef 136 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                56.456363677978519,
+                1.8158918619155884,
+                -8.999601364135743
+            ],
+            "scale": [
+                0.41112542152404787,
+                1.354958415031433,
+                0.48013970255851748
+            ],
+            "yaw": 235.6165771484375,
+            "radius": 0.48013970255851748,
+            "zone": 1
+        },
+        {
+            "name": "Reef 137 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                47.41709899902344,
+                1.6713016033172608,
+                5.978217601776123
+            ],
+            "scale": [
+                0.5055388808250427,
+                0.7911620736122131,
+                0.4665054976940155
+            ],
+            "yaw": 21.25883674621582,
+            "radius": 0.5055388808250427,
+            "zone": 1
+        },
+        {
+            "name": "Reef 138 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                69.1290054321289,
+                1.265038251876831,
+                10.586538314819336
+            ],
+            "scale": [
+                0.4269889295101166,
+                0.9400513172149658,
+                0.4914822280406952
+            ],
+            "yaw": 77.70000457763672,
+            "radius": 0.4914822280406952,
+            "zone": 1
+        },
+        {
+            "name": "Reef 139 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                46.12557601928711,
+                1.7667603492736817,
+                -4.964009761810303
+            ],
+            "scale": [
+                0.4198633134365082,
+                1.494188904762268,
+                0.5191694498062134
+            ],
+            "yaw": 232.1546173095703,
+            "radius": 0.5191694498062134,
+            "zone": 1
+        },
+        {
+            "name": "Reef 140 - ROV near field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                54.65446472167969,
+                1.5900123119354249,
+                5.979628562927246
+            ],
+            "scale": [
+                0.40993115305900576,
+                1.3171454668045045,
+                0.29041174054145815
+            ],
+            "yaw": 323.3074035644531,
+            "radius": 0.40993115305900576,
+            "zone": 1
+        },
+        {
+            "name": "Reef 141 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                77.0211410522461,
+                1.5734277963638306,
+                -14.361948013305664
+            ],
+            "scale": [
+                0.9461172223091126,
+                1.0413490533828736,
+                1.1180075407028199
+            ],
+            "yaw": 170.4106903076172,
+            "radius": 1.1180075407028199,
+            "zone": 2
+        },
+        {
+            "name": "Reef 142 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                45.565391540527347,
+                1.8065961599349976,
+                -15.523088455200196
+            ],
+            "scale": [
+                1.1323413848876954,
+                1.5405347347259522,
+                0.82637619972229
+            ],
+            "yaw": 255.86065673828126,
+            "radius": 1.1323413848876954,
+            "zone": 2
+        },
+        {
+            "name": "Reef 143 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                46.406986236572269,
+                2.5555479526519777,
+                27.934738159179689
+            ],
+            "scale": [
+                0.8482765555381775,
+                2.022568464279175,
+                1.1507612466812134
+            ],
+            "yaw": 270.100830078125,
+            "radius": 1.1507612466812134,
+            "zone": 2
+        },
+        {
+            "name": "Reef 144 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant03.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                50.37659454345703,
+                2.3158164024353029,
+                17.50947380065918
+            ],
+            "scale": [
+                1.227030634880066,
+                1.5060157775878907,
+                0.8539690375328064
+            ],
+            "yaw": 25.619287490844728,
+            "radius": 1.227030634880066,
+            "zone": 2
+        },
+        {
+            "name": "Reef 145 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                56.85007095336914,
+                1.7243934869766236,
+                24.085695266723634
+            ],
+            "scale": [
+                1.3409663438796998,
+                1.298348069190979,
+                1.8000637292861939
+            ],
+            "yaw": 338.9109802246094,
+            "radius": 1.8000637292861939,
+            "zone": 2
+        },
+        {
+            "name": "Reef 146 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                82.8653564453125,
+                1.4818366765975953,
+                9.208572387695313
+            ],
+            "scale": [
+                1.2737611532211304,
+                1.6205817461013795,
+                1.1826180219650269
+            ],
+            "yaw": 229.916015625,
+            "radius": 1.2737611532211304,
+            "zone": 2
+        },
+        {
+            "name": "Reef 147 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                67.74568939208985,
+                1.7096693515777588,
+                19.3521671295166
+            ],
+            "scale": [
+                1.3949980735778809,
+                1.5303181409835816,
+                1.0193196535110474
+            ],
+            "yaw": 297.3915100097656,
+            "radius": 1.3949980735778809,
+            "zone": 2
+        },
+        {
+            "name": "Reef 148 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                77.36367797851563,
+                0.6216903328895569,
+                13.123618125915528
+            ],
+            "scale": [
+                1.4875315427780152,
+                0.6673917770385742,
+                1.6197009086608887
+            ],
+            "yaw": 63.04938507080078,
+            "radius": 1.6197009086608887,
+            "zone": 2
+        },
+        {
+            "name": "Reef 149 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                57.01599884033203,
+                1.6551496982574463,
+                31.253767013549806
+            ],
+            "scale": [
+                1.6032695770263672,
+                1.9854339361190797,
+                1.8718465566635132
+            ],
+            "yaw": 155.70326232910157,
+            "radius": 1.8718465566635132,
+            "zone": 2
+        },
+        {
+            "name": "Reef 150 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                77.00662994384766,
+                2.3919756412506105,
+                18.34332847595215
+            ],
+            "scale": [
+                0.9444187879562378,
+                1.9004400968551636,
+                1.0128577947616578
+            ],
+            "yaw": 36.92096710205078,
+            "radius": 1.0128577947616578,
+            "zone": 2
+        },
+        {
+            "name": "Reef 151 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                84.5156478881836,
+                2.102900743484497,
+                -22.17728614807129
+            ],
+            "scale": [
+                1.021209716796875,
+                1.8854669332504273,
+                1.159255862236023
+            ],
+            "yaw": 69.59217834472656,
+            "radius": 1.159255862236023,
+            "zone": 2
+        },
+        {
+            "name": "Reef 152 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                50.58717727661133,
+                1.3552298545837403,
+                -28.3040828704834
+            ],
+            "scale": [
+                1.5080472230911255,
+                1.6779024600982667,
+                1.0487287044525147
+            ],
+            "yaw": 336.55242919921877,
+            "radius": 1.5080472230911255,
+            "zone": 2
+        },
+        {
+            "name": "Reef 153 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                69.64860534667969,
+                1.2190645933151246,
+                -23.14019775390625
+            ],
+            "scale": [
+                1.4384218454360963,
+                1.0067262649536133,
+                1.0090341567993165
+            ],
+            "yaw": 51.60559844970703,
+            "radius": 1.4384218454360963,
+            "zone": 2
+        },
+        {
+            "name": "Reef 154 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                76.9990005493164,
+                1.5212359428405762,
+                -10.794999122619629
+            ],
+            "scale": [
+                1.1468355655670167,
+                0.7689477205276489,
+                1.0743873119354249
+            ],
+            "yaw": 330.75030517578127,
+            "radius": 1.1468355655670167,
+            "zone": 2
+        },
+        {
+            "name": "Reef 155 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                48.715545654296878,
+                1.6866358518600464,
+                -17.878040313720704
+            ],
+            "scale": [
+                1.2338933944702149,
+                1.7751736640930176,
+                1.2413448095321656
+            ],
+            "yaw": 97.0421371459961,
+            "radius": 1.2413448095321656,
+            "zone": 2
+        },
+        {
+            "name": "Reef 156 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                81.07806396484375,
+                1.4253261089324952,
+                -4.475808620452881
+            ],
+            "scale": [
+                1.6475564241409302,
+                0.7024258375167847,
+                1.5464752912521363
+            ],
+            "yaw": 183.2984161376953,
+            "radius": 1.6475564241409302,
+            "zone": 2
+        },
+        {
+            "name": "Reef 157 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                41.3090705871582,
+                1.5461069345474244,
+                -10.473434448242188
+            ],
+            "scale": [
+                1.0136897563934327,
+                0.6563186645507813,
+                1.1957485675811768
+            ],
+            "yaw": 329.1285095214844,
+            "radius": 1.1957485675811768,
+            "zone": 2
+        },
+        {
+            "name": "Reef 158 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                73.33110046386719,
+                1.2434003353118897,
+                17.869504928588868
+            ],
+            "scale": [
+                1.0045284032821656,
+                1.331552505493164,
+                1.100408673286438
+            ],
+            "yaw": 314.5634765625,
+            "radius": 1.100408673286438,
+            "zone": 2
+        },
+        {
+            "name": "Reef 159 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                76.13143920898438,
+                1.8893824815750123,
+                23.997316360473634
+            ],
+            "scale": [
+                1.1481503248214722,
+                0.845463216304779,
+                1.0786519050598145
+            ],
+            "yaw": 224.71946716308595,
+            "radius": 1.1481503248214722,
+            "zone": 2
+        },
+        {
+            "name": "Reef 160 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                50.07416534423828,
+                0.9479694366455078,
+                -22.362289428710939
+            ],
+            "scale": [
+                1.1020183563232422,
+                0.8368377089500427,
+                1.4365406036376954
+            ],
+            "yaw": 279.1697082519531,
+            "radius": 1.4365406036376954,
+            "zone": 2
+        },
+        {
+            "name": "Reef 161 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant08.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                81.58140563964844,
+                1.39933443069458,
+                -12.00835132598877
+            ],
+            "scale": [
+                1.0282593965530396,
+                0.8471881151199341,
+                1.4274749755859376
+            ],
+            "yaw": 63.42312240600586,
+            "radius": 1.4274749755859376,
+            "zone": 2
+        },
+        {
+            "name": "Reef 162 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                50.62550354003906,
+                1.4537330865859986,
+                32.81424331665039
+            ],
+            "scale": [
+                1.2289586067199708,
+                1.858235239982605,
+                1.4536011219024659
+            ],
+            "yaw": 229.1269073486328,
+            "radius": 1.4536011219024659,
+            "zone": 2
+        },
+        {
+            "name": "Reef 163 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                66.33160400390625,
+                2.341034173965454,
+                -21.61786460876465
+            ],
+            "scale": [
+                1.2407009601593018,
+                1.7867431640625,
+                0.870624840259552
+            ],
+            "yaw": 97.34607696533203,
+            "radius": 1.2407009601593018,
+            "zone": 2
+        },
+        {
+            "name": "Reef 164 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                61.9819221496582,
+                2.0893123149871828,
+                23.618755340576173
+            ],
+            "scale": [
+                0.9198909401893616,
+                2.0982749462127687,
+                0.8750234246253967
+            ],
+            "yaw": 161.2963409423828,
+            "radius": 0.9198909401893616,
+            "zone": 2
+        },
+        {
+            "name": "Reef 165 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                42.953773498535159,
+                1.911759614944458,
+                16.77803611755371
+            ],
+            "scale": [
+                1.5230597257614136,
+                1.0786023139953614,
+                1.17391836643219
+            ],
+            "yaw": 50.04277801513672,
+            "radius": 1.5230597257614136,
+            "zone": 2
+        },
+        {
+            "name": "Reef 166 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                71.68787384033203,
+                1.922640323638916,
+                -17.171722412109376
+            ],
+            "scale": [
+                1.0439345836639405,
+                1.2844905853271485,
+                0.8030309081077576
+            ],
+            "yaw": 236.7733154296875,
+            "radius": 1.0439345836639405,
+            "zone": 2
+        },
+        {
+            "name": "Reef 167 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                44.41848373413086,
+                1.863874077796936,
+                11.669866561889649
+            ],
+            "scale": [
+                0.9601555466651917,
+                1.46095609664917,
+                1.082013487815857
+            ],
+            "yaw": 318.6966247558594,
+            "radius": 1.082013487815857,
+            "zone": 2
+        },
+        {
+            "name": "Reef 168 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant10.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                77.78074645996094,
+                1.3488298654556275,
+                -17.273235321044923
+            ],
+            "scale": [
+                0.9116883873939514,
+                1.0138839483261109,
+                0.8679772019386292
+            ],
+            "yaw": 202.0430145263672,
+            "radius": 0.9116883873939514,
+            "zone": 2
+        },
+        {
+            "name": "Reef 169 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant05.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                41.284454345703128,
+                2.1887569427490236,
+                8.929343223571778
+            ],
+            "scale": [
+                0.9063085913658142,
+                1.6553044319152833,
+                0.8093779683113098
+            ],
+            "yaw": 166.00770568847657,
+            "radius": 0.9063085913658142,
+            "zone": 2
+        },
+        {
+            "name": "Reef 170 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                56.833717346191409,
+                2.5921878814697267,
+                -25.302135467529298
+            ],
+            "scale": [
+                1.2694647312164307,
+                2.0519440174102785,
+                1.2767794132232667
+            ],
+            "yaw": 3.069117546081543,
+            "radius": 1.2767794132232667,
+            "zone": 2
+        },
+        {
+            "name": "Reef 171 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant06.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                82.308349609375,
+                1.5562350749969483,
+                18.29268455505371
+            ],
+            "scale": [
+                1.2731751203536988,
+                1.2596875429153443,
+                1.4503021240234376
+            ],
+            "yaw": 98.36089324951172,
+            "radius": 1.4503021240234376,
+            "zone": 2
+        },
+        {
+            "name": "Reef 172 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                80.0545654296875,
+                1.5948797464370728,
+                20.81493377685547
+            ],
+            "scale": [
+                1.4461694955825806,
+                0.8329913020133972,
+                1.0337327718734742
+            ],
+            "yaw": 9.806577682495118,
+            "radius": 1.4461694955825806,
+            "zone": 2
+        },
+        {
+            "name": "Reef 173 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant09.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                83.2435073852539,
+                2.857184886932373,
+                23.421167373657228
+            ],
+            "scale": [
+                0.80758136510849,
+                1.8393003940582276,
+                1.0232226848602296
+            ],
+            "yaw": 60.814300537109378,
+            "radius": 1.0232226848602296,
+            "zone": 2
+        },
+        {
+            "name": "Reef 174 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                49.55264663696289,
+                2.0017476081848146,
+                25.66594886779785
+            ],
+            "scale": [
+                1.2831333875656129,
+                1.045616865158081,
+                1.4806420803070069
+            ],
+            "yaw": 67.6468276977539,
+            "radius": 1.4806420803070069,
+            "zone": 2
+        },
+        {
+            "name": "Reef 175 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant07.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                40.25170135498047,
+                1.3322649002075196,
+                3.028360605239868
+            ],
+            "scale": [
+                1.2696360349655152,
+                0.8229518532752991,
+                1.247998833656311
+            ],
+            "yaw": 285.1603088378906,
+            "radius": 1.2696360349655152,
+            "zone": 2
+        },
+        {
+            "name": "Reef 176 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant04.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                73.3030776977539,
+                1.7887343168258668,
+                -27.981048583984376
+            ],
+            "scale": [
+                1.1194878816604615,
+                1.6224033832550049,
+                1.1087952852249146
+            ],
+            "yaw": 95.14997100830078,
+            "radius": 1.1194878816604615,
+            "zone": 2
+        },
+        {
+            "name": "Reef 177 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant02.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone0.mat",
+            "position": [
+                68.79823303222656,
+                2.5151968002319338,
+                -17.766895294189454
+            ],
+            "scale": [
+                0.9630361795425415,
+                1.8873742818832398,
+                0.9253628849983215
+            ],
+            "yaw": 302.1597595214844,
+            "radius": 0.9630361795425415,
+            "zone": 2
+        },
+        {
+            "name": "Reef 178 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant11.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone1.mat",
+            "position": [
+                41.75170135498047,
+                2.442476987838745,
+                -5.15997314453125
+            ],
+            "scale": [
+                0.9842861890792847,
+                2.070347785949707,
+                0.9607290029525757
+            ],
+            "yaw": 67.5517578125,
+            "radius": 0.9842861890792847,
+            "zone": 2
+        },
+        {
+            "name": "Reef 179 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant00.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                82.86441802978516,
+                2.1398520469665529,
+                26.824031829833986
+            ],
+            "scale": [
+                1.6062151193618775,
+                1.6644840240478516,
+                1.9446114301681519
+            ],
+            "yaw": 60.342350006103519,
+            "radius": 1.9446114301681519,
+            "zone": 2
+        },
+        {
+            "name": "Reef 180 - outer field",
+            "mesh": "Assets/Underwater/RadarSurvey/ReefVariant01.asset",
+            "material": "Assets/Underwater/RadarSurvey/ReefTone2.mat",
+            "position": [
+                60.741275787353519,
+                1.468827247619629,
+                28.342599868774415
+            ],
+            "scale": [
+                1.3953911066055298,
+                1.5618698596954346,
+                1.8653556108474732
+            ],
+            "yaw": 307.4868469238281,
+            "radius": 1.8653556108474732,
+            "zone": 2
+        },
+        {
+            "name": "Bent pipeline 1",
+            "mesh": "Assets/Underwater/RadarSurvey/BentInspectionPipe.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                67.99161529541016,
+                0.7791378498077393,
+                2.4109301567077638
+            ],
+            "scale": [
+                0.699999988079071,
+                0.699999988079071,
+                0.3499999940395355
+            ],
+            "yaw": 260.7099609375,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Inspection hoop 2",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyHoop.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                67.89430236816406,
+                2.229639768600464,
+                6.853058338165283
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 275.61676025390627,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Pipe arch 3",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyArch.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                66.86437225341797,
+                0.955991268157959,
+                12.347970008850098
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 92.54109191894531,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Mooring ring 4",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyBollard.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                64.26173400878906,
+                1.30776846408844,
+                5.651437282562256
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 221.94094848632813,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Bent pipeline 5",
+            "mesh": "Assets/Underwater/RadarSurvey/BentInspectionPipe.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                58.02695083618164,
+                0.877423107624054,
+                10.96237850189209
+            ],
+            "scale": [
+                0.699999988079071,
+                0.699999988079071,
+                0.3499999940395355
+            ],
+            "yaw": 166.0766143798828,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Inspection hoop 6",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyHoop.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                52.91764450073242,
+                2.3534815311431886,
+                11.127788543701172
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 357.2117004394531,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Pipe arch 7",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyArch.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                55.91569137573242,
+                0.44331181049346926,
+                2.927494525909424
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 138.76402282714845,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Mooring ring 8",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyBollard.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                51.24475860595703,
+                1.018686056137085,
+                2.078878879547119
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 101.00286865234375,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Bent pipeline 9",
+            "mesh": "Assets/Underwater/RadarSurvey/BentInspectionPipe.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                46.288272857666019,
+                0.4769924283027649,
+                -3.101787567138672
+            ],
+            "scale": [
+                0.699999988079071,
+                0.699999988079071,
+                0.3499999940395355
+            ],
+            "yaw": 16.448970794677736,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Inspection hoop 10",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyHoop.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                55.60167694091797,
+                2.1085755825042726,
+                -3.0642828941345217
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 181.75103759765626,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Pipe arch 11",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyArch.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                54.00113296508789,
+                0.7238949537277222,
+                -7.533738136291504
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 336.17132568359377,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Mooring ring 12",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyBollard.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                55.03105926513672,
+                1.3806719779968262,
+                -13.02864933013916
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 160.1826171875,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Bent pipeline 13",
+            "mesh": "Assets/Underwater/RadarSurvey/BentInspectionPipe.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                58.07220458984375,
+                0.8270782828330994,
+                -4.6916351318359379
+            ],
+            "scale": [
+                0.699999988079071,
+                0.699999988079071,
+                0.3499999940395355
+            ],
+            "yaw": 186.59756469726563,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Inspection hoop 14",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyHoop.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                63.70408630371094,
+                1.5199999809265137,
+                -9.952957153320313
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 202.38015747070313,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Pipe arch 15",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyArch.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                68.977783203125,
+                0.9779613614082336,
+                -11.808469772338868
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 272.7712707519531,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Mooring ring 16",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyBollard.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                65.979736328125,
+                1.3521037101745606,
+                -3.608173370361328
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 144.51800537109376,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Bent pipeline 17",
+            "mesh": "Assets/Underwater/RadarSurvey/BentInspectionPipe.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                71.6543960571289,
+                1.0908297300338746,
+                -4.129233360290527
+            ],
+            "scale": [
+                0.699999988079071,
+                0.699999988079071,
+                0.3499999940395355
+            ],
+            "yaw": 315.3974914550781,
+            "radius": 0.0,
+            "zone": 0
+        },
+        {
+            "name": "Inspection hoop 18",
+            "mesh": "Assets/Underwater/RadarSurvey/SurveyHoop.asset",
+            "material": "Assets/Underwater/Materials/LadderSteel.mat",
+            "position": [
+                74.89443969726563,
+                2.1480393409729006,
+                0.87984299659729
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "yaw": 125.48402404785156,
+            "radius": 0.0,
+            "zone": 0
+        }
+    ]
 }

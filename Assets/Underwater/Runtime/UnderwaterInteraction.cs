@@ -150,10 +150,11 @@ namespace UnderwaterBaseline
             var right=UnityEngine.XR.InputDevices.GetDeviceAtXRNode(UnityEngine.XR.XRNode.RightHand);
             right.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton,out bool button);
             button|=motor && motor.Controllers!=null && motor.Controllers.Down;
-            if(!suppressAutomaticInputs && button && !previousDemoButton)SetWakeDemo(!wakeDemo);previousDemoButton=button;
+            bool radarModifier=motor && motor.Controllers!=null && motor.Controllers.RadarModifier;
+            if(!suppressAutomaticInputs && !radarModifier && button && !previousDemoButton)SetWakeDemo(!wakeDemo);previousDemoButton=button;
             right.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton,out bool lightButton);
             lightButton|=motor && motor.Controllers!=null && motor.Controllers.Up;
-            if(!suppressAutomaticInputs && lightButton && !previousLightButton)lightsEnabled=!lightsEnabled;previousLightButton=lightButton;
+            if(!suppressAutomaticInputs && !radarModifier && lightButton && !previousLightButton)lightsEnabled=!lightsEnabled;previousLightButton=lightButton;
             if(Time.time<nextTick)return;
             float dt=Mathf.Clamp(Time.time-previousTick,0.01f,0.2f);previousTick=Time.time;nextTick=Time.time+0.1f;
             Simulate(dt,Time.time);

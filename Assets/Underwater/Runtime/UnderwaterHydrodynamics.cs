@@ -34,10 +34,12 @@ namespace UnderwaterBaseline
         public Vector3 EstimatedBuoyancy { get; private set; }
         public Vector3 EstimatedTorque { get; private set; }
         public float SubmergedFraction { get; private set; }
+        UnderwaterRovMovement inspectionMovement;
 
         void Awake()
         {
             if (!body) body = GetComponent<Rigidbody>();
+            inspectionMovement=GetComponent<UnderwaterRovMovement>();
             if(surfaceBuoyancy){surfaceBuoyancy.evaluatedByHydrodynamics=true;surfaceBuoyancy.body=body;surfaceBuoyancy.applyForces=false;}
             if (!presence) presence = FindObjectOfType<UnderwaterPresence>();
             if (!volume && presence && presence.fluidVolumes != null)
@@ -55,7 +57,8 @@ namespace UnderwaterBaseline
             if(volume && !volume.Contains(new Vector3(buoyancyPoint.x,Mathf.Clamp(buoyancyPoint.y,bottomY,surfaceY),buoyancyPoint.z)))SubmergedFraction=0;
             Vector3 current = presence ? presence.CurrentAt(buoyancyPoint, Time.time) :
                 volume ? volume.SampleVelocity(buoyancyPoint) : Vector3.zero;
-            Vector3 velocity = body ? body.GetPointVelocity(buoyancyPoint) : Vector3.zero;
+            Vector3 velocity = inspectionMovement && inspectionMovement.isActiveAndEnabled && (!body || body.isKinematic) ? inspectionMovement.Velocity :
+                body ? body.GetPointVelocity(buoyancyPoint) : Vector3.zero;
             Vector3 relative = velocity - current;
             EstimatedRelativeVelocity = relative;
             Vector3 local = Quaternion.Inverse(axes)*relative;

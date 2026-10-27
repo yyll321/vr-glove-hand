@@ -55,11 +55,20 @@ namespace UnderwaterBaseline.Editor
                 radar.profiles[0].columns=33;radar.SelectProfile(0);radar.StartScan();tick.Invoke(radar,null);scanner.transform.position+=Vector3.right*2;tick.Invoke(radar,null);tick.Invoke(radar,null);
                 check(radar.Latest.origin==origin,"Scan origin changed halfway through budgeted frame");
                 bool rejected=false;try{radar.ApplyConfiguration("{}");}catch(ArgumentException){rejected=true;}check(rejected,"Incomplete ROS configuration accepted");
-                radar.StopScan();radar.HandleStick(Vector2.left,false,.02f);check(radar.scanning,"Left stick flick failed to start");
-                radar.HandleStick(Vector2.left,false,.02f);check(radar.scanning,"Held stick retriggered start/stop");
-                radar.HandleStick(Vector2.zero,false,.02f);radar.HandleStick(Vector2.left,false,.02f);check(!radar.scanning,"Return-to-centre failed to rearm");
-                radar.HandleStick(Vector2.up,true,.02f);check(radar.targetTilt==0,"Arm clutch failed to block radar tilt");
-                radar.HandleStick(Vector2.up,false,.02f);check(radar.targetTilt>0,"Vertical radar tilt input failed");
+                radar.StopScan();radar.HandleButtons(false,true,false,false,false);check(!radar.scanning,"Plain A incorrectly operated radar");
+                radar.HandleButtons(false,false,false,false,false);radar.HandleButtons(true,true,false,false,false);check(radar.scanning,"Left grip + A failed to start");
+                radar.HandleButtons(true,true,false,false,false);check(radar.scanning,"Held combination repeatedly toggled scanning");
+                radar.HandleButtons(true,false,false,false,false);radar.HandleButtons(true,true,false,false,false);check(!radar.scanning,"Second press failed to stop");
+                radar.HandleButtons(true,false,false,true,false);check(radar.targetTilt==15,"Tilt preset did not advance to +15 degrees");
+                radar.StartScan();scanner.SetActive(false);check(!radar.isActiveAndEnabled,"Disabling radar object left component active");scanner.SetActive(true);
+                // Exercise collision-aware ROV translation away from the real scene.
+                var mover=scanner.AddComponent<UnderwaterRovMovement>();mover.seabed=true;scanner.transform.position=new Vector3(62,10000,0);
+                var original=scanner.transform.position;mover.Move(Vector2.up,.02f);
+                check(scanner.transform.position.z>original.z && scanner.transform.position.y==original.y,"ROV forward command failed / changed depth");
+                target.transform.position=scanner.transform.position+Vector3.forward*1.5f+Vector3.up*1.1f;
+                target.GetComponent<BoxCollider>().size=new Vector3(5,5,.2f);Physics.SyncTransforms();
+                for(int i=0;i<100;i++){mover.Move(Vector2.up,.02f);Physics.SyncTransforms();}
+                check(scanner.transform.position.z<.5f && mover.Blocked,"ROV passed through its collision test wall");
             }
             finally{Object.DestroyImmediate(root);Physics.SyncTransforms();}
             Directory.CreateDirectory("Logs/RadarReview");File.WriteAllText("Logs/RadarReview/math-physics-checks.txt","PASS "+checks+" Unity mathematical and Physics.Raycast assertions "+DateTime.Now.ToString("O"));

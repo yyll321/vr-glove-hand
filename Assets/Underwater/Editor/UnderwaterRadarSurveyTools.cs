@@ -16,7 +16,7 @@ namespace UnderwaterBaseline.Editor
     {
         public const string ScenePath="Assets/Underwater/Scenes/UnderwaterRadarSurveyEditable.unity";
         const string LayoutPath="Assets/Underwater/RadarSurvey/SurveyLayout.json";
-        const string GeneratedName="Generated Survey Reefs - seed 20261027";
+        const string GeneratedName="Generated Survey Reefs - dense layout";
         [Serializable] sealed class Item {public string name,mesh,material;public float[] position,scale;public float yaw;}
         [Serializable] sealed class Layout {public int seed;public Item[] items;}
 
@@ -32,7 +32,7 @@ namespace UnderwaterBaseline.Editor
             if(EditorApplication.isPlayingOrWillChangePlaymode || SceneManager.GetActiveScene().path!=ScenePath)
                 throw new Exception("Open the Geometry Radar Survey scene and exit Play first");
             var layout=JsonUtility.FromJson<Layout>(File.ReadAllText(LayoutPath));
-            if(layout==null || layout.items==null || layout.items.Length!=62)throw new Exception("Invalid survey manifest");
+            if(layout==null || layout.items==null || layout.items.Length==0)throw new Exception("Invalid survey manifest");
             // Resolve every asset before touching the current layout.
             foreach(var item in layout.items)
                 if(!AssetDatabase.LoadAssetAtPath<Mesh>(item.mesh) || !AssetDatabase.LoadAssetAtPath<Material>(item.material))
@@ -54,7 +54,7 @@ namespace UnderwaterBaseline.Editor
             var volume=GameObject.Find("Seabed Fluid Volume").GetComponent<UnderwaterFluidVolume>();
             Undo.RecordObject(volume,"Restore flow obstacle references");volume.obstacles=root.GetComponentsInChildren<Collider>();EditorUtility.SetDirty(volume);
             Undo.CollapseUndoOperations(group);EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-            Debug.Log("Restored 62 generated targets from seed "+layout.seed+"; scene remains editable and unsaved");
+            Debug.Log("Restored "+layout.items.Length+" generated targets from seed "+layout.seed+"; scene remains editable and unsaved");
         }
         [MenuItem("Tools/Underwater/Research/16 Validate Geometry Radar Survey")]
         public static void Audit()
@@ -64,7 +64,10 @@ namespace UnderwaterBaseline.Editor
             int checks=0;Action<bool,string> check=(ok,message)=>{if(!ok)throw new Exception(message);checks++;};
             var region=Object.FindObjectOfType<UnderwaterRegionSettings>();check(region && region.seabedSize==new Vector2(50,80),"Region size mismatch");
             var root=GameObject.Find(GeneratedName);check(root,"Missing generated reef root");
-            var colliders=root.GetComponentsInChildren<MeshCollider>();check(colliders.Length==62,"Expected 62 geometric targets");
+            var colliders=root.GetComponentsInChildren<MeshCollider>();check(colliders.Length==198,"Expected 180 reefs and 18 manufactured targets");
+            var system=Object.FindObjectOfType<UnderwaterRadarSystem>();check(system && system.name=="GeometryRadar_System","Missing single radar module root");
+            check(system.GetComponentsInChildren<UnderwaterGeometryRadar>(true).Length==2,"Radars escaped module hierarchy");
+            check(Object.FindObjectsOfType<UnderwaterRovMovement>().Length==2,"Missing independent ROV movement");
             foreach(var collider in colliders)check(collider.sharedMesh==collider.GetComponent<MeshFilter>().sharedMesh && !collider.convex,"Radar collider differs from visible reef");
             var radars=Object.FindObjectsOfType<UnderwaterGeometryRadar>();check(radars.Length==2,"Expected one radar per reference ROV");
             foreach(var radar in radars)

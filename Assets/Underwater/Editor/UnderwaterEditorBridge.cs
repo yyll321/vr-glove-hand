@@ -64,6 +64,8 @@ namespace UnderwaterBaseline.Editor
                 else if (command == "radaraudit") UnderwaterRadarSurveyTools.Audit();
                 else if (command == "radarsmoke") UnderwaterRadarSurveySmoke.Run();
                 else if (command == "radarreflection") UnderwaterRadarSurveyTools.BakeReflection();
+                else if (command == "densesurvey") UnderwaterDenseSurveyUpgrade.Apply();
+                else if (command == "handreefclearance") UnderwaterDenseSurveyUpgrade.RepairHandClearance();
                 else throw new Exception("Unknown command " + command);
                 File.WriteAllText("Logs/UnderwaterCommandResult.txt", "PASS " + DateTime.Now.ToString("O"));
             }

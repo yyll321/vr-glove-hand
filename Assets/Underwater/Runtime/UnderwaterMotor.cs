@@ -80,9 +80,9 @@ namespace UnderwaterBaseline
                 LastInput = "Controller input received";
             input = UnderwaterControllerInput.MapMovement(move);
             if (Controllers.Surface && !previousSurfaceButton) ToggleSurface();
-            if (Controllers.Bubbles && !previousBubbleButton && environment) environment.EmitBubbles();
+            if (!Controllers.RadarModifier && Controllers.Bubbles && !previousBubbleButton && environment) environment.EmitBubbles();
             if (Controllers.Compare && !previousCompare) SwitchArea();
-            if (Controllers.Quality && !previousQuality) FindObjectOfType<UnderwaterPerformance>().SelectQuality((environment.quality + 1) % 3);
+            if (!Controllers.RadarModifier && Controllers.Quality && !previousQuality) FindObjectOfType<UnderwaterPerformance>().SelectQuality((environment.quality + 1) % 3);
             previousSurfaceButton = Controllers.Surface; previousBubbleButton = Controllers.Bubbles;
             previousCompare = Controllers.Compare; previousQuality = Controllers.Quality;
             // Right controller pose belongs to the arm; it must not rotate the world.
