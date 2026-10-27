@@ -16,7 +16,7 @@ namespace UnderwaterBaseline.Editor
     {
         public const string ScenePath="Assets/Underwater/Scenes/UnderwaterRadarSurveyEditable.unity";
         const string LayoutPath="Assets/Underwater/RadarSurvey/SurveyLayout.json";
-        const string GeneratedName="Generated Survey Reefs - dense layout";
+        const string GeneratedName="Generated Survey Reefs - random low layout";
         [Serializable] sealed class Item {public string name,mesh,material;public float[] position,scale;public float yaw;}
         [Serializable] sealed class Layout {public int seed;public Item[] items;}
 
@@ -64,7 +64,11 @@ namespace UnderwaterBaseline.Editor
             int checks=0;Action<bool,string> check=(ok,message)=>{if(!ok)throw new Exception(message);checks++;};
             var region=Object.FindObjectOfType<UnderwaterRegionSettings>();check(region && region.seabedSize==new Vector2(50,80),"Region size mismatch");
             var root=GameObject.Find(GeneratedName);check(root,"Missing generated reef root");
-            var colliders=root.GetComponentsInChildren<MeshCollider>();check(colliders.Length==198,"Expected 180 reefs and 18 manufactured targets");
+            var colliders=root.GetComponentsInChildren<MeshCollider>();check(colliders.Length==60,"Expected the previous 60 random reefs only");
+            check(!GameObject.Find("Pool ROV Inspection Obstacles"),"Pool pipes/rings were not removed");
+            check(root.GetComponentsInChildren<Transform>().All(t=>t==root.transform || t.name.StartsWith("Reef ")),"Manufactured obstacle remains in reef layout");
+            foreach(var collider in colliders)check(collider.GetComponent<Renderer>().bounds.size.y<1.2f,"Reef remains too tall");
+            UnderwaterDenseSurveyUpgrade.AuditInputs();
             var system=Object.FindObjectOfType<UnderwaterRadarSystem>();check(system && system.name=="GeometryRadar_System","Missing single radar module root");
             check(system.GetComponentsInChildren<UnderwaterGeometryRadar>(true).Length==2,"Radars escaped module hierarchy");
             check(Object.FindObjectsOfType<UnderwaterRovMovement>().Length==2,"Missing independent ROV movement");

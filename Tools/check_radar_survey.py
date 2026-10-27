@@ -27,14 +27,16 @@ def run():
             mesh=lambda t:re.search(r'm_Mesh: \{[^}]+\}',t)[0]
             check(mesh(mf)==mesh(mc) and 'm_Convex: 0' in mc,'Visible mesh equals nonconvex geometric collider: '+n)
     layout=json.loads((A/'RadarSurvey/SurveyLayout.json').read_text());reefs=[i for i in layout['items'] if i['name'].startswith('Reef ')]
-    check(layout['seed']==20261028 and len(layout['items'])==198 and len(reefs)==180,'Dense layout has 180 reefs and 18 manufactured obstacles')
+    check(layout['seed']==20261027 and len(layout['items'])==60 and len(reefs)==60,'Previous random layout has 60 reefs and no pipes/rings')
     rov=(60.947716,-.34033966)
-    check(sum(math.hypot(i['position'][0]-rov[0],i['position'][2]-rov[1])<=18.01 for i in reefs)>=140,'At least 140 reefs lie within 18 m of ROV')
+    check(all(i['scale'][1]<=.720001 for i in reefs),'Low vertical reef scale')
+    check('Pool ROV Inspection Obstacles' not in names.values(),'Pool manufactured obstacles removed')
+    check('Generated Survey Reefs - random low layout' in names.values(),'Random low reef hierarchy present')
     for i,item in enumerate(reefs):
         x,y,z=item['position'];r=item['radius'];x-=62
         check(abs(x)+r<25 and abs(z)+r<40,'Reef stays inside expanded water volume')
-        check(math.hypot(x+62-rov[0],z-rov[1])>r+3-.001 and math.hypot(x,z+8)>r+2.5-.001,'Reef clears ROV installation and observer spawn')
-        for other in reefs[:i]:check(math.hypot(item['position'][0]-other['position'][0],z-other['position'][2])>=r+other['radius']+.18-1e-4,'Reef pair respects spacing')
+        check(math.hypot(x+62-rov[0],z-rov[1])>r+5-.1 and math.hypot(x,z+8)>r+4-.001,'Reef clears ROV installation and observer spawn')
+        for other in reefs[:i]:check(math.hypot(item['position'][0]-other['position'][0],z-other['position'][2])>=r+other['radius']+.65-1e-4,'Reef pair respects spacing')
     for path in (A/'RadarSurvey').glob('*.asset'):
         text=path.read_text()
         if not '--- !u!43 ' in text:continue

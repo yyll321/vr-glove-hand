@@ -31,7 +31,7 @@ namespace UnderwaterBaseline
             input=Vector2.zero;
             if(!motor || motor.InSeabed!=seabed)return;
             var c=motor.Controllers;
-            if(c!=null && !c.RightGrip && !c.TeleportHeld && !c.RadarModifier)input=c.Turn;
+            if(c!=null && !c.RightGrip && !c.TeleportHeld)input=c.Turn;
             var key=Keyboard.current;
             if(key!=null)
             {
@@ -39,6 +39,7 @@ namespace UnderwaterBaseline
                     (key.upArrowKey.isPressed?1:0)-(key.downArrowKey.isPressed?1:0));
                 if(desktop.sqrMagnitude>0)input=desktop;
             }
+            if(c!=null && (c.RightGrip || c.TeleportHeld))input=Vector2.zero;
             input=Vector2.ClampMagnitude(input,1);if(input.magnitude<.2f)input=Vector2.zero;
         }
         void FixedUpdate(){Move(input,Time.fixedDeltaTime);}

@@ -1,0 +1,54 @@
+UnityEngine.XR.Interaction.Toolkit.TeleportationArea | Sand Terrain - Teleportation Area | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TeleportationArea | Dry Deck / Teleport | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TeleportationArea | Pool Floor - 25 x 50 m | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TeleportationArea | End Deck / Teleport | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TeleportationArea | End Deck / Teleport | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TeleportationArea | Dry Deck / Teleport | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TeleportationArea | Seabed Observation Deck | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable | Grabbable Inspection Marker | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.XRInteractionManager | XR Interaction Manager | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.ClimbProvider | Climb | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.ActionBasedControllerManager | Right Controller | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.XRGazeAssistance | Underwater XR Origin | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.ActionBasedController | Teleport Interactor | enabled=True | active=False
+UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.ActionBasedControllerManager | Left Controller | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.XRInteractionGroup | Right Controller | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.ActionBasedSnapTurnProvider | Turn | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.CharacterControllerDriver | Underwater XR Origin | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.Inputs.XRInputModalityManager | Underwater XR Origin | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.XRDirectInteractor | Direct Interactor | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.ActionBasedController | Gaze Interactor | enabled=True | active=False
+UnityEngine.XR.Interaction.Toolkit.Inputs.XRTransformStabilizer | Gaze Stabilized | enabled=True | active=False
+UnityEngine.XR.Interaction.Toolkit.XRInteractionGroup | Left Controller | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TwoHandedGrabMoveProvider | Grab Move | enabled=False | active=False
+UnityEngine.XR.Interaction.Toolkit.XRInteractorLineVisual | Teleport Interactor | enabled=True | active=False
+UnityEngine.XR.Interaction.Toolkit.XRRayInteractor | Teleport Interactor | enabled=False | active=False
+UnityEngine.XR.Interaction.Toolkit.ActionBasedController | Right Controller | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.ActionBasedController | Left Controller | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.XRRayInteractor | Ray Interactor | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.XRRayInteractor | Ray Interactor | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.DynamicMoveProvider | Move | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.XRPokeInteractor | Poke Interactor | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.GrabMoveProvider | Grab Move | enabled=False | active=False
+UnityEngine.XR.Interaction.Toolkit.Inputs.XRTransformStabilizer | Right Controller Stabilized | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TeleportationProvider | Teleportation | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.LocomotionSystem | Locomotion System | enabled=True | active=True
+UnderwaterBaseline.UnderwaterMotor | Underwater XR Origin | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.TeleportationProvider | Underwater XR Origin | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.Inputs.InputActionManager | Underwater XR Origin | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets.GazeInputManager | Gaze Interactor | enabled=True | active=False
+UnityEngine.XR.Interaction.Toolkit.ActionBasedController | Teleport Interactor | enabled=True | active=False
+UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousTurnProvider | Turn | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.XRGazeInteractor | Gaze Interactor | enabled=False | active=False
+UnityEngine.XR.Interaction.Toolkit.XRDirectInteractor | Direct Interactor | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.XRRayInteractor | Teleport Interactor | enabled=False | active=False
+UnityEngine.XR.Interaction.Toolkit.XRInteractorLineVisual | Teleport Interactor | enabled=True | active=False
+UnityEngine.XR.Interaction.Toolkit.XRInteractorLineVisual | Ray Interactor | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.XRInteractorLineVisual | Ray Interactor | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.XRPokeInteractor | Poke Interactor | enabled=False | active=True
+UnityEngine.XR.Interaction.Toolkit.GrabMoveProvider | Grab Move | enabled=False | active=False
+PicoArmPoseDriver | ROVp - Pool | enabled=True | active=True
+PicoArmPoseDriver | ROVp - Seabed | enabled=True | active=True
+UnityEngine.XR.Interaction.Toolkit.Inputs.XRTransformStabilizer | Left Controller Stabilized | enabled=True | active=True
+Wa100UdexRealArticulationMapper | WA100_R_URDF_Official | enabled=True | active=True
+Wa100UdexRealArticulationMapper | WA100_R_URDF_Official | enabled=True | active=True

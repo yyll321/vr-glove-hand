@@ -109,7 +109,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
         }
         ControllerTracked = true;
         device.TryGetFeatureValue(CommonUsages.grip, out float analogGrip);
-        bool grip = (device.TryGetFeatureValue(CommonUsages.gripButton, out bool digitalGrip) && digitalGrip) || analogGrip >= 0.5f;
+        bool grip = Motor.Controllers!=null && Motor.Controllers.RightGrip;
         GripValue = analogGrip; GripHeld = grip;
         ApplyControllerPose(localPosition, localRotation, grip, Time.unscaledDeltaTime);
         if (Time.unscaledTime >= nextDiagnostic)

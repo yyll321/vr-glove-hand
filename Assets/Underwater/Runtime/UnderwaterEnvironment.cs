@@ -60,9 +60,11 @@ namespace UnderwaterBaseline
 
         public void EmitBubbles()
         {
+            BubbleBursts++;
             bubbles.transform.position = eye.transform.position + eye.transform.forward * 0.5f - Vector3.up * 0.3f;
             bubbles.Emit(14);
         }
+        public int BubbleBursts {get;private set;}
 
         public int ParticleCount
         {

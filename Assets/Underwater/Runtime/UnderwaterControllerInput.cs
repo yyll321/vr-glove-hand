@@ -15,9 +15,19 @@ namespace UnderwaterBaseline
         readonly InputAction lTrigger = Button("LeftHand", "trigger"), rTrigger = Button("RightHand", "trigger");
         readonly InputAction lGrip = Button("LeftHand", "gripPressed"), rGrip = Button("RightHand", "gripPressed");
         public Vector2 Move, Turn;
-        public bool Up, Down, Surface, Bubbles, Quality, Compare;
+        public bool Up, Down, Bubbles, Quality, Compare;
+        public bool LightPressed, WakePressed, BubblePressed, QualityPressed, AreaPressed, RadarPressed, SoundTestPressed, MutePressed;
         public bool LeftTrigger, RightTrigger, LeftGrip, RightGrip, TeleportHeld;
-        public bool RadarModifier => LeftGrip && UnderwaterGeometryRadar.ActiveForInput;
+        public struct State
+        {
+            public Vector2 leftStick,rightStick;
+            public bool a,b,x,y,leftClick,rightClick,leftTrigger,rightTrigger,leftGrip,rightGrip;
+        }
+        State previous;
+#if UNITY_EDITOR
+        // Used only by the automated Editor Play check; never present in builds.
+        public State? EditorInputOverride;
+#endif
         public string Status { get; private set; } = "Controllers: waiting";
         static InputAction Axis(string hand)
         {
@@ -34,27 +44,41 @@ namespace UnderwaterBaseline
         }
         public void Read()
         {
+#if UNITY_EDITOR
+            if(EditorInputOverride.HasValue){ApplyState(EditorInputOverride.Value);Status="Editor control regression snapshot";return;}
+#endif
             var l = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand); var r = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-            Move = left.ReadValue<Vector2>(); Turn = right.ReadValue<Vector2>();
-            if (l.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 lm) && lm.sqrMagnitude > Move.sqrMagnitude) Move = lm;
-            if (r.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 rm) && rm.sqrMagnitude > Turn.sqrMagnitude) Turn = rm;
-            Up = ReadButton(a, r, CommonUsages.primaryButton); Down = ReadButton(b, r, CommonUsages.secondaryButton);
-            Surface = false; Bubbles = ReadButton(y, l, CommonUsages.secondaryButton);
-            Quality = ReadButton(lClick, l, CommonUsages.primary2DAxisClick); Compare = ReadButton(x,l,CommonUsages.primaryButton);
-            LeftTrigger = ReadButton(lTrigger,l,CommonUsages.triggerButton);
-            RightTrigger = ReadButton(rTrigger,r,CommonUsages.triggerButton);
-            LeftGrip=ReadButton(lGrip,l,CommonUsages.gripButton);
-            if(l.TryGetFeatureValue(CommonUsages.grip,out float leftGrip))LeftGrip|=leftGrip>=0.5f;
-            RightGrip=ReadButton(rGrip,r,CommonUsages.gripButton);
-            if(r.TryGetFeatureValue(CommonUsages.grip,out float grip))RightGrip|=grip>=0.5f;
-            TeleportHeld=ReadButton(rClick,r,CommonUsages.primary2DAxisClick);
+            ApplyState(new State{
+                leftStick=l.TryGetFeatureValue(CommonUsages.primary2DAxis,out Vector2 lm)?lm:left.ReadValue<Vector2>(),
+                rightStick=r.TryGetFeatureValue(CommonUsages.primary2DAxis,out Vector2 rm)?rm:right.ReadValue<Vector2>(),
+                a=ReadButton(a,r,CommonUsages.primaryButton),b=ReadButton(b,r,CommonUsages.secondaryButton),
+                x=ReadButton(x,l,CommonUsages.primaryButton),y=ReadButton(y,l,CommonUsages.secondaryButton),
+                leftClick=ReadButton(lClick,l,CommonUsages.primary2DAxisClick),rightClick=ReadButton(rClick,r,CommonUsages.primary2DAxisClick),
+                leftTrigger=ReadButton(lTrigger,l,CommonUsages.triggerButton),rightTrigger=ReadButton(rTrigger,r,CommonUsages.triggerButton),
+                leftGrip=ReadGrip(lGrip,l),rightGrip=ReadGrip(rGrip,r)});
             Status = $"L {(left.activeControl?.device.displayName ?? (l.isValid ? l.name : "disconnected"))} {Move:F2}\nR {(right.activeControl?.device.displayName ?? (r.isValid ? r.name : "disconnected"))} {Turn:F2}";
+        }
+        // One snapshot per frame, one meaning per physical button, independent of radar state.
+        public void ApplyState(State s)
+        {
+            Move=s.leftStick;Turn=s.rightStick;Up=s.a;Down=s.b;Compare=s.x;Bubbles=s.y;Quality=s.leftClick;
+            LeftTrigger=s.leftTrigger;RightTrigger=s.rightTrigger;LeftGrip=s.leftGrip;RightGrip=s.rightGrip;TeleportHeld=s.rightClick;
+            LightPressed=s.a&&!previous.a;WakePressed=s.b&&!previous.b;AreaPressed=s.x&&!previous.x;
+            BubblePressed=s.y&&!previous.y;QualityPressed=s.leftClick&&!previous.leftClick;
+            RadarPressed=s.leftGrip&&!previous.leftGrip;SoundTestPressed=s.rightTrigger&&!previous.rightTrigger;MutePressed=s.leftTrigger&&!previous.leftTrigger;
+            previous=s;
         }
         // Left stick: up/down = world height; left/right = approach/retreat.
         public static Vector3 MapMovement(Vector2 stick)
         {return Vector3.ClampMagnitude(new Vector3(0,stick.y,-stick.x),1);}
         static bool ReadButton(InputAction a, UnityEngine.XR.InputDevice device, InputFeatureUsage<bool> feature)
-        { device.TryGetFeatureValue(feature, out bool pressed); return a.IsPressed() || pressed; }
+        { return device.TryGetFeatureValue(feature,out bool pressed)?pressed:a.IsPressed(); }
+        static bool ReadGrip(InputAction action,UnityEngine.XR.InputDevice device)
+        {
+            bool hasDigital=device.TryGetFeatureValue(CommonUsages.gripButton,out bool pressed);
+            bool hasAnalog=device.TryGetFeatureValue(CommonUsages.grip,out float amount);
+            return hasDigital || hasAnalog?pressed || amount>=.5f:action.IsPressed();
+        }
         public void Dispose() { foreach (var action in new[] {left,right,a,b,x,y,lClick,rClick,lTrigger,rTrigger,lGrip,rGrip}) action.Dispose(); }
     }
 }

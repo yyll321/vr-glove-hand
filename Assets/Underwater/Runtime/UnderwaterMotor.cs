@@ -10,7 +10,7 @@ using CommonUsages = UnityEngine.XR.CommonUsages;
 
 namespace UnderwaterBaseline
 {
-    [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
+    [DefaultExecutionOrder(-300), RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
     public sealed class UnderwaterMotor : MonoBehaviour
     {
         public XROrigin origin;
@@ -35,7 +35,7 @@ namespace UnderwaterBaseline
         public bool InSeabed => origin.Camera.transform.position.x > 31;
         public string LastInput { get; private set; } = "Ready";
         public UnderwaterControllerInput Controllers { get; private set; }
-        bool previousCompare, previousQuality, keyboardAim;
+        bool keyboardAim;
         XRGrabInteractable desktopHeld;
         Rigidbody body;
         CapsuleCollider capsule;
@@ -43,7 +43,7 @@ namespace UnderwaterBaseline
         Vector3 input;
         float pitch;
         bool previousAim;
-        bool previousSurfaceButton, previousBubbleButton;
+        bool teleportCancelled;
         readonly Vector3[] arc = new Vector3[40];
 
         void Awake()
@@ -53,6 +53,7 @@ namespace UnderwaterBaseline
             pose = origin.Camera.GetComponent<TrackedPoseDriver>();
             headTracking=origin.Camera.GetComponent<UnderwaterHeadTracking>();
             Controllers = new UnderwaterControllerInput();
+            ConfigureInputOwnership();
             InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
             body.mass = 80;
@@ -60,6 +61,17 @@ namespace UnderwaterBaseline
             body.constraints = RigidbodyConstraints.FreezeRotation;
             body.interpolation = RigidbodyInterpolation.Interpolate;
             body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        }
+
+        public void ConfigureInputOwnership()
+        {
+            // Controller poses stay provider-owned; application buttons do not also
+            // select/grab UI or activate a second locomotion implementation.
+            foreach(var interactor in origin.GetComponentsInChildren<XRBaseInteractor>(true))interactor.enabled=false;
+            foreach(var locomotion in origin.GetComponentsInChildren<LocomotionProvider>(true))
+                if(!(locomotion is TeleportationProvider))locomotion.enabled=false;
+            foreach(var behaviour in origin.GetComponentsInChildren<MonoBehaviour>(true))if(behaviour &&
+                (behaviour.GetType().Name=="ActionBasedControllerManager" || behaviour.GetType().Name=="ControllerInputActionManager"))behaviour.enabled=false;
         }
 
         void OnEnable() { if (teleportation) teleportation.endLocomotion += OnTeleported; }
@@ -79,14 +91,13 @@ namespace UnderwaterBaseline
             if (move.sqrMagnitude > 0.03f || turn.sqrMagnitude > 0.03f || Controllers.Up || Controllers.Down)
                 LastInput = "Controller input received";
             input = UnderwaterControllerInput.MapMovement(move);
-            if (Controllers.Surface && !previousSurfaceButton) ToggleSurface();
-            if (!Controllers.RadarModifier && Controllers.Bubbles && !previousBubbleButton && environment) environment.EmitBubbles();
-            if (Controllers.Compare && !previousCompare) SwitchArea();
-            if (!Controllers.RadarModifier && Controllers.Quality && !previousQuality) FindObjectOfType<UnderwaterPerformance>().SelectQuality((environment.quality + 1) % 3);
-            previousSurfaceButton = Controllers.Surface; previousBubbleButton = Controllers.Bubbles;
-            previousCompare = Controllers.Compare; previousQuality = Controllers.Quality;
+            if (Controllers.BubblePressed && environment) environment.EmitBubbles();
+            if (Controllers.AreaPressed) SwitchArea();
+            if (Controllers.QualityPressed && environment) FindObjectOfType<UnderwaterPerformance>()?.SelectQuality((environment.quality + 1) % 3);
             // Right controller pose belongs to the arm; it must not rotate the world.
-            Aiming = Controllers.TeleportHeld && !Controllers.RightGrip;
+            if(!Controllers.TeleportHeld)teleportCancelled=false;
+            if(Controllers.TeleportHeld && Controllers.RightGrip)teleportCancelled=true;
+            Aiming = Controllers.TeleportHeld && !teleportCancelled;
             // Always read desktop input, even when a preview loader reports an attached XR device.
             var keyboard = Keyboard.current;
             var mouse = Mouse.current;
@@ -114,7 +125,7 @@ namespace UnderwaterBaseline
             if (input.magnitude < 0.18f) input = Vector3.zero;
             input = Vector3.ClampMagnitude(input, 1);
             if (Aiming) { input = Vector3.zero; UpdateTeleportArc(); }
-            if (!Aiming && previousAim && ValidTarget) TeleportTo(Target);
+            if (!Aiming && previousAim && ValidTarget && !teleportCancelled && !Controllers.RightGrip) TeleportTo(Target);
             teleportLine.enabled = Aiming;
             teleportMarker.gameObject.SetActive(Aiming && ValidTarget);
             previousAim = Aiming;

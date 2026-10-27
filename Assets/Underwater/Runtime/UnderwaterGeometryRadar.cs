@@ -40,7 +40,6 @@ namespace UnderwaterBaseline
         public int Frames {get;private set;}
         public float LastScanMs {get;private set;}
         public string Status {get;private set;}="Select a geometry profile then Start";
-        bool previousStart,previousProfile,previousTilt,previousExport;
         static readonly HashSet<UnderwaterGeometryRadar> enabledRadars=new HashSet<UnderwaterGeometryRadar>();
         public static bool ActiveForInput
         {
@@ -91,12 +90,11 @@ namespace UnderwaterBaseline
             if(!active){pending=null;previousActive=false;return;}
             if(!previousActive){nextScan=0;previousActive=true;}
             var key=Keyboard.current;
-            // Reserve the right stick for ROV motion. Only unused left-grip
-            // combinations operate this instrument; plain A/B/Y keep their roles.
-            if(motor && motor.XrActive && motor.Controllers!=null)
+            // Left grip has one fixed purpose. All parameters use desktop/Inspector.
+            if(motor && motor.Controllers!=null)
             {
                 var controls=motor.Controllers;
-                HandleButtons(controls.LeftGrip,controls.Up,controls.Down,controls.Bubbles,controls.Quality);
+                if(controls.RadarPressed)ToggleScan();
             }
             if(key!=null)
             {
@@ -105,8 +103,8 @@ namespace UnderwaterBaseline
                 if(key.f8Key.wasPressedThisFrame)automaticTilt=!automaticTilt;
                 if(key.f9Key.wasPressedThisFrame)ExportLatest();
                 if(key.f10Key.wasPressedThisFrame)SelectProfile((selectedProfile+1)%profiles.Length);
-                if(key.leftBracketKey.isPressed)SetTilt(targetTilt-tiltSpeed*Time.deltaTime);
-                if(key.rightBracketKey.isPressed)SetTilt(targetTilt+tiltSpeed*Time.deltaTime);
+                if(key.leftBracketKey.isPressed){automaticTilt=false;SetTilt(targetTilt-tiltSpeed*Time.deltaTime);}
+                if(key.rightBracketKey.isPressed){automaticTilt=false;SetTilt(targetTilt+tiltSpeed*Time.deltaTime);}
             }
             if(automaticTilt)targetTilt=Mathf.Sin(Time.time*0.25f)*45;
             currentTilt=Mathf.MoveTowards(currentTilt,targetTilt,tiltSpeed*Time.deltaTime);UpdateMount();
@@ -119,25 +117,10 @@ namespace UnderwaterBaseline
                     for(int i=0;i<Latest.hits.Length;i++)if(Latest.hits[i]){hits++;nearest=Mathf.Min(nearest,Latest.ranges[i]);}
                     int at=(Latest.rows/2)*Latest.columns+Latest.columns/2;if(Latest.hits[at])centre=Latest.ranges[at].ToString("F2")+" m";
                 }
-                label.text=$"GEOMETRY RADAR | {Selected.name} | {(scanning?"RUN":"STOP")}\n{Selected.range:F0} m | Tilt {currentTilt:F0} deg (positive = up)\nCentre {centre} | Nearest {(hits>0?nearest.ToString("F2")+" m":"--")} | Hits {hits}\nLeft grip + A start | B preset | Y tilt | L click export\n{Status}";
+                label.text=$"GEOMETRY RADAR | {Selected.name} | {(scanning?"RUN":"STOP")}\n{Selected.range:F0} m | Tilt {currentTilt:F0} deg (positive = up)\nCentre {centre} | Nearest {(hits>0?nearest.ToString("F2")+" m":"--")} | Hits {hits}\nLeft grip: start/stop | PC: F10 preset, [ ] tilt, F9 export\n{Status}";
             }
         }
-        public void HandleButtons(bool modifier,bool start,bool profile,bool tilt,bool export)
-        {
-            if(modifier)
-            {
-                if(start && !previousStart){if(scanning)StopScan();else StartScan();}
-                if(profile && !previousProfile){EnsureProfiles();SelectProfile((selectedProfile+1)%profiles.Length);}
-                if(tilt && !previousTilt)
-                {
-                    float[] angles={0,15,30,45,-15,-30,-45};int nearest=0;
-                    for(int i=1;i<angles.Length;i++)if(Mathf.Abs(targetTilt-angles[i])<Mathf.Abs(targetTilt-angles[nearest]))nearest=i;
-                    automaticTilt=false;SetTilt(angles[(nearest+1)%angles.Length]);
-                }
-                if(export && !previousExport)ExportLatest();
-            }
-            previousStart=start;previousProfile=profile;previousTilt=tilt;previousExport=export;
-        }
+        public void ToggleScan(){if(scanning)StopScan();else StartScan();}
         public static Vector3 BeamDirection(int column,int row,int columns,int rows,float azimuth,float elevation)
         {
             float a=(columns>1?(float)column/(columns-1)-0.5f:0)*azimuth*Mathf.Deg2Rad;

@@ -55,11 +55,24 @@ namespace UnderwaterBaseline.Editor
                 radar.profiles[0].columns=33;radar.SelectProfile(0);radar.StartScan();tick.Invoke(radar,null);scanner.transform.position+=Vector3.right*2;tick.Invoke(radar,null);tick.Invoke(radar,null);
                 check(radar.Latest.origin==origin,"Scan origin changed halfway through budgeted frame");
                 bool rejected=false;try{radar.ApplyConfiguration("{}");}catch(ArgumentException){rejected=true;}check(rejected,"Incomplete ROS configuration accepted");
-                radar.StopScan();radar.HandleButtons(false,true,false,false,false);check(!radar.scanning,"Plain A incorrectly operated radar");
-                radar.HandleButtons(false,false,false,false,false);radar.HandleButtons(true,true,false,false,false);check(radar.scanning,"Left grip + A failed to start");
-                radar.HandleButtons(true,true,false,false,false);check(radar.scanning,"Held combination repeatedly toggled scanning");
-                radar.HandleButtons(true,false,false,false,false);radar.HandleButtons(true,true,false,false,false);check(!radar.scanning,"Second press failed to stop");
-                radar.HandleButtons(true,false,false,true,false);check(radar.targetTilt==15,"Tilt preset did not advance to +15 degrees");
+                // All button combinations retain the same single-purpose rising edges.
+                using(var controls=new UnderwaterControllerInput())for(int mask=0;mask<256;mask++)
+                {
+                    controls.ApplyState(default);
+                    var state=new UnderwaterControllerInput.State{a=(mask&1)!=0,b=(mask&2)!=0,x=(mask&4)!=0,y=(mask&8)!=0,
+                        leftClick=(mask&16)!=0,leftGrip=(mask&32)!=0,leftTrigger=(mask&64)!=0,rightTrigger=(mask&128)!=0};
+                    controls.ApplyState(state);
+                    check(controls.LightPressed==state.a && controls.WakePressed==state.b && controls.AreaPressed==state.x &&
+                        controls.BubblePressed==state.y && controls.QualityPressed==state.leftClick && controls.RadarPressed==state.leftGrip &&
+                        controls.MutePressed==state.leftTrigger && controls.SoundTestPressed==state.rightTrigger,"A button changed meaning with a simultaneous grip/button");
+                    controls.ApplyState(state);
+                    check(!controls.LightPressed && !controls.WakePressed && !controls.AreaPressed && !controls.BubblePressed &&
+                        !controls.QualityPressed && !controls.RadarPressed && !controls.MutePressed && !controls.SoundTestPressed,"Held button repeated a one-shot action");
+                }
+                check(UnderwaterControllerInput.MapMovement(Vector2.up)==Vector3.up && UnderwaterControllerInput.MapMovement(Vector2.down)==Vector3.down &&
+                    UnderwaterControllerInput.MapMovement(Vector2.left)==Vector3.forward && UnderwaterControllerInput.MapMovement(Vector2.right)==Vector3.back,"User left-stick mapping changed");
+                radar.StopScan();radar.ToggleScan();check(radar.scanning,"Dedicated radar toggle failed to start");
+                radar.ToggleScan();check(!radar.scanning,"Dedicated radar toggle failed to stop");
                 radar.StartScan();scanner.SetActive(false);check(!radar.isActiveAndEnabled,"Disabling radar object left component active");scanner.SetActive(true);
                 // Exercise collision-aware ROV translation away from the real scene.
                 var mover=scanner.AddComponent<UnderwaterRovMovement>();mover.seabed=true;scanner.transform.position=new Vector3(62,10000,0);

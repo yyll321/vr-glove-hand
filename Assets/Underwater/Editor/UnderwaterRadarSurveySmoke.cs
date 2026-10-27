@@ -16,6 +16,9 @@ namespace UnderwaterBaseline.Editor
         static bool calibrationPassed,exportsPassed,modulePassed;static Vector3 initialRov;static float movementDistance;static int pausedFrames;
         static bool approachPassed;static float calibrationRange,approachRange,expectedApproach;static int sampleCount;static bool checkedApproach;
         static string movementContact;
+        static int controlStep;static double nextControl;static bool controlsDone,controlsPassed;
+        static bool oldLights,oldWake,oldMute,oldAutomatic,originalArea;static int oldTier,oldBubbles,oldTests,oldProfile;static float oldTilt;
+        static Vector3 controlRov,controlEye,holdRov;
         static readonly List<string> errors=new List<string>();
         static UnderwaterRadarSurveySmoke(){EditorApplication.playModeStateChanged+=Mode;EditorApplication.update+=Tick;}
         [MenuItem("Tools/Underwater/Research/18 Run Geometry Radar Play Smoke Check")]
@@ -29,7 +32,7 @@ namespace UnderwaterBaseline.Editor
         {
             if(!SessionState.GetBool(Key,false))return;
             if(mode==PlayModeStateChange.EnteredPlayMode)
-            {start=EditorApplication.timeSinceStartup;sea=captured=calibrated=exported=disabled=reEnabled=checkedApproach=false;calibrationPassed=exportsPassed=modulePassed=approachPassed=false;movementDistance=0;errors.Clear();Application.logMessageReceived+=Log;}
+            {start=EditorApplication.timeSinceStartup;sea=captured=calibrated=exported=disabled=reEnabled=checkedApproach=false;calibrationPassed=exportsPassed=modulePassed=approachPassed=false;movementDistance=0;controlStep=0;nextControl=1;controlsDone=false;controlsPassed=true;errors.Clear();Application.logMessageReceived+=Log;}
             if(mode==PlayModeStateChange.ExitingPlayMode){Application.logMessageReceived-=Log;SessionState.SetBool(Key,false);}
         }
         static void Log(string message,string stack,LogType type){if((type==LogType.Error || type==LogType.Exception) && errors.Count<30)errors.Add(message);}
@@ -38,6 +41,7 @@ namespace UnderwaterBaseline.Editor
             public bool passed;public string time;public int poolFrames,seabedFrames,seabedHits;public float poolScanMs,seabedScanMs,flowStepMs;public string[] errors;
             public bool calibrationFiveMetres,exportJsonCsvPly,moduleDisableStopsRadar;public float rovMovedMetres;public string movementContact;
             public bool rangeFollowsRovApproach;public float calibrationRangeMetres,approachRangeMetres,expectedApproachMetres;public int samplesPerFrame;
+            public bool fixedControlsPlayRegression;
             public string limitation="Editor Play smoke only; no HMD perception or performance certification";
         }
         static void Tick()
@@ -57,8 +61,9 @@ namespace UnderwaterBaseline.Editor
                 system.gameObject.SetActive(true);reEnabled=true;
             }
             if(disabled && !reEnabled)return;
-            foreach(var radar in radars)if(!radar.scanning)radar.StartScan();
             var motor=Object.FindObjectOfType<UnderwaterMotor>();
+            if(!controlsDone){CheckControls(elapsed,motor,radars);return;}
+            foreach(var radar in radars)if(!radar.scanning)radar.StartScan();
             if(elapsed>7 && !sea && motor){if(!motor.InSeabed)motor.SwitchArea();sea=true;initialRov=mover.transform.position;}
             if(elapsed>10 && elapsed<12 && mover)
             {
@@ -110,9 +115,64 @@ namespace UnderwaterBaseline.Editor
                 poolScanMs=pool?pool.LastScanMs:0,seabedScanMs=seabed?seabed.LastScanMs:0,flowStepMs=volume.LastStepMilliseconds,
                 seabedHits=seabed && seabed.Latest!=null?seabed.Latest.hits.Count(h=>h):0,errors=errors.ToArray(),
                 calibrationFiveMetres=calibrationPassed,exportJsonCsvPly=exportsPassed,moduleDisableStopsRadar=modulePassed,rovMovedMetres=movementDistance,movementContact=movementContact,
-                rangeFollowsRovApproach=approachPassed,calibrationRangeMetres=calibrationRange,approachRangeMetres=approachRange,expectedApproachMetres=expectedApproach,samplesPerFrame=sampleCount};
-            report.passed=report.poolFrames>2 && report.seabedFrames>2 && report.seabedHits>0 && report.errors.Length==0 && calibrationPassed && exportsPassed && modulePassed && approachPassed && movementDistance>.15f;
+                rangeFollowsRovApproach=approachPassed,calibrationRangeMetres=calibrationRange,approachRangeMetres=approachRange,expectedApproachMetres=expectedApproach,samplesPerFrame=sampleCount,fixedControlsPlayRegression=controlsPassed};
+            report.passed=controlsPassed && report.poolFrames>2 && report.seabedFrames>2 && report.seabedHits>0 && report.errors.Length==0 && calibrationPassed && exportsPassed && modulePassed && approachPassed && movementDistance>.15f;
             File.WriteAllText("Logs/RadarReview/play-smoke.json",JsonUtility.ToJson(report,true));EditorApplication.isPlaying=false;
+        }
+        static void VerifyControl(bool ok,string message){if(!ok){controlsPassed=false;errors.Add("Control regression: "+message);}}
+        static void CheckControls(double elapsed,UnderwaterMotor motor,UnderwaterGeometryRadar[] radars)
+        {
+            if(elapsed<nextControl || !motor || motor.Controllers==null)return;nextControl=elapsed+.25;
+            var radar=radars.First(r=>r.seabed==motor.InSeabed);var interaction=Object.FindObjectOfType<UnderwaterInteraction>();
+            var sound=Object.FindObjectOfType<UnderwaterSoundscape>();var performance=Object.FindObjectOfType<UnderwaterPerformance>();
+            var c=motor.Controllers;var neutral=new UnderwaterControllerInput.State();
+            switch(controlStep++)
+            {
+                case 0:
+                    oldLights=interaction.lightsEnabled;oldWake=interaction.wakeDemo;oldMute=sound.muted;oldAutomatic=performance.automatic;
+                    oldTier=motor.environment.quality;oldBubbles=motor.environment.BubbleBursts;oldTests=sound.TestCount;
+                    oldProfile=radar.selectedProfile;oldTilt=radar.targetTilt;originalArea=motor.InSeabed;
+                    radar.StopScan();c.EditorInputOverride=neutral;break;
+                case 1:c.EditorInputOverride=new UnderwaterControllerInput.State{leftGrip=true};break;
+                case 2:
+                    VerifyControl(radar.scanning,"left grip alone did not start radar");
+                    c.EditorInputOverride=new UnderwaterControllerInput.State{leftGrip=true,a=true,b=true,y=true,leftClick=true};break;
+                case 3:case 4:
+                    VerifyControl(radar.scanning && radar.selectedProfile==oldProfile && radar.targetTilt==oldTilt && radar.LastExportPath==null,"old radar combination still active");
+                    VerifyControl(interaction.lightsEnabled!=oldLights && interaction.wakeDemo!=oldWake,"A/B changed purpose with left grip");
+                    VerifyControl(motor.environment.BubbleBursts==oldBubbles+1 && motor.environment.quality==(oldTier+1)%3,"Y / left click repeated or changed purpose");
+                    if(controlStep==5)c.EditorInputOverride=neutral;break;
+                case 5:c.EditorInputOverride=new UnderwaterControllerInput.State{leftGrip=true};break;
+                case 6:
+                    VerifyControl(!radar.scanning,"second left grip press did not stop radar");
+                    c.EditorInputOverride=new UnderwaterControllerInput.State{rightTrigger=true};break;
+                case 7:
+                    VerifyControl(sound.TestCount==oldTests+1 && !sound.muted,"right trigger did not produce exactly one audio test");
+                    c.EditorInputOverride=new UnderwaterControllerInput.State{rightTrigger=true,leftTrigger=true};break;
+                case 8:
+                    VerifyControl(sound.TestCount==oldTests+1 && sound.muted,"left trigger / held right trigger conflict");break;
+                case 9:c.EditorInputOverride=new UnderwaterControllerInput.State{x=true};break;
+                case 10:VerifyControl(motor.InSeabed!=originalArea,"X did not switch region");break;
+                case 11:
+                    VerifyControl(motor.InSeabed!=originalArea,"held X switched region repeatedly");c.EditorInputOverride=neutral;break;
+                case 12:c.EditorInputOverride=new UnderwaterControllerInput.State{x=true};break;
+                case 13:
+                    VerifyControl(motor.InSeabed==originalArea,"second X press did not return");
+                    controlRov=radar.vehicle.position;controlEye=motor.origin.Camera.transform.position;
+                    c.EditorInputOverride=new UnderwaterControllerInput.State{rightStick=Vector2.up};break;
+                case 14:
+                    VerifyControl(Vector3.Distance(radar.vehicle.position,controlRov)>.02f,"right stick did not move ROV through normal input path");
+                    VerifyControl(Vector3.Distance(motor.origin.Camera.transform.position,controlEye)<.05f,"right stick also moved observer");
+                    holdRov=radar.vehicle.position;c.EditorInputOverride=new UnderwaterControllerInput.State{rightStick=Vector2.up,rightGrip=true};break;
+                case 15:holdRov=radar.vehicle.position;break;
+                case 16:
+                    VerifyControl(Vector3.Distance(radar.vehicle.position,holdRov)<.01f,"ROV moved during wrist grip control");
+                    c.EditorInputOverride=neutral;break;
+                default:
+                    c.EditorInputOverride=null;interaction.lightsEnabled=oldLights;interaction.SetWakeDemo(oldWake);
+                    if(sound.muted!=oldMute)sound.ToggleMute();performance.SelectQuality(oldTier);performance.automatic=oldAutomatic;
+                    radar.vehicle.position=controlRov;Physics.SyncTransforms();controlsDone=true;break;
+            }
         }
     }
 }

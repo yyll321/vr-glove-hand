@@ -146,15 +146,9 @@ namespace UnderwaterBaseline
             var key=Keyboard.current;
             if(!suppressAutomaticInputs && key!=null && key.nKey.wasPressedThisFrame)SetWakeDemo(!wakeDemo);
             if(!suppressAutomaticInputs && key!=null && key.lKey.wasPressedThisFrame)lightsEnabled=!lightsEnabled;
-            // Right secondary button is unused by the arm: toggle the same wake demo.
-            var right=UnityEngine.XR.InputDevices.GetDeviceAtXRNode(UnityEngine.XR.XRNode.RightHand);
-            right.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton,out bool button);
-            button|=motor && motor.Controllers!=null && motor.Controllers.Down;
-            bool radarModifier=motor && motor.Controllers!=null && motor.Controllers.RadarModifier;
-            if(!suppressAutomaticInputs && !radarModifier && button && !previousDemoButton)SetWakeDemo(!wakeDemo);previousDemoButton=button;
-            right.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton,out bool lightButton);
-            lightButton|=motor && motor.Controllers!=null && motor.Controllers.Up;
-            if(!suppressAutomaticInputs && !radarModifier && lightButton && !previousLightButton)lightsEnabled=!lightsEnabled;previousLightButton=lightButton;
+            var controls=motor?motor.Controllers:null;
+            if(!suppressAutomaticInputs && controls!=null && controls.WakePressed)SetWakeDemo(!wakeDemo);
+            if(!suppressAutomaticInputs && controls!=null && controls.LightPressed)lightsEnabled=!lightsEnabled;
             if(Time.time<nextTick)return;
             float dt=Mathf.Clamp(Time.time-previousTick,0.01f,0.2f);previousTick=Time.time;nextTick=Time.time+0.1f;
             Simulate(dt,Time.time);
@@ -177,7 +171,6 @@ namespace UnderwaterBaseline
             }
             Publish();
         }
-        bool previousDemoButton,previousLightButton;
 
         void EmitFromOperations(float dt)
         {

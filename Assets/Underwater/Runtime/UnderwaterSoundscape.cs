@@ -19,7 +19,6 @@ namespace UnderwaterBaseline
         public int TestCount { get; private set; }
         public float LastTestPeak { get; private set; }
         public string OutputStatus { get; private set; }="Waiting for audio";
-        bool previousRight,previousLeft;
         float nextDiagnostics;
         readonly float[] meter=new float[256];
         void Start()
@@ -48,9 +47,8 @@ namespace UnderwaterBaseline
             var c=motor.Controllers;
             if(c!=null)
             {
-                if(c.RightTrigger && !previousRight)TestSound();
-                if(c.LeftTrigger && !previousLeft)ToggleMute();
-                previousRight=c.RightTrigger;previousLeft=c.LeftTrigger;
+                if(c.SoundTestPressed)TestSound();
+                if(c.MutePressed)ToggleMute();
             }
             bool submerged=motor.origin.Camera.transform.position.y<10;
             float flow=interaction?interaction.ListenerFlow:0.1f;
