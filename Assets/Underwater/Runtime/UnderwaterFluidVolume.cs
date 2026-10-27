@@ -81,11 +81,28 @@ namespace UnderwaterBaseline
                 {
                     Vector3 p=CellWorld(x,y,z);int i=Index(x,y,z);solid[i]=p.y<floor+0.02f;
                     foreach(var obstacle in obstacles)
-                        if(obstacle && obstacle.enabled && obstacle.gameObject.activeInHierarchy && obstacle.bounds.Contains(p) &&
-                            (obstacle.ClosestPoint(p)-p).sqrMagnitude<0.000001f){solid[i]=true;break;}
+                        if(obstacle && obstacle.enabled && obstacle.gameObject.activeInHierarchy && IsSolidPoint(obstacle,p)){solid[i]=true;break;}
                     velocity[i]=solid[i]?Vector3.zero:ambientSource?ambientSource.AmbientCurrentAt(p,Time.time):ambientCurrent;
                 }
             }
+        }
+
+        // Flow cells use a conservative vertical envelope for nonconvex rocks.
+        // ClosestPoint is unsupported for nonconvex MeshColliders. Radar still
+        // queries the actual triangle surface, independently of this coarse mask.
+        static bool IsSolidPoint(Collider obstacle,Vector3 point)
+        {
+            Bounds bounds=obstacle.bounds;
+            if(!bounds.Contains(point))return false;
+            if(obstacle is MeshCollider mesh && !mesh.convex)
+            {
+                float span=bounds.size.y+0.2f;
+                var top=new Ray(new Vector3(point.x,bounds.max.y+0.1f,point.z),Vector3.down);
+                var bottom=new Ray(new Vector3(point.x,bounds.min.y-0.1f,point.z),Vector3.up);
+                return obstacle.Raycast(top,out var upper,span) && obstacle.Raycast(bottom,out var lower,span) &&
+                    point.y<=upper.point.y+0.02f && point.y>=lower.point.y-0.02f;
+            }
+            return (obstacle.ClosestPoint(point)-point).sqrMagnitude<0.000001f;
         }
 
         void FixedUpdate()
@@ -150,9 +167,11 @@ namespace UnderwaterBaseline
                 Vector3 ambient = ambientSource ? ambientSource.AmbientCurrentAt(p, time) : ambientCurrent;
                 Vector3 back = p - velocity[i] * dt;
                 Vector3 advected = SampleVector(velocity, back);
-                Vector3 neighbour = (SampleVector(velocity, p + Vector3.right * cell.x) + SampleVector(velocity, p - Vector3.right * cell.x) +
-                    SampleVector(velocity, p + Vector3.up * cell.y) + SampleVector(velocity, p - Vector3.up * cell.y) +
-                    SampleVector(velocity, p + Vector3.forward * cell.z) + SampleVector(velocity, p - Vector3.forward * cell.z)) / 6f;
+                // These samples lie exactly on grid nodes. Avoid six redundant
+                // trilinear interpolations and world/grid conversions per cell.
+                Vector3 neighbour = (velocity[IndexClamped(x+1,y,z)]+velocity[IndexClamped(x-1,y,z)]+
+                    velocity[IndexClamped(x,y+1,z)]+velocity[IndexClamped(x,y-1,z)]+
+                    velocity[IndexClamped(x,y,z+1)]+velocity[IndexClamped(x,y,z-1)]) / 6f;
                 nextVelocity[i] = Vector3.Lerp(advected, neighbour, Mathf.Clamp01(viscosity * dt));
                 nextVelocity[i] = Vector3.Lerp(nextVelocity[i], ambient, Mathf.Clamp01(ambientBlend * dt));
                 nextDensity[i] = SampleScalar(density, back) * Mathf.Exp(-densityDecay * dt);
@@ -169,9 +188,9 @@ namespace UnderwaterBaseline
             for (int z = 0; z < resolutionZ; z++) for (int y = 0; y < resolutionY; y++) for (int x = 0; x < resolutionX; x++)
             {
                 int i = Index(x, y, z);
-                divergence[i] = (SampleVector(velocity, CellWorld(x + 1, y, z)).x - SampleVector(velocity, CellWorld(x - 1, y, z)).x) * 0.5f / cell.x +
-                    (SampleVector(velocity, CellWorld(x, y + 1, z)).y - SampleVector(velocity, CellWorld(x, y - 1, z)).y) * 0.5f / cell.y +
-                    (SampleVector(velocity, CellWorld(x, y, z + 1)).z - SampleVector(velocity, CellWorld(x, y, z - 1)).z) * 0.5f / cell.z;
+                divergence[i] = (velocity[IndexClamped(x+1,y,z)].x-velocity[IndexClamped(x-1,y,z)].x)*0.5f/cell.x +
+                    (velocity[IndexClamped(x,y+1,z)].y-velocity[IndexClamped(x,y-1,z)].y)*0.5f/cell.y +
+                    (velocity[IndexClamped(x,y,z+1)].z-velocity[IndexClamped(x,y,z-1)].z)*0.5f/cell.z;
                 pressure[i] = 0;
             }
             for (int iteration = 0; iteration < pressureIterations; iteration++)

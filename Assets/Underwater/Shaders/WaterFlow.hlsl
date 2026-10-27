@@ -1,11 +1,13 @@
 #ifndef UW_WATER_FLOW_INCLUDED
 #define UW_WATER_FLOW_INCLUDED
+#include "WaterRegions.hlsl"
 TEXTURE2D(_UWFlowMap); SAMPLER(sampler_UWFlowMap);
 float _UWFlowReady;
 float2 UWLocalFlow(float2 world)
 {
     float region=step(31,world.x);
-    float2 uv=saturate(float2((world.x-region*62+12.5)/25,(world.y+25)/50));
+    float4 bounds=UWRegion((int)region);
+    float2 uv=saturate((world-bounds.xy+bounds.zw)/(2*bounds.zw));
     // Each water body owns 32 columns. Clamp to texel centres to avoid leakage.
     uv=float2((region*32+0.5+uv.x*31)/64,(0.5+uv.y*31)/32);
     return SAMPLE_TEXTURE2D_LOD(_UWFlowMap,sampler_UWFlowMap,uv,0).rg*_UWFlowReady;

@@ -14,6 +14,8 @@ namespace UnderwaterBaseline
         public UnderwaterPresence presence;
         public UnderwaterFluidVolume volume;
         public Rigidbody body;
+        public Quaternion bodyAxesCorrection=Quaternion.identity;
+        public UnderwaterSurfaceBuoyancy surfaceBuoyancy;
         public bool applyForces;
         public bool applyBuoyancy = true;
         [Min(0.01f)] public float displacedVolume = 0.065f;
@@ -36,6 +38,7 @@ namespace UnderwaterBaseline
         void Awake()
         {
             if (!body) body = GetComponent<Rigidbody>();
+            if(surfaceBuoyancy){surfaceBuoyancy.evaluatedByHydrodynamics=true;surfaceBuoyancy.body=body;surfaceBuoyancy.applyForces=false;}
             if (!presence) presence = FindObjectOfType<UnderwaterPresence>();
             if (!volume && presence && presence.fluidVolumes != null)
                 for (int i = 0; i < presence.fluidVolumes.Length; i++)
@@ -45,29 +48,44 @@ namespace UnderwaterBaseline
         void FixedUpdate()
         {
             float height=Mathf.Max(0.01f,hullHeight);
-            Vector3 buoyancyPoint=transform.position+transform.rotation*centerOfBuoyancy;
+            Quaternion axes=transform.rotation*bodyAxesCorrection;
+            Vector3 buoyancyPoint=transform.position+axes*centerOfBuoyancy;
             SubmergedFraction=Mathf.Clamp01((surfaceY-(buoyancyPoint.y-height*0.5f))/height);
             if(buoyancyPoint.y+height*0.5f<bottomY)SubmergedFraction=0;
             if(volume && !volume.Contains(new Vector3(buoyancyPoint.x,Mathf.Clamp(buoyancyPoint.y,bottomY,surfaceY),buoyancyPoint.z)))SubmergedFraction=0;
-            Vector3 current = presence ? presence.CurrentAt(transform.position, Time.time) :
-                volume ? volume.SampleVelocity(transform.position) : Vector3.zero;
-            Vector3 velocity = body ? body.GetPointVelocity(transform.position) : Vector3.zero;
+            Vector3 current = presence ? presence.CurrentAt(buoyancyPoint, Time.time) :
+                volume ? volume.SampleVelocity(buoyancyPoint) : Vector3.zero;
+            Vector3 velocity = body ? body.GetPointVelocity(buoyancyPoint) : Vector3.zero;
             Vector3 relative = velocity - current;
             EstimatedRelativeVelocity = relative;
-            Vector3 local = transform.InverseTransformDirection(relative);
+            Vector3 local = Quaternion.Inverse(axes)*relative;
             Vector3 localForce = new Vector3(
                 -Drag(local.x, lateralArea),
                 -Drag(local.y, verticalArea),
                 -Drag(local.z, frontalArea));
-            EstimatedDragForce = transform.rotation*localForce*SubmergedFraction;
+            EstimatedDragForce = axes*localForce*SubmergedFraction;
             EstimatedBuoyancy = -Physics.gravity * (fluidDensity * displacedVolume * SubmergedFraction);
             Vector3 angular = body ? body.angularVelocity : Vector3.zero;
-            Vector3 localAngular=Quaternion.Inverse(transform.rotation)*angular;
-            EstimatedTorque=transform.rotation*(-Vector3.Scale(localAngular,Vector3.Max(Vector3.zero,angularResistance)))*SubmergedFraction;
+            Vector3 localAngular=Quaternion.Inverse(axes)*angular;
+            EstimatedTorque=axes*(-Vector3.Scale(localAngular,Vector3.Max(Vector3.zero,angularResistance)))*SubmergedFraction;
+            if(surfaceBuoyancy && surfaceBuoyancy.isActiveAndEnabled)
+            {
+                // This component owns any force application. Never apply surface and
+                // lumped buoyancy simultaneously, regardless of script execution order.
+                surfaceBuoyancy.applyForces=false;surfaceBuoyancy.Evaluate(false);
+                EstimatedBuoyancy=surfaceBuoyancy.Force;
+                EstimatedTorque+=surfaceBuoyancy.Torque;
+            }
             if (!applyForces || !body || body.isKinematic) return;
             body.AddForce(EstimatedDragForce, ForceMode.Force);
-            if (applyBuoyancy) body.AddForceAtPosition(EstimatedBuoyancy,buoyancyPoint,ForceMode.Force);
-            body.AddTorque(EstimatedTorque, ForceMode.Force);
+            if (applyBuoyancy)
+            {
+                if(surfaceBuoyancy && surfaceBuoyancy.isActiveAndEnabled)body.AddForce(EstimatedBuoyancy,ForceMode.Force);
+                else body.AddForceAtPosition(EstimatedBuoyancy,buoyancyPoint,ForceMode.Force);
+            }
+            Vector3 torque=EstimatedTorque;
+            if(!applyBuoyancy && surfaceBuoyancy && surfaceBuoyancy.isActiveAndEnabled)torque-=surfaceBuoyancy.Torque;
+            body.AddTorque(torque, ForceMode.Force);
         }
 
         float Drag(float component, float area)

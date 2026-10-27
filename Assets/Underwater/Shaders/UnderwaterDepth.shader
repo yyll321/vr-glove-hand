@@ -89,8 +89,8 @@ Shader "Underwater/DepthFog"
                     return half4((0.1+0.2*min(SurfaceCaustic(world,refracted),3)).xxx,1);
                 if(_UWCausticsEnabled>0.5 && world.y>=-0.3 && world.y<_WaterHeight-0.05)
                 {
-                    float inPool=step(abs(world.x),12.5)*step(abs(world.z),25);
-                    float inSea=step(abs(world.x-62),12.5)*step(abs(world.z),25);
+                    float inPool=UWRegionContains(world.xz,0);
+                    float inSea=UWRegionContains(world.xz,1);
                     half caustic=SurfaceCaustic(world,refracted);
                     float3 normal=normalize(cross(ddy(world),ddx(world)));
                     float facing=saturate(abs(dot(normal,-refracted)));

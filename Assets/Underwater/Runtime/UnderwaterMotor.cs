@@ -186,7 +186,8 @@ namespace UnderwaterBaseline
 
         public void ToggleSurface()
         {
-            TeleportTo(origin.Camera.transform.position.y < 10 ? (InSeabed ? new Vector3(78,10.05f,-28) : new Vector3(15,10.05f,-8)) : InSeabed ? SeabedSpawn : PoolSpawn);
+            Vector2 seaSize=UnderwaterRegionSettings.SeaSize;
+            TeleportTo(origin.Camera.transform.position.y < 10 ? (InSeabed ? new Vector3(62+seaSize.x/2+3.5f,10.05f,-seaSize.y/2-3.5f) : new Vector3(15,10.05f,-8)) : InSeabed ? SeabedSpawn : PoolSpawn);
         }
         public void SwitchArea() { TeleportTo(InSeabed ? PoolSpawn : SeabedSpawn); ResetRotation(); }
         public void ResetView() { TeleportTo(InSeabed ? SeabedSpawn : PoolSpawn); ResetRotation(); }

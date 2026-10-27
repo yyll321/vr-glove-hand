@@ -1,0 +1,18 @@
+{
+  "editorAudit": "PASS 80 scene/import checks; mathematical and Physics.Raycast checks passed. 2026-10-27T18:04:44.7470935+08:00\nPlay mode, HMD rendering and performance are separate validations.",
+  "mathPhysics": "PASS 1107 Unity mathematical and Physics.Raycast assertions 2026-10-27T18:04:44.7343712+08:00",
+  "structureAssertions": 4440,
+  "playSmoke": {
+    "passed": true,
+    "time": "2026-10-27T18:05:17.5744505+08:00",
+    "poolFrames": 24,
+    "seabedFrames": 43,
+    "seabedHits": 478,
+    "poolScanMs": 0.5645751953125,
+    "seabedScanMs": 0.8258819580078125,
+    "flowStepMs": 4.82177734375,
+    "errors": [],
+    "limitation": "Editor Play smoke only; no HMD perception or performance certification"
+  },
+  "validationScope": "Actual Unity Editor import, Physics.Raycast and Play; no manual HMD confirmation, no standalone build, no ROS connection"
+}

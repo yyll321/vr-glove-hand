@@ -55,8 +55,9 @@ namespace UnderwaterBaseline
             eddy.y*=0.35f;
             Vector3 flow=Vector3.ClampMagnitude(baseFlow*gust+eddy*turbulence,0.55f);
             float localX=world.x-(world.x>31?62:0);
-            flow.x*=Mathf.SmoothStep(0,1,(12.5f-Mathf.Abs(localX))/1.2f);
-            flow.z*=Mathf.SmoothStep(0,1,(25-Mathf.Abs(world.z))/1.2f);
+            Vector2 size=UnderwaterRegionSettings.Size(world.x>31);
+            flow.x*=Mathf.SmoothStep(0,1,(size.x/2-Mathf.Abs(localX))/1.2f);
+            flow.z*=Mathf.SmoothStep(0,1,(size.y/2-Mathf.Abs(world.z))/1.2f);
             flow.y*=Mathf.SmoothStep(0,1,Mathf.Min(world.y,10-world.y)/0.65f);
             return flow*flowStrength;
         }
@@ -87,7 +88,8 @@ namespace UnderwaterBaseline
                 for(int z=0;z<32;z++)for(int x=0;x<64;x++)
                 {
                     int region=x/32;
-                    Vector3 point=new Vector3(region*62+(x%32)/31f*25-12.5f,9.8f,z/31f*50-25);
+                    Vector2 size=UnderwaterRegionSettings.Size(region==1);
+                    Vector3 point=new Vector3(region*62+((x%32)/31f-0.5f)*size.x,9.8f,(z/31f-0.5f)*size.y);
                     Vector3 flow=CurrentAt(point,Time.time);
                     surfaceFlowPixels[z*64+x]=new Color(flow.x,flow.z,0,1);
                 }

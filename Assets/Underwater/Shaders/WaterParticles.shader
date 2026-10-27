@@ -38,7 +38,7 @@ Shader "Underwater/Particles"
                 float particleDepth=-TransformWorldToView(i.world).z;
                 alpha*=saturate((sceneDepth-particleDepth)*8)*exp(-range*0.055);
                 // Particles remain inside the water volume and softly disappear near the eye.
-                alpha*=step(i.world.y,10.0)*step(abs(i.world.z),25.0)*max(step(abs(i.world.x),12.5),step(abs(i.world.x-62.0),12.5))*saturate(distance(i.world,GetCameraPositionWS())*1.5-0.25);
+                alpha*=step(0,i.world.y)*step(i.world.y,_WaterHeight)*max(UWRegionContains(i.world.xz,0),UWRegionContains(i.world.xz,1))*saturate(distance(i.world,GetCameraPositionWS())*1.5-0.25);
                 half3 tint=UWIntegrateWater(i.color.rgb*(1+UWLocalLamp(i.world)*0.65),eye,i.world,float3(0,1,0));
                 return half4(tint,i.color.a*alpha);
             }

@@ -1,5 +1,6 @@
 #ifndef UW_WATER_VOLUME_INCLUDED
 #define UW_WATER_VOLUME_INCLUDED
+#include "WaterRegions.hlsl"
 #include "WaterInteraction.hlsl"
 // Coefficients are per metre. Share the same optics between opaque fog,
 // transparent suspended matter and reflected underwater paths.
@@ -35,8 +36,9 @@ void UWMedium(float3 samplePosition, int region, out float3 extinction, out half
 float2 UWVolumeInterval(float3 eye,float3 dir,float total,int region)
 {
     float3 safeDir=float3(abs(dir.x)<1e-5?1e-5:dir.x,abs(dir.y)<1e-5?1e-5:dir.y,abs(dir.z)<1e-5?1e-5:dir.z);
-    float3 lo=(float3(region*62.0-12.5,0,-25)-eye)/safeDir;
-    float3 hi=(float3(region*62.0+12.5,_WaterHeight,25)-eye)/safeDir;
+    float4 bounds=UWRegion(region);
+    float3 lo=(float3(bounds.x-bounds.z,0,bounds.y-bounds.w)-eye)/safeDir;
+    float3 hi=(float3(bounds.x+bounds.z,_WaterHeight,bounds.y+bounds.w)-eye)/safeDir;
     float3 nearT=min(lo,hi),farT=max(lo,hi);
     float entry=max(0,max(nearT.x,max(nearT.y,nearT.z)));
     float leave=min(total,min(farT.x,min(farT.y,farT.z)));

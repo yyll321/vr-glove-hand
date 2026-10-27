@@ -53,7 +53,8 @@ Shader "Underwater/Surface"
          float2 xa=o.world.xz-flow*first,xb=o.world.xz-flow*second;
          float3 pa,pb,n;UWWave(xa,pa,n);UWWave(xb,pb,n);
          float3 displacement=lerp(pa-float3(xa.x,0,xa.y),pb-float3(xb.x,0,xb.y),weight);
-         float edge=saturate((12.5-abs(o.world.x-_WaveCenter))*2)*saturate((25-abs(o.world.z))*2);
+         float4 bounds=UWRegion(_WaveCenter>31?1:0);
+         float edge=saturate((bounds.z-abs(o.world.x-bounds.x))*2)*saturate((bounds.w-abs(o.world.z-bounds.y))*2);
          o.world+=displacement*edge*_SurfaceWaveScale;
       }
       o.positionCS=TransformWorldToHClip(o.world); o.screen=ComputeScreenPos(o.positionCS); return o;

@@ -25,13 +25,14 @@ function Compile-UnityAssembly([string]$assemblyName, [string[]]$extraSources) {
         $options.Add('/reference:"' + $refPath + '"')
     }
     $sources = @($projectXml.SelectNodes('//p:Compile', $namespace) | ForEach-Object { $_.Include }) + $extraSources
-    foreach ($source in ($sources | Sort-Object -Unique)) { $options.Add('"' + (Join-Path $projectRoot $source) + '"') }
+    $normalizedSources = $sources | ForEach-Object { [IO.Path]::GetFullPath((Join-Path $projectRoot $_)) } | Sort-Object -Unique
+    foreach ($source in $normalizedSources) { $options.Add('"' + $source + '"') }
     $responseFile = Join-Path $compileRoot ($assemblyName + '.rsp')
     [IO.File]::WriteAllLines($responseFile, $options, (New-Object Text.UTF8Encoding($false)))
     & (Join-Path $UnityData 'NetCoreRuntime/dotnet.exe') (Join-Path $UnityData 'DotNetSdkRoslyn/csc.dll') ('@' + $responseFile) 2>&1 |
         Tee-Object -FilePath (Join-Path $compileRoot ($assemblyName + '.txt'))
     if ($LASTEXITCODE -ne 0) { throw ($assemblyName + ' compile failed with exit code ' + $LASTEXITCODE) }
 }
-Compile-UnityAssembly 'Assembly-CSharp' @('Assets/Underwater/Runtime/UnderwaterFluidVolume.cs', 'Assets/Underwater/Runtime/UnderwaterHydrodynamics.cs')
-Compile-UnityAssembly 'Assembly-CSharp-Editor' @('Assets/Underwater/Editor/UnderwaterPhysicsUpgrade.cs')
+Compile-UnityAssembly 'Assembly-CSharp' @((Get-ChildItem -LiteralPath (Join-Path $projectRoot 'Assets/Underwater/Runtime') -Filter '*.cs') | ForEach-Object { 'Assets/Underwater/Runtime/' + $_.Name })
+Compile-UnityAssembly 'Assembly-CSharp-Editor' @((Get-ChildItem -LiteralPath (Join-Path $projectRoot 'Assets/Underwater/Editor') -Filter '*.cs') | ForEach-Object { 'Assets/Underwater/Editor/' + $_.Name })
 Write-Output 'PASS runtime and editor assemblies compiled using Unity Roslyn. This does not run Unity or verify HMD rendering.'

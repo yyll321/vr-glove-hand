@@ -124,7 +124,8 @@ namespace UnderwaterBaseline
             }
             GUILayout.BeginArea(new Rect(18, 18, 500, 510), GUI.skin.box);
             GUILayout.Label(readout);
-            GUILayout.Label("25 x 50 m / 10 m deep | identical ROVp references\nWASD move | RMB look | Q/E dive/rise\nHold T aim, release teleport | F waterline | R reset\nTab / X compare | G grab/release | H hide this panel\n1/2/3 quality | P particles | B bubbles\nPICO L stick: up/down rise/dive; left/right approach/retreat\nRight grip + pose: arm position and wrist twist\nRight stick hold-click aim / release teleport\nY bubbles; L click quality | UdexReal: hand fingers");
+            Vector2 area=UnderwaterRegionSettings.Size(motor.InSeabed);
+            GUILayout.Label($"{area.x:F0} x {area.y:F0} m / 10 m deep | identical ROVp references\nWASD move | RMB look | Q/E dive/rise\nHold T aim, release teleport | F waterline | R reset\nTab / X compare | G grab/release | H hide this panel\n1/2/3 quality | P particles | B bubbles\nPICO L stick: up/down rise/dive; left/right approach/retreat\nRight grip + pose: arm position and wrist twist\nRight stick hold-click aim / release teleport\nY bubbles; L click quality | UdexReal: hand fingers");
             automatic = GUILayout.Toggle(automatic, "Automatic performance fallback");
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Surface / Underwater [F]")) motor.ToggleSurface();
