@@ -27,6 +27,11 @@ namespace UnderwaterBaseline
         public float ThumbGap {get;private set;}
         public float FingerGap {get;private set;}
         public float PinchGap {get;private set;}
+        public bool requireEnvelope;
+        public float envelopeContactGap=.018f;
+        public bool EnvelopeReady {get;private set;}
+        public Vector3 ThumbContactPoint {get;private set;}
+        public Vector3 FingerContactPoint {get;private set;}
         void LateUpdate()
         {
             if(!arm || !arm.Motor || arm.Motor.InSeabed!=arm.SeabedArea){if(Held)Release("region changed");return;}
@@ -40,6 +45,10 @@ namespace UnderwaterBaseline
         }
         public float ReadClosure()
         {
+            var hold=glove.GetComponent<Wa100JointPoseHold>();
+            // Commanded closing intent remains meaningful when physical contact
+            // stops the actual joint. Geometry still decides whether it encloses.
+            if(hold && hold.enabled && hold.FreshCommand)return hold.RequestedClosure;
             float sum=0;int count=0;
             foreach(var m in glove.JointMappings)if(m!=null && m.Enabled && m.Joint && m.UpperLimitDegrees>m.LowerLimitDegrees)
             {
@@ -56,7 +65,10 @@ namespace UnderwaterBaseline
             if(!link)return float.PositiveInfinity;float gap=float.PositiveInfinity;
             foreach(var c in link.GetComponentsInChildren<Collider>())if(c.enabled && !c.isTrigger &&
                 c.gameObject.activeInHierarchy)
-                gap=Mathf.Min(gap,Vector3.Distance(c.ClosestPoint(target.Shape.bounds.center),target.Shape.ClosestPoint(c.bounds.center)));
+            {
+                Vector3 digitPoint=c.ClosestPoint(target.Shape.bounds.center);
+                gap=Mathf.Min(gap,Vector3.Distance(digitPoint,target.Shape.ClosestPoint(digitPoint)));
+            }
             return gap;
         }
         public void Process(float closure,float dt,bool fresh,bool desktopAssist=false)
@@ -83,12 +95,35 @@ namespace UnderwaterBaseline
             Vector3 pinch=Thumb && Fingers.Length>0?(Thumb.position+Fingers[0].position)*.5f:PalmPoint;
             PinchGap=Vector3.Distance(pinch,Candidate.Shape.ClosestPoint(pinch));
             bool opposing=desktopAssist || ThumbGap<nearDistance && FingerGap<nearDistance;
+            EnvelopeReady=EnvelopeContacts(Candidate);
+            if(requireEnvelope && !desktopAssist)opposing=EnvelopeReady;
             bool withinReach=nearest<nearDistance || nearest<.32f && PinchGap<nearDistance;
+            if(requireEnvelope && !desktopAssist)withinReach=nearest<.4f && EnvelopeReady;
             bool close=withinReach && closure>=closeThreshold && fresh && armed && opposing;
             if(stableCandidate!=Candidate){stable=0;stableCandidate=Candidate;}
             stable=close?stable+dt:0;
-            Status=!armed?"OPEN hand before grasp":"APPROACH "+Candidate.targetId+" | thumb/finger "+ThumbGap.ToString("F2")+"/"+FingerGap.ToString("F2")+" m | "+(opposing?"contacts ready":"align opposing digits");
+            Status=!armed?"OPEN hand before grasp":"APPROACH "+Candidate.targetId+" | thumb/finger "+ThumbGap.ToString("F2")+"/"+FingerGap.ToString("F2")+" m | "+(opposing?"opposed lower-side contacts ready":"insert below / align opposing digits");
             if(stable>=stableSeconds)TryAttach(Candidate);
+        }
+        bool EnvelopeContacts(UnderwaterGraspTarget target)
+        {
+            if(!Thumb || Fingers==null)return false;
+            var shape=target.Shape;var centre=shape.bounds.center;
+            foreach(var a in Thumb.GetComponentsInChildren<Collider>())if(a.enabled && !a.isTrigger)
+            foreach(var finger in Fingers)if(finger)
+            foreach(var b in finger.GetComponentsInChildren<Collider>())if(b.enabled && !b.isTrigger)
+            {
+                Vector3 pa=a.ClosestPoint(centre),pb=b.ClosestPoint(centre);
+                float ga=Vector3.Distance(pa,shape.ClosestPoint(pa)),gb=Vector3.Distance(pb,shape.ClosestPoint(pb));
+                Vector3 da=Vector3.ProjectOnPlane(pa-centre,Vector3.up),db=Vector3.ProjectOnPlane(pb-centre,Vector3.up);
+                // Both digit surfaces must approach the lower half from opposed
+                // sides. Two points on the object's top cannot create a grasp.
+                if(ga<=envelopeContactGap && gb<=envelopeContactGap && da.magnitude>.008f && db.magnitude>.008f &&
+                   Vector3.Dot(da.normalized,db.normalized)<-.15f && Mathf.Min(pa.y,pb.y)<centre.y &&
+                   Mathf.Max(pa.y,pb.y)<centre.y+shape.bounds.size.y*.35f)
+                {ThumbContactPoint=pa;FingerContactPoint=pb;return true;}
+            }
+            return false;
         }
         void TryAttach(UnderwaterGraspTarget target)
         {

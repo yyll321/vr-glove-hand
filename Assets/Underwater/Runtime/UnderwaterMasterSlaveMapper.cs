@@ -27,10 +27,10 @@ namespace UnderwaterBaseline
         public Vector3 Target {get;private set;}
         public float ResistanceNewtons {get;private set;}
         public int TransitionCount {get;private set;}
-        Vector3 anchor,slaveAnchor,filteredVelocity;
+        Vector3 anchor,slaveAnchor,filteredVelocity,lastPositionGoal,contactNormal;
         Quaternion frame;
         bool position=true,ready;
-        float dwell,logTime;
+        float dwell,logTime,contactSeconds;
         StreamWriter writer;
 
         public void Begin(Vector3 master,Vector3 slave,Quaternion frozenTrackingRotation)
@@ -39,6 +39,7 @@ namespace UnderwaterBaseline
             Velocity=filteredVelocity=Vector3.zero;RawDelta=Normalized=Vector3.zero;
             position=mode!=Mode.Velocity && (mode==Mode.Position || InteractionDistance()<exitInteractionDistance);
             Stage=position?"Position":"Velocity";ready=true;dwell=0;
+            contactSeconds=0;lastPositionGoal=slave;
         }
         float InteractionDistance()
         {
@@ -74,11 +75,19 @@ namespace UnderwaterBaseline
             Vector3 desired;
             if(position)
             {
-                var goal=slaveAnchor+frame*Vector3.Scale(input,slavePositionRange);
-                desired=(goal-Target)/Mathf.Max(.02f,positionResponseSeconds);
+                lastPositionGoal=slaveAnchor+frame*Vector3.Scale(input,slavePositionRange);
+                desired=(lastPositionGoal-Target)/Mathf.Max(.02f,positionResponseSeconds);
             }
             else desired=frame*Vector3.ClampMagnitude(input,1)*maxSpeed;
             desired=Vector3.ClampMagnitude(desired,Mathf.Max(.001f,maxSpeed));
+            if(contactSeconds>0)
+            {
+                // Keep tangential adjustments alive instead of re-zeroing all
+                // axes/deadzones every blocked frame. The original solid guard
+                // still makes the final accept/reject decision.
+                desired-=contactNormal*Mathf.Min(0,Vector3.Dot(desired,contactNormal));
+                contactSeconds-=dt;
+            }
             ResistanceNewtons=0;
             float force=0;
             if(sand && task && task.arm && task.arm.Contact && task.arm.Contact.Hand)
@@ -93,10 +102,13 @@ namespace UnderwaterBaseline
             Target=actual+Vector3.ClampMagnitude(Target-actual,.055f);
             return Target;
         }
-        public void Reject(Vector3 master,Vector3 actual)
+        public void Reject(Vector3 master,Vector3 actual,Vector3 normal)
         {
-            Target=actual;Velocity=filteredVelocity=Vector3.zero;
-            if(position){anchor=master;slaveAnchor=actual;}
+            if(normal.sqrMagnitude<.1f)normal=Vector3.up;
+            contactNormal=normal.normalized;contactSeconds=.15f;Target=actual;
+            Velocity-=contactNormal*Mathf.Min(0,Vector3.Dot(Velocity,contactNormal));
+            filteredVelocity-=contactNormal*Mathf.Min(0,Vector3.Dot(filteredVelocity,contactNormal));
+            if(position)slaveAnchor+=contactNormal*Vector3.Dot(actual-lastPositionGoal,contactNormal);
         }
         public void Trace(PicoArmPoseDriver arm,float dt)
         {

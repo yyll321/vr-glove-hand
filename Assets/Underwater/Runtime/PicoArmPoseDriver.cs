@@ -73,7 +73,20 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
     public Vector3 RequestedTarget {get;private set;}
     public Vector3 FilteredTarget=>filteredTarget;
     public UnderwaterBaseline.UnderwaterMasterSlaveMapper MasterSlave;
-    public Vector4 CurrentJointAngles=>new Vector4(angles[0],angles[1],angles[2],angles[3]);
+    public Vector4 CurrentJointAngles
+    {
+        get
+        {
+            Vector4 result=Vector4.zero;
+            if(!initialized)return result;
+            for(int i=0;i<4;i++)
+            {
+                var q=Quaternion.Inverse(neutral[i])*Joints[i].localRotation;
+                result[i]=Mathf.DeltaAngle(0,2*Mathf.Atan2(Vector3.Dot(new Vector3(q.x,q.y,q.z),Axis(i)),q.w)*Mathf.Rad2Deg);
+            }
+            return result;
+        }
+    }
     readonly UnderwaterBaseline.UnderwaterTeleopFilter poseFilter=new UnderwaterBaseline.UnderwaterTeleopFilter();
     readonly float[] jointVelocity=new float[4],jointWeights=new float[3];
     Vector3 inputAnchorMetres,intentTarget,toolVelocity;Quaternion inputRotationAnchor,mappingRotation;
@@ -230,7 +243,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             wristRotationAnchor=Quaternion.Inverse(ArmBase.rotation)*Wrist.rotation;
             filteredTarget=Wrist.position;filteredRotation=Wrist.rotation;
             inputAnchorMetres=localPosition;inputRotationAnchor=localRotation;intentTarget=Wrist.position;toolVelocity=Vector3.zero;poseFilter.Reset(localPosition,localRotation);
-            if(hybrid)MasterSlave.Reject(localPosition,Wrist.position);
+            if(hybrid)MasterSlave.Reject(localPosition,Wrist.position,LastContactNormal);
         }
         else if(!hybrid && SmoothTeleoperation && Vector3.Distance(filteredTarget,Wrist.position)>.08f)
         {
@@ -305,6 +318,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
                 if(WholeArmContact && WholeArmContact.RejectStep())
                 {
                     SurfaceContact=true;
+                    LastContactNormal=WholeArmContact.LastNormal;
                     for(int i=0;i<4;i++)Joints[i].localRotation=Quaternion.Slerp(frameStart[i],proposed[i],accepted);
                     if(Contact && Contact.Hand)Contact.Hand.SyncMountedRoot();
                     break;

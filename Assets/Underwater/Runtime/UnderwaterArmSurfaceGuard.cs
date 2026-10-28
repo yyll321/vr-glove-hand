@@ -14,6 +14,7 @@ namespace UnderwaterBaseline
         public float skin=.003f;
         public int ShapeCount=>shapes.Count;
         public string LastSurface {get;private set;}="";
+        public Vector3 LastNormal {get;private set;}=Vector3.up;
         public bool QueryOverflow {get;private set;}
         sealed class Shape{public Transform link;public Bounds bounds;public Vector3 previous;public Quaternion rotation;}
         readonly List<Shape> shapes=new List<Shape>();
@@ -62,11 +63,11 @@ namespace UnderwaterBaseline
                 for(int i=0;i<count;i++)if(Surface(nearby[i]))
                 {
                     var c=nearby[i];queryBox.size=half*2;
-                    if(Physics.ComputePenetration(queryBox,centre,rotation,c,c.transform.position,c.transform.rotation,out _,out float depth))
+                    if(Physics.ComputePenetration(queryBox,centre,rotation,c,c.transform.position,c.transform.rotation,out var normal,out float depth))
                     {
                         long key=((long)s.link.GetInstanceID()<<32)^(uint)c.GetInstanceID();depths[key]=Mathf.Max(depths.TryGetValue(key,out float old)?old:0,depth);
                         if(depth>skin*.5f && (!previousDepths.TryGetValue(key,out float before) || depth>before+.00005f))
-                        {blocked=true;LastSurface=c.name;}
+                        {blocked=true;LastSurface=c.name;LastNormal=normal;}
                     }
                 }
                 var delta=centre-s.previous;
@@ -75,7 +76,7 @@ namespace UnderwaterBaseline
                     count=Physics.BoxCastNonAlloc(s.previous,half,delta.normalized,hits,s.rotation,delta.magnitude,surfaceMask,QueryTriggerInteraction.Ignore);
                     if(count==hits.Length){QueryOverflow=true;return true;}
                     for(int i=0;i<count;i++)if(Surface(hits[i].collider) && hits[i].distance>1e-5f && !previousDepths.ContainsKey(((long)s.link.GetInstanceID()<<32)^(uint)hits[i].collider.GetInstanceID()))
-                    {blocked=true;LastSurface=hits[i].collider.name;}
+                    {blocked=true;LastSurface=hits[i].collider.name;LastNormal=hits[i].normal;}
                 }
             }
             return blocked;

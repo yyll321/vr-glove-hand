@@ -10,6 +10,7 @@ Downloaded on 2026-10-27 from the public model pages below. These are third-part
 - License text: https://creativecommons.org/licenses/by/3.0/legalcode
 - Original model URL: https://static.poly.pizza/c9c1bc97-d76e-4e87-bd3a-87ab44b78aac.glb
 - Changes: selected the orange variant from the three provided variants, centered, scaled to 0.22 m, converted to OBJ; original texture retained. Added a box collision proxy and grasp behavior.
+- 2026-10-28 grasp revision: `StarfishThickZ.asset` derives from that OBJ. Converted its original Y thickness to local Z and increased thickness to 0.075 m, with a -90 degree X visual rotation to lay it flat in Unity. Original footprint, UVs and texture retained; normals/tangents recalculated. This is an intentionally thickened grasp-test proxy, not a biological dimensional model.
 
 ## Squid
 - Title: Squid

@@ -4446,7 +4446,7 @@ Transform:
   m_GameObject: {fileID: 288165575}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.15643448, z: -0, w: 0.98768836}
-  m_LocalPosition: {x: 0.6060156, y: 0.20466031, z: -4.6778307}
+  m_LocalPosition: {x: 0.6060156, y: 0.309, z: -4.537831}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4514,7 +4514,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2200112, y: 0.0413206, z: 0.223}
+  m_Size: {x: 0.2200112, y: 0.078, z: 0.223}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &290496589
 GameObject:
@@ -27516,7 +27516,7 @@ Transform:
   m_GameObject: {fileID: 817850503}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.13999987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27539,7 +27539,13 @@ MonoBehaviour:
   task: {fileID: 1529186323}
   sand: {fileID: 1238341727}
   support: {fileID: 1155404513}
-  sandDepth: 0.06
+  sandDepth: 0.16
+  pressurePerDepth: 18000
+  viscousPressure: 500
+  toolForceBudget: 35
+  fingerForceBudget: 9
+  maximumResistance: 200
+  visualSurfaceOffset: 0.012
 --- !u!1 &829520703
 GameObject:
   m_ObjectHideFlags: 0
@@ -36540,7 +36546,7 @@ Transform:
   m_GameObject: {fileID: 1048651229}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.76604444, z: -0, w: 0.64278764}
-  m_LocalPosition: {x: 63.048397, y: 0.24438922, z: -4.67592}
+  m_LocalPosition: {x: 63.048397, y: 0.33038923, z: -4.53592}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -44019,7 +44025,7 @@ Transform:
   m_GameObject: {fileID: 1174944216}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.15643448, z: -0, w: 0.98768836}
-  m_LocalPosition: {x: 62.6284, y: 0.21800253, z: -4.67592}
+  m_LocalPosition: {x: 62.6284, y: 0.32234222, z: -4.53592}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -44087,7 +44093,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2200112, y: 0.0413206, z: 0.223}
+  m_Size: {x: 0.2200112, y: 0.078, z: 0.223}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1176892024
 GameObject:
@@ -44386,7 +44392,7 @@ Transform:
   m_GameObject: {fileID: 1190959114}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.13999987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -44409,7 +44415,13 @@ MonoBehaviour:
   task: {fileID: 1561189705}
   sand: {fileID: 1203257784}
   support: {fileID: 1921002601}
-  sandDepth: 0.06
+  sandDepth: 0.16
+  pressurePerDepth: 18000
+  viscousPressure: 500
+  toolForceBudget: 35
+  fingerForceBudget: 9
+  maximumResistance: 200
+  visualSurfaceOffset: 0.012
 --- !u!1 &1192745333
 GameObject:
   m_ObjectHideFlags: 0
@@ -44713,7 +44725,7 @@ GameObject:
   - component: {fileID: 1203257784}
   - component: {fileID: 1203257783}
   m_Layer: 11
-  m_Name: Soft sand - HAND PASSES - targets supported
+  m_Name: Compressible sand - finger resistance - targets supported
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44728,8 +44740,8 @@ Transform:
   m_GameObject: {fileID: 1203257781}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8160156, y: 0.15, z: -4.6778307}
-  m_LocalScale: {x: 0.9, y: 0.06, z: 0.66}
+  m_LocalPosition: {x: 0.8160156, y: 0.19999999, z: -4.6778307}
+  m_LocalScale: {x: 0.9, y: 0.16, z: 0.66}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1190959115}
@@ -44795,8 +44807,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.925, z: 1}
+  m_Center: {x: 0, y: -0.0375, z: 0}
 --- !u!33 &1203257785
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -45665,7 +45677,7 @@ GameObject:
   - component: {fileID: 1238341727}
   - component: {fileID: 1238341726}
   m_Layer: 11
-  m_Name: Soft sand - HAND PASSES - targets supported
+  m_Name: Compressible sand - finger resistance - targets supported
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45680,8 +45692,8 @@ Transform:
   m_GameObject: {fileID: 1238341724}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 62.838398, y: 0.16334222, z: -4.67592}
-  m_LocalScale: {x: 0.9, y: 0.06, z: 0.66}
+  m_LocalPosition: {x: 62.838398, y: 0.21334222, z: -4.67592}
+  m_LocalScale: {x: 0.9, y: 0.16, z: 0.66}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 817850504}
@@ -45747,8 +45759,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.925, z: 1}
+  m_Center: {x: 0, y: -0.0375, z: 0}
 --- !u!33 &1238341728
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48016,7 +48028,7 @@ Transform:
   m_GameObject: {fileID: 1332699122}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.76604444, z: -0, w: 0.64278764}
-  m_LocalPosition: {x: 1.0260156, y: 0.231047, z: -4.6778307}
+  m_LocalPosition: {x: 1.0260156, y: 0.317047, z: -4.537831}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -51491,7 +51503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513388376}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -51547,7 +51559,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513388376}
-  m_Mesh: {fileID: -2432090755550338912, guid: 47ca51b36a8901b4b8bb5ac5f0754625, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e9f91dcc92cc8ae4da7523eb677e4f55, type: 2}
 --- !u!1 &1517462056
 GameObject:
   m_ObjectHideFlags: 0
@@ -51984,6 +51996,8 @@ MonoBehaviour:
   Fingers:
   - {fileID: 188973005476818806}
   - {fileID: 7671665454642723384}
+  requireEnvelope: 1
+  envelopeContactGap: 0.018
 --- !u!1 &1533319188
 GameObject:
   m_ObjectHideFlags: 0
@@ -53526,6 +53540,8 @@ MonoBehaviour:
   Fingers:
   - {fileID: 188973004061788883}
   - {fileID: 7671665455508348829}
+  requireEnvelope: 1
+  envelopeContactGap: 0.018
 --- !u!1 &1561335026
 GameObject:
   m_ObjectHideFlags: 0
@@ -62199,7 +62215,7 @@ Transform:
   m_GameObject: {fileID: 1771502159}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.5184, y: 0.028342217, z: -4.42592}
+  m_LocalPosition: {x: 63.5184, y: 0.028342217, z: -4.28592}
   m_LocalScale: {x: 0.55, y: 0.008, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63229,7 +63245,7 @@ Transform:
   m_GameObject: {fileID: 1815994725}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4960155, y: 0.015, z: -4.4278307}
+  m_LocalPosition: {x: 1.4960155, y: 0.015, z: -4.287831}
   m_LocalScale: {x: 0.55, y: 0.008, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67473,7 +67489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988140163}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -67529,7 +67545,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988140163}
-  m_Mesh: {fileID: -2432090755550338912, guid: 47ca51b36a8901b4b8bb5ac5f0754625, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e9f91dcc92cc8ae4da7523eb677e4f55, type: 2}
 --- !u!1 &1995700684
 GameObject:
   m_ObjectHideFlags: 0
@@ -82506,6 +82522,7 @@ GameObject:
   - component: {fileID: 3886778964068546999}
   - component: {fileID: 9045591431065197066}
   - component: {fileID: 6932106768338939936}
+  - component: {fileID: 9045591431065197067}
   m_Layer: 8
   m_Name: WA100_R_URDF_Official
   m_TagString: robot
@@ -82526,6 +82543,7 @@ GameObject:
   - component: {fileID: 3886778962787736594}
   - component: {fileID: 9045591431793475503}
   - component: {fileID: 6932106769066153349}
+  - component: {fileID: 9045591431793475504}
   m_Layer: 8
   m_Name: WA100_R_URDF_Official
   m_TagString: robot
@@ -94440,6 +94458,7 @@ GameObject:
   - component: {fileID: 1700000000000000046}
   - component: {fileID: 8596229464055433147}
   - component: {fileID: 8596229464055433148}
+  - component: {fileID: 8596229464055433149}
   m_Layer: 8
   m_Name: ROVp - Pool
   m_TagString: Untagged
@@ -94502,6 +94521,7 @@ MonoBehaviour:
   SingularityThreshold: 0.08
   MaximumDamping: 0.1
   JointLimitMargin: 18
+  MasterSlave: {fileID: 8596229464055433149}
 --- !u!114 &8596229464055433146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94561,6 +94581,33 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   skin: 0.003
+--- !u!114 &8596229464055433149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8596229464055433144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7be2d530c76614ca8bc9ce98524789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  task: {fileID: 1561189705}
+  sand: {fileID: 1190959116}
+  masterHalfRange: {x: 0.16, y: 0.12, z: 0.16}
+  slavePositionRange: {x: 0.12, y: 0.09, z: 0.12}
+  axisSigns: {x: 1, y: 1, z: 1}
+  deadZoneMetres: {x: 0.002, y: 0.002, z: 0.002}
+  maxSpeed: 0.18
+  maxAcceleration: 0.65
+  filterSeconds: 0.075
+  positionResponseSeconds: 0.12
+  enterInteractionDistance: 0.22
+  exitInteractionDistance: 0.3
+  transitionDwell: 0.2
+  recordTelemetry: 1
 --- !u!1 &8596229464787903005
 GameObject:
   m_ObjectHideFlags: 0
@@ -94575,6 +94622,7 @@ GameObject:
   - component: {fileID: 1700000000000000050}
   - component: {fileID: 8596229464787903008}
   - component: {fileID: 8596229464787903009}
+  - component: {fileID: 8596229464787903010}
   m_Layer: 8
   m_Name: ROVp - Seabed
   m_TagString: Untagged
@@ -94637,6 +94685,7 @@ MonoBehaviour:
   SingularityThreshold: 0.08
   MaximumDamping: 0.1
   JointLimitMargin: 18
+  MasterSlave: {fileID: 8596229464787903010}
 --- !u!114 &8596229464787903007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94696,6 +94745,33 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   skin: 0.003
+--- !u!114 &8596229464787903010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8596229464787903005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7be2d530c76614ca8bc9ce98524789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  task: {fileID: 1529186323}
+  sand: {fileID: 817850505}
+  masterHalfRange: {x: 0.16, y: 0.12, z: 0.16}
+  slavePositionRange: {x: 0.12, y: 0.09, z: 0.12}
+  axisSigns: {x: 1, y: 1, z: 1}
+  deadZoneMetres: {x: 0.002, y: 0.002, z: 0.002}
+  maxSpeed: 0.18
+  maxAcceleration: 0.65
+  filterSeconds: 0.075
+  positionResponseSeconds: 0.12
+  enterInteractionDistance: 0.22
+  exitInteractionDistance: 0.3
+  transitionDwell: 0.2
+  recordTelemetry: 1
 --- !u!4 &8620886332096446418
 Transform:
   m_ObjectHideFlags: 0
@@ -96160,8 +96236,8 @@ MonoBehaviour:
   AutoBindJoints: 1
   CharacterName: 
   DistalCoupling: 0.5
-  UseArticulationDriveLimits: 1
-  ConfigureDriveStrength: 1
+  UseArticulationDriveLimits: 0
+  ConfigureDriveStrength: 0
   DriveStiffness: 400
   DriveDamping: 30
   DriveForceLimit: 2
@@ -96316,6 +96392,30 @@ MonoBehaviour:
   AppliedFrameCount: 0
   BoundJointCount: 11
   LastStatus: Bound 11/11 WA100 joints
+--- !u!114 &9045591431065197067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449505511602003496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9872ee0819c967d4b84f95d3d7e2de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapper: {fileID: 9045591431065197066}
+  sand: {fileID: 817850505}
+  contact: {fileID: 8596229464787903007}
+  blockedLayers:
+    serializedVersion: 2
+    m_Bits: 1280
+  stiffness: 20000
+  damping: 180
+  forceLimit: 120
+  passiveComplianceDegrees: 0.6
+  maximumCommandSpeed: 55
+  penetrationTolerance: 0.0005
 --- !u!114 &9045591431793475503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96333,8 +96433,8 @@ MonoBehaviour:
   AutoBindJoints: 1
   CharacterName: 
   DistalCoupling: 0.5
-  UseArticulationDriveLimits: 1
-  ConfigureDriveStrength: 1
+  UseArticulationDriveLimits: 0
+  ConfigureDriveStrength: 0
   DriveStiffness: 400
   DriveDamping: 30
   DriveForceLimit: 2
@@ -96489,6 +96589,30 @@ MonoBehaviour:
   AppliedFrameCount: 0
   BoundJointCount: 11
   LastStatus: Bound 11/11 WA100 joints
+--- !u!114 &9045591431793475504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449505512346008461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9872ee0819c967d4b84f95d3d7e2de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapper: {fileID: 9045591431793475503}
+  sand: {fileID: 1190959116}
+  contact: {fileID: 8596229464055433146}
+  blockedLayers:
+    serializedVersion: 2
+    m_Bits: 1280
+  stiffness: 20000
+  damping: 180
+  forceLimit: 120
+  passiveComplianceDegrees: 0.6
+  maximumCommandSpeed: 55
+  penetrationTolerance: 0.0005
 --- !u!33 &9105634264685178253
 MeshFilter:
   m_ObjectHideFlags: 0
