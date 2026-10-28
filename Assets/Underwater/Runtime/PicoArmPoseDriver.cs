@@ -72,6 +72,8 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
     public float EffectiveDamping {get;private set;}
     public Vector3 RequestedTarget {get;private set;}
     public Vector3 FilteredTarget=>filteredTarget;
+    public UnderwaterBaseline.UnderwaterMasterSlaveMapper MasterSlave;
+    public Vector4 CurrentJointAngles=>new Vector4(angles[0],angles[1],angles[2],angles[3]);
     readonly UnderwaterBaseline.UnderwaterTeleopFilter poseFilter=new UnderwaterBaseline.UnderwaterTeleopFilter();
     readonly float[] jointVelocity=new float[4],jointWeights=new float[3];
     Vector3 inputAnchorMetres,intentTarget,toolVelocity;Quaternion inputRotationAnchor,mappingRotation;
@@ -169,6 +171,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             inputAnchorMetres=localPosition;inputRotationAnchor=localRotation;mappingRotation=TrackingOrigin.rotation;
             intentTarget=Wrist.position;toolVelocity=Vector3.zero;System.Array.Clear(jointVelocity,0,4);
             poseFilter.Reset(localPosition,localRotation);
+            if(MasterSlave && MasterSlave.enabled)MasterSlave.Begin(localPosition,Wrist.position,mappingRotation);
             Status = "Arm calibrated at current pose";
             return;
         }
@@ -178,7 +181,13 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
                                     Quaternion.Inverse(controllerRotationAnchor) * wristRotationAnchor;
         float dt = Mathf.Clamp(deltaTime,0,0.05f);
         if(dt<=0)return;
-        if(SmoothTeleoperation)
+        bool hybrid=MasterSlave && MasterSlave.enabled;
+        if(hybrid)
+        {
+            filteredTarget=target=MasterSlave.Step(localPosition,Wrist.position,dt);
+            targetRotation=mappingRotation*localRotation*Quaternion.Inverse(inputRotationAnchor)*Quaternion.Inverse(mappingRotation)*ArmBase.rotation*wristRotationAnchor;
+        }
+        else if(SmoothTeleoperation)
         {
             var position=poseFilter.Position(localPosition,dt,FilterMinimumHz,FilterSpeedBeta);
             var rotation=poseFilter.Rotation(localRotation,dt,FilterMinimumHz,1);
@@ -195,7 +204,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             else filteredTarget+=advance;
         }
         float blend = TargetSmoothingSeconds>0 ? 1-Mathf.Exp(-dt/TargetSmoothingSeconds) : 1;
-        if(!SmoothTeleoperation)filteredTarget = Vector3.Lerp(filteredTarget,target,blend);
+        if(!SmoothTeleoperation && !hybrid)filteredTarget = Vector3.Lerp(filteredTarget,target,blend);
         filteredRotation = Quaternion.Slerp(filteredRotation,targetRotation,blend);
         RequestedTarget=target;
         CaptureJointState();
@@ -203,9 +212,9 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
         if (PreventSurfacePenetration && WholeArmContact) WholeArmContact.BeginMotion();
         SolvePosition(filteredTarget, dt);
         SolveWristRotation(filteredRotation, dt);
-        if(SmoothTeleoperation)LimitJointAcceleration(dt);
+        if(SmoothTeleoperation || hybrid)LimitJointAcceleration(dt);
         ApplyContactConstraint();
-        if(SmoothTeleoperation)for(int i=0;i<4;i++)jointVelocity[i]=SurfaceContact?0:JointDelta(i)/dt;
+        if(SmoothTeleoperation || hybrid)for(int i=0;i<4;i++)jointVelocity[i]=SurfaceContact?0:JointDelta(i)/dt;
         AppliedPoseCount++;
         PositionError = Vector3.Distance(Wrist.position,filteredTarget);
         RequestedPositionError = Vector3.Distance(Wrist.position,target);
@@ -221,8 +230,9 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             wristRotationAnchor=Quaternion.Inverse(ArmBase.rotation)*Wrist.rotation;
             filteredTarget=Wrist.position;filteredRotation=Wrist.rotation;
             inputAnchorMetres=localPosition;inputRotationAnchor=localRotation;intentTarget=Wrist.position;toolVelocity=Vector3.zero;poseFilter.Reset(localPosition,localRotation);
+            if(hybrid)MasterSlave.Reject(localPosition,Wrist.position);
         }
-        else if(SmoothTeleoperation && Vector3.Distance(filteredTarget,Wrist.position)>.08f)
+        else if(!hybrid && SmoothTeleoperation && Vector3.Distance(filteredTarget,Wrist.position)>.08f)
         {
             // Bounded tracking lead at reach/limit saturation, so reversal need not
             // undo a large unreachable displacement before the arm responds.
@@ -232,6 +242,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
         }
         Status = SurfaceContact ? "Surface contact: hand motion blocked; right-hand pulse" :
             PositionError < 0.025f ? "Following position and available wrist twist (4 DOF)" : "Following; reach / joint-speed / software limit";
+        if(hybrid){Status=MasterSlave.Stage+" | "+Status;MasterSlave.Trace(this,dt);}
     }
 
     public Vector3 JointAxisLocal(int i)=>i==0 && UseCalibratedBaseYaw?BaseYawAxisLocal.normalized:i==0||i==3?Vector3.up:Vector3.forward;
