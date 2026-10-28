@@ -25,13 +25,10 @@ namespace UnderwaterBaseline.Editor
             foreach(var task in Object.FindObjectsOfType<UnderwaterGraspTask>())
             {
                 var mapper=task.glove;mapper.UseArticulationDriveLimits=false;mapper.ConfigureDriveStrength=false;
+                ConfigureSerialThumb(mapper);
                 mapper.UseHandDriverMappings();
-                var thumb=mapper.JointMappings.First(m=>m.LinkName=="Thumb_L1").Joint;
-                var anchor=thumb.anchorRotation;var parentAnchor=thumb.parentAnchorRotation;
-                thumb.jointType=ArticulationJointType.SphericalJoint;
-                thumb.matchAnchors=false;thumb.anchorRotation=anchor;thumb.parentAnchorRotation=parentAnchor;
-                thumb.twistLock=ArticulationDofLock.LimitedMotion;thumb.swingYLock=ArticulationDofLock.LockedMotion;thumb.swingZLock=ArticulationDofLock.LimitedMotion;
-                foreach(var m in mapper.JointMappings.Where(m=>m.Joint==thumb))
+                var thumb=mapper.JointMappings[0].Joint;
+                foreach(var m in mapper.JointMappings.Take(2))
                 {var d=Wa100UdexRealArticulationMapper.GetDrive(m);d.lowerLimit=m.LowerLimitDegrees;d.upperLimit=m.UpperLimitDegrees;d.target=0;d.stiffness=30000;d.damping=220;d.forceLimit=180;Wa100UdexRealArticulationMapper.SetDrive(m,d);}
                 var bench=task.GetComponentInChildren<UnderwaterGraspBench>();
                 var surface=bench.GetComponentInChildren<UnderwaterDeformableSand>();
@@ -56,6 +53,47 @@ namespace UnderwaterBaseline.Editor
                 }
                 bench.sand.GetComponent<MeshFilter>().sharedMesh=sides;bench.sand.GetComponent<MeshRenderer>().sharedMaterial=material;
                 foreach(var o in new Object[]{mapper,thumb,bench,surface,bench.sand.GetComponent<MeshFilter>(),bench.sand.GetComponent<MeshRenderer>()})EditorUtility.SetDirty(o);
+            }
+            EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
+        }
+        public static void ConfigureSerialThumb(Wa100UdexRealArticulationMapper mapper)
+        {
+            // The two-axis spherical joint was stable at rest but flipped under
+            // mounted-root motion, even with constant commands and no contacts.
+            // Two serial hinges keep the two freedoms without spherical coupling.
+            var thumb=mapper.GetComponentsInChildren<ArticulationBody>(true).First(b=>b.name=="Thumb_L1");
+            var anchor=thumb.anchorRotation;var parentAnchor=thumb.parentAnchorRotation;
+            thumb.jointType=ArticulationJointType.RevoluteJoint;thumb.matchAnchors=false;
+            thumb.anchorRotation=anchor;thumb.parentAnchorRotation=parentAnchor;
+            thumb.twistLock=ArticulationDofLock.LimitedMotion;thumb.swingYLock=ArticulationDofLock.LockedMotion;thumb.swingZLock=ArticulationDofLock.LockedMotion;
+            var pivot=thumb.transform.Find("Thumb_CMC_PitchPivot");
+            if(!pivot)
+            {
+                var children=Enumerable.Range(0,thumb.transform.childCount).Select(i=>thumb.transform.GetChild(i)).ToArray();
+                pivot=new GameObject("Thumb_CMC_PitchPivot").transform;pivot.SetParent(thumb.transform,false);
+                // Identity pivot preserves the saved mesh/collider and distal
+                // joint frames. Its X hinge represents the former local Z swing.
+                foreach(var child in children)child.SetParent(pivot,false);
+                var body=pivot.gameObject.AddComponent<ArticulationBody>();body.jointType=ArticulationJointType.RevoluteJoint;
+                body.matchAnchors=false;body.anchorPosition=body.parentAnchorPosition=Vector3.zero;
+                body.anchorRotation=body.parentAnchorRotation=Quaternion.FromToRotation(Vector3.right,Vector3.forward);
+                body.twistLock=ArticulationDofLock.LimitedMotion;body.swingYLock=body.swingZLock=ArticulationDofLock.LockedMotion;
+                body.mass=.02f;body.useGravity=false;body.solverIterations=32;body.solverVelocityIterations=12;body.maxJointVelocity=4.2f;
+                var drive=body.xDrive;drive.lowerLimit=0;drive.upperLimit=65;drive.stiffness=30000;drive.damping=220;drive.forceLimit=180;body.xDrive=drive;
+            }
+            EditorUtility.SetDirty(thumb);EditorUtility.SetDirty(pivot.GetComponent<ArticulationBody>());
+        }
+        [MenuItem("Tools/Underwater/Research/37 Stabilize Thumb During Arm Motion")]
+        public static void RepairThumb()
+        {
+            var scene=UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            if(EditorApplication.isPlayingOrWillChangePlaymode || scene.path!=UnderwaterRadarSurveyTools.ScenePath)throw new Exception("Open survey scene outside Play");
+            EditorSceneManager.SaveScene(scene,"Assets/Underwater/Backups/Survey-beforeThumbMotion-"+DateTime.Now.ToString("yyyyMMdd-HHmmss")+".unity",true);
+            foreach(var mapper in Object.FindObjectsOfType<Wa100UdexRealArticulationMapper>())
+            {
+                ConfigureSerialThumb(mapper);mapper.UseArticulationDriveLimits=false;mapper.UseHandDriverMappings();
+                foreach(var m in mapper.JointMappings.Take(2)){var d=Wa100UdexRealArticulationMapper.GetDrive(m);d.lowerLimit=m.LowerLimitDegrees;d.upperLimit=m.UpperLimitDegrees;d.target=0;d.stiffness=30000;d.damping=220;d.forceLimit=180;Wa100UdexRealArticulationMapper.SetDrive(m,d);}
+                EditorUtility.SetDirty(mapper);
             }
             EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
         }

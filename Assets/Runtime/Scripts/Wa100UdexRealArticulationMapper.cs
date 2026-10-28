@@ -122,7 +122,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
         DistalCoupling=0;ResponseScale=1;
         JointMappings=new[]{
             SignedMap("Thumb_J1_Yaw","Thumb_L1","r3",null,-1,0,-45,45,true),
-            SignedMap("Thumb_J1_Pitch","Thumb_L1","r2",null,.6f,0,0,65,true),
+            SignedMap("Thumb_J1_Pitch","Thumb_CMC_PitchPivot","r2",null,.6f,0,0,65,true),
             SignedMap("Thumb_J2","Thumb_L2","r1",null,1,0,0,89.95438f,true),
             SignedMap("Thumb_J3","Thumb_L3","r0",null,-1,0,-89.95438f,0,true),
             SignedMap("Index_Finger_J1","Index_Finger_L1","r6",null,1,0,0,89.95438f,true),
@@ -133,7 +133,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
             SignedMap("Ring_Finger_J2","Ring_Finger_L2","r13",null,1,0,0,89.95438f,true),
             SignedMap("Little_Finger_J1","Little_Finger_L1","r18",null,1,0,0,89.95438f,true),
             SignedMap("Little_Finger_J2","Little_Finger_L2","r17",null,1,0,0,89.95438f,true)};
-        JointMappings[0].CountsForClosure=false;JointMappings[1].Axis=DriveAxis.Z;
+        JointMappings[0].CountsForClosure=false;
         foreach(var m in JointMappings)m.DeadZoneDegrees=.5f;
         ResolvedCharacterName=LastInputUtc=null;frameKeys=null;
         AutoBind();

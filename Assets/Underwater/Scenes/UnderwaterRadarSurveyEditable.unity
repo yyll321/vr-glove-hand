@@ -18272,6 +18272,107 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615324536}
   m_Mesh: {fileID: 4300000, guid: c5fd37097ee0b684fa5f5623d9532bac, type: 2}
+--- !u!1 &616480090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616480091}
+  - component: {fileID: 616480092}
+  m_Layer: 0
+  m_Name: Thumb_CMC_PitchPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &616480091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616480090}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2684231237427992982}
+  - {fileID: 5997183707164734696}
+  - {fileID: 6315299636988904673}
+  m_Father: {fileID: 496280749152746482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!171741748 &616480092
+ArticulationBody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616480090}
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Mass: 0.02
+  m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
+  m_ParentAnchorRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_AnchorPosition: {x: 0, y: 0, z: 0}
+  m_AnchorRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_MatchAnchors: 0
+  m_ArticulationJointType: 2
+  m_LinearX: 2
+  m_LinearY: 2
+  m_LinearZ: 2
+  m_SwingY: 0
+  m_SwingZ: 0
+  m_Twist: 1
+  m_XDrive:
+    lowerLimit: 0
+    upperLimit: 65
+    stiffness: 30000
+    damping: 220
+    forceLimit: 180
+    target: 0
+    targetVelocity: 0
+    driveType: 0
+  m_YDrive:
+    lowerLimit: 0
+    upperLimit: 0
+    stiffness: 0
+    damping: 0
+    forceLimit: 3.4028235e+38
+    target: 0
+    targetVelocity: 0
+    driveType: 0
+  m_ZDrive:
+    lowerLimit: 0
+    upperLimit: 0
+    stiffness: 0
+    damping: 0
+    forceLimit: 3.4028235e+38
+    target: 0
+    targetVelocity: 0
+    driveType: 0
+  m_LinearDamping: 0.05
+  m_AngularDamping: 0.05
+  m_JointFriction: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_Immovable: 0
+  m_UseGravity: 0
+  m_CollisionDetectionMode: 0
 --- !u!1 &623973993
 GameObject:
   m_ObjectHideFlags: 0
@@ -47021,6 +47122,107 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301829640}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1307766371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307766372}
+  - component: {fileID: 1307766373}
+  m_Layer: 0
+  m_Name: Thumb_CMC_PitchPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1307766372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307766371}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2684231238290488371}
+  - {fileID: 5997183708450836813}
+  - {fileID: 6315299635703849284}
+  m_Father: {fileID: 496280748424535639}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!171741748 &1307766373
+ArticulationBody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307766371}
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Mass: 0.02
+  m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
+  m_ParentAnchorRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_AnchorPosition: {x: 0, y: 0, z: 0}
+  m_AnchorRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_MatchAnchors: 0
+  m_ArticulationJointType: 2
+  m_LinearX: 2
+  m_LinearY: 2
+  m_LinearZ: 2
+  m_SwingY: 0
+  m_SwingZ: 0
+  m_Twist: 1
+  m_XDrive:
+    lowerLimit: 0
+    upperLimit: 65
+    stiffness: 30000
+    damping: 220
+    forceLimit: 180
+    target: 0
+    targetVelocity: 0
+    driveType: 0
+  m_YDrive:
+    lowerLimit: 0
+    upperLimit: 0
+    stiffness: 0
+    damping: 0
+    forceLimit: 3.4028235e+38
+    target: 0
+    targetVelocity: 0
+    driveType: 0
+  m_ZDrive:
+    lowerLimit: 0
+    upperLimit: 0
+    stiffness: 0
+    damping: 0
+    forceLimit: 3.4028235e+38
+    target: 0
+    targetVelocity: 0
+    driveType: 0
+  m_LinearDamping: 0.05
+  m_AngularDamping: 0.05
+  m_JointFriction: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_Immovable: 0
+  m_UseGravity: 0
+  m_CollisionDetectionMode: 0
 --- !u!1 &1311017388
 GameObject:
   m_ObjectHideFlags: 0
@@ -72756,9 +72958,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2684231238290488371}
-  - {fileID: 5997183708450836813}
-  - {fileID: 6315299635703849284}
+  - {fileID: 1307766372}
   m_Father: {fileID: 313190995423052670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &496280749152746482
@@ -72774,9 +72974,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2684231237427992982}
-  - {fileID: 5997183707164734696}
-  - {fileID: 6315299636988904673}
+  - {fileID: 616480091}
   m_Father: {fileID: 313190996708058843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &553730841210998947
@@ -79470,7 +79668,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 992960302037985814}
-  m_Father: {fileID: 496280749152746482}
+  m_Father: {fileID: 616480091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2684231238290488371
 Transform:
@@ -79486,7 +79684,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 992960302786105267}
-  m_Father: {fileID: 496280748424535639}
+  m_Father: {fileID: 1307766372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2692274321352781653
 Transform:
@@ -87913,7 +88111,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3540691826877270591}
-  m_Father: {fileID: 496280749152746482}
+  m_Father: {fileID: 616480091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5997183708450836813
 Transform:
@@ -87929,7 +88127,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3540691828293414810}
-  m_Father: {fileID: 496280748424535639}
+  m_Father: {fileID: 1307766372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6018714261718718952
 Transform:
@@ -88358,7 +88556,7 @@ Transform:
   - {fileID: 5909059185231041474}
   - {fileID: 7832520600850678578}
   - {fileID: 7165589636966183492}
-  m_Father: {fileID: 496280748424535639}
+  m_Father: {fileID: 1307766372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6315299636988904673
 Transform:
@@ -88376,7 +88574,7 @@ Transform:
   - {fileID: 5909059183828547175}
   - {fileID: 7832520599968343703}
   - {fileID: 7165589635551090657}
-  m_Father: {fileID: 496280749152746482}
+  m_Father: {fileID: 616480091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6319012549342351676
 MonoBehaviour:
@@ -96410,12 +96608,12 @@ ArticulationBody:
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_MatchAnchors: 0
-  m_ArticulationJointType: 3
+  m_ArticulationJointType: 2
   m_LinearX: 1
   m_LinearY: 0
   m_LinearZ: 0
   m_SwingY: 0
-  m_SwingZ: 1
+  m_SwingZ: 0
   m_Twist: 1
   m_XDrive:
     lowerLimit: -45
@@ -96476,12 +96674,12 @@ ArticulationBody:
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_MatchAnchors: 0
-  m_ArticulationJointType: 3
+  m_ArticulationJointType: 2
   m_LinearX: 1
   m_LinearY: 0
   m_LinearZ: 0
   m_SwingY: 0
-  m_SwingZ: 1
+  m_SwingZ: 0
   m_Twist: 1
   m_XDrive:
     lowerLimit: -45
@@ -96594,9 +96792,9 @@ MonoBehaviour:
     UseAbsoluteDelta: 0
     DeadZoneDegrees: 0.5
   - JointName: Thumb_J1_Pitch
-    LinkName: Thumb_L1
-    Joint: {fileID: 8972179039941610997}
-    Axis: 2
+    LinkName: Thumb_CMC_PitchPivot
+    Joint: {fileID: 616480092}
+    Axis: 0
     CountsForClosure: 1
     PrimaryKey: r2
     SecondaryKey: 
@@ -96832,9 +97030,9 @@ MonoBehaviour:
     UseAbsoluteDelta: 0
     DeadZoneDegrees: 0.5
   - JointName: Thumb_J1_Pitch
-    LinkName: Thumb_L1
-    Joint: {fileID: 8972179038655506512}
-    Axis: 2
+    LinkName: Thumb_CMC_PitchPivot
+    Joint: {fileID: 1307766373}
+    Axis: 0
     CountsForClosure: 1
     PrimaryKey: r2
     SecondaryKey: 

@@ -83,6 +83,8 @@ namespace UnderwaterBaseline.Editor
                 else if (command == "glovesandaudit") UnderwaterGloveSandUpgrade.Audit();
                 else if (command == "glovesandupgrade") UnderwaterGloveSandUpgrade.Apply();
                 else if (command == "glovesandsmoke") UnderwaterGloveSandChecks.Run();
+                else if (command == "thumbmotionsmoke") UnderwaterThumbMotionChecks.Run();
+                else if (command == "thumbmotionrepair") UnderwaterGloveSandUpgrade.RepairThumb();
                 else if (command == "handreefclearance") UnderwaterDenseSurveyUpgrade.RepairHandClearance();
                 else throw new Exception("Unknown command " + command);
                 File.WriteAllText("Logs/UnderwaterCommandResult.txt", "PASS " + DateTime.Now.ToString("O"));
