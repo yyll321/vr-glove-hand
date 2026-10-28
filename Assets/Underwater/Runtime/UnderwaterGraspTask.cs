@@ -45,7 +45,7 @@ namespace UnderwaterBaseline
         void LateUpdate()
         {
             if(!arm || !arm.Motor || arm.Motor.InSeabed!=arm.SeabedArea){if(Held)Release("region changed");return;}
-            GloveFresh=glove && glove.Network && DateTime.TryParse(glove.Network.LastPacketUtc,out var packet) && (DateTime.UtcNow-packet.ToUniversalTime()).TotalSeconds<1;
+            GloveFresh=glove && (glove.MatchHandDriverAngles?glove.HasFreshFrame:glove.Network && DateTime.TryParse(glove.Network.LastPacketUtc,out var packet) && (DateTime.UtcNow-packet.ToUniversalTime()).TotalSeconds<1);
             var key=Keyboard.current;
             if(GloveFresh)desktopAssist=false;
             else if(key!=null && key.f5Key.wasPressedThisFrame){desktopAssist=true;desktopClosed=!desktopClosed;}
@@ -62,7 +62,7 @@ namespace UnderwaterBaseline
             // stops the actual joint. Geometry still decides whether it encloses.
             if(hold && hold.enabled && hold.FreshCommand)return hold.RequestedClosure;
             float sum=0;int count=0;
-            foreach(var m in glove.JointMappings)if(m!=null && m.Enabled && m.Joint && m.UpperLimitDegrees>m.LowerLimitDegrees)
+            foreach(var m in glove.JointMappings)if(m!=null && m.Enabled && m.CountsForClosure && m.Joint && m.UpperLimitDegrees>m.LowerLimitDegrees)
             {
                 // WA100 thumb joints can close toward a negative limit; zero is
                 // the open calibration. Lower-limit normalization misread an open

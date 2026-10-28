@@ -27522,6 +27522,7 @@ Transform:
   m_Children:
   - {fileID: 1155404511}
   - {fileID: 1238341725}
+  - {fileID: 1190077047}
   m_Father: {fileID: 1529186322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &817850505
@@ -27546,6 +27547,7 @@ MonoBehaviour:
   fingerForceBudget: 24
   maximumResistance: 200
   visualSurfaceOffset: 0.012
+  deformable: {fileID: 1190077048}
 --- !u!1 &829520703
 GameObject:
   m_ObjectHideFlags: 0
@@ -44366,6 +44368,140 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186481134}
   m_Mesh: {fileID: 4300000, guid: c5fd37097ee0b684fa5f5623d9532bac, type: 2}
+--- !u!1 &1190077046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1190077047}
+  - component: {fileID: 1190077051}
+  - component: {fileID: 1190077050}
+  - component: {fileID: 1190077049}
+  - component: {fileID: 1190077048}
+  m_Layer: 11
+  m_Name: Deformable fine sand - finger cavities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1190077047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190077046}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 62.838398, y: 0.2933422, z: -4.67592}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 817850504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1190077048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190077046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7c1cc03c2b4b74bbc493b09c445a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bench: {fileID: 817850505}
+  visualTemplate: {fileID: 4300000, guid: e3abf95b00e9fc34ca70b77217018954, type: 2}
+  collisionTemplate: {fileID: 4300000, guid: 2facd2e044459c04cb0d02f96b30c631, type: 2}
+  columns: 180
+  rows: 132
+  collisionColumns: 60
+  collisionRows: 44
+  width: 0.9
+  length: 0.66
+  maximumDepth: 0.135
+  edgeWidth: 0.015
+  slumpSpeed: 0.0015
+  updateHz: 20
+  collisionHz: 5
+  automaticStamping: 1
+--- !u!64 &1190077049
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190077046}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 2facd2e044459c04cb0d02f96b30c631, type: 2}
+--- !u!23 &1190077050
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190077046}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 03d22fc0267a7d240b5b05e435ffe35a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1190077051
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190077046}
+  m_Mesh: {fileID: 4300000, guid: e3abf95b00e9fc34ca70b77217018954, type: 2}
 --- !u!1 &1190959114
 GameObject:
   m_ObjectHideFlags: 0
@@ -44398,6 +44534,7 @@ Transform:
   m_Children:
   - {fileID: 1921002599}
   - {fileID: 1203257782}
+  - {fileID: 1349685725}
   m_Father: {fileID: 1561189704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1190959116
@@ -44422,6 +44559,7 @@ MonoBehaviour:
   fingerForceBudget: 24
   maximumResistance: 200
   visualSurfaceOffset: 0.012
+  deformable: {fileID: 1349685721}
 --- !u!1 &1192745333
 GameObject:
   m_ObjectHideFlags: 0
@@ -44766,7 +44904,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 127bea3e864919d48a96540cfd9a8211, type: 2}
+  - {fileID: 2100000, guid: 03d22fc0267a7d240b5b05e435ffe35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -44816,7 +44954,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203257781}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 73126b29651cd0f4c9f8fbc65e290179, type: 2}
 --- !u!1 &1206218822
 GameObject:
   m_ObjectHideFlags: 0
@@ -45718,7 +45856,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 127bea3e864919d48a96540cfd9a8211, type: 2}
+  - {fileID: 2100000, guid: 03d22fc0267a7d240b5b05e435ffe35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -45768,7 +45906,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1238341724}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 73126b29651cd0f4c9f8fbc65e290179, type: 2}
 --- !u!1 &1244942543
 GameObject:
   m_ObjectHideFlags: 0
@@ -48499,6 +48637,140 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349475073}
   m_Mesh: {fileID: 4300000, guid: 206675264efae5ffed666a5f9f95b835, type: 2}
+--- !u!1 &1349685720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1349685725}
+  - component: {fileID: 1349685724}
+  - component: {fileID: 1349685723}
+  - component: {fileID: 1349685722}
+  - component: {fileID: 1349685721}
+  m_Layer: 11
+  m_Name: Deformable fine sand - finger cavities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1349685721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349685720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7c1cc03c2b4b74bbc493b09c445a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bench: {fileID: 1190959116}
+  visualTemplate: {fileID: 4300000, guid: e3abf95b00e9fc34ca70b77217018954, type: 2}
+  collisionTemplate: {fileID: 4300000, guid: 2facd2e044459c04cb0d02f96b30c631, type: 2}
+  columns: 180
+  rows: 132
+  collisionColumns: 60
+  collisionRows: 44
+  width: 0.9
+  length: 0.66
+  maximumDepth: 0.135
+  edgeWidth: 0.015
+  slumpSpeed: 0.0015
+  updateHz: 20
+  collisionHz: 5
+  automaticStamping: 1
+--- !u!64 &1349685722
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349685720}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 2facd2e044459c04cb0d02f96b30c631, type: 2}
+--- !u!23 &1349685723
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349685720}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 03d22fc0267a7d240b5b05e435ffe35a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1349685724
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349685720}
+  m_Mesh: {fileID: 4300000, guid: e3abf95b00e9fc34ca70b77217018954, type: 2}
+--- !u!4 &1349685725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349685720}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8160156, y: 0.28, z: -4.6778307}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1190959115}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1351389847
 GameObject:
   m_ObjectHideFlags: 0
@@ -96137,20 +96409,20 @@ ArticulationBody:
   m_ParentAnchorRotation: {x: 0.5000012, y: -0.5000012, z: -0.4999993, w: 0.4999993}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_MatchAnchors: 1
-  m_ArticulationJointType: 2
+  m_MatchAnchors: 0
+  m_ArticulationJointType: 3
   m_LinearX: 1
   m_LinearY: 0
   m_LinearZ: 0
-  m_SwingY: 2
-  m_SwingZ: 2
+  m_SwingY: 0
+  m_SwingZ: 1
   m_Twist: 1
   m_XDrive:
-    lowerLimit: -89.95438
-    upperLimit: 0
-    stiffness: 400
-    damping: 30
-    forceLimit: 2
+    lowerLimit: -45
+    upperLimit: 45
+    stiffness: 30000
+    damping: 220
+    forceLimit: 180
     target: 0
     targetVelocity: 0
     driveType: 0
@@ -96165,10 +96437,10 @@ ArticulationBody:
     driveType: 0
   m_ZDrive:
     lowerLimit: 0
-    upperLimit: 0
-    stiffness: 0
-    damping: 0
-    forceLimit: 3.4028235e+38
+    upperLimit: 65
+    stiffness: 30000
+    damping: 220
+    forceLimit: 180
     target: 0
     targetVelocity: 0
     driveType: 0
@@ -96203,20 +96475,20 @@ ArticulationBody:
   m_ParentAnchorRotation: {x: 0.5000012, y: -0.5000012, z: -0.4999993, w: 0.4999993}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_MatchAnchors: 1
-  m_ArticulationJointType: 2
+  m_MatchAnchors: 0
+  m_ArticulationJointType: 3
   m_LinearX: 1
   m_LinearY: 0
   m_LinearZ: 0
-  m_SwingY: 2
-  m_SwingZ: 2
+  m_SwingY: 0
+  m_SwingZ: 1
   m_Twist: 1
   m_XDrive:
-    lowerLimit: -89.95438
-    upperLimit: 0
-    stiffness: 400
-    damping: 30
-    forceLimit: 2
+    lowerLimit: -45
+    upperLimit: 45
+    stiffness: 30000
+    damping: 220
+    forceLimit: 180
     target: 0
     targetVelocity: 0
     driveType: 0
@@ -96231,10 +96503,10 @@ ArticulationBody:
     driveType: 0
   m_ZDrive:
     lowerLimit: 0
-    upperLimit: 0
-    stiffness: 0
-    damping: 0
-    forceLimit: 3.4028235e+38
+    upperLimit: 65
+    stiffness: 30000
+    damping: 220
+    forceLimit: 180
     target: 0
     targetVelocity: 0
     driveType: 0
@@ -96295,21 +96567,68 @@ MonoBehaviour:
   AutoFindNetwork: 0
   AutoBindJoints: 1
   CharacterName: 
-  DistalCoupling: 0.5
+  DistalCoupling: 0
   UseArticulationDriveLimits: 0
   ConfigureDriveStrength: 0
   DriveStiffness: 400
   DriveDamping: 30
   DriveForceLimit: 2
-  AutoCalibrateNeutralOnFirstPacket: 1
+  AutoCalibrateNeutralOnFirstPacket: 0
   IsNeutralCalibrated: 0
   ResponseScale: 1
   SmoothingSpeed: 28
   JointMappings:
-  - JointName: Thumb_J1
+  - JointName: Thumb_J1_Yaw
     LinkName: Thumb_L1
     Joint: {fileID: 8972179039941610997}
+    Axis: 0
+    CountsForClosure: 0
     PrimaryKey: r3
+    SecondaryKey: 
+    PrimaryScale: -1
+    SecondaryScale: 0
+    OffsetDegrees: 0
+    LowerLimitDegrees: -45
+    UpperLimitDegrees: 45
+    Enabled: 1
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
+  - JointName: Thumb_J1_Pitch
+    LinkName: Thumb_L1
+    Joint: {fileID: 8972179039941610997}
+    Axis: 2
+    CountsForClosure: 1
+    PrimaryKey: r2
+    SecondaryKey: 
+    PrimaryScale: 0.6
+    SecondaryScale: 0
+    OffsetDegrees: 0
+    LowerLimitDegrees: 0
+    UpperLimitDegrees: 65
+    Enabled: 1
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
+  - JointName: Thumb_J2
+    LinkName: Thumb_L2
+    Joint: {fileID: 591073798098161255}
+    Axis: 0
+    CountsForClosure: 1
+    PrimaryKey: r1
+    SecondaryKey: 
+    PrimaryScale: 1
+    SecondaryScale: 0
+    OffsetDegrees: 0
+    LowerLimitDegrees: 0
+    UpperLimitDegrees: 89.95438
+    Enabled: 1
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
+  - JointName: Thumb_J3
+    LinkName: Thumb_L3
+    Joint: {fileID: 4273113363279102545}
+    Axis: 0
+    CountsForClosure: 1
+    PrimaryKey: r0
     SecondaryKey: 
     PrimaryScale: -1
     SecondaryScale: 0
@@ -96318,36 +96637,12 @@ MonoBehaviour:
     UpperLimitDegrees: 0
     Enabled: 1
     UseAbsoluteDelta: 0
-    DeadZoneDegrees: 1
-  - JointName: Thumb_J2
-    LinkName: Thumb_L2
-    Joint: {fileID: 591073798098161255}
-    PrimaryKey: r2
-    SecondaryKey: r1
-    PrimaryScale: 1.15
-    SecondaryScale: 1
-    OffsetDegrees: 0
-    LowerLimitDegrees: 0
-    UpperLimitDegrees: 89.95438
-    Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
-  - JointName: Thumb_J3
-    LinkName: Thumb_L3
-    Joint: {fileID: 4273113363279102545}
-    PrimaryKey: r0
-    SecondaryKey: 
-    PrimaryScale: 1.6
-    SecondaryScale: 0
-    OffsetDegrees: 0
-    LowerLimitDegrees: -89.95438
-    UpperLimitDegrees: 0
-    Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    DeadZoneDegrees: 0.5
   - JointName: Index_Finger_J1
     LinkName: Index_Finger_L1
     Joint: {fileID: 8530377286454639213}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r6
     SecondaryKey: 
     PrimaryScale: 1
@@ -96356,24 +96651,28 @@ MonoBehaviour:
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Index_Finger_J2
     LinkName: Index_Finger_L2
     Joint: {fileID: 2333289140795054537}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r5
-    SecondaryKey: r4
+    SecondaryKey: 
     PrimaryScale: 1
-    SecondaryScale: 1
+    SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Middle_Finger_J1
     LinkName: Middle_Finger_L1
     Joint: {fileID: 8894913069363929088}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r10
     SecondaryKey: 
     PrimaryScale: 1
@@ -96382,24 +96681,28 @@ MonoBehaviour:
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Middle_Finger_J2
     LinkName: Middle_Finger_L2
     Joint: {fileID: 290852203824646394}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r9
-    SecondaryKey: r8
+    SecondaryKey: 
     PrimaryScale: 1
-    SecondaryScale: 1
+    SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Ring_Finger_J1
     LinkName: Ring_Finger_L1
     Joint: {fileID: 5663820880259660567}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r14
     SecondaryKey: 
     PrimaryScale: 1
@@ -96408,24 +96711,28 @@ MonoBehaviour:
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Ring_Finger_J2
     LinkName: Ring_Finger_L2
     Joint: {fileID: 6378792423625554625}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r13
-    SecondaryKey: r12
+    SecondaryKey: 
     PrimaryScale: 1
-    SecondaryScale: 1
+    SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Little_Finger_J1
     LinkName: Little_Finger_L1
     Joint: {fileID: 1943710519025452144}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r18
     SecondaryKey: 
     PrimaryScale: 1
@@ -96434,24 +96741,29 @@ MonoBehaviour:
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Little_Finger_J2
     LinkName: Little_Finger_L2
     Joint: {fileID: 1902524895432479121}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r17
-    SecondaryKey: r16
+    SecondaryKey: 
     PrimaryScale: 1
-    SecondaryScale: 1
+    SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   AppliedFrameCount: 0
-  BoundJointCount: 11
-  LastStatus: Bound 11/11 WA100 joints
+  BoundJointCount: 12
+  LastStatus: Bound 12/12 WA100 joints
+  MatchHandDriverAngles: 1
+  ResolvedCharacterName: 
+  LastInputUtc: 
 --- !u!114 &9045591431065197067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96493,21 +96805,68 @@ MonoBehaviour:
   AutoFindNetwork: 0
   AutoBindJoints: 1
   CharacterName: 
-  DistalCoupling: 0.5
+  DistalCoupling: 0
   UseArticulationDriveLimits: 0
   ConfigureDriveStrength: 0
   DriveStiffness: 400
   DriveDamping: 30
   DriveForceLimit: 2
-  AutoCalibrateNeutralOnFirstPacket: 1
+  AutoCalibrateNeutralOnFirstPacket: 0
   IsNeutralCalibrated: 0
   ResponseScale: 1
   SmoothingSpeed: 28
   JointMappings:
-  - JointName: Thumb_J1
+  - JointName: Thumb_J1_Yaw
     LinkName: Thumb_L1
     Joint: {fileID: 8972179038655506512}
+    Axis: 0
+    CountsForClosure: 0
     PrimaryKey: r3
+    SecondaryKey: 
+    PrimaryScale: -1
+    SecondaryScale: 0
+    OffsetDegrees: 0
+    LowerLimitDegrees: -45
+    UpperLimitDegrees: 45
+    Enabled: 1
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
+  - JointName: Thumb_J1_Pitch
+    LinkName: Thumb_L1
+    Joint: {fileID: 8972179038655506512}
+    Axis: 2
+    CountsForClosure: 1
+    PrimaryKey: r2
+    SecondaryKey: 
+    PrimaryScale: 0.6
+    SecondaryScale: 0
+    OffsetDegrees: 0
+    LowerLimitDegrees: 0
+    UpperLimitDegrees: 65
+    Enabled: 1
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
+  - JointName: Thumb_J2
+    LinkName: Thumb_L2
+    Joint: {fileID: 591073796812057538}
+    Axis: 0
+    CountsForClosure: 1
+    PrimaryKey: r1
+    SecondaryKey: 
+    PrimaryScale: 1
+    SecondaryScale: 0
+    OffsetDegrees: 0
+    LowerLimitDegrees: 0
+    UpperLimitDegrees: 89.95438
+    Enabled: 1
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
+  - JointName: Thumb_J3
+    LinkName: Thumb_L3
+    Joint: {fileID: 4273113362412431348}
+    Axis: 0
+    CountsForClosure: 1
+    PrimaryKey: r0
     SecondaryKey: 
     PrimaryScale: -1
     SecondaryScale: 0
@@ -96516,36 +96875,12 @@ MonoBehaviour:
     UpperLimitDegrees: 0
     Enabled: 1
     UseAbsoluteDelta: 0
-    DeadZoneDegrees: 1
-  - JointName: Thumb_J2
-    LinkName: Thumb_L2
-    Joint: {fileID: 591073796812057538}
-    PrimaryKey: r2
-    SecondaryKey: r1
-    PrimaryScale: 1.15
-    SecondaryScale: 1
-    OffsetDegrees: 0
-    LowerLimitDegrees: 0
-    UpperLimitDegrees: 89.95438
-    Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
-  - JointName: Thumb_J3
-    LinkName: Thumb_L3
-    Joint: {fileID: 4273113362412431348}
-    PrimaryKey: r0
-    SecondaryKey: 
-    PrimaryScale: 1.6
-    SecondaryScale: 0
-    OffsetDegrees: 0
-    LowerLimitDegrees: -89.95438
-    UpperLimitDegrees: 0
-    Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    DeadZoneDegrees: 0.5
   - JointName: Index_Finger_J1
     LinkName: Index_Finger_L1
     Joint: {fileID: 8530377287199678408}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r6
     SecondaryKey: 
     PrimaryScale: 1
@@ -96554,24 +96889,28 @@ MonoBehaviour:
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Index_Finger_J2
     LinkName: Index_Finger_L2
     Joint: {fileID: 2333289139529923692}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r5
-    SecondaryKey: r4
+    SecondaryKey: 
     PrimaryScale: 1
-    SecondaryScale: 1
+    SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Middle_Finger_J1
     LinkName: Middle_Finger_L1
     Joint: {fileID: 8894913070644725157}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r10
     SecondaryKey: 
     PrimaryScale: 1
@@ -96580,24 +96919,28 @@ MonoBehaviour:
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Middle_Finger_J2
     LinkName: Middle_Finger_L2
     Joint: {fileID: 290852202559515999}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r9
-    SecondaryKey: r8
+    SecondaryKey: 
     PrimaryScale: 1
-    SecondaryScale: 1
+    SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Ring_Finger_J1
     LinkName: Ring_Finger_L1
     Joint: {fileID: 5663820881008893618}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r14
     SecondaryKey: 
     PrimaryScale: 1
@@ -96606,24 +96949,28 @@ MonoBehaviour:
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Ring_Finger_J2
     LinkName: Ring_Finger_L2
     Joint: {fileID: 6378792424504811364}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r13
-    SecondaryKey: r12
+    SecondaryKey: 
     PrimaryScale: 1
-    SecondaryScale: 1
+    SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Little_Finger_J1
     LinkName: Little_Finger_L1
     Joint: {fileID: 1943710519887880661}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r18
     SecondaryKey: 
     PrimaryScale: 1
@@ -96632,24 +96979,29 @@ MonoBehaviour:
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   - JointName: Little_Finger_J2
     LinkName: Little_Finger_L2
     Joint: {fileID: 1902524894151685172}
+    Axis: 0
+    CountsForClosure: 1
     PrimaryKey: r17
-    SecondaryKey: r16
+    SecondaryKey: 
     PrimaryScale: 1
-    SecondaryScale: 1
+    SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
     UpperLimitDegrees: 89.95438
     Enabled: 1
-    UseAbsoluteDelta: 1
-    DeadZoneDegrees: 1.5
+    UseAbsoluteDelta: 0
+    DeadZoneDegrees: 0.5
   AppliedFrameCount: 0
-  BoundJointCount: 11
-  LastStatus: Bound 11/11 WA100 joints
+  BoundJointCount: 12
+  LastStatus: Bound 12/12 WA100 joints
+  MatchHandDriverAngles: 1
+  ResolvedCharacterName: 
+  LastInputUtc: 
 --- !u!114 &9045591431793475504
 MonoBehaviour:
   m_ObjectHideFlags: 0

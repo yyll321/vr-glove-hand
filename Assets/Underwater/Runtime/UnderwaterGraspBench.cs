@@ -19,6 +19,7 @@ namespace UnderwaterBaseline
         public float LastInsertionDepth {get;private set;}
         public float SurfaceHeight=>sand?sand.bounds.max.y+visualSurfaceOffset:0;
         public int IgnoredHandPairs {get;private set;}
+        public UnderwaterDeformableSand deformable;
         void Start(){ConfigureFiltering();}
         void OnEnable(){if(Application.isPlaying)ConfigureFiltering();}
         [ContextMenu("Refresh sand / robot collision pairs")]
@@ -27,7 +28,10 @@ namespace UnderwaterBaseline
             if(!task || !task.arm || !sand)return;
             IgnoredHandPairs=0;
             foreach(var c in task.arm.GetComponentsInChildren<Collider>(true))
-                if(c && c.enabled){Physics.IgnoreCollision(c,sand,true);IgnoredHandPairs++;}
+                if(c && c.enabled && !c.GetComponentInParent<UnderwaterGraspTarget>()){Physics.IgnoreCollision(c,sand,true);if(deformable && deformable.SurfaceCollider)Physics.IgnoreCollision(c,deformable.SurfaceCollider,true);IgnoredHandPairs++;}
+            if(deformable && deformable.SurfaceCollider)
+                foreach(var target in task.targets)if(target && target.GetComponent<Collider>())
+                {Physics.IgnoreCollision(target.GetComponent<Collider>(),sand,true);Physics.IgnoreCollision(target.GetComponent<Collider>(),deformable.SurfaceCollider,false);}
             // Query protection sees layer 8 support, but never the layer 11 sand.
             // Targets keep normal collisions with sand and the support below it.
         }
@@ -59,10 +63,11 @@ namespace UnderwaterBaseline
             LastToolResistance=force=Mathf.Min(force,maximumResistance);
             return velocity/(1+force/Mathf.Max(1,toolForceBudget));
         }
-        public float FingerMobility(ArticulationBody joint,float angularVelocity)
+        public float FingerMobility(ArticulationBody joint,float angularVelocity,Vector3 localAxis=default)
         {
             float force=0;Vector3 pivot=joint.transform.TransformPoint(joint.anchorPosition);
-            Vector3 axis=joint.transform.TransformDirection(joint.anchorRotation*Vector3.right);
+            if(localAxis.sqrMagnitude<.1f)localAxis=Vector3.right;
+            Vector3 axis=joint.transform.TransformDirection(joint.anchorRotation*localAxis);
             foreach(var c in joint.GetComponentsInChildren<Collider>())if(c.enabled && !c.isTrigger)
             {
                 Vector3 v=Vector3.Cross(axis,c.bounds.center-pivot)*angularVelocity*Mathf.Deg2Rad;

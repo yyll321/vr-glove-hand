@@ -22,6 +22,7 @@ public class Network : MonoBehaviour
     private UdpSession _udpClient;
 
     private ConcurrentDictionary<string, ConcurrentDictionary<string, string>> _deviceReadMessages;
+    private readonly ConcurrentDictionary<string,string> _rolePacketUtc=new();
 
     private StreamWriter writer;
     private string _txtPath;
@@ -106,6 +107,7 @@ public class Network : MonoBehaviour
                 }
 
                 _deviceReadMessages[role_name] = _deviceMsg;
+                _rolePacketUtc[role_name]=DateTime.UtcNow.ToString("O",CultureInfo.InvariantCulture);
             }
         }
         catch (Exception ex)
@@ -152,6 +154,31 @@ public class Network : MonoBehaviour
         return float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out float angle)
             ? angle
             : 0;
+    }
+
+    // One published dictionary is one UDP packet. Never mix channels from roles,
+    // substitute zero for missing channels, or borrow another role when pinned.
+    public bool TryGetAngleSnapshot(string role,string[] keys,out float[] values,out string resolvedRole,out string utc)
+    {
+        values=null;resolvedRole=utc=null;
+        if(_deviceReadMessages==null)return false;
+        if(!string.IsNullOrEmpty(role))
+        {
+            if(!_deviceReadMessages.TryGetValue(role,out var packet))return false;
+            return ReadSnapshot(role,packet,keys,out values,out resolvedRole,out utc);
+        }
+        if(!string.IsNullOrEmpty(LastRoleName) && _deviceReadMessages.TryGetValue(LastRoleName,out var last) && ReadSnapshot(LastRoleName,last,keys,out values,out resolvedRole,out utc))return true;
+        foreach(var entry in _deviceReadMessages)
+            if(ReadSnapshot(entry.Key,entry.Value,keys,out values,out resolvedRole,out utc))return true;
+        return false;
+    }
+    bool ReadSnapshot(string role,ConcurrentDictionary<string,string> packet,string[] keys,out float[] values,out string resolvedRole,out string utc)
+    {
+        values=new float[keys.Length];resolvedRole=utc=null;
+        for(int i=0;i<keys.Length;i++)
+            if(!packet.TryGetValue(keys[i],out var raw) || !float.TryParse(raw,NumberStyles.Float,CultureInfo.InvariantCulture,out values[i]) || !float.IsFinite(values[i])){values=null;return false;}
+        if(!_rolePacketUtc.TryGetValue(role,out utc))return false;
+        resolvedRole=role;return true;
     }
 
     private bool TryGetValue(string role_name, string key, out string value)

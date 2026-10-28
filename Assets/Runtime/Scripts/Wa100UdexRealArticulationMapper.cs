@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class Wa100UdexRealArticulationMapper : MonoBehaviour
 {
+    public enum DriveAxis { X, Y, Z }
     [Serializable]
     public class JointMapping
     {
         public string JointName;
         public string LinkName;
         public ArticulationBody Joint;
+        public DriveAxis Axis;
+        public bool CountsForClosure=true;
         public string PrimaryKey;
         public string SecondaryKey;
         public float PrimaryScale = 1f;
@@ -49,6 +52,12 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
     public int AppliedFrameCount;
     public int BoundJointCount;
     public string LastStatus;
+    [Header("HandDriver angle parity")]
+    public bool MatchHandDriverAngles;
+    public string ResolvedCharacterName;
+    public string LastInputUtc;
+    public bool HasFreshFrame {get;private set;}
+    string[] frameKeys;float[] frameValues;
 
     private void Reset()
     {
@@ -58,7 +67,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
     private void Awake()
     {
         EnsureMappings();
-        UpgradeLegacyThumbMappings();
+        if(!MatchHandDriverAngles)UpgradeLegacyThumbMappings();
         AutoBind();
     }
 
@@ -72,6 +81,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(MatchHandDriverAngles){Apply();return;}
         if (AutoCalibrateNeutralOnFirstPacket && !IsNeutralCalibrated && HasNetworkData())
         {
             CalibrateNeutral();
@@ -83,6 +93,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
     [ContextMenu("Reset Mappings To Udex Right")]
     public void ResetMappingsToUdexRight()
     {
+        MatchHandDriverAngles=false;frameKeys=null;
         JointMappings = new[]
         {
             SignedMap("Thumb_J1", "Thumb_L1", "r3", null, -1f, 0f, 0f, 90f, true),
@@ -103,6 +114,48 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
         };
         IsNeutralCalibrated = false;
     }
+
+    [ContextMenu("Use HandDriver Signed Angles")]
+    public void UseHandDriverMappings()
+    {
+        MatchHandDriverAngles=true;AutoCalibrateNeutralOnFirstPacket=false;IsNeutralCalibrated=false;
+        DistalCoupling=0;ResponseScale=1;
+        JointMappings=new[]{
+            SignedMap("Thumb_J1_Yaw","Thumb_L1","r3",null,-1,0,-45,45,true),
+            SignedMap("Thumb_J1_Pitch","Thumb_L1","r2",null,.6f,0,0,65,true),
+            SignedMap("Thumb_J2","Thumb_L2","r1",null,1,0,0,89.95438f,true),
+            SignedMap("Thumb_J3","Thumb_L3","r0",null,-1,0,-89.95438f,0,true),
+            SignedMap("Index_Finger_J1","Index_Finger_L1","r6",null,1,0,0,89.95438f,true),
+            SignedMap("Index_Finger_J2","Index_Finger_L2","r5",null,1,0,0,89.95438f,true),
+            SignedMap("Middle_Finger_J1","Middle_Finger_L1","r10",null,1,0,0,89.95438f,true),
+            SignedMap("Middle_Finger_J2","Middle_Finger_L2","r9",null,1,0,0,89.95438f,true),
+            SignedMap("Ring_Finger_J1","Ring_Finger_L1","r14",null,1,0,0,89.95438f,true),
+            SignedMap("Ring_Finger_J2","Ring_Finger_L2","r13",null,1,0,0,89.95438f,true),
+            SignedMap("Little_Finger_J1","Little_Finger_L1","r18",null,1,0,0,89.95438f,true),
+            SignedMap("Little_Finger_J2","Little_Finger_L2","r17",null,1,0,0,89.95438f,true)};
+        JointMappings[0].CountsForClosure=false;JointMappings[1].Axis=DriveAxis.Z;
+        foreach(var m in JointMappings)m.DeadZoneDegrees=.5f;
+        ResolvedCharacterName=LastInputUtc=null;frameKeys=null;
+        AutoBind();
+    }
+
+    public static ArticulationDrive GetDrive(JointMapping m)=>m.Axis==DriveAxis.Y?m.Joint.yDrive:m.Axis==DriveAxis.Z?m.Joint.zDrive:m.Joint.xDrive;
+    public static void SetDrive(JointMapping m,ArticulationDrive drive)
+    {if(m.Axis==DriveAxis.Y)m.Joint.yDrive=drive;else if(m.Axis==DriveAxis.Z)m.Joint.zDrive=drive;else m.Joint.xDrive=drive;}
+    public static Vector3 AxisVector(JointMapping m)=>m.Axis==DriveAxis.Y?Vector3.up:m.Axis==DriveAxis.Z?Vector3.forward:Vector3.right;
+    public static int DofIndex(JointMapping m)
+    {
+        if(m.Joint.jointType!=ArticulationJointType.SphericalJoint)return 0;
+        int index=0;
+        if(m.Axis==DriveAxis.X)return 0;
+        if(m.Joint.twistLock!=ArticulationDofLock.LockedMotion)index++;
+        if(m.Axis==DriveAxis.Y)return index;
+        if(m.Joint.swingYLock!=ArticulationDofLock.LockedMotion)index++;
+        return index;
+    }
+    [ContextMenu("Reconnect HandDriver Role")]
+    public void ReconnectHandDriverRole()
+    {ResolvedCharacterName=null;LastInputUtc=null;HasFreshFrame=false;frameKeys=null;LastStatus="Waiting for complete HandDriver frame";}
 
     [ContextMenu("Auto Bind")]
     public void AutoBind()
@@ -138,7 +191,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
                 ConfigureDrive(mapping.Joint);
                 if (UseArticulationDriveLimits)
                 {
-                    ArticulationDrive drive = mapping.Joint.xDrive;
+                    ArticulationDrive drive = GetDrive(mapping);
                     mapping.LowerLimitDegrees = drive.lowerLimit;
                     mapping.UpperLimitDegrees = drive.upperLimit;
                 }
@@ -153,9 +206,23 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
     {
         if (Network == null || JointMappings == null)
         {
+            HasFreshFrame=false;
             return;
         }
 
+        if(MatchHandDriverAngles)
+        {
+            if(frameKeys==null)
+            {
+                var keys=new System.Collections.Generic.List<string>();
+                foreach(var m in JointMappings)if(m!=null){if(!string.IsNullOrEmpty(m.PrimaryKey)&&!keys.Contains(m.PrimaryKey))keys.Add(m.PrimaryKey);if(!string.IsNullOrEmpty(m.SecondaryKey)&&!keys.Contains(m.SecondaryKey))keys.Add(m.SecondaryKey);}
+                frameKeys=keys.ToArray();
+            }
+            string role=string.IsNullOrEmpty(CharacterName)?ResolvedCharacterName:CharacterName;
+            HasFreshFrame=Network.TryGetAngleSnapshot(role,frameKeys,out frameValues,out var found,out var utc) && DateTime.TryParse(utc,out var stamp) && (DateTime.UtcNow-stamp.ToUniversalTime()).TotalSeconds<1;
+            if(!HasFreshFrame){LastStatus="Holding pose: complete fresh frame from pinned glove unavailable";return;}
+            ResolvedCharacterName=found;LastInputUtc=utc;
+        }
         int applied = 0;
         for (int i = 0; i < JointMappings.Length; i++)
         {
@@ -179,14 +246,14 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
                 mapping.CurrentTarget = target;
             }
 
-            ArticulationDrive drive = mapping.Joint.xDrive;
+            ArticulationDrive drive = GetDrive(mapping);
             drive.target = mapping.CurrentTarget;
-            mapping.Joint.xDrive = drive;
+            SetDrive(mapping,drive);
             applied++;
         }
 
         AppliedFrameCount++;
-        LastStatus = $"Applied {applied}/{JointMappings.Length} WA100 joints";
+        LastStatus = MatchHandDriverAngles ? $"HandDriver {ResolvedCharacterName}: applied {applied}/{JointMappings.Length} axes" : $"Applied {applied}/{JointMappings.Length} WA100 joints";
     }
 
     public void EnsureMappings()
@@ -230,6 +297,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
     [ContextMenu("Calibrate Neutral From Current Glove Pose")]
     public void CalibrateNeutral()
     {
+        if(MatchHandDriverAngles){LastStatus="Using HandDriver calibrated angles; no first-packet zero subtraction";return;}
         EnsureMappings();
 
         if (JointMappings == null)
@@ -261,7 +329,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
 
     private float CalculateTarget(JointMapping mapping)
     {
-        float primary = ReadAngle(mapping.PrimaryKey) - mapping.NeutralPrimary;
+        float primary = ReadAngle(mapping.PrimaryKey) - (MatchHandDriverAngles?0:mapping.NeutralPrimary);
         float secondary = 0f;
 
         if (!string.IsNullOrWhiteSpace(mapping.SecondaryKey))
@@ -315,6 +383,8 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
             return 0f;
         }
 
+        if(MatchHandDriverAngles && frameKeys!=null && frameValues!=null)
+        {int index=Array.IndexOf(frameKeys,key);return index>=0?frameValues[index]:0;}
         return Network.Convert2Angle(CharacterName, key);
     }
 
