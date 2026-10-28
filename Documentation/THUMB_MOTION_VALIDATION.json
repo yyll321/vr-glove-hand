@@ -1,0 +1,1067 @@
+{
+  "before_serial_hinges": {
+    "time": "2026-10-28T20:01:10.7333381+08:00",
+    "scope": "Synthetic constant finger commands and real ApplyControllerPose with physics steps; no live glove/PICO measurements.",
+    "passed": false,
+    "rows": [
+      {
+        "area": "ROVp - Pool",
+        "scenario": "rigid mount descent",
+        "wristDrop": 0.12000012397766113,
+        "maxYawError": 346.4017333984375,
+        "maxPitchError": 366.77587890625,
+        "maxJointError": 366.77587890625,
+        "maxRelativeThumbAngle": 179.5564727783203,
+        "maxRootError": 0.00020003318786621094,
+        "contactFrames": 0
+      },
+      {
+        "area": "ROVp - Pool",
+        "scenario": "right grip descent",
+        "wristDrop": 0.0791783332824707,
+        "maxYawError": 330.4767150878906,
+        "maxPitchError": 359.9986877441406,
+        "maxJointError": 359.9986877441406,
+        "maxRelativeThumbAngle": 179.7887420654297,
+        "maxRootError": 0.0010400405153632164,
+        "contactFrames": 0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "scenario": "rigid mount descent",
+        "wristDrop": 0.12000000476837158,
+        "maxYawError": 323.0574035644531,
+        "maxPitchError": 351.78790283203125,
+        "maxJointError": 351.78790283203125,
+        "maxRelativeThumbAngle": 179.4310302734375,
+        "maxRootError": 0.00020003318786621094,
+        "contactFrames": 0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "scenario": "right grip descent",
+        "wristDrop": 0.0791783332824707,
+        "maxYawError": 311.6892395019531,
+        "maxPitchError": 360.6308288574219,
+        "maxJointError": 360.6308288574219,
+        "maxRelativeThumbAngle": 178.03536987304688,
+        "maxRootError": 0.0010399267775937915,
+        "contactFrames": 0
+      }
+    ],
+    "checks": [
+      "ROVp - Pool rigid mount descent: wrist actually moves down 0.1200001 m",
+      "ROVp - Pool right grip descent: wrist actually moves down 0.07917833 m",
+      "ROVp - Seabed rigid mount descent: wrist actually moves down 0.12 m",
+      "ROVp - Seabed right grip descent: wrist actually moves down 0.07917833 m"
+    ],
+    "errors": [
+      "ROVp - Pool rigid mount descent: constant glove commands preserve thumb; yaw error=346.4017, pitch=366.7759, local rotation=179.5565",
+      "ROVp - Pool right grip descent: constant glove commands preserve thumb; yaw error=330.4767, pitch=359.9987, local rotation=179.7887",
+      "ROVp - Seabed rigid mount descent: constant glove commands preserve thumb; yaw error=323.0574, pitch=351.7879, local rotation=179.431",
+      "ROVp - Seabed right grip descent: constant glove commands preserve thumb; yaw error=311.6892, pitch=360.6308, local rotation=178.0354"
+    ]
+  },
+  "after_serial_hinges": {
+    "time": "2026-10-28T20:14:30.8300788+08:00",
+    "scope": "Synthetic fixed finger commands, isolated UDP 15557 glove commands and real ApplyControllerPose with physics steps; no live glove/PICO measurements.",
+    "passed": true,
+    "rows": [
+      {
+        "area": "ROVp - Pool",
+        "scenario": "rigid mount descent",
+        "wristDrop": 0.12000012397766113,
+        "maxYawError": 0.0,
+        "maxPitchError": 0.0,
+        "maxJointError": 2.5711629077838173e-32,
+        "maxRelativeThumbAngle": 0.0,
+        "maxRootError": 0.00020003318786621094,
+        "contactFrames": 0
+      },
+      {
+        "area": "ROVp - Pool",
+        "scenario": "right grip descent",
+        "wristDrop": 0.0791783332824707,
+        "maxYawError": 0.0,
+        "maxPitchError": 0.0,
+        "maxJointError": 2.549264623522349e-32,
+        "maxRelativeThumbAngle": 0.0,
+        "maxRootError": 0.0010400405153632164,
+        "contactFrames": 0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "scenario": "rigid mount descent",
+        "wristDrop": 0.12000000476837158,
+        "maxYawError": 0.0,
+        "maxPitchError": 0.0,
+        "maxJointError": 2.2327524839878783e-32,
+        "maxRelativeThumbAngle": 0.0,
+        "maxRootError": 0.00020003318786621094,
+        "contactFrames": 0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "scenario": "right grip descent",
+        "wristDrop": 0.0791783332824707,
+        "maxYawError": 0.0,
+        "maxPitchError": 0.0,
+        "maxJointError": 2.670615313461549e-32,
+        "maxRelativeThumbAngle": 0.0,
+        "maxRootError": 0.0010399267775937915,
+        "contactFrames": 0
+      }
+    ],
+    "inputRows": [
+      {
+        "area": "ROVp - Pool",
+        "yawTravel": 20.0,
+        "pitchTravel": 19.999990463256836,
+        "maxServoError": 0.093902587890625,
+        "staleDrift": 0.0,
+        "wristDrop": 0.026225805282592773,
+        "freshDuringGrip": true,
+        "staleHeld": true
+      },
+      {
+        "area": "ROVp - Seabed",
+        "yawTravel": 20.0,
+        "pitchTravel": 19.999990463256836,
+        "maxServoError": 0.093902587890625,
+        "staleDrift": 0.0,
+        "wristDrop": 0.026225805282592773,
+        "freshDuringGrip": true,
+        "staleHeld": true
+      }
+    ],
+    "checks": [
+      "ROVp - Pool rigid mount descent: constant glove commands preserve thumb; yaw error=0, pitch=0, local rotation=0",
+      "ROVp - Pool rigid mount descent: wrist actually moves down 0.1200001 m",
+      "ROVp - Pool right grip descent: constant glove commands preserve thumb; yaw error=0, pitch=0, local rotation=0",
+      "ROVp - Pool right grip descent: wrist actually moves down 0.07917833 m",
+      "ROVp - Pool: real UDP mapping stays active during Grip descent; yaw/pitch travel=20/19.99999, peak servo error=0.09390259",
+      "ROVp - Pool: stale glove preserves thumb while arm continues down; drift=0",
+      "ROVp - Pool: fixed-command reproduction stays in air without contact",
+      "ROVp - Seabed rigid mount descent: constant glove commands preserve thumb; yaw error=0, pitch=0, local rotation=0",
+      "ROVp - Seabed rigid mount descent: wrist actually moves down 0.12 m",
+      "ROVp - Seabed right grip descent: constant glove commands preserve thumb; yaw error=0, pitch=0, local rotation=0",
+      "ROVp - Seabed right grip descent: wrist actually moves down 0.07917833 m",
+      "ROVp - Seabed: real UDP mapping stays active during Grip descent; yaw/pitch travel=20/19.99999, peak servo error=0.09390259",
+      "ROVp - Seabed: stale glove preserves thumb while arm continues down; drift=0",
+      "ROVp - Seabed: fixed-command reproduction stays in air without contact"
+    ],
+    "errors": []
+  },
+  "glove_sand_contact_regression": {
+    "time": "2026-10-28T20:15:43.6284896+08:00",
+    "scope": "Isolated UDP port 15556; synthetic glove commands and contact trajectories on actual scene articulations/sand. Human glove parity and worn PICO performance need confirmation.",
+    "passed": true,
+    "checks": [
+      "Sand world-projected shader compiles without errors",
+      "Pool Grasp Task: one complete role pinned from isolated UDP stream",
+      "Pool Grasp Task: bent first packet remains 31 degrees, never zero-calibrated",
+      "Pool Grasp Task: Middle requested angles equal vendor HandDriver output 40/30 degrees",
+      "Pool Grasp Task: isolated Middle channel -> Thumb_J1_Yaw actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Thumb_J1_Pitch actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Thumb_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Thumb_J3 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Index_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Index_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Middle_Finger_J1 actual=40.00 requested=40.00",
+      "Pool Grasp Task: isolated Middle channel -> Middle_Finger_J2 actual=30.00 requested=30.00",
+      "Pool Grasp Task: isolated Middle channel -> Ring_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Ring_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Little_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Little_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: Middle distal sensor does not amplify middle joint",
+      "Pool Grasp Task: Ring requested angles equal vendor HandDriver output 40/30 degrees",
+      "Pool Grasp Task: isolated Ring channel -> Thumb_J1_Yaw actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Thumb_J1_Pitch actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Thumb_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Thumb_J3 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Index_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Index_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Middle_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Middle_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Ring_Finger_J1 actual=40.00 requested=40.00",
+      "Pool Grasp Task: isolated Ring channel -> Ring_Finger_J2 actual=30.00 requested=30.00",
+      "Pool Grasp Task: isolated Ring channel -> Little_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Little_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: Ring distal sensor does not amplify middle joint",
+      "Pool Grasp Task: physical Thumb_J1_Yaw requested=-25.00 actual=-25.00",
+      "Pool Grasp Task: physical Thumb_J1_Pitch requested=0.00 actual=0.00",
+      "Pool Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Pool Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Pool Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Pool Grasp Task: physical Thumb_J1_Yaw requested=25.00 actual=25.00",
+      "Pool Grasp Task: physical Thumb_J1_Pitch requested=0.00 actual=0.00",
+      "Pool Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Pool Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Pool Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Pool Grasp Task: physical Thumb_J1_Yaw requested=0.00 actual=0.00",
+      "Pool Grasp Task: physical Thumb_J1_Pitch requested=27.00 actual=27.00",
+      "Pool Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Pool Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Pool Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Pool Grasp Task: physical Thumb_J1_Yaw requested=-20.00 actual=-20.00",
+      "Pool Grasp Task: physical Thumb_J1_Pitch requested=21.00 actual=21.00",
+      "Pool Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Pool Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Pool Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Pool Grasp Task: unrelated glove role cannot change pinned hand",
+      "Pool Grasp Task: incomplete frame holds all joints, no per-channel zero substitution",
+      "Pool Grasp Task: original hard finger stop retained; penetration=0.0000 m",
+      "Pool Grasp Task: both thumb axes retain rigid hold under +/-2 Nm, max error=0.026 deg",
+      "Pool Grasp Task: fingertip-sized local cavity depth=0.0460 m, far surface unchanged",
+      "Pool Grasp Task: withdrawal leaves persistent cavity with slow settling",
+      "Pool Grasp Task: item falls into cavity onto deformed support, clearance=0.0021 m",
+      "Pool Grasp Task: fingers ignore sand support mesh while targets collide",
+      "Pool Grasp Task: soft layer entry and hard support blocking retained",
+      "Pool Grasp Task: actual WA100 finger collider excavates visible geometry",
+      "Pool Starfish 1: sand collider recook while held preserves target/environment collision",
+      "Pool Starfish 1: natural release still lands on sand after collider recooking during hold",
+      "Pool Squid 2: sand collider recook while held preserves target/environment collision",
+      "Pool Squid 2: natural release still lands on sand after collider recooking during hold",
+      "Seabed Grasp Task: one complete role pinned from isolated UDP stream",
+      "Seabed Grasp Task: bent first packet remains 31 degrees, never zero-calibrated",
+      "Seabed Grasp Task: Middle requested angles equal vendor HandDriver output 40/30 degrees",
+      "Seabed Grasp Task: isolated Middle channel -> Thumb_J1_Yaw actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Thumb_J1_Pitch actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Thumb_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Thumb_J3 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Index_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Index_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Middle_Finger_J1 actual=40.00 requested=40.00",
+      "Seabed Grasp Task: isolated Middle channel -> Middle_Finger_J2 actual=30.00 requested=30.00",
+      "Seabed Grasp Task: isolated Middle channel -> Ring_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Ring_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Little_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Little_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: Middle distal sensor does not amplify middle joint",
+      "Seabed Grasp Task: Ring requested angles equal vendor HandDriver output 40/30 degrees",
+      "Seabed Grasp Task: isolated Ring channel -> Thumb_J1_Yaw actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Thumb_J1_Pitch actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Thumb_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Thumb_J3 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Index_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Index_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Middle_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Middle_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Ring_Finger_J1 actual=40.00 requested=40.00",
+      "Seabed Grasp Task: isolated Ring channel -> Ring_Finger_J2 actual=30.00 requested=30.00",
+      "Seabed Grasp Task: isolated Ring channel -> Little_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Little_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: Ring distal sensor does not amplify middle joint",
+      "Seabed Grasp Task: physical Thumb_J1_Yaw requested=-25.00 actual=-25.00",
+      "Seabed Grasp Task: physical Thumb_J1_Pitch requested=0.00 actual=0.00",
+      "Seabed Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Seabed Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Seabed Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Seabed Grasp Task: physical Thumb_J1_Yaw requested=25.00 actual=25.00",
+      "Seabed Grasp Task: physical Thumb_J1_Pitch requested=0.00 actual=0.00",
+      "Seabed Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Seabed Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Seabed Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Seabed Grasp Task: physical Thumb_J1_Yaw requested=0.00 actual=0.00",
+      "Seabed Grasp Task: physical Thumb_J1_Pitch requested=27.00 actual=27.00",
+      "Seabed Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Seabed Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Seabed Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Seabed Grasp Task: physical Thumb_J1_Yaw requested=-20.00 actual=-20.00",
+      "Seabed Grasp Task: physical Thumb_J1_Pitch requested=21.00 actual=21.00",
+      "Seabed Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Seabed Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Seabed Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Seabed Grasp Task: unrelated glove role cannot change pinned hand",
+      "Seabed Grasp Task: incomplete frame holds all joints, no per-channel zero substitution",
+      "Seabed Grasp Task: original hard finger stop retained; penetration=0.0000 m",
+      "Seabed Grasp Task: both thumb axes retain rigid hold under +/-2 Nm, max error=0.026 deg",
+      "Seabed Grasp Task: fingertip-sized local cavity depth=0.0460 m, far surface unchanged",
+      "Seabed Grasp Task: withdrawal leaves persistent cavity with slow settling",
+      "Seabed Grasp Task: item falls into cavity onto deformed support, clearance=0.0021 m",
+      "Seabed Grasp Task: fingers ignore sand support mesh while targets collide",
+      "Seabed Grasp Task: soft layer entry and hard support blocking retained",
+      "Seabed Grasp Task: actual WA100 finger collider excavates visible geometry",
+      "Sea Starfish 1: sand collider recook while held preserves target/environment collision",
+      "Sea Starfish 1: natural release still lands on sand after collider recooking during hold",
+      "Sea Squid 2: sand collider recook while held preserves target/environment collision",
+      "Sea Squid 2: natural release still lands on sand after collider recooking during hold"
+    ],
+    "errors": [],
+    "joints": [
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -4.138783567708866e-14
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 1.2346108293689873e-14
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -1.355133998645367e-16
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 6.523583730809678e-21
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Index_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Index_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Middle_Finger_L1",
+        "axis": "X",
+        "requested": 40.0,
+        "actual": 39.999996185302734
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Middle_Finger_L2",
+        "axis": "X",
+        "requested": 30.0,
+        "actual": 29.999998092651367
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Ring_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 2.542233978886088e-09
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Ring_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 1.882720201962229e-09
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Little_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Little_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -4.353853497964126e-25
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 1.2987674055876147e-25
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -1.4255847078221039e-27
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -3.893911435933613e-32
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Index_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Index_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Middle_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 1.2295208406953861e-08
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Middle_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 9.45727407497543e-09
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Ring_Finger_L1",
+        "axis": "X",
+        "requested": 40.0,
+        "actual": 39.999996185302734
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Ring_Finger_L2",
+        "axis": "X",
+        "requested": 30.0,
+        "actual": 29.999998092651367
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Little_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Little_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": -25.0,
+        "actual": -24.999998092651367
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 6.030453714954951e-17
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 25.0,
+        "actual": 24.999998092651367
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 1.038038148941206e-16
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 2.4541131349309353e-09
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 27.000001907348633,
+        "actual": 27.000001907348633
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": -20.0,
+        "actual": -19.999998092651367
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 21.0,
+        "actual": 21.000001907348633
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 4.2650575454196427e-14
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -2.7130239376850436e-19
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -3.873317162249594e-19
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -1.8382669164361642e-22
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Index_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Index_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Middle_Finger_L1",
+        "axis": "X",
+        "requested": 40.0,
+        "actual": 39.999996185302734
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Middle_Finger_L2",
+        "axis": "X",
+        "requested": 30.0,
+        "actual": 29.999998092651367
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Ring_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 1.167983487704305e-09
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Ring_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 8.64982085957422e-10
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Little_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Little_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 3.041122638056517e-25
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -1.9371541286861754e-30
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -2.756315140531271e-30
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 3.5234778276905884e-33
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Index_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Index_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Middle_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 8.333811862826224e-09
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Middle_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 6.41023101266569e-09
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Ring_Finger_L1",
+        "axis": "X",
+        "requested": 40.0,
+        "actual": 39.999996185302734
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Ring_Finger_L2",
+        "axis": "X",
+        "requested": 30.0,
+        "actual": 29.999998092651367
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Little_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Little_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": -25.0,
+        "actual": -24.999998092651367
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 2.0491920015321526e-16
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 25.0,
+        "actual": 24.999998092651367
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 3.056643129003516e-17
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 5.3416964185259985e-09
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 27.000001907348633,
+        "actual": 27.000001907348633
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": -20.0,
+        "actual": -19.999998092651367
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_CMC_PitchPivot",
+        "axis": "X",
+        "requested": 21.0,
+        "actual": 21.000001907348633
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      }
+    ],
+    "sand": [
+      {
+        "area": "Pool Grasp Task",
+        "centreDepth": 0.04599998891353607,
+        "retainedDepth": 0.0444999635219574,
+        "farDepth": 0.0,
+        "meanUpdateMs": 1.661289930343628,
+        "maxUpdateMs": 4.39139986038208,
+        "landingClearance": 0.002114107832312584,
+        "vertices": 24073,
+        "colliderTriangles": 5280
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "centreDepth": 0.045999541878700256,
+        "retainedDepth": 0.04449951648712158,
+        "farDepth": 0.0,
+        "meanUpdateMs": 1.8280433416366577,
+        "maxUpdateMs": 5.090099811553955,
+        "landingClearance": 0.0021120067685842514,
+        "vertices": 24073,
+        "colliderTriangles": 5280
+      }
+    ]
+  },
+  "preliminary_dynamic_fixture": {
+    "report": {
+      "time": "2026-10-28T20:11:39.4945341+08:00",
+      "scope": "Synthetic fixed finger commands, isolated UDP 15557 glove commands and real ApplyControllerPose with physics steps; no live glove/PICO measurements.",
+      "passed": false,
+      "rows": [
+        {
+          "area": "ROVp - Pool",
+          "scenario": "rigid mount descent",
+          "wristDrop": 0.12000012397766113,
+          "maxYawError": 0.0,
+          "maxPitchError": 0.0,
+          "maxJointError": 2.922989542479279e-32,
+          "maxRelativeThumbAngle": 0.0,
+          "maxRootError": 0.00020003318786621094,
+          "contactFrames": 0
+        },
+        {
+          "area": "ROVp - Pool",
+          "scenario": "right grip descent",
+          "wristDrop": 0.0791783332824707,
+          "maxYawError": 0.0,
+          "maxPitchError": 0.0,
+          "maxJointError": 3.009808616495136e-32,
+          "maxRelativeThumbAngle": 0.0,
+          "maxRootError": 0.0010400405153632164,
+          "contactFrames": 0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "scenario": "rigid mount descent",
+          "wristDrop": 0.12000000476837158,
+          "maxYawError": 0.0,
+          "maxPitchError": 0.0,
+          "maxJointError": 2.8649712555529186e-32,
+          "maxRelativeThumbAngle": 0.0,
+          "maxRootError": 0.00020003318786621094,
+          "contactFrames": 0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "scenario": "right grip descent",
+          "wristDrop": 0.0791783332824707,
+          "maxYawError": 0.0,
+          "maxPitchError": 0.0,
+          "maxJointError": 2.598359732831617e-32,
+          "maxRelativeThumbAngle": 0.0,
+          "maxRootError": 0.0010399267775937915,
+          "contactFrames": 0
+        }
+      ],
+      "inputRows": [
+        {
+          "area": "ROVp - Pool",
+          "yawTravel": 20.0,
+          "pitchTravel": 19.999990463256836,
+          "maxServoError": 0.09390270709991455,
+          "staleDrift": 0.0,
+          "wristDrop": 0.012172698974609375,
+          "freshDuringGrip": true,
+          "staleHeld": true
+        },
+        {
+          "area": "ROVp - Seabed",
+          "yawTravel": 20.0,
+          "pitchTravel": 19.999990463256836,
+          "maxServoError": 0.09390270709991455,
+          "staleDrift": 0.0,
+          "wristDrop": 0.012172460556030273,
+          "freshDuringGrip": true,
+          "staleHeld": true
+        }
+      ],
+      "checks": [
+        "ROVp - Pool rigid mount descent: constant glove commands preserve thumb; yaw error=0, pitch=0, local rotation=0",
+        "ROVp - Pool rigid mount descent: wrist actually moves down 0.1200001 m",
+        "ROVp - Pool right grip descent: constant glove commands preserve thumb; yaw error=0, pitch=0, local rotation=0",
+        "ROVp - Pool right grip descent: wrist actually moves down 0.07917833 m",
+        "ROVp - Pool: stale glove preserves thumb while arm continues down; drift=0",
+        "ROVp - Pool: fixed-command reproduction stays in air without contact",
+        "ROVp - Seabed rigid mount descent: constant glove commands preserve thumb; yaw error=0, pitch=0, local rotation=0",
+        "ROVp - Seabed rigid mount descent: wrist actually moves down 0.12 m",
+        "ROVp - Seabed right grip descent: constant glove commands preserve thumb; yaw error=0, pitch=0, local rotation=0",
+        "ROVp - Seabed right grip descent: wrist actually moves down 0.07917833 m",
+        "ROVp - Seabed: stale glove preserves thumb while arm continues down; drift=0",
+        "ROVp - Seabed: fixed-command reproduction stays in air without contact"
+      ],
+      "errors": [
+        "ROVp - Pool: real UDP mapping stays active during Grip descent; yaw/pitch travel=20/19.99999, peak servo error=0.09390271",
+        "ROVp - Seabed: real UDP mapping stays active during Grip descent; yaw/pitch travel=20/19.99999, peak servo error=0.09390271"
+      ]
+    },
+    "explanation": "40 mm master stroke produced 12.17 mm slave descent with the existing precision mapping, below the test minimum of 15 mm. Finger tracking passed its limits. The final fixture uses an 80 mm master stroke; runtime mapping/speed parameters were not changed."
+  },
+  "source_sha256": {
+    "Assets/Runtime/Scripts/Wa100UdexRealArticulationMapper.cs": "e1e90105403976dec3ee51b3acd3b479b6c3b13ead369296b126554672c879ed",
+    "Assets/Underwater/Editor/UnderwaterGloveSandUpgrade.cs": "853234ca7bda297576a1236e9c39ec86780d995ccfc807c688c54db153dc81e6",
+    "Assets/Underwater/Editor/UnderwaterThumbMotionChecks.cs": "0202daa2c53b6056b686e0f1ad79e3b3c3ead5329a1dbb7811376c5a80a3bc09",
+    "Assets/Underwater/Editor/UnderwaterGloveSandChecks.cs": "1dc85ca8799220fcc0ac494fcc0f1fb72fb9d18e832c035c44544be86a7f79cb",
+    "Assets/Underwater/Runtime/Wa100JointPoseHold.cs": "1b653b314f58581a070b990923d4f444cec7c6215e0a6a2b7f978ec55cc49f13",
+    "Assets/Underwater/Scenes/UnderwaterRadarSurveyEditable.unity": "684a9659c0796f440c6b64cd8d993a05a0698c51fed880c73c80f37c05ea5d20"
+  },
+  "limitations": [
+    "Editor physics and synthetic input tests; no worn PICO or live glove confirmation.",
+    "Motion regression uses constant commands plus isolated UDP port 15557; never injects into live port 5555.",
+    "The pitch hinge is a simulation extension, not a claim about the physical WA100 mechanism.",
+    "Contact regression includes attach/release fixtures, not a new envelope-grasp success-rate measurement.",
+    "Scene hash includes the retained pre-existing manual local-Z edit excluded from this implementation commit."
+  ]
+}
