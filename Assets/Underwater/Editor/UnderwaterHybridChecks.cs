@@ -19,8 +19,8 @@ namespace UnderwaterBaseline.Editor
     }
     public sealed class UnderwaterHybridProbe:MonoBehaviour
     {
-        [Serializable]public class AxisResult{public string area,axis;public Vector3 raw,mapped,actual,joints;public float joint3,error,sigma,damping,maximumReverseStep;}
-        [Serializable]public class Attempt{public string area,target;public bool attached,lifted,envelope;public float lift,thumbGap,fingerGap,insertionDepth,supportClearance,closure;public Vector3 palm,pinch,targetCentre;public string result;}
+        [Serializable]public class AxisResult{public string area,axis;public Vector3 requested,raw,mapped,actual,joints;public float joint3,error,sigma,damping,maximumReverseStep;}
+        [Serializable]public class Attempt{public string area,target;public bool attached,lifted,envelope,released,landed,handPairsRestored;public float lift,thumbGap,fingerGap,insertionDepth,supportClearance,closure,drop,releaseSeconds;public Vector3 palm,pinch,targetCentre;public string result;}
         [Serializable]public class Report{public string time,scope="Editor synthetic XR poses and articulation commands; no F5. Worn PICO/glove feel not measured.";public bool passed,graspPassed;public string[] checks,errors;public AxisResult[] axes;public Attempt[] grasps;}
         readonly List<string> checks=new List<string>(),errors=new List<string>();
         readonly List<AxisResult> axes=new List<AxisResult>();readonly List<Attempt> attempts=new List<Attempt>();
@@ -39,6 +39,7 @@ namespace UnderwaterBaseline.Editor
                 var hold=task.glove.GetComponent<Wa100JointPoseHold>();hold.TestCommands=true;
                 var saved=arm.Joints.Select(j=>j.localRotation).ToArray();
                 var bench=task.GetComponentInChildren<UnderwaterGraspBench>();bench.ConfigureFiltering();
+                yield return UnderwaterPrecisionReleaseChecks.Verify(task,Check);
                 Check(task.targets.Length==2 && task.targets.Count(t=>t.name.Contains("Starfish"))==1 && task.targets.Count(t=>t.name.Contains("Squid"))==1,arm.name+": one starfish and one squid");
                 var star=task.targets.First(t=>t.name.Contains("Starfish"));
                 var mesh=star.GetComponentInChildren<MeshFilter>();
@@ -67,6 +68,7 @@ namespace UnderwaterBaseline.Editor
                 Check(arm.Contact.SweepBlocked(arm.Wrist.position,arm.Wrist.rotation,inSand-Vector3.up*.2f),arm.name+": original solid sweep retained");
             }
             var console=Object.FindObjectOfType<UnderwaterTaskConsole>();console.SelectView(0);console.Capture();Save(console.Preview,"Logs/HybridReview/bench-close.png");console.SelectView(1);console.Capture();Save(console.Preview,"Logs/HybridReview/bench-arm.png");
+            Check(attempts.Count==4 && attempts.All(a=>a.attached && a.lifted && a.envelope && a.released && a.landed && a.handPairsRestored),"All four real envelope grasps lift, open, drop and restore collisions");
             var report=new Report{time=DateTime.Now.ToString("O"),passed=errors.Count==0,graspPassed=attempts.Count==4 && attempts.All(a=>a.attached && a.lifted && a.envelope),checks=checks.ToArray(),errors=errors.ToArray(),axes=axes.ToArray(),grasps=attempts.ToArray()};
             File.WriteAllText("Logs/HybridReview/results.json",JsonUtility.ToJson(report,true));Application.logMessageReceived-=Log;EditorApplication.isPlaying=false;
         }
@@ -116,7 +118,7 @@ namespace UnderwaterBaseline.Editor
                 // singular posture; +/- Z cannot both be reached at full extension.
                 if(axis==2){arm.Joints[1].localRotation=saved[1]*Quaternion.AngleAxis(-12,arm.JointAxisLocal(1));arm.Joints[2].localRotation=saved[2]*Quaternion.AngleAxis(42,arm.JointAxisLocal(2));}
                 var origin=new Vector3(.2f,1.1f,.4f);var start=arm.Wrist.position;
-                Vector3 world=Vector3.zero;world[axis]=sign*.06f;
+                Vector3 world=Vector3.zero;world[axis]=sign*Mathf.Min(.06f,map.slavePositionRange[axis]*.7f);
                 Vector3 input=Quaternion.Inverse(arm.TrackingOrigin.rotation)*world;
                 for(int j=0;j<3;j++)input[j]=input[j]/map.slavePositionRange[j]*(map.masterHalfRange[j]-map.deadZoneMetres[j])+(Mathf.Abs(input[j])>1e-6f?Mathf.Sign(input[j])*map.deadZoneMetres[j]:0);
                 arm.ApplyControllerPose(origin,Quaternion.identity,true,1f/90);
@@ -132,7 +134,7 @@ namespace UnderwaterBaseline.Editor
                     }
                 }
                 var actual=arm.Wrist.position-start;var q=arm.CurrentJointAngles;
-                axes.Add(new AxisResult{area=arm.name,axis=(axis==0?"X":axis==1?"Y":"Z")+(sign<0?"-":"+"),raw=input,mapped=map.Target-start,actual=actual,joints=new Vector3(q.x,q.y,q.z),joint3=q.w,error=Vector3.Distance(actual,world),sigma=arm.MinimumSingularValue,damping=arm.EffectiveDamping,maximumReverseStep=reverse});
+                axes.Add(new AxisResult{area=arm.name,axis=(axis==0?"X":axis==1?"Y":"Z")+(sign<0?"-":"+"),requested=world,raw=input,mapped=map.Target-start,actual=actual,joints=new Vector3(q.x,q.y,q.z),joint3=q.w,error=Vector3.Distance(actual,world),sigma=arm.MinimumSingularValue,damping=arm.EffectiveDamping,maximumReverseStep=reverse});
                 Check(Vector3.Distance(actual,world)<.012f,arm.name+": isolated "+axes.Last().axis+" error="+Vector3.Distance(actual,world).ToString("F4")+" m");
                 if(axis==0)Check(reverse<.0003f,arm.name+": left/right ramp has no reverse step above 0.3 mm ("+reverse.ToString("F6")+" m)");
             }
@@ -175,21 +177,29 @@ namespace UnderwaterBaseline.Editor
             {
                 Vector3 delta=Quaternion.Inverse(arm.TrackingOrigin.rotation)*Vector3.ClampMagnitude(error*1.2f,.045f)*Time.fixedDeltaTime;
                 for(int j=0;j<3;j++)delta[j]*=(map.masterHalfRange[j]-map.deadZoneMetres[j])/map.slavePositionRange[j];
-                command+=delta;
-                if(Vector3.Distance(command,origin)>.10f){arm.ApplyControllerPose(command,commandRotation,false,Time.fixedDeltaTime);arm.ApplyControllerPose(command,commandRotation,true,Time.fixedDeltaTime);origin=command;}
+                // Fine mapping has a smaller workspace: let the command settle
+                // before re-clutching, otherwise each clutch discards motion still
+                // in the acceleration/filter ramp and the test barely advances.
+                if(Vector3.Distance(command,origin)>.10f)
+                {
+                    if(map.Velocity.magnitude<.004f && arm.PositionError<.008f)
+                    {arm.ApplyControllerPose(command,commandRotation,false,Time.fixedDeltaTime);arm.ApplyControllerPose(command,commandRotation,true,Time.fixedDeltaTime);origin=command;}
+                }
+                else command+=delta;
                 arm.ApplyControllerPose(command,commandRotation,true,Time.fixedDeltaTime);
             };
             // Align the real opposed-digit midpoint to the object's lower half.
             // The targets remain on the original bench, never teleported into hand.
             float insertion=0,clearance=0;
-            for(int f=0;f<600 && task.Held!=target;f++)
+            for(int f=0;f<1800 && task.Held!=target;f++)
             {
-                float fraction=f<180?0:Mathf.Min(.6f,(f-180)/280f);
+                float fraction=f<800?0:Mathf.Min(.6f,(f-800)/400f);
                 Drive(task,fraction);
                 Vector3 goal=target.Shape.bounds.center-Vector3.up*target.Shape.bounds.size.y*.18f;
                 Vector3 pinch=Pinch(task);
                 move(goal-pinch);
                 task.Process(task.ReadClosure(),Time.fixedDeltaTime,true,false);
+                if(f%180==0)File.AppendAllText("Logs/HybridReview/grasp-progress.txt",target.name+" frame="+f+" pinch="+pinch.ToString("F3")+" goal="+goal.ToString("F3")+" speed="+map.Velocity.magnitude.ToString("F4")+" status="+arm.Status+" surface="+arm.WholeArmContact.LastSurface+"\n");
                 if(task.Held==target)
                 {
                     float bottom=arm.Contact.Hand.GetComponentsInChildren<Renderer>().Min(r=>r.bounds.min.y);
@@ -205,7 +215,7 @@ namespace UnderwaterBaseline.Editor
                 if(task.Held)break;
                 for(int f=0;f<80;f++){Drive(task,fraction);yield return new WaitForFixedUpdate();}
                 Vector3 recoveryGoal=arm.Wrist.position+PlanEnvelopeOffset(task,target);
-                for(int f=0;f<200 && !task.Held;f++)
+                for(int f=0;f<650 && !task.Held;f++)
                 {
                     Drive(task,fraction);move(recoveryGoal-arm.Wrist.position);
                     task.Process(task.ReadClosure(),Time.fixedDeltaTime,true,false);
@@ -222,11 +232,27 @@ namespace UnderwaterBaseline.Editor
             if(task.Held==target)
             {
                 Vector3 goal=arm.Wrist.position+Vector3.up*.17f;
-                for(int f=0;f<280;f++){move(goal-arm.Wrist.position);task.Process(.6f,Time.fixedDeltaTime,true,false);yield return new WaitForFixedUpdate();}
+                for(int f=0;f<480;f++){move(goal-arm.Wrist.position);task.Process(.6f,Time.fixedDeltaTime,true,false);yield return new WaitForFixedUpdate();}
                 attempt.lift=target.transform.position.y-before;attempt.lifted=task.LiftVerified;
-                task.Release("automated test cleanup");
+                float releasedY=target.transform.position.y;float releaseStart=Time.unscaledTime;
+                for(int f=0;f<15 && task.Held;f++)
+                {
+                    // Keep the old physical closure value high deliberately. The
+                    // real unsmoothed glove opening command must still release.
+                    Drive(task,0);task.Process(.6f,Time.fixedDeltaTime,true,false,0);
+                    yield return new WaitForFixedUpdate();
+                }
+                attempt.releaseSeconds=Time.unscaledTime-releaseStart;
+                attempt.released=!task.Held && !target.Held && !target.Body.isKinematic && target.Body.useGravity && !target.transform.IsChildOf(arm.Wrist);
+                for(int f=0;f<220;f++){Drive(task,0);yield return new WaitForFixedUpdate();}
+                attempt.drop=releasedY-target.transform.position.y;
+                attempt.landed=attempt.drop>.08f && target.Body.velocity.magnitude<.1f && target.Shape.bounds.min.y>=bench.sand.bounds.max.y-.008f;
+                attempt.handPairsRestored=target.PendingHandPairs==0;
+                Check(attempt.released && attempt.releaseSeconds<.25f,attempt.target+": raw glove opening releases despite stale/high physical closure; latency="+attempt.releaseSeconds.ToString("F3")+" s");
+                Check(attempt.landed,attempt.target+": naturally falls and rests on sand, drop="+attempt.drop.ToString("F3")+" m");
+                Check(attempt.handPairsRestored,attempt.target+": temporary robot collision exclusions restored after clearance");
             }
-            attempt.result=attempt.lifted?"Opposed lower-side contacts and lift verified":"Not validated: "+task.Status;
+            attempt.result=attempt.lifted && attempt.released && attempt.landed?"Envelope lift, glove-open release and natural sand landing verified":"Not validated: "+task.Status;
             attempts.Add(attempt);map.mode=oldMode;
         }
         static Vector3 Pinch(UnderwaterGraspTask task)

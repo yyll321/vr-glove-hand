@@ -1,0 +1,690 @@
+{
+  "final": {
+    "time": "2026-10-28T18:48:58.6991335+08:00",
+    "scope": "Editor synthetic XR poses and articulation commands; no F5. Worn PICO/glove feel not measured.",
+    "passed": true,
+    "graspPassed": true,
+    "checks": [
+      "Continuous deadzone: no motion inside 2 mm; 10 um continuous output immediately outside",
+      "72/90/120 Hz speed and acceleration bounded: 0.1572 m/s, 0.6500 m/s2",
+      "Rate-to-position transition rebases command with bounded displacement",
+      "Frozen tracking rotation maps raw right axis consistently after 90 degree yaw",
+      "Right-axis mapping linear after deadzone: raw=0.0020 m output=0.00000 m",
+      "Right-axis mapping linear after deadzone: raw=0.0021 m output=0.00008 m",
+      "Right-axis mapping linear after deadzone: raw=0.0120 m output=0.00759 m",
+      "Right-axis mapping linear after deadzone: raw=0.0420 m output=0.03038 m",
+      "Right-axis mapping linear after deadzone: raw=0.0820 m output=0.06076 m",
+      "Position mapping attenuates 4 mm / 17 Hz stationary jitter: RMS=0.000012 m",
+      "Contact discards inward normal motion while preserving tangential adjustment",
+      "Pool Grasp Task: 80 mm hand input maps to 24.68 mm fine tool displacement",
+      "Pool Grasp Task: fine velocity/acceleration caps measured 0.0350 m/s, 0.1400 m/s2",
+      "Pool Grasp Task: physical index joint reaches 90% of 60 deg command: old=1.000 s, new=0.375 s",
+      "Pool Grasp Task: physical reopening below 6 deg within 0.264 s",
+      "Pool Grasp Task: increased actuator effort retains nonzero depth/area sand resistance",
+      "Pool Starfish 1: release restores gravity, dynamic body and CCD on landing layer 11",
+      "Pool Starfish 1: lands without tunnelling on layer 11, clearance=-0.0001 m",
+      "Pool Starfish 1: release fixture restores all robot collision pairs",
+      "Pool Starfish 1: release restores gravity, dynamic body and CCD on landing layer 8",
+      "Pool Starfish 1: lands without tunnelling on layer 8, clearance=0.0000 m",
+      "Pool Starfish 1: release fixture restores all robot collision pairs",
+      "Pool Starfish 1: release restores gravity, dynamic body and CCD on landing layer 0",
+      "Pool Starfish 1: lands without tunnelling on layer 0, clearance=0.0000 m",
+      "Pool Starfish 1: release fixture restores all robot collision pairs",
+      "Pool Squid 2: release restores gravity, dynamic body and CCD on landing layer 11",
+      "Pool Squid 2: lands without tunnelling on layer 11, clearance=0.0000 m",
+      "Pool Squid 2: release fixture restores all robot collision pairs",
+      "Pool Squid 2: release restores gravity, dynamic body and CCD on landing layer 8",
+      "Pool Squid 2: lands without tunnelling on layer 8, clearance=0.0000 m",
+      "Pool Squid 2: release fixture restores all robot collision pairs",
+      "Pool Squid 2: release restores gravity, dynamic body and CCD on landing layer 0",
+      "Pool Squid 2: lands without tunnelling on layer 0, clearance=0.0000 m",
+      "Pool Squid 2: release fixture restores all robot collision pairs",
+      "ROVp - Pool: one starfish and one squid",
+      "ROVp - Pool: starfish local Z 75 mm / upright collider 78 mm",
+      "ROVp - Pool: sand collision ignored / solid support not ignored",
+      "ROVp - Pool: resistance increases with depth and area",
+      "ROVp - Pool: insertion has computed nonzero resistance 1.336 N",
+      "ROVp - Pool: isolated X- error=0.0005 m",
+      "ROVp - Pool: left/right ramp has no reverse step above 0.3 mm (0.000000 m)",
+      "ROVp - Pool: isolated X+ error=0.0022 m",
+      "ROVp - Pool: left/right ramp has no reverse step above 0.3 mm (0.000053 m)",
+      "ROVp - Pool: isolated Y- error=0.0006 m",
+      "ROVp - Pool: isolated Y+ error=0.0010 m",
+      "ROVp - Pool: isolated Z- error=0.0006 m",
+      "ROVp - Pool: isolated Z+ error=0.0005 m",
+      "ROVp - Pool: stale/no-command joint at 25.19 deg under +/-2 Nm external torque holds within 0.000 degrees",
+      "ROVp - Pool: commanded closure stops at solid, max penetration=0.0004 m; rejected commands=252",
+      "Pool Starfish 1: raw glove opening releases despite stale/high physical closure; latency=0.069 s",
+      "Pool Starfish 1: naturally falls and rests on sand, drop=0.348 m",
+      "Pool Starfish 1: temporary robot collision exclusions restored after clearance",
+      "Pool Squid 2: raw glove opening releases despite stale/high physical closure; latency=0.069 s",
+      "Pool Squid 2: naturally falls and rests on sand, drop=0.341 m",
+      "Pool Squid 2: temporary robot collision exclusions restored after clearance",
+      "ROVp - Pool: hand can enter sand 25 mm",
+      "ROVp - Pool: solid support still blocks same trajectory",
+      "ROVp - Pool: original solid sweep retained",
+      "Seabed Grasp Task: 80 mm hand input maps to 24.68 mm fine tool displacement",
+      "Seabed Grasp Task: fine velocity/acceleration caps measured 0.0350 m/s, 0.1400 m/s2",
+      "Seabed Grasp Task: physical index joint reaches 90% of 60 deg command: old=1.000 s, new=0.375 s",
+      "Seabed Grasp Task: physical reopening below 6 deg within 0.264 s",
+      "Seabed Grasp Task: increased actuator effort retains nonzero depth/area sand resistance",
+      "Sea Starfish 1: release restores gravity, dynamic body and CCD on landing layer 11",
+      "Sea Starfish 1: lands without tunnelling on layer 11, clearance=-0.0001 m",
+      "Sea Starfish 1: release fixture restores all robot collision pairs",
+      "Sea Starfish 1: release restores gravity, dynamic body and CCD on landing layer 8",
+      "Sea Starfish 1: lands without tunnelling on layer 8, clearance=0.0000 m",
+      "Sea Starfish 1: release fixture restores all robot collision pairs",
+      "Sea Starfish 1: release restores gravity, dynamic body and CCD on landing layer 0",
+      "Sea Starfish 1: lands without tunnelling on layer 0, clearance=0.0000 m",
+      "Sea Starfish 1: release fixture restores all robot collision pairs",
+      "Sea Squid 2: release restores gravity, dynamic body and CCD on landing layer 11",
+      "Sea Squid 2: lands without tunnelling on layer 11, clearance=0.0000 m",
+      "Sea Squid 2: release fixture restores all robot collision pairs",
+      "Sea Squid 2: release restores gravity, dynamic body and CCD on landing layer 8",
+      "Sea Squid 2: lands without tunnelling on layer 8, clearance=0.0000 m",
+      "Sea Squid 2: release fixture restores all robot collision pairs",
+      "Sea Squid 2: release restores gravity, dynamic body and CCD on landing layer 0",
+      "Sea Squid 2: lands without tunnelling on layer 0, clearance=0.0000 m",
+      "Sea Squid 2: release fixture restores all robot collision pairs",
+      "ROVp - Seabed: one starfish and one squid",
+      "ROVp - Seabed: starfish local Z 75 mm / upright collider 78 mm",
+      "ROVp - Seabed: sand collision ignored / solid support not ignored",
+      "ROVp - Seabed: resistance increases with depth and area",
+      "ROVp - Seabed: insertion has computed nonzero resistance 1.336 N",
+      "ROVp - Seabed: isolated X- error=0.0006 m",
+      "ROVp - Seabed: left/right ramp has no reverse step above 0.3 mm (0.000000 m)",
+      "ROVp - Seabed: isolated X+ error=0.0022 m",
+      "ROVp - Seabed: left/right ramp has no reverse step above 0.3 mm (0.000057 m)",
+      "ROVp - Seabed: isolated Y- error=0.0006 m",
+      "ROVp - Seabed: isolated Y+ error=0.0010 m",
+      "ROVp - Seabed: isolated Z- error=0.0006 m",
+      "ROVp - Seabed: isolated Z+ error=0.0005 m",
+      "ROVp - Seabed: stale/no-command joint at 25.19 deg under +/-2 Nm external torque holds within 0.000 degrees",
+      "ROVp - Seabed: commanded closure stops at solid, max penetration=0.0004 m; rejected commands=252",
+      "Sea Starfish 1: raw glove opening releases despite stale/high physical closure; latency=0.069 s",
+      "Sea Starfish 1: naturally falls and rests on sand, drop=0.361 m",
+      "Sea Starfish 1: temporary robot collision exclusions restored after clearance",
+      "Sea Squid 2: raw glove opening releases despite stale/high physical closure; latency=0.069 s",
+      "Sea Squid 2: naturally falls and rests on sand, drop=0.353 m",
+      "Sea Squid 2: temporary robot collision exclusions restored after clearance",
+      "ROVp - Seabed: hand can enter sand 25 mm",
+      "ROVp - Seabed: solid support still blocks same trajectory",
+      "ROVp - Seabed: original solid sweep retained",
+      "All four real envelope grasps lift, open, drop and restore collisions"
+    ],
+    "errors": [],
+    "axes": [
+      {
+        "area": "ROVp - Pool",
+        "axis": "X-",
+        "requested": {
+          "x": -0.03500000014901161,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "raw": {
+          "x": -0.11259999871253967,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "mapped": {
+          "x": -0.0350000262260437,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.03471946716308594,
+          "y": -0.0003352165222167969,
+          "z": -0.00033283233642578125
+        },
+        "joints": {
+          "x": 1.5814887285232544,
+          "y": -1.09814453125,
+          "z": 3.771158456802368
+        },
+        "joint3": 0.07904712110757828,
+        "error": 0.0005494053475558758,
+        "sigma": 0.023427508771419525,
+        "damping": 0.06750454008579254,
+        "maximumReverseStep": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "axis": "X+",
+        "requested": {
+          "x": 0.03500000014901161,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "raw": {
+          "x": 0.11259999871253967,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "mapped": {
+          "x": 0.0350000262260437,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.03481698036193848,
+          "y": -5.459785461425781e-05,
+          "z": 0.002224445343017578
+        },
+        "joints": {
+          "x": -1.59063720703125,
+          "y": 0.6250756978988647,
+          "z": -2.18560791015625
+        },
+        "joint3": -0.113311767578125,
+        "error": 0.0022326293401420116,
+        "sigma": 0.0,
+        "damping": 0.10000000149011612,
+        "maximumReverseStep": 5.269050598144531e-05
+      },
+      {
+        "area": "ROVp - Pool",
+        "axis": "Y-",
+        "requested": {
+          "x": 0.0,
+          "y": -0.0279999990016222,
+          "z": 0.0
+        },
+        "raw": {
+          "x": 0.0,
+          "y": -0.08459999412298203,
+          "z": 0.0
+        },
+        "mapped": {
+          "x": 0.0,
+          "y": -0.028000056743621826,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.8596649169921875e-05,
+          "y": -0.027493000030517578,
+          "z": -0.00034332275390625
+        },
+        "joints": {
+          "x": 0.0005914695211686194,
+          "y": -1.377105712890625,
+          "z": 0.02714899554848671
+        },
+        "joint3": -0.02978515625,
+        "error": 0.0006125881918706,
+        "sigma": 0.00870994757860899,
+        "damping": 0.08661682903766632,
+        "maximumReverseStep": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "axis": "Y+",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0279999990016222,
+          "z": 0.0
+        },
+        "raw": {
+          "x": 0.0,
+          "y": 0.08459999412298203,
+          "z": 0.0
+        },
+        "mapped": {
+          "x": 0.0,
+          "y": 0.028000056743621826,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -5.269050598144531e-05,
+          "y": 0.02813100814819336,
+          "z": 0.0009541511535644531
+        },
+        "joints": {
+          "x": -0.001617431640625,
+          "y": 1.5733176469802856,
+          "z": -0.597198486328125
+        },
+        "joint3": 0.021512402221560478,
+        "error": 0.0009645434911362827,
+        "sigma": 0.006361417472362518,
+        "damping": 0.09007369726896286,
+        "maximumReverseStep": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "axis": "Z-",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": -0.03500000014901161
+        },
+        "raw": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": -0.11259999871253967
+        },
+        "mapped": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": -0.035001516342163086
+        },
+        "actual": {
+          "x": 2.09808349609375e-05,
+          "y": -0.0004987716674804688,
+          "z": -0.03530526161193848
+        },
+        "joints": {
+          "x": 0.15127724409103394,
+          "y": -8.444488525390625,
+          "z": 28.48544692993164
+        },
+        "joint3": -0.279632568359375,
+        "error": 0.0005851477617397904,
+        "sigma": 0.11874806135892868,
+        "damping": 0.03500000014901161,
+        "maximumReverseStep": 0.00014734268188476562
+      },
+      {
+        "area": "ROVp - Pool",
+        "axis": "Z+",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.03500000014901161
+        },
+        "raw": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.11259999871253967
+        },
+        "mapped": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.035001516342163086
+        },
+        "actual": {
+          "x": 5.257129669189453e-05,
+          "y": 0.00035500526428222656,
+          "z": 0.03463459014892578
+        },
+        "joints": {
+          "x": -0.1610107421875,
+          "y": -14.53228759765625,
+          "z": 52.275840759277344
+        },
+        "joint3": 0.2562554180622101,
+        "error": 0.0005121688591316342,
+        "sigma": 0.20421260595321655,
+        "damping": 0.03500000014901161,
+        "maximumReverseStep": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "axis": "X-",
+        "requested": {
+          "x": -0.03500000014901161,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "raw": {
+          "x": -0.11259999871253967,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "mapped": {
+          "x": -0.034976959228515625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.035190582275390625,
+          "y": 0.0005691051483154297,
+          "z": -0.0002002716064453125
+        },
+        "joints": {
+          "x": 1.602609634399414,
+          "y": -1.133453369140625,
+          "z": 4.052009582519531
+        },
+        "joint3": 0.08131583034992218,
+        "error": 0.0006327013252303004,
+        "sigma": 0.024535123258829117,
+        "damping": 0.0662442073225975,
+        "maximumReverseStep": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "axis": "X+",
+        "requested": {
+          "x": 0.03500000014901161,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "raw": {
+          "x": 0.11259999871253967,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "mapped": {
+          "x": 0.034976959228515625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.034801483154296875,
+          "y": -5.4836273193359375e-05,
+          "z": 0.0022230148315429688
+        },
+        "joints": {
+          "x": -1.589874267578125,
+          "y": 0.6250644326210022,
+          "z": -2.18560791015625
+        },
+        "joint3": -0.11328125,
+        "error": 0.0022325345780700445,
+        "sigma": 3.563924110494554e-05,
+        "damping": 0.09994210302829742,
+        "maximumReverseStep": 5.7220458984375e-05
+      },
+      {
+        "area": "ROVp - Seabed",
+        "axis": "Y-",
+        "requested": {
+          "x": 0.0,
+          "y": -0.0279999990016222,
+          "z": 0.0
+        },
+        "raw": {
+          "x": 0.0,
+          "y": -0.08459999412298203,
+          "z": 0.0
+        },
+        "mapped": {
+          "x": 0.0,
+          "y": -0.028000056743621826,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.9073486328125e-05,
+          "y": -0.027493000030517578,
+          "z": -0.00034332275390625
+        },
+        "joints": {
+          "x": 0.0006350737530738115,
+          "y": -1.377105712890625,
+          "z": 0.02715921774506569
+        },
+        "joint3": -0.02978515625,
+        "error": 0.0006126028602011502,
+        "sigma": 0.008710101246833801,
+        "damping": 0.08661659806966782,
+        "maximumReverseStep": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "axis": "Y+",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0279999990016222,
+          "z": 0.0
+        },
+        "raw": {
+          "x": 0.0,
+          "y": 0.08459999412298203,
+          "z": 0.0
+        },
+        "mapped": {
+          "x": 0.0,
+          "y": 0.028000056743621826,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -5.340576171875e-05,
+          "y": 0.02813100814819336,
+          "z": 0.00095367431640625
+        },
+        "joints": {
+          "x": -0.001617431640625,
+          "y": 1.5733133554458618,
+          "z": -0.59716796875
+        },
+        "joint3": 0.02151569537818432,
+        "error": 0.0009641111246310174,
+        "sigma": 0.006361577194184065,
+        "damping": 0.09007345139980316,
+        "maximumReverseStep": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "axis": "Z-",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": -0.03500000014901161
+        },
+        "raw": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": -0.11259999871253967
+        },
+        "mapped": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": -0.035001516342163086
+        },
+        "actual": {
+          "x": 2.288818359375e-05,
+          "y": -0.0006139278411865234,
+          "z": -0.0350644588470459
+        },
+        "joints": {
+          "x": 0.15019233524799347,
+          "y": -8.48095703125,
+          "z": 28.597604751586914
+        },
+        "joint3": -0.277618408203125,
+        "error": 0.0006177266477607191,
+        "sigma": 0.11949935555458069,
+        "damping": 0.03500000014901161,
+        "maximumReverseStep": 8.034706115722656e-05
+      },
+      {
+        "area": "ROVp - Seabed",
+        "axis": "Z+",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.03500000014901161
+        },
+        "raw": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.11259999871253967
+        },
+        "mapped": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.035001516342163086
+        },
+        "actual": {
+          "x": 6.4849853515625e-05,
+          "y": 0.00023627281188964844,
+          "z": 0.03453254699707031
+        },
+        "joints": {
+          "x": -0.16107177734375,
+          "y": -14.532257080078125,
+          "z": 52.24855041503906
+        },
+        "joint3": 0.2556592524051666,
+        "error": 0.000527771539054811,
+        "sigma": 0.20412121713161469,
+        "damping": 0.03500000014901161,
+        "maximumReverseStep": 0.0
+      }
+    ],
+    "grasps": [
+      {
+        "area": "ROVp - Pool",
+        "target": "Pool Starfish 1",
+        "attached": true,
+        "lifted": true,
+        "envelope": true,
+        "released": true,
+        "landed": true,
+        "handPairsRestored": true,
+        "lift": 0.35062557458877563,
+        "thumbGap": 0.0,
+        "fingerGap": 0.0,
+        "insertionDepth": 0.04824364185333252,
+        "supportClearance": 0.11175636202096939,
+        "closure": 0.5999999642372131,
+        "drop": 0.34807315468788147,
+        "releaseSeconds": 0.0694427490234375,
+        "palm": {
+          "x": 0.5504295825958252,
+          "y": 0.43703126907348633,
+          "z": -4.416595458984375
+        },
+        "pinch": {
+          "x": 0.603820264339447,
+          "y": 0.3033057451248169,
+          "z": -4.550307273864746
+        },
+        "targetCentre": {
+          "x": 0.6096000075340271,
+          "y": 0.304446816444397,
+          "z": -4.54891300201416
+        },
+        "result": "Envelope lift, glove-open release and natural sand landing verified"
+      },
+      {
+        "area": "ROVp - Pool",
+        "target": "Pool Squid 2",
+        "attached": true,
+        "lifted": true,
+        "envelope": true,
+        "released": true,
+        "landed": true,
+        "handPairsRestored": true,
+        "lift": 0.34097200632095337,
+        "thumbGap": 0.00752302585169673,
+        "fingerGap": 0.01621246337890625,
+        "insertionDepth": 0.09875524044036865,
+        "supportClearance": 0.06124476343393326,
+        "closure": 0.5950000882148743,
+        "drop": 0.3410719335079193,
+        "releaseSeconds": 0.0694427490234375,
+        "palm": {
+          "x": 0.875487208366394,
+          "y": 0.40381455421447754,
+          "z": -4.4556732177734375
+        },
+        "pinch": {
+          "x": 1.0193870067596436,
+          "y": 0.29680126905441284,
+          "z": -4.552733421325684
+        },
+        "targetCentre": {
+          "x": 1.0328725576400757,
+          "y": 0.31514671444892883,
+          "z": -4.552182674407959
+        },
+        "result": "Envelope lift, glove-open release and natural sand landing verified"
+      },
+      {
+        "area": "ROVp - Seabed",
+        "target": "Sea Starfish 1",
+        "attached": true,
+        "lifted": true,
+        "envelope": true,
+        "released": true,
+        "landed": true,
+        "handPairsRestored": true,
+        "lift": 0.36508798599243164,
+        "thumbGap": 0.0,
+        "fingerGap": 0.0,
+        "insertionDepth": 0.05681121349334717,
+        "supportClearance": 0.10318876802921295,
+        "closure": 0.5999999642372131,
+        "drop": 0.36124086380004883,
+        "releaseSeconds": 0.0694427490234375,
+        "palm": {
+          "x": 62.579471588134766,
+          "y": 0.42724090814590454,
+          "z": -4.406201362609863
+        },
+        "pinch": {
+          "x": 62.62713623046875,
+          "y": 0.2959784269332886,
+          "z": -4.544401168823242
+        },
+        "targetCentre": {
+          "x": 62.633060455322266,
+          "y": 0.31649351119995117,
+          "z": -4.552496910095215
+        },
+        "result": "Envelope lift, glove-open release and natural sand landing verified"
+      },
+      {
+        "area": "ROVp - Seabed",
+        "target": "Sea Squid 2",
+        "attached": true,
+        "lifted": true,
+        "envelope": true,
+        "released": true,
+        "landed": true,
+        "handPairsRestored": true,
+        "lift": 0.35330772399902344,
+        "thumbGap": 0.01050606369972229,
+        "fingerGap": 0.013426773250102997,
+        "insertionDepth": 0.08165508508682251,
+        "supportClearance": 0.07834489643573761,
+        "closure": 0.5224999785423279,
+        "drop": 0.35313913226127625,
+        "releaseSeconds": 0.0694427490234375,
+        "palm": {
+          "x": 62.8892822265625,
+          "y": 0.4330359101295471,
+          "z": -4.458732604980469
+        },
+        "pinch": {
+          "x": 63.03837585449219,
+          "y": 0.3097479045391083,
+          "z": -4.535197734832764
+        },
+        "targetCentre": {
+          "x": 63.04869079589844,
+          "y": 0.32822027802467346,
+          "z": -4.535130500793457
+        },
+        "result": "Envelope lift, glove-open release and natural sand landing verified"
+      }
+    ]
+  },
+  "source_sha256": {
+    "Assets/Runtime/Scripts/Wa100UdexRealArticulationMapper.cs": "206a124c55a2844421d31142facb4eee06391224d27deff66e167609a9298dd9",
+    "Assets/Underwater/Runtime/UnderwaterMasterSlaveMapper.cs": "85ae8991f02138f1c7bfc4111c32483b1269df4cebaf87913324728cd8155c0d",
+    "Assets/Underwater/Runtime/Wa100JointPoseHold.cs": "2e9018df9d6c5bb3e017c547b909fabf4fdae9fd65af358b8257e4cc2c01fb51",
+    "Assets/Underwater/Runtime/UnderwaterGraspTask.cs": "212a236ffb257d1754612290c1400529ea86e0a2ea1544d2e0910ea30a39ccf8",
+    "Assets/Underwater/Runtime/UnderwaterGraspTarget.cs": "063e8375c6f39833350ab1ae97191cc7743638381c4712be0086cec0eb96dd47",
+    "Assets/Underwater/Editor/UnderwaterHybridChecks.cs": "2840aea5a934850d8af716993d1d784a5ff83a1d2f101087cfade858176c177b",
+    "Assets/Underwater/Editor/UnderwaterPrecisionReleaseChecks.cs": "add96865be63ec7923b3a325dcc926dfb6552817464b3da8f0906be60cb7057c",
+    "Assets/Underwater/Editor/UnderwaterPrecisionReleaseUpgrade.cs": "dcc121ddfcbfb0ea5ad78792897fee25ac689aa44afd67bf6f7afae81d3ac422",
+    "Assets/Underwater/Scenes/UnderwaterRadarSurveyEditable.unity": "4f051b9fff6a9d63e85275af99f2f7b78c0fecab8079eb12cca7f1b39cfe1689"
+  },
+  "limitations": [
+    "Synthetic controller poses and articulation commands in Unity Editor; worn PICO/glove feel remains unmeasured.",
+    "Measured servo response is not a calibrated hardware electric-current or buoyancy measurement.",
+    "Independent landing fixtures explicitly attach/release objects; only the four grasp attempts validate opposed-contact acquisition.",
+    "Sand uses depth/area dependent command resistance, not DEM; grasp holding uses releasable kinematic attachment."
+  ],
+  "first_round": {
+    "time": "2026-10-28T18:42:20.5585721+08:00",
+    "passed": false,
+    "findings": [
+      "Imported non-convex robot meshes rejected ClosestPoint; fixed with conservative bounds separation.",
+      "Fine-workspace test re-clutched before settling and did not acquire targets; revised path timing and clutch settling without relaxing production collision/grasp thresholds."
+    ]
+  }
+}
