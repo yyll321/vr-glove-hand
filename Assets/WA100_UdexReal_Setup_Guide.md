@@ -1,5 +1,7 @@
 # WA100 UdexReal Unity Setup Guide
 
+> 2026-10-28 水下抓取场景已改用 HandDriver 一致角度配置，取消第一包校零和旧混合放大，并增加仿真拇指根部弯曲轴。具体通道、重连和沙层配置见 `Documentation/HandDriver一致映射与沙层指痕.md`。下文旧映射表适用于未升级的 Sample/原始预制体，不作为当前水下场景的配置依据。
+
 ## 1. HandDriver.exe 到 Unity 的数据链路
 
 1. 启动 `handdriver.exe`，确认手套能在 HandDriver 窗口里正常映射动作。

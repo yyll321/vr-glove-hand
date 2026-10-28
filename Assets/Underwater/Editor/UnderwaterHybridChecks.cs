@@ -291,7 +291,7 @@ namespace UnderwaterBaseline.Editor
             return offset;
         }
         static void Drive(UnderwaterGraspTask task,float fraction)
-        {foreach(var m in task.glove.JointMappings)if(m.Joint)m.CurrentTarget=(Mathf.Abs(m.LowerLimitDegrees)>Mathf.Abs(m.UpperLimitDegrees)?m.LowerLimitDegrees:m.UpperLimitDegrees)*fraction;}
+        {foreach(var m in task.glove.JointMappings)if(m.Joint)m.CurrentTarget=m.CountsForClosure?(Mathf.Abs(m.LowerLimitDegrees)>Mathf.Abs(m.UpperLimitDegrees)?m.LowerLimitDegrees:m.UpperLimitDegrees)*fraction:0;}
         static void Restore(PicoArmPoseDriver arm,Quaternion[] saved)
         {for(int i=0;i<4;i++)arm.Joints[i].localRotation=saved[i];arm.Contact.Hand.SyncMountedRoot();Physics.SyncTransforms();arm.ApplyControllerPose(Vector3.zero,Quaternion.identity,false,1f/90);}
         static void Save(RenderTexture rt,string path)

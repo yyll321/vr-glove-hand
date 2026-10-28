@@ -98,15 +98,16 @@ namespace UnderwaterBaseline
                 check(receiver.ReceivedPacketCount>0 && receiver.LastRoleName=="UnderwaterCheckRight","HandDriver UDP JSON receiver accepts a real loopback packet");
                 var mappers=UnityEngine.Object.FindObjectsOfType<Wa100UdexRealArticulationMapper>();
                 var original=mappers.Select(m=>m.Network).ToArray();
-                foreach(var mapper in mappers){mapper.Network=receiver;mapper.AutoBind();mapper.CalibrateNeutral();}
+                var originalNames=mappers.Select(m=>m.CharacterName).ToArray();var originalRoles=mappers.Select(m=>m.ResolvedCharacterName).ToArray();
+                foreach(var mapper in mappers){mapper.Network=receiver;mapper.CharacterName="";mapper.ResolvedCharacterName="UnderwaterCheckRight";mapper.AutoBind();mapper.CalibrateNeutral();}
                 Send(udp,35);yield return new WaitForSecondsRealtime(0.25f);
                 foreach(var mapper in mappers)
                 {
                     mapper.Apply();
-                    check(mapper.enabled && mapper.BoundJointCount==11 && mapper.JointMappings.Count(m=>m.Joint && Mathf.Abs(m.Joint.xDrive.target)>2)>=8,
+                    check(mapper.enabled && mapper.BoundJointCount==mapper.JointMappings.Length && mapper.JointMappings.Count(m=>m.Joint && Mathf.Abs(Wa100UdexRealArticulationMapper.GetDrive(m).target)>2)>=8,
                         mapper.transform.root.name+": UDP glove channels drive WA100 finger targets");
                 }
-                for(int i=0;i<mappers.Length;i++){mappers[i].Network=original[i];mappers[i].IsNeutralCalibrated=false;}
+                for(int i=0;i<mappers.Length;i++){mappers[i].Network=original[i];mappers[i].CharacterName=originalNames[i];mappers[i].ResolvedCharacterName=originalRoles[i];mappers[i].IsNeutralCalibrated=false;}
             }
             UnityEngine.Object.Destroy(fixture);
         }

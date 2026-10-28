@@ -1,0 +1,868 @@
+{
+  "final": {
+    "time": "2026-10-28T19:43:49.6829697+08:00",
+    "scope": "Isolated UDP port 15556; synthetic glove commands and contact trajectories on actual scene articulations/sand. Human glove parity and worn PICO performance need confirmation.",
+    "passed": true,
+    "checks": [
+      "Sand world-projected shader compiles without errors",
+      "Pool Grasp Task: one complete role pinned from isolated UDP stream",
+      "Pool Grasp Task: bent first packet remains 31 degrees, never zero-calibrated",
+      "Pool Grasp Task: Middle requested angles equal vendor HandDriver output 40/30 degrees",
+      "Pool Grasp Task: isolated Middle channel -> Thumb_J1_Yaw actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Thumb_J1_Pitch actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Thumb_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Thumb_J3 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Index_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Index_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Middle_Finger_J1 actual=40.00 requested=40.00",
+      "Pool Grasp Task: isolated Middle channel -> Middle_Finger_J2 actual=30.00 requested=30.00",
+      "Pool Grasp Task: isolated Middle channel -> Ring_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Ring_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Little_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Middle channel -> Little_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: Middle distal sensor does not amplify middle joint",
+      "Pool Grasp Task: Ring requested angles equal vendor HandDriver output 40/30 degrees",
+      "Pool Grasp Task: isolated Ring channel -> Thumb_J1_Yaw actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Thumb_J1_Pitch actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Thumb_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Thumb_J3 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Index_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Index_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Middle_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Middle_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Ring_Finger_J1 actual=40.00 requested=40.00",
+      "Pool Grasp Task: isolated Ring channel -> Ring_Finger_J2 actual=30.00 requested=30.00",
+      "Pool Grasp Task: isolated Ring channel -> Little_Finger_J1 actual=0.00 requested=0.00",
+      "Pool Grasp Task: isolated Ring channel -> Little_Finger_J2 actual=0.00 requested=0.00",
+      "Pool Grasp Task: Ring distal sensor does not amplify middle joint",
+      "Pool Grasp Task: physical Thumb_J1_Yaw requested=-25.00 actual=-25.00",
+      "Pool Grasp Task: physical Thumb_J1_Pitch requested=0.00 actual=0.00",
+      "Pool Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Pool Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Pool Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Pool Grasp Task: physical Thumb_J1_Yaw requested=25.00 actual=25.00",
+      "Pool Grasp Task: physical Thumb_J1_Pitch requested=0.00 actual=0.00",
+      "Pool Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Pool Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Pool Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Pool Grasp Task: physical Thumb_J1_Yaw requested=0.00 actual=0.00",
+      "Pool Grasp Task: physical Thumb_J1_Pitch requested=27.00 actual=27.00",
+      "Pool Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Pool Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Pool Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Pool Grasp Task: physical Thumb_J1_Yaw requested=-20.00 actual=-20.00",
+      "Pool Grasp Task: physical Thumb_J1_Pitch requested=21.00 actual=21.00",
+      "Pool Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Pool Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Pool Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Pool Grasp Task: unrelated glove role cannot change pinned hand",
+      "Pool Grasp Task: incomplete frame holds all joints, no per-channel zero substitution",
+      "Pool Grasp Task: original hard finger stop retained; penetration=0.0000 m",
+      "Pool Grasp Task: both thumb axes retain rigid hold under +/-2 Nm, max error=0.120 deg",
+      "Pool Grasp Task: fingertip-sized local cavity depth=0.0460 m, far surface unchanged",
+      "Pool Grasp Task: withdrawal leaves persistent cavity with slow settling",
+      "Pool Grasp Task: item falls into cavity onto deformed support, clearance=0.0021 m",
+      "Pool Grasp Task: fingers ignore sand support mesh while targets collide",
+      "Pool Grasp Task: soft layer entry and hard support blocking retained",
+      "Pool Grasp Task: actual WA100 finger collider excavates visible geometry",
+      "Pool Starfish 1: sand collider recook while held preserves target/environment collision",
+      "Pool Starfish 1: natural release still lands on sand after collider recooking during hold",
+      "Pool Squid 2: sand collider recook while held preserves target/environment collision",
+      "Pool Squid 2: natural release still lands on sand after collider recooking during hold",
+      "Seabed Grasp Task: one complete role pinned from isolated UDP stream",
+      "Seabed Grasp Task: bent first packet remains 31 degrees, never zero-calibrated",
+      "Seabed Grasp Task: Middle requested angles equal vendor HandDriver output 40/30 degrees",
+      "Seabed Grasp Task: isolated Middle channel -> Thumb_J1_Yaw actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Thumb_J1_Pitch actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Thumb_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Thumb_J3 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Index_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Index_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Middle_Finger_J1 actual=40.00 requested=40.00",
+      "Seabed Grasp Task: isolated Middle channel -> Middle_Finger_J2 actual=30.00 requested=30.00",
+      "Seabed Grasp Task: isolated Middle channel -> Ring_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Ring_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Little_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Middle channel -> Little_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: Middle distal sensor does not amplify middle joint",
+      "Seabed Grasp Task: Ring requested angles equal vendor HandDriver output 40/30 degrees",
+      "Seabed Grasp Task: isolated Ring channel -> Thumb_J1_Yaw actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Thumb_J1_Pitch actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Thumb_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Thumb_J3 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Index_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Index_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Middle_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Middle_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Ring_Finger_J1 actual=40.00 requested=40.00",
+      "Seabed Grasp Task: isolated Ring channel -> Ring_Finger_J2 actual=30.00 requested=30.00",
+      "Seabed Grasp Task: isolated Ring channel -> Little_Finger_J1 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: isolated Ring channel -> Little_Finger_J2 actual=0.00 requested=0.00",
+      "Seabed Grasp Task: Ring distal sensor does not amplify middle joint",
+      "Seabed Grasp Task: physical Thumb_J1_Yaw requested=-25.00 actual=-25.00",
+      "Seabed Grasp Task: physical Thumb_J1_Pitch requested=0.00 actual=0.00",
+      "Seabed Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Seabed Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Seabed Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Seabed Grasp Task: physical Thumb_J1_Yaw requested=25.00 actual=25.00",
+      "Seabed Grasp Task: physical Thumb_J1_Pitch requested=0.00 actual=0.00",
+      "Seabed Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Seabed Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Seabed Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Seabed Grasp Task: physical Thumb_J1_Yaw requested=0.00 actual=0.00",
+      "Seabed Grasp Task: physical Thumb_J1_Pitch requested=27.00 actual=27.00",
+      "Seabed Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Seabed Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Seabed Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Seabed Grasp Task: physical Thumb_J1_Yaw requested=-20.00 actual=-20.00",
+      "Seabed Grasp Task: physical Thumb_J1_Pitch requested=21.00 actual=21.00",
+      "Seabed Grasp Task: physical Thumb_J2 requested=24.00 actual=24.00",
+      "Seabed Grasp Task: physical Thumb_J3 requested=-29.00 actual=-29.00",
+      "Seabed Grasp Task: thumb pitch/yaw/IP channels match HandDriver with URDF axis signs",
+      "Seabed Grasp Task: unrelated glove role cannot change pinned hand",
+      "Seabed Grasp Task: incomplete frame holds all joints, no per-channel zero substitution",
+      "Seabed Grasp Task: original hard finger stop retained; penetration=0.0000 m",
+      "Seabed Grasp Task: both thumb axes retain rigid hold under +/-2 Nm, max error=0.120 deg",
+      "Seabed Grasp Task: fingertip-sized local cavity depth=0.0460 m, far surface unchanged",
+      "Seabed Grasp Task: withdrawal leaves persistent cavity with slow settling",
+      "Seabed Grasp Task: item falls into cavity onto deformed support, clearance=0.0021 m",
+      "Seabed Grasp Task: fingers ignore sand support mesh while targets collide",
+      "Seabed Grasp Task: soft layer entry and hard support blocking retained",
+      "Seabed Grasp Task: actual WA100 finger collider excavates visible geometry",
+      "Sea Starfish 1: sand collider recook while held preserves target/environment collision",
+      "Sea Starfish 1: natural release still lands on sand after collider recooking during hold",
+      "Sea Squid 2: sand collider recook while held preserves target/environment collision",
+      "Sea Squid 2: natural release still lands on sand after collider recooking during hold"
+    ],
+    "errors": [],
+    "joints": [
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -2.551336365286261e-06
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 0.0,
+        "actual": -5.730185421271017e-06
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -3.278341296208964e-07
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -3.187081891800614e-12
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Index_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Index_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Middle_Finger_L1",
+        "axis": "X",
+        "requested": 40.0,
+        "actual": 39.999996185302734
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Middle_Finger_L2",
+        "axis": "X",
+        "requested": 30.0,
+        "actual": 29.999998092651367
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Ring_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 5.533574487515125e-09
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Ring_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 4.098039685374033e-09
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Little_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Middle",
+        "joint": "Little_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -2.551336365286261e-06
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 0.0,
+        "actual": -5.730185421271017e-06
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -3.278306621723459e-07
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -2.7954860106448043e-13
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Index_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Index_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Middle_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 3.828767525249077e-09
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Middle_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 2.945026222889169e-09
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Ring_Finger_L1",
+        "axis": "X",
+        "requested": 40.0,
+        "actual": 39.999996185302734
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Ring_Finger_L2",
+        "axis": "X",
+        "requested": 30.0,
+        "actual": 29.999998092651367
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Little_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "Ring",
+        "joint": "Little_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": -25.0,
+        "actual": -25.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 0.0,
+        "actual": -1.4140625808067853e-06
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 25.0,
+        "actual": 25.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 0.0,
+        "actual": -1.0672170702719086e-07
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -1.1152418665005825e-05
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 27.000001907348633,
+        "actual": 27.0000057220459
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": -20.0,
+        "actual": -19.999996185302734
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 21.0,
+        "actual": 21.000003814697266
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Pool Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -2.551336365286261e-06
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 0.0,
+        "actual": -5.730185421271017e-06
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -3.2783106007627794e-07
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -2.374079123394768e-13
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Index_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Index_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Middle_Finger_L1",
+        "axis": "X",
+        "requested": 40.0,
+        "actual": 39.999996185302734
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Middle_Finger_L2",
+        "axis": "X",
+        "requested": 30.0,
+        "actual": 29.999998092651367
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Ring_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 3.750661115020648e-09
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Ring_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 2.777655216945618e-09
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Little_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Middle",
+        "joint": "Little_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -2.551336365286261e-06
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 0.0,
+        "actual": -5.730185421271017e-06
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": -3.2783003689473844e-07
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 1.2791943069037637e-12
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Index_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Index_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Middle_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 8.333811862826224e-09
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Middle_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 6.41023101266569e-09
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Ring_Finger_L1",
+        "axis": "X",
+        "requested": 40.0,
+        "actual": 39.999996185302734
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Ring_Finger_L2",
+        "axis": "X",
+        "requested": 30.0,
+        "actual": 29.999998092651367
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Little_Finger_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "Ring",
+        "joint": "Little_Finger_L2",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 0.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": -25.0,
+        "actual": -25.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 0.0,
+        "actual": -1.4140625808067853e-06
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, 25.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 25.0,
+        "actual": 25.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 0.0,
+        "actual": -1.0672170702719086e-07
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (0.00, -25.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": 0.0,
+        "actual": 1.040536631080613e-06
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 27.000001907348633,
+        "actual": 27.0000057220459
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (45.00, 0.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L1",
+        "axis": "X",
+        "requested": -20.0,
+        "actual": -19.999996185302734
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L1",
+        "axis": "Z",
+        "requested": 21.0,
+        "actual": 21.000003814697266
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L2",
+        "axis": "X",
+        "requested": 24.0,
+        "actual": 24.0
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "command": "thumb (35.00, 20.00)",
+        "joint": "Thumb_L3",
+        "axis": "X",
+        "requested": -29.0,
+        "actual": -29.0
+      }
+    ],
+    "sand": [
+      {
+        "area": "Pool Grasp Task",
+        "centreDepth": 0.04599998891353607,
+        "retainedDepth": 0.0444999635219574,
+        "farDepth": 0.0,
+        "meanUpdateMs": 1.511653184890747,
+        "maxUpdateMs": 3.9795000553131104,
+        "landingClearance": 0.002114107832312584,
+        "vertices": 24073,
+        "colliderTriangles": 5280
+      },
+      {
+        "area": "Seabed Grasp Task",
+        "centreDepth": 0.045999541878700256,
+        "retainedDepth": 0.04449951648712158,
+        "farDepth": 0.0,
+        "meanUpdateMs": 1.5638500452041626,
+        "maxUpdateMs": 3.846100091934204,
+        "landingClearance": 0.0021120067685842514,
+        "vertices": 24073,
+        "colliderTriangles": 5280
+      }
+    ]
+  },
+  "source_sha256": {
+    "Assets/Runtime/Scripts/Network.cs": "c55dcf2d3bbaa1687baf5efe0fe3534e92782553d6f7e822c1110a267d3a70e5",
+    "Assets/Runtime/Scripts/HandDriver.cs": "65f51d6186202a43c64112ef9e9a9ebb298aea52d7daa428b054ed67a080f1cd",
+    "Assets/Runtime/Scripts/Wa100UdexRealArticulationMapper.cs": "7913fe276db5dd979ab4c9b27e71b1d13143826fd02b5599df710459c0476535",
+    "Assets/Underwater/Runtime/Wa100JointPoseHold.cs": "1b653b314f58581a070b990923d4f444cec7c6215e0a6a2b7f978ec55cc49f13",
+    "Assets/Underwater/Runtime/UnderwaterGraspTask.cs": "ba8b4777def20f1814bbcdf42be4fa3100045a008f6b73b2a2a0e9c5fca0c63c",
+    "Assets/Underwater/Runtime/UnderwaterGraspBench.cs": "afefeb7a8f7f836c7234dc62b4353a9d20c8270e79fb0c3c865f2bafc36fba5b",
+    "Assets/Underwater/Runtime/UnderwaterDeformableSand.cs": "b82ab2d212118b439d14e6953ad43093a4b1b1cb5d263e2ed8f87f691791da52",
+    "Assets/Underwater/Editor/UnderwaterGloveSandChecks.cs": "1dc85ca8799220fcc0ac494fcc0f1fb72fb9d18e832c035c44544be86a7f79cb",
+    "Assets/Underwater/Editor/UnderwaterGloveSandUpgrade.cs": "f73a3e690579471b30af3d50727e608f09b3af2dfd1077877a97cb80d04414bc",
+    "Assets/Underwater/SandInteraction/FineWetSand.shader": "cb9c5478bf3553e1f3a1175d476aaf71fccda693dc781709681519b9bb0412e6",
+    "Assets/Underwater/Scenes/UnderwaterRadarSurveyEditable.unity": "a45b36b670b38e5e22b1f6334705e8e77df4b5289d26b445ae62acafd2242143"
+  },
+  "limitations": [
+    "Synthetic isolated UDP and scene physics verification; no live glove or worn PICO measurements.",
+    "Extra Thumb_L1 pitch axis is a simulation extension to the original single-axis URDF.",
+    "Four fingers have only two driven links; third human finger joint and non-thumb side-splay are not reproduced.",
+    "Sand is a heightfield plus command resistance, not DEM, soft-body animals or calibrated terramechanics.",
+    "Release fixtures explicitly attach/release targets, and do not validate envelope acquisition success.",
+    "Scene hash includes the pre-existing manual local Z edit retained in the working copy, excluded from the implementation commit."
+  ],
+  "earlier_rounds": [
+    {
+      "time": "2026-10-28T19:23:43.3948221+08:00",
+      "passed": false,
+      "checks": 112,
+      "errors": [
+        "Pool Grasp Task: item falls into cavity onto deformed support, clearance=0.1386 m",
+        "Pool Grasp Task: actual WA100 finger collider excavates visible geometry",
+        "Seabed Grasp Task: item falls into cavity onto deformed support, clearance=0.1386 m",
+        "Seabed Grasp Task: actual WA100 finger collider excavates visible geometry"
+      ]
+    },
+    {
+      "time": "2026-10-28T19:29:49.7999101+08:00",
+      "passed": false,
+      "checks": 112,
+      "errors": [
+        "Pool Grasp Task: item falls into cavity onto deformed support, clearance=0.1386 m",
+        "Pool Grasp Task: actual WA100 finger collider excavates visible geometry",
+        "Seabed Grasp Task: item falls into cavity onto deformed support, clearance=0.1386 m",
+        "Seabed Grasp Task: actual WA100 finger collider excavates visible geometry"
+      ]
+    },
+    {
+      "time": "2026-10-28T19:32:40.2269115+08:00",
+      "passed": true,
+      "checks": 116,
+      "errors": []
+    },
+    {
+      "time": "2026-10-28T19:35:13.1226579+08:00",
+      "passed": true,
+      "checks": 120,
+      "errors": []
+    },
+    {
+      "time": "2026-10-28T19:37:40.2278550+08:00",
+      "passed": true,
+      "checks": 128,
+      "errors": []
+    }
+  ]
+}

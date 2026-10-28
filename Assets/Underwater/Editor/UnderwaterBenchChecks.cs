@@ -254,7 +254,7 @@ namespace UnderwaterBaseline.Editor
             foreach(var m in task.glove.JointMappings)if(m.Joint)
             {
                 float limit=Mathf.Abs(m.LowerLimitDegrees)>Mathf.Abs(m.UpperLimitDegrees)?m.LowerLimitDegrees:m.UpperLimitDegrees;
-                m.CurrentTarget=limit*fraction;var d=m.Joint.xDrive;d.target=m.CurrentTarget;m.Joint.xDrive=d;
+                m.CurrentTarget=m.CountsForClosure?limit*fraction:0;var d=Wa100UdexRealArticulationMapper.GetDrive(m);d.target=m.CurrentTarget;Wa100UdexRealArticulationMapper.SetDrive(m,d);
             }
         }
         static Vector3 Pinch(UnderwaterGraspTask task)
