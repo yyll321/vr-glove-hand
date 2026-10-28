@@ -1,22 +1,22 @@
 {
-  "editorAudit": "PASS 143 scene/import checks; mathematical and Physics.Raycast checks passed. 2026-10-27T20:38:12.5804664+08:00\nPlay mode, HMD rendering and performance are separate validations.",
-  "mathPhysics": "PASS 1880 Unity mathematical and Physics.Raycast assertions 2026-10-27T20:38:12.5737012+08:00",
-  "structureAssertions": 5419,
+  "editorAudit": "PASS 143 scene/import checks; mathematical and Physics.Raycast checks passed. 2026-10-28T15:06:54.5879104+08:00\nPlay mode, HMD rendering and performance are separate validations.",
+  "mathPhysics": "PASS 1880 Unity mathematical and Physics.Raycast assertions 2026-10-28T15:06:54.5793784+08:00",
+  "structureAssertions": 5225,
   "playSmoke": {
     "passed": true,
-    "time": "2026-10-27T20:48:13.1277833+08:00",
+    "time": "2026-10-28T15:10:05.7833774+08:00",
     "poolFrames": 13,
-    "seabedFrames": 66,
+    "seabedFrames": 65,
     "seabedHits": 473,
-    "poolScanMs": 0.6103515625,
-    "seabedScanMs": 0.81634521484375,
-    "flowStepMs": 4.92095947265625,
+    "poolScanMs": 0.6847381591796875,
+    "seabedScanMs": 0.8945465087890625,
+    "flowStepMs": 5.3424835205078125,
     "errors": [],
     "calibrationFiveMetres": true,
     "exportJsonCsvPly": true,
     "moduleDisableStopsRadar": true,
-    "rovMovedMetres": 2.444091796875,
-    "movementContact": "Sand Terrain - Teleportation Area wrist=(65.231, 0.749, -4.023)",
+    "rovMovedMetres": 2.45709228515625,
+    "movementContact": "Sand Terrain - Teleportation Area wrist=(65.244, 0.749, -4.023)",
     "rangeFollowsRovApproach": true,
     "calibrationRangeMetres": 5.0,
     "approachRangeMetres": 4.739999771118164,
@@ -25,5 +25,5 @@
     "fixedControlsPlayRegression": true,
     "limitation": "Editor Play smoke only; no HMD perception or performance certification"
   },
-  "validationScope": "Actual Unity Editor import, Physics.Raycast, 256 button combinations, chord priority and normal Update input routing in Play; no manual HMD confirmation, no standalone build, no ROS connection"
+  "validationScope": "Unity Editor scene import, Physics, button and full Play regression; no worn PICO, real glove, standalone build or ROS test."
 }

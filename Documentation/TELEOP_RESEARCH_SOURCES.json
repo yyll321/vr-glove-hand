@@ -1,0 +1,261 @@
+{
+  "sources": [
+    {
+      "source": "https://api.crossref.org/works?query.title=Selectively+Damped+Least+Squares+for+Inverse+Kinematics&rows=3",
+      "retrieved": "2026-10-28T14:32:22.872174",
+      "record": {
+        "title": [
+          "Selectively Damped Least Squares for Inverse Kinematics"
+        ],
+        "DOI": "10.1080/2151237x.2005.10129202",
+        "URL": "https://doi.org/10.1080/2151237x.2005.10129202",
+        "author": [
+          {
+            "given": "Samuel R.",
+            "family": "Buss",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jin-Su",
+            "family": "Kim",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2005,
+              1
+            ]
+          ]
+        },
+        "abstract": null
+      }
+    },
+    {
+      "source": "https://api.crossref.org/works?query.title=Selectively+Damped+Least+Squares+for+Inverse+Kinematics&rows=3",
+      "retrieved": "2026-10-28T14:32:22.872174",
+      "record": {
+        "title": [
+          "Inverse kinematics for autonomous underwater manipulations using weighted damped least squares"
+        ],
+        "DOI": "10.1109/urai.2017.7992822",
+        "URL": "https://doi.org/10.1109/urai.2017.7992822",
+        "author": [
+          {
+            "given": "Gun Rae",
+            "family": "Cho",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Mun-Jik",
+            "family": "Lee",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Min-Gyu",
+            "family": "Kim",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ji-Hong",
+            "family": "Li",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2017,
+              6
+            ]
+          ]
+        },
+        "abstract": null
+      }
+    },
+    {
+      "source": "https://api.crossref.org/works?query.title=Resolved+Motion+Rate+Control+of+Manipulators+and+Human+Prostheses&rows=3",
+      "retrieved": "2026-10-28T14:32:23.069241",
+      "record": {
+        "title": [
+          "Resolved Motion Rate Control of Manipulators and Human Prostheses"
+        ],
+        "DOI": "10.1109/tmms.1969.299896",
+        "URL": "https://doi.org/10.1109/tmms.1969.299896",
+        "author": [
+          {
+            "given": "Daniel",
+            "family": "Whitney",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1969,
+              6
+            ]
+          ]
+        },
+        "abstract": null
+      }
+    },
+    {
+      "source": "https://api.crossref.org/works/10.1109/TSMC.1986.289285",
+      "retrieved": "2026-10-28T14:41:46.966945",
+      "record": {
+        "title": [
+          "Manipulator Inverse Kinematic Solutions Based on Vector Formulations and Damped Least-Squares Methods"
+        ],
+        "DOI": "10.1109/tsmc.1986.289285",
+        "URL": "https://doi.org/10.1109/tsmc.1986.289285",
+        "author": [
+          {
+            "given": "Charles",
+            "family": "Wampler",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1986,
+              1
+            ]
+          ]
+        },
+        "abstract": null
+      }
+    },
+    {
+      "source": "https://api.crossref.org/works/10.1145/2207676.2208639",
+      "retrieved": "2026-10-28T14:41:46.966945",
+      "record": {
+        "title": [
+          "1 € filter"
+        ],
+        "DOI": "10.1145/2207676.2208639",
+        "URL": "https://doi.org/10.1145/2207676.2208639",
+        "author": [
+          {
+            "given": "Géry",
+            "family": "Casiez",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "LIFL &amp; INRIA Lille, University of Lille, Villeneuve d'Ascq, Lille, France"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Nicolas",
+            "family": "Roussel",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "INRIA, Lille, France"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Daniel",
+            "family": "Vogel",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Waterloo, Waterloo, Ontario, Canada"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2012,
+              5,
+              5
+            ]
+          ]
+        },
+        "abstract": null
+      }
+    }
+  ],
+  "authorAlgorithmPage": "https://gery.casiez.net/1euro/",
+  "scope": "Public Crossref metadata and 1 euro author algorithm/tuning page; not a claim of full-text review of every cited paper."
+}

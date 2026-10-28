@@ -1,0 +1,2488 @@
+{
+  "scene": "Assets/Underwater/Scenes/UnderwaterRadarSurveyEditable.unity",
+  "time": "2026-10-28T15:09:14.4500484+08:00",
+  "passed": true,
+  "compile": "PASS Unity Roslyn runtime and editor compilation; original CS0649 warnings remain",
+  "preservedContactFiles": {
+    "Assets/Underwater/Runtime/Wa100SurfaceContact.cs": "56223aa6483638911859af5c797e10fd6d41046c30aeded247be51cae37bd7ad",
+    "Assets/Runtime/Scripts/Wa100VisibilityGuard.cs": "ed91798d218a2f8ae7d797a9782e1b45e2aaa64c9e411326c0a456c6bcfe2fd9",
+    "Assets/Underwater/Runtime/UnderwaterArmSurfaceGuard.cs": "efa975c1c85e727488797ea293c154a078a96a45b92c8965bd4a91e45f6369bc",
+    "ProjectSettings/DynamicsManager.asset": "80ba5565beefddabba07863f19983c62409753fb36bff400fe36cf9a7db94690"
+  },
+  "preservationCheck": "Git diff confirms no changes to the above contact files or global collision matrix in this upgrade.",
+  "finalBenchRound": {
+    "time": "2026-10-28T15:09:14.4500484+08:00",
+    "passed": true,
+    "checks": [
+      "ROVp - Pool: exactly one starfish + one squid",
+      "ROVp - Pool: explicit sand ignore pairs, solid support collision pairs retained",
+      "ROVp - Pool: hand enters sand by 25 mm without query obstruction",
+      "ROVp - Pool: same hand trajectory blocked at solid support",
+      "ROVp - Pool: swept contact cannot tunnel through bench support",
+      "ROVp - Pool: improved direction (1.00, 0.00, 0.00) error=0.0069",
+      "ROVp - Pool: joint speed and acceleration limits (1.00, 0.00, 0.00)",
+      "ROVp - Pool: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+      "ROVp - Pool: joint speed and acceleration limits (-1.00, 0.00, 0.00)",
+      "ROVp - Pool: improved direction (0.00, 1.00, 0.00) error=0.0048",
+      "ROVp - Pool: joint speed and acceleration limits (0.00, 1.00, 0.00)",
+      "ROVp - Pool: improved direction (0.00, -1.00, 0.00) error=0.0021",
+      "ROVp - Pool: joint speed and acceleration limits (0.00, -1.00, 0.00)",
+      "ROVp - Pool: calibrated base axis is vertical",
+      "ROVp - Pool: calibrated Jacobian agrees with actual FK joint 0",
+      "ROVp - Pool: calibrated Jacobian agrees with actual FK joint 1",
+      "ROVp - Pool: calibrated Jacobian agrees with actual FK joint 2",
+      "ROVp - Pool: rotated tracking frame preserves world-right mapping",
+      "ROVp - Pool: stationary jitter below 0.7 mm RMS",
+      "ROVp - Pool: tight joint limit and unreachable request stay finite and rate-limited",
+      "ROVp - Pool: release holds joints",
+      "ROVp - Pool: invalid tracking holds joints",
+      "ROVp - Pool: tracking discontinuity reanchors without jump",
+      "ROVp - Pool: singular-value estimator matches known matrix",
+      "ROVp - Seabed: exactly one starfish + one squid",
+      "ROVp - Seabed: explicit sand ignore pairs, solid support collision pairs retained",
+      "ROVp - Seabed: hand enters sand by 25 mm without query obstruction",
+      "ROVp - Seabed: same hand trajectory blocked at solid support",
+      "ROVp - Seabed: swept contact cannot tunnel through bench support",
+      "ROVp - Seabed: improved direction (1.00, 0.00, 0.00) error=0.0069",
+      "ROVp - Seabed: joint speed and acceleration limits (1.00, 0.00, 0.00)",
+      "ROVp - Seabed: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+      "ROVp - Seabed: joint speed and acceleration limits (-1.00, 0.00, 0.00)",
+      "ROVp - Seabed: improved direction (0.00, 1.00, 0.00) error=0.0048",
+      "ROVp - Seabed: joint speed and acceleration limits (0.00, 1.00, 0.00)",
+      "ROVp - Seabed: improved direction (0.00, -1.00, 0.00) error=0.0021",
+      "ROVp - Seabed: joint speed and acceleration limits (0.00, -1.00, 0.00)",
+      "ROVp - Seabed: calibrated base axis is vertical",
+      "ROVp - Seabed: calibrated Jacobian agrees with actual FK joint 0",
+      "ROVp - Seabed: calibrated Jacobian agrees with actual FK joint 1",
+      "ROVp - Seabed: calibrated Jacobian agrees with actual FK joint 2",
+      "ROVp - Seabed: rotated tracking frame preserves world-right mapping",
+      "ROVp - Seabed: stationary jitter below 0.7 mm RMS",
+      "ROVp - Seabed: tight joint limit and unreachable request stay finite and rate-limited",
+      "ROVp - Seabed: release holds joints",
+      "ROVp - Seabed: invalid tracking holds joints",
+      "ROVp - Seabed: tracking discontinuity reanchors without jump",
+      "ROVp - Seabed: singular-value estimator matches known matrix"
+    ],
+    "errors": [],
+    "motion": [
+      {
+        "area": "ROVp - Pool",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.08017134666442871,
+          "y": 0.0008139610290527344,
+          "z": 0.006886482238769531
+        },
+        "error": 0.006936535704880953,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7309.72607421875,
+        "jitterRms": 0.0,
+        "totalJointTravel": 271.9092102050781,
+        "maximumOffAxisDeviation": 0.016214484348893166
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.0796276330947876,
+          "y": 3.5762786865234375e-05,
+          "z": 3.6716461181640625e-05
+        },
+        "error": 0.00037587611586786807,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7290.2529296875,
+        "jitterRms": 0.0,
+        "totalJointTravel": 118.14495086669922,
+        "maximumOffAxisDeviation": 0.00023270056408364326
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.0002390146255493164,
+          "y": 0.07956719398498535,
+          "z": 0.004539012908935547
+        },
+        "error": 0.004565861076116562,
+        "maxJointStep": 0.16312937438488007,
+        "maxJointAcceleration": 1098.52294921875,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.0664167404174805,
+        "maximumOffAxisDeviation": 0.004545301664620638
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.0517578125e-05,
+          "y": -0.07944965362548828,
+          "z": 0.00063323974609375
+        },
+        "error": 0.0008395254844799638,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 885.1959228515625,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.924359321594238,
+        "maximumOffAxisDeviation": 0.0006339746760204434
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.07772994041442871,
+          "y": -0.00016069412231445312,
+          "z": 0.006519317626953125
+        },
+        "error": 0.006905105896294117,
+        "maxJointStep": 0.2340678572654724,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 6.582602024078369,
+        "maximumOffAxisDeviation": 0.0065212976187467575
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.07796192169189453,
+          "y": -4.76837158203125e-07,
+          "z": 9.5367431640625e-06
+        },
+        "error": 0.0020380988717079163,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 10.560195922851562,
+        "maximumOffAxisDeviation": 0.0008586513577029109
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.00024127960205078125,
+          "y": 0.07807540893554688,
+          "z": 0.004399776458740234
+        },
+        "error": 0.004808356519788504,
+        "maxJointStep": 0.2406626045703888,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.001150131225586,
+        "maximumOffAxisDeviation": 0.004406387452036142
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.4928321838378906e-05,
+          "y": -0.07795453071594238,
+          "z": 0.0006375312805175781
+        },
+        "error": 0.0021428028121590614,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 4.593212127685547,
+        "maximumOffAxisDeviation": 0.0006384873413480818
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "stationary 4 mm 17 Hz noise",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "error": 0.0,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 0.0,
+        "jitterRms": 0.00022659038950223476,
+        "totalJointTravel": 0.0,
+        "maximumOffAxisDeviation": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "stationary 4 mm 17 Hz noise",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "error": 0.0,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 0.0,
+        "jitterRms": 0.0,
+        "totalJointTravel": 0.0,
+        "maximumOffAxisDeviation": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.08016586303710938,
+          "y": 0.0008323192596435547,
+          "z": 0.006886005401611328
+        },
+        "error": 0.006938107777386904,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7276.849609375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 271.14111328125,
+        "maximumOffAxisDeviation": 0.016214367002248764
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.07963180541992188,
+          "y": 3.552436828613281e-05,
+          "z": 3.62396240234375e-05
+        },
+        "error": 0.0003716735518537462,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7297.48046875,
+        "jitterRms": 0.0,
+        "totalJointTravel": 118.14851379394531,
+        "maximumOffAxisDeviation": 0.00023298997257370502
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.000240325927734375,
+          "y": 0.07955121994018555,
+          "z": 0.0045375823974609375
+        },
+        "error": 0.004566050134599209,
+        "maxJointStep": 0.20174111425876617,
+        "maxJointAcceleration": 1419.1314697265625,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.128232479095459,
+        "maximumOffAxisDeviation": 0.004543942399322987
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.0517578125e-05,
+          "y": -0.07944965362548828,
+          "z": 0.00063323974609375
+        },
+        "error": 0.0008395254844799638,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 886.1846923828125,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.929895877838135,
+        "maximumOffAxisDeviation": 0.0006339746760204434
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.07772445678710938,
+          "y": -0.00016021728515625,
+          "z": 0.006519317626953125
+        },
+        "error": 0.006906899623572826,
+        "maxJointStep": 0.2306998074054718,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 6.5821309089660645,
+        "maximumOffAxisDeviation": 0.006521285977214575
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.077972412109375,
+          "y": -2.384185791015625e-07,
+          "z": 9.5367431640625e-06
+        },
+        "error": 0.0020276084542274475,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 10.56058120727539,
+        "maximumOffAxisDeviation": 0.0008586379699409008
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.000240325927734375,
+          "y": 0.07806205749511719,
+          "z": 0.004398345947265625
+        },
+        "error": 0.004812360741198063,
+        "maxJointStep": 0.2406626045703888,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.018284320831299,
+        "maximumOffAxisDeviation": 0.004404906649142504
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.4332275390625e-05,
+          "y": -0.07795476913452148,
+          "z": 0.0006375312805175781
+        },
+        "error": 0.002142565557733178,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 4.594346523284912,
+        "maximumOffAxisDeviation": 0.0006384550360962749
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "stationary 4 mm 17 Hz noise",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "error": 0.0,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 0.0,
+        "jitterRms": 0.00022637355141341686,
+        "totalJointTravel": 0.0,
+        "maximumOffAxisDeviation": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "stationary 4 mm 17 Hz noise",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "error": 0.0,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 0.0,
+        "jitterRms": 0.0,
+        "totalJointTravel": 0.0,
+        "maximumOffAxisDeviation": 0.0
+      }
+    ],
+    "attempts": [
+      {
+        "area": "ROVp - Pool",
+        "target": "Pool Starfish 1",
+        "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+        "closure": 0.6500000357627869,
+        "thumbGap": 0.0598149299621582,
+        "fingerGap": 0.019728530198335648,
+        "pinchGap": 0.05795042961835861,
+        "lift": 0.4737291932106018,
+        "attached": true,
+        "lifted": true,
+        "targetPosition": {
+          "x": 0.6062629222869873,
+          "y": 0.19864654541015625,
+          "z": -4.678383827209473
+        },
+        "palm": {
+          "x": 0.5554982423782349,
+          "y": 0.3923759460449219,
+          "z": -4.509063243865967
+        },
+        "armStatus": "Following position and available wrist twist (4 DOF)",
+        "contact": false,
+        "attachClosure": 0.6500000357627869,
+        "sandPenetrationAtAttach": 0.026483550667762756,
+        "supportClearanceAtAttach": 0.03351645916700363
+      },
+      {
+        "area": "ROVp - Pool",
+        "target": "Pool Squid 2",
+        "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+        "closure": 0.6500000357627869,
+        "thumbGap": 0.02275020070374012,
+        "fingerGap": 0.037613339722156525,
+        "pinchGap": 0.02479979209601879,
+        "lift": 0.4464431405067444,
+        "attached": true,
+        "lifted": true,
+        "targetPosition": {
+          "x": 1.058030366897583,
+          "y": 0.22672319412231445,
+          "z": -4.623465061187744
+        },
+        "palm": {
+          "x": 0.8852590322494507,
+          "y": 0.40494799613952637,
+          "z": -4.510626792907715
+        },
+        "armStatus": "Following position and available wrist twist (4 DOF)",
+        "contact": false,
+        "attachClosure": 0.6500000357627869,
+        "sandPenetrationAtAttach": 0.025277405977249146,
+        "supportClearanceAtAttach": 0.03472260385751724
+      },
+      {
+        "area": "ROVp - Seabed",
+        "target": "Sea Starfish 1",
+        "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+        "closure": 0.6500000357627869,
+        "thumbGap": 0.06061718985438347,
+        "fingerGap": 0.03487900644540787,
+        "pinchGap": 0.05984807386994362,
+        "lift": 0.5254173278808594,
+        "attached": true,
+        "lifted": true,
+        "targetPosition": {
+          "x": 62.62887954711914,
+          "y": 0.21441012620925903,
+          "z": -4.67553186416626
+        },
+        "palm": {
+          "x": 62.575130462646484,
+          "y": 0.41167670488357544,
+          "z": -4.504748821258545
+        },
+        "armStatus": "Following position and available wrist twist (4 DOF)",
+        "contact": false,
+        "attachClosure": 0.6500000357627869,
+        "sandPenetrationAtAttach": 0.023028209805488586,
+        "supportClearanceAtAttach": 0.036971792578697205
+      },
+      {
+        "area": "ROVp - Seabed",
+        "target": "Sea Squid 2",
+        "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+        "closure": 0.6500000357627869,
+        "thumbGap": 0.02377830259501934,
+        "fingerGap": 0.036361053586006165,
+        "pinchGap": 0.033539921045303345,
+        "lift": 0.46333885192871094,
+        "attached": true,
+        "lifted": true,
+        "targetPosition": {
+          "x": 63.09382247924805,
+          "y": 0.243824303150177,
+          "z": -4.544281482696533
+        },
+        "palm": {
+          "x": 62.90492248535156,
+          "y": 0.4374139904975891,
+          "z": -4.505195617675781
+        },
+        "armStatus": "Following position and available wrist twist (4 DOF)",
+        "contact": false,
+        "attachClosure": 0.6500000357627869,
+        "sandPenetrationAtAttach": 0.004068896174430847,
+        "supportClearanceAtAttach": 0.055931106209754944
+      }
+    ],
+    "graspFeasibilityPassed": true,
+    "scope": "Unity Editor local simulation. Synthetic XR poses and joint drives, not live glove or worn PICO verification."
+  },
+  "controlAndOriginalPhysicalContactRegression": {
+    "time": "2026-10-28T15:05:09.9105875+08:00",
+    "passed": true,
+    "checks": [
+      "ROVp - Pool: exactly one starfish + one squid",
+      "ROVp - Pool: explicit sand ignore pairs, solid support collision pairs retained",
+      "ROVp - Pool: hand enters sand by 25 mm without query obstruction",
+      "ROVp - Pool: same hand trajectory blocked at solid support",
+      "ROVp - Pool: swept contact cannot tunnel through bench support",
+      "ROVp - Pool: improved direction (1.00, 0.00, 0.00) error=0.0069",
+      "ROVp - Pool: joint speed and acceleration limits (1.00, 0.00, 0.00)",
+      "ROVp - Pool: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+      "ROVp - Pool: joint speed and acceleration limits (-1.00, 0.00, 0.00)",
+      "ROVp - Pool: improved direction (0.00, 1.00, 0.00) error=0.0048",
+      "ROVp - Pool: joint speed and acceleration limits (0.00, 1.00, 0.00)",
+      "ROVp - Pool: improved direction (0.00, -1.00, 0.00) error=0.0021",
+      "ROVp - Pool: joint speed and acceleration limits (0.00, -1.00, 0.00)",
+      "ROVp - Pool: calibrated base axis is vertical",
+      "ROVp - Pool: calibrated Jacobian agrees with actual FK joint 0",
+      "ROVp - Pool: calibrated Jacobian agrees with actual FK joint 1",
+      "ROVp - Pool: calibrated Jacobian agrees with actual FK joint 2",
+      "ROVp - Pool: rotated tracking frame preserves world-right mapping",
+      "ROVp - Pool: stationary jitter below 0.7 mm RMS",
+      "ROVp - Pool: tight joint limit and unreachable request stay finite and rate-limited",
+      "ROVp - Pool: release holds joints",
+      "ROVp - Pool: invalid tracking holds joints",
+      "ROVp - Pool: tracking discontinuity reanchors without jump",
+      "ROVp - Pool: singular-value estimator matches known matrix",
+      "ROVp - Pool: finger obstacle starts clear of the hand (0.0000 m)",
+      "ROVp - Pool: driven WA100 finger makes physical contact without passing through (penetration 0.0008 m, shape Index_Finger_L2, touched True)",
+      "ROVp - Seabed: exactly one starfish + one squid",
+      "ROVp - Seabed: explicit sand ignore pairs, solid support collision pairs retained",
+      "ROVp - Seabed: hand enters sand by 25 mm without query obstruction",
+      "ROVp - Seabed: same hand trajectory blocked at solid support",
+      "ROVp - Seabed: swept contact cannot tunnel through bench support",
+      "ROVp - Seabed: improved direction (1.00, 0.00, 0.00) error=0.0069",
+      "ROVp - Seabed: joint speed and acceleration limits (1.00, 0.00, 0.00)",
+      "ROVp - Seabed: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+      "ROVp - Seabed: joint speed and acceleration limits (-1.00, 0.00, 0.00)",
+      "ROVp - Seabed: improved direction (0.00, 1.00, 0.00) error=0.0048",
+      "ROVp - Seabed: joint speed and acceleration limits (0.00, 1.00, 0.00)",
+      "ROVp - Seabed: improved direction (0.00, -1.00, 0.00) error=0.0021",
+      "ROVp - Seabed: joint speed and acceleration limits (0.00, -1.00, 0.00)",
+      "ROVp - Seabed: calibrated base axis is vertical",
+      "ROVp - Seabed: calibrated Jacobian agrees with actual FK joint 0",
+      "ROVp - Seabed: calibrated Jacobian agrees with actual FK joint 1",
+      "ROVp - Seabed: calibrated Jacobian agrees with actual FK joint 2",
+      "ROVp - Seabed: rotated tracking frame preserves world-right mapping",
+      "ROVp - Seabed: stationary jitter below 0.7 mm RMS",
+      "ROVp - Seabed: tight joint limit and unreachable request stay finite and rate-limited",
+      "ROVp - Seabed: release holds joints",
+      "ROVp - Seabed: invalid tracking holds joints",
+      "ROVp - Seabed: tracking discontinuity reanchors without jump",
+      "ROVp - Seabed: singular-value estimator matches known matrix",
+      "ROVp - Seabed: finger obstacle starts clear of the hand (0.0000 m)",
+      "ROVp - Seabed: driven WA100 finger makes physical contact without passing through (penetration 0.0008 m, shape Index_Finger_L2, touched True)"
+    ],
+    "errors": [],
+    "motion": [
+      {
+        "area": "ROVp - Pool",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.08017134666442871,
+          "y": 0.0008139610290527344,
+          "z": 0.006886482238769531
+        },
+        "error": 0.006936535704880953,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7309.72607421875,
+        "jitterRms": 0.0,
+        "totalJointTravel": 271.9092102050781,
+        "maximumOffAxisDeviation": 0.016214484348893166
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.0796276330947876,
+          "y": 3.5762786865234375e-05,
+          "z": 3.6716461181640625e-05
+        },
+        "error": 0.00037587611586786807,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7290.2529296875,
+        "jitterRms": 0.0,
+        "totalJointTravel": 118.14495086669922,
+        "maximumOffAxisDeviation": 0.00023270056408364326
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.0002390146255493164,
+          "y": 0.07956719398498535,
+          "z": 0.004539012908935547
+        },
+        "error": 0.004565861076116562,
+        "maxJointStep": 0.16312937438488007,
+        "maxJointAcceleration": 1098.52294921875,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.0664167404174805,
+        "maximumOffAxisDeviation": 0.004545301664620638
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.0517578125e-05,
+          "y": -0.07944965362548828,
+          "z": 0.00063323974609375
+        },
+        "error": 0.0008395254844799638,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 885.1959228515625,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.924359321594238,
+        "maximumOffAxisDeviation": 0.0006339746760204434
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.07772994041442871,
+          "y": -0.00016069412231445312,
+          "z": 0.006519317626953125
+        },
+        "error": 0.006905105896294117,
+        "maxJointStep": 0.2340678572654724,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 6.582602024078369,
+        "maximumOffAxisDeviation": 0.0065212976187467575
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.07796192169189453,
+          "y": -4.76837158203125e-07,
+          "z": 9.5367431640625e-06
+        },
+        "error": 0.0020380988717079163,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 10.560195922851562,
+        "maximumOffAxisDeviation": 0.0008586513577029109
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.00024127960205078125,
+          "y": 0.07807540893554688,
+          "z": 0.004399776458740234
+        },
+        "error": 0.004808356519788504,
+        "maxJointStep": 0.2406626045703888,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.001150131225586,
+        "maximumOffAxisDeviation": 0.004406387452036142
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.4928321838378906e-05,
+          "y": -0.07795453071594238,
+          "z": 0.0006375312805175781
+        },
+        "error": 0.0021428028121590614,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 4.593212127685547,
+        "maximumOffAxisDeviation": 0.0006384873413480818
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "stationary 4 mm 17 Hz noise",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "error": 0.0,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 0.0,
+        "jitterRms": 0.00022659038950223476,
+        "totalJointTravel": 0.0,
+        "maximumOffAxisDeviation": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "stationary 4 mm 17 Hz noise",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "error": 0.0,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 0.0,
+        "jitterRms": 0.0,
+        "totalJointTravel": 0.0,
+        "maximumOffAxisDeviation": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.08016586303710938,
+          "y": 0.0008323192596435547,
+          "z": 0.006886005401611328
+        },
+        "error": 0.006938107777386904,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7276.849609375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 271.14111328125,
+        "maximumOffAxisDeviation": 0.016214367002248764
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.07963180541992188,
+          "y": 3.552436828613281e-05,
+          "z": 3.62396240234375e-05
+        },
+        "error": 0.0003716735518537462,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7297.48046875,
+        "jitterRms": 0.0,
+        "totalJointTravel": 118.14851379394531,
+        "maximumOffAxisDeviation": 0.00023298997257370502
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.000240325927734375,
+          "y": 0.07955121994018555,
+          "z": 0.0045375823974609375
+        },
+        "error": 0.004566050134599209,
+        "maxJointStep": 0.20174111425876617,
+        "maxJointAcceleration": 1419.1314697265625,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.128232479095459,
+        "maximumOffAxisDeviation": 0.004543942399322987
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.0517578125e-05,
+          "y": -0.07944965362548828,
+          "z": 0.00063323974609375
+        },
+        "error": 0.0008395254844799638,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 886.1846923828125,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.929895877838135,
+        "maximumOffAxisDeviation": 0.0006339746760204434
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.07772445678710938,
+          "y": -0.00016021728515625,
+          "z": 0.006519317626953125
+        },
+        "error": 0.006906899623572826,
+        "maxJointStep": 0.2306998074054718,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 6.5821309089660645,
+        "maximumOffAxisDeviation": 0.006521285977214575
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.077972412109375,
+          "y": -2.384185791015625e-07,
+          "z": 9.5367431640625e-06
+        },
+        "error": 0.0020276084542274475,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 10.56058120727539,
+        "maximumOffAxisDeviation": 0.0008586379699409008
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.000240325927734375,
+          "y": 0.07806205749511719,
+          "z": 0.004398345947265625
+        },
+        "error": 0.004812360741198063,
+        "maxJointStep": 0.2406626045703888,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 7.018284320831299,
+        "maximumOffAxisDeviation": 0.004404906649142504
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.4332275390625e-05,
+          "y": -0.07795476913452148,
+          "z": 0.0006375312805175781
+        },
+        "error": 0.002142565557733178,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0,
+        "totalJointTravel": 4.594346523284912,
+        "maximumOffAxisDeviation": 0.0006384550360962749
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "stationary 4 mm 17 Hz noise",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "error": 0.0,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 0.0,
+        "jitterRms": 0.00022637355141341686,
+        "totalJointTravel": 0.0,
+        "maximumOffAxisDeviation": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "stationary 4 mm 17 Hz noise",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "error": 0.0,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 0.0,
+        "jitterRms": 0.0,
+        "totalJointTravel": 0.0,
+        "maximumOffAxisDeviation": 0.0
+      }
+    ],
+    "attempts": [],
+    "graspFeasibilityPassed": false,
+    "scope": "Unity Editor local simulation. Synthetic XR poses and joint drives, not live glove or worn PICO verification."
+  },
+  "originalGraspCameraArmRegression": {
+    "passed": true,
+    "time": "2026-10-28T15:06:06.1990723+08:00",
+    "checks": [
+      "Six cameras remain manual, non-stereo; one shared preview",
+      "One starfish and one squid in each area",
+      "Camera image has nonuniform scene content: region 0, view 0",
+      "Camera image has nonuniform scene content: region 0, view 1",
+      "Camera image has nonuniform scene content: region 0, view 2",
+      "Wrist range mode uses its own downward origin",
+      "Wrist scan exports its actual origin, downward tilt and distinct mode",
+      "Mode switch hides the old image until a complete fresh scan",
+      "Near target requires stable closure interval",
+      "Near closed hand attaches target with preserved pose",
+      "Lift threshold verified independently of attach",
+      "Opening releases dynamic object and marks delivery after verified lift",
+      "Far closure cannot grasp remotely",
+      "Stale glove cannot attach a target",
+      "Glove mode requires opposing thumb and finger contact",
+      "Stale data releases a lifted target without awarding delivery",
+      "Region-change release cannot award delivery",
+      "Whole-arm proxy set includes links beyond WA100",
+      "Unconstrained arm-only link has a downward trajectory",
+      "Elbow/link motion is blocked by thin floor without relying on wrist-only collision",
+      "Camera image has nonuniform scene content: region 1, view 0",
+      "Camera image has nonuniform scene content: region 1, view 1",
+      "Camera image has nonuniform scene content: region 1, view 2",
+      "Wrist range mode uses its own downward origin",
+      "Wrist scan exports its actual origin, downward tilt and distinct mode",
+      "Mode switch hides the old image until a complete fresh scan",
+      "Near target requires stable closure interval",
+      "Near closed hand attaches target with preserved pose",
+      "Lift threshold verified independently of attach",
+      "Opening releases dynamic object and marks delivery after verified lift",
+      "Far closure cannot grasp remotely",
+      "Stale glove cannot attach a target",
+      "Glove mode requires opposing thumb and finger contact",
+      "Stale data releases a lifted target without awarding delivery",
+      "Region-change release cannot award delivery",
+      "Whole-arm proxy set includes links beyond WA100",
+      "Unconstrained arm-only link has a downward trajectory",
+      "Elbow/link motion is blocked by thin floor without relying on wrist-only collision",
+      "Panel stays compact in upper-left peripheral view",
+      "Hidden panel stops extra camera renders"
+    ],
+    "errors": [],
+    "scope": "Unity Editor geometry / task / render regression. No PICO wearing or live glove verification."
+  },
+  "radarRegression": {
+    "editorAudit": "PASS 143 scene/import checks; mathematical and Physics.Raycast checks passed. 2026-10-28T15:06:54.5879104+08:00\nPlay mode, HMD rendering and performance are separate validations.",
+    "mathPhysics": "PASS 1880 Unity mathematical and Physics.Raycast assertions 2026-10-28T15:06:54.5793784+08:00",
+    "structureAssertions": 5225,
+    "playSmoke": {
+      "passed": true,
+      "time": "2026-10-28T15:10:05.7833774+08:00",
+      "poolFrames": 13,
+      "seabedFrames": 65,
+      "seabedHits": 473,
+      "poolScanMs": 0.6847381591796875,
+      "seabedScanMs": 0.8945465087890625,
+      "flowStepMs": 5.3424835205078125,
+      "errors": [],
+      "calibrationFiveMetres": true,
+      "exportJsonCsvPly": true,
+      "moduleDisableStopsRadar": true,
+      "rovMovedMetres": 2.45709228515625,
+      "movementContact": "Sand Terrain - Teleportation Area wrist=(65.244, 0.749, -4.023)",
+      "rangeFollowsRovApproach": true,
+      "calibrationRangeMetres": 5.0,
+      "approachRangeMetres": 4.739999771118164,
+      "expectedApproachMetres": 4.739999771118164,
+      "samplesPerFrame": 1089,
+      "fixedControlsPlayRegression": true,
+      "limitation": "Editor Play smoke only; no HMD perception or performance certification"
+    },
+    "validationScope": "Unity Editor scene import, Physics, button and full Play regression; no worn PICO, real glove, standalone build or ROS test."
+  },
+  "initialFailedRounds": {
+    "round1": {
+      "time": "2026-10-28T14:46:02.3335973+08:00",
+      "passed": true,
+      "checks": [
+        "ROVp - Pool: exactly one starfish + one squid",
+        "ROVp - Pool: explicit sand ignore pairs, solid support collision pairs retained",
+        "ROVp - Pool: hand enters sand by 25 mm without query obstruction",
+        "ROVp - Pool: same hand trajectory blocked at solid support",
+        "ROVp - Pool: swept contact cannot tunnel through bench support",
+        "ROVp - Pool: improved direction (1.00, 0.00, 0.00) error=0.0069",
+        "ROVp - Pool: joint speed limit (1.00, 0.00, 0.00)",
+        "ROVp - Pool: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+        "ROVp - Pool: joint speed limit (-1.00, 0.00, 0.00)",
+        "ROVp - Pool: improved direction (0.00, 1.00, 0.00) error=0.0048",
+        "ROVp - Pool: joint speed limit (0.00, 1.00, 0.00)",
+        "ROVp - Pool: improved direction (0.00, -1.00, 0.00) error=0.0021",
+        "ROVp - Pool: joint speed limit (0.00, -1.00, 0.00)",
+        "ROVp - Seabed: exactly one starfish + one squid",
+        "ROVp - Seabed: explicit sand ignore pairs, solid support collision pairs retained",
+        "ROVp - Seabed: hand enters sand by 25 mm without query obstruction",
+        "ROVp - Seabed: same hand trajectory blocked at solid support",
+        "ROVp - Seabed: swept contact cannot tunnel through bench support",
+        "ROVp - Seabed: improved direction (1.00, 0.00, 0.00) error=0.0069",
+        "ROVp - Seabed: joint speed limit (1.00, 0.00, 0.00)",
+        "ROVp - Seabed: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+        "ROVp - Seabed: joint speed limit (-1.00, 0.00, 0.00)",
+        "ROVp - Seabed: improved direction (0.00, 1.00, 0.00) error=0.0048",
+        "ROVp - Seabed: joint speed limit (0.00, 1.00, 0.00)",
+        "ROVp - Seabed: improved direction (0.00, -1.00, 0.00) error=0.0021",
+        "ROVp - Seabed: joint speed limit (0.00, -1.00, 0.00)"
+      ],
+      "errors": [],
+      "motion": [
+        {
+          "area": "ROVp - Pool",
+          "direction": "(1.00, 0.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": 0.0801694393157959,
+            "y": 0.0008482933044433594,
+            "z": 0.006885528564453125
+          },
+          "error": 0.006939655169844627,
+          "maxJointStep": 1.0001370906829834,
+          "maxJointAcceleration": 7291.43359375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(-1.00, 0.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": -0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.07962751388549805,
+            "y": 3.5762786865234375e-05,
+            "z": 3.62396240234375e-05
+          },
+          "error": 0.0003759479441214353,
+          "maxJointStep": 0.9993541240692139,
+          "maxJointAcceleration": 7290.8466796875,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(0.00, 1.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.0,
+            "y": 0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.00023865699768066406,
+            "y": 0.07950425148010254,
+            "z": 0.004532814025878906
+          },
+          "error": 0.004566084127873182,
+          "maxJointStep": 0.16312937438488007,
+          "maxJointAcceleration": 1097.039794921875,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(0.00, -1.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.0,
+            "y": -0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -3.0517578125e-05,
+            "y": -0.07945108413696289,
+            "z": 0.0006308555603027344
+          },
+          "error": 0.0008367895497940481,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 885.1959228515625,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(1.00, 0.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": 0.07772994041442871,
+            "y": -0.00016069412231445312,
+            "z": 0.006519317626953125
+          },
+          "error": 0.006905105896294117,
+          "maxJointStep": 0.2340678572654724,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(-1.00, 0.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": -0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.07796192169189453,
+            "y": -4.76837158203125e-07,
+            "z": 9.5367431640625e-06
+          },
+          "error": 0.0020380988717079163,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(0.00, 1.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.0,
+            "y": 0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.00024127960205078125,
+            "y": 0.07807540893554688,
+            "z": 0.004399776458740234
+          },
+          "error": 0.004808356519788504,
+          "maxJointStep": 0.2406626045703888,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(0.00, -1.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.0,
+            "y": -0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -3.4928321838378906e-05,
+            "y": -0.07795453071594238,
+            "z": 0.0006375312805175781
+          },
+          "error": 0.0021428028121590614,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(1.00, 0.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": 0.080169677734375,
+            "y": 0.0008451938629150391,
+            "z": 0.006885528564453125
+          },
+          "error": 0.0069392831064760685,
+          "maxJointStep": 1.0009193420410156,
+          "maxJointAcceleration": 7276.849609375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(-1.00, 0.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": -0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.07962417602539062,
+            "y": 3.5762786865234375e-05,
+            "z": 3.62396240234375e-05
+          },
+          "error": 0.00037925533251836896,
+          "maxJointStep": 0.9993541240692139,
+          "maxJointAcceleration": 7277.37744140625,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(0.00, 1.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.0,
+            "y": 0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.00023651123046875,
+            "y": 0.07954216003417969,
+            "z": 0.004536628723144531
+          },
+          "error": 0.004565802402794361,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 1023.6236572265625,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(0.00, -1.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.0,
+            "y": -0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -3.0517578125e-05,
+            "y": -0.07944965362548828,
+            "z": 0.00063323974609375
+          },
+          "error": 0.0008395254844799638,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 885.1959228515625,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(1.00, 0.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": 0.07772445678710938,
+            "y": -0.00016021728515625,
+            "z": 0.006519317626953125
+          },
+          "error": 0.006906899623572826,
+          "maxJointStep": 0.2306998074054718,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(-1.00, 0.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": -0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.077972412109375,
+            "y": -2.384185791015625e-07,
+            "z": 9.5367431640625e-06
+          },
+          "error": 0.0020276084542274475,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(0.00, 1.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.0,
+            "y": 0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.000240325927734375,
+            "y": 0.07806205749511719,
+            "z": 0.004398345947265625
+          },
+          "error": 0.004812360741198063,
+          "maxJointStep": 0.2406626045703888,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(0.00, -1.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.0,
+            "y": -0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -3.4332275390625e-05,
+            "y": -0.07795476913452148,
+            "z": 0.0006375312805175781
+          },
+          "error": 0.002142565557733178,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        }
+      ],
+      "attempts": [
+        {
+          "area": "ROVp - Pool",
+          "target": "Pool Starfish 1",
+          "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+          "closure": 0.6500000357627869,
+          "thumbGap": 0.05251878499984741,
+          "fingerGap": 0.030665794387459755,
+          "pinchGap": 0.0391722172498703,
+          "lift": 0.0,
+          "attached": true,
+          "lifted": false,
+          "targetPosition": {
+            "x": 0.613217830657959,
+            "y": 0.1996903419494629,
+            "z": -4.687473297119141
+          },
+          "palm": {
+            "x": 0.6213123798370361,
+            "y": 0.2711167335510254,
+            "z": -4.488677024841309
+          }
+        },
+        {
+          "area": "ROVp - Pool",
+          "target": "Pool Squid 2",
+          "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+          "closure": 0.6500000357627869,
+          "thumbGap": 0.2500685453414917,
+          "fingerGap": 0.09797832369804382,
+          "pinchGap": 0.25894102454185486,
+          "lift": 0.0,
+          "attached": false,
+          "lifted": false,
+          "targetPosition": {
+            "x": 0.9630200862884521,
+            "y": 0.2562941014766693,
+            "z": -4.782055377960205
+          },
+          "palm": {
+            "x": 1.000108003616333,
+            "y": 0.27288103103637695,
+            "z": -4.468482494354248
+          }
+        },
+        {
+          "area": "ROVp - Seabed",
+          "target": "Sea Starfish 1",
+          "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+          "closure": 0.6500000357627869,
+          "thumbGap": 0.12057248502969742,
+          "fingerGap": 0.037296369671821594,
+          "pinchGap": 0.13256971538066864,
+          "lift": 0.0,
+          "attached": false,
+          "lifted": false,
+          "targetPosition": {
+            "x": 62.57143783569336,
+            "y": 0.2226787805557251,
+            "z": -4.745169162750244
+          },
+          "palm": {
+            "x": 62.654815673828125,
+            "y": 0.31243687868118286,
+            "z": -4.4875407218933105
+          }
+        },
+        {
+          "area": "ROVp - Seabed",
+          "target": "Sea Squid 2",
+          "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+          "closure": 0.6500000357627869,
+          "thumbGap": 0.2887061834335327,
+          "fingerGap": 0.08059018850326538,
+          "pinchGap": 0.3000848591327667,
+          "lift": 0.0,
+          "attached": false,
+          "lifted": false,
+          "targetPosition": {
+            "x": 63.00773620605469,
+            "y": 0.2536209225654602,
+            "z": -4.82794189453125
+          },
+          "palm": {
+            "x": 63.01248550415039,
+            "y": 0.3101537823677063,
+            "z": -4.462678909301758
+          }
+        }
+      ],
+      "scope": "Unity Editor local simulation. Synthetic XR poses and joint drives, not live glove or worn PICO verification."
+    },
+    "round2": {
+      "time": "2026-10-28T14:49:42.4485645+08:00",
+      "passed": true,
+      "checks": [
+        "ROVp - Pool: exactly one starfish + one squid",
+        "ROVp - Pool: explicit sand ignore pairs, solid support collision pairs retained",
+        "ROVp - Pool: hand enters sand by 25 mm without query obstruction",
+        "ROVp - Pool: same hand trajectory blocked at solid support",
+        "ROVp - Pool: swept contact cannot tunnel through bench support",
+        "ROVp - Pool: improved direction (1.00, 0.00, 0.00) error=0.0069",
+        "ROVp - Pool: joint speed limit (1.00, 0.00, 0.00)",
+        "ROVp - Pool: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+        "ROVp - Pool: joint speed limit (-1.00, 0.00, 0.00)",
+        "ROVp - Pool: improved direction (0.00, 1.00, 0.00) error=0.0048",
+        "ROVp - Pool: joint speed limit (0.00, 1.00, 0.00)",
+        "ROVp - Pool: improved direction (0.00, -1.00, 0.00) error=0.0021",
+        "ROVp - Pool: joint speed limit (0.00, -1.00, 0.00)",
+        "ROVp - Seabed: exactly one starfish + one squid",
+        "ROVp - Seabed: explicit sand ignore pairs, solid support collision pairs retained",
+        "ROVp - Seabed: hand enters sand by 25 mm without query obstruction",
+        "ROVp - Seabed: same hand trajectory blocked at solid support",
+        "ROVp - Seabed: swept contact cannot tunnel through bench support",
+        "ROVp - Seabed: improved direction (1.00, 0.00, 0.00) error=0.0069",
+        "ROVp - Seabed: joint speed limit (1.00, 0.00, 0.00)",
+        "ROVp - Seabed: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+        "ROVp - Seabed: joint speed limit (-1.00, 0.00, 0.00)",
+        "ROVp - Seabed: improved direction (0.00, 1.00, 0.00) error=0.0048",
+        "ROVp - Seabed: joint speed limit (0.00, 1.00, 0.00)",
+        "ROVp - Seabed: improved direction (0.00, -1.00, 0.00) error=0.0021",
+        "ROVp - Seabed: joint speed limit (0.00, -1.00, 0.00)"
+      ],
+      "errors": [],
+      "motion": [
+        {
+          "area": "ROVp - Pool",
+          "direction": "(1.00, 0.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": 0.08017134666442871,
+            "y": 0.0008139610290527344,
+            "z": 0.006886482238769531
+          },
+          "error": 0.006936535704880953,
+          "maxJointStep": 1.0001370906829834,
+          "maxJointAcceleration": 7309.72607421875,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(-1.00, 0.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": -0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.0796276330947876,
+            "y": 3.5762786865234375e-05,
+            "z": 3.6716461181640625e-05
+          },
+          "error": 0.00037587611586786807,
+          "maxJointStep": 1.0001370906829834,
+          "maxJointAcceleration": 7290.2529296875,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(0.00, 1.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.0,
+            "y": 0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.0002390146255493164,
+            "y": 0.07956719398498535,
+            "z": 0.004539012908935547
+          },
+          "error": 0.004565861076116562,
+          "maxJointStep": 0.16312937438488007,
+          "maxJointAcceleration": 1098.52294921875,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(0.00, -1.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.0,
+            "y": -0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -3.0517578125e-05,
+            "y": -0.07944965362548828,
+            "z": 0.00063323974609375
+          },
+          "error": 0.0008395254844799638,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 885.1959228515625,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(1.00, 0.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": 0.07772994041442871,
+            "y": -0.00016069412231445312,
+            "z": 0.006519317626953125
+          },
+          "error": 0.006905105896294117,
+          "maxJointStep": 0.2340678572654724,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(-1.00, 0.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": -0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.07796192169189453,
+            "y": -4.76837158203125e-07,
+            "z": 9.5367431640625e-06
+          },
+          "error": 0.0020380988717079163,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(0.00, 1.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.0,
+            "y": 0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.00024127960205078125,
+            "y": 0.07807540893554688,
+            "z": 0.004399776458740234
+          },
+          "error": 0.004808356519788504,
+          "maxJointStep": 0.2406626045703888,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Pool",
+          "direction": "(0.00, -1.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.0,
+            "y": -0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -3.4928321838378906e-05,
+            "y": -0.07795453071594238,
+            "z": 0.0006375312805175781
+          },
+          "error": 0.0021428028121590614,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(1.00, 0.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": 0.08016586303710938,
+            "y": 0.0008323192596435547,
+            "z": 0.006886005401611328
+          },
+          "error": 0.006938107777386904,
+          "maxJointStep": 1.0001370906829834,
+          "maxJointAcceleration": 7276.849609375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(-1.00, 0.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": -0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.07963180541992188,
+            "y": 3.552436828613281e-05,
+            "z": 3.62396240234375e-05
+          },
+          "error": 0.0003716735518537462,
+          "maxJointStep": 1.0001370906829834,
+          "maxJointAcceleration": 7297.48046875,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(0.00, 1.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.0,
+            "y": 0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.000240325927734375,
+            "y": 0.07955121994018555,
+            "z": 0.0045375823974609375
+          },
+          "error": 0.004566050134599209,
+          "maxJointStep": 0.20174111425876617,
+          "maxJointAcceleration": 1419.1314697265625,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(0.00, -1.00, 0.00)",
+          "mode": "legacy",
+          "requested": {
+            "x": 0.0,
+            "y": -0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -3.0517578125e-05,
+            "y": -0.07944965362548828,
+            "z": 0.00063323974609375
+          },
+          "error": 0.0008395254844799638,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 886.1846923828125,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(1.00, 0.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": 0.07772445678710938,
+            "y": -0.00016021728515625,
+            "z": 0.006519317626953125
+          },
+          "error": 0.006906899623572826,
+          "maxJointStep": 0.2306998074054718,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(-1.00, 0.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": -0.07999999821186066,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.077972412109375,
+            "y": -2.384185791015625e-07,
+            "z": 9.5367431640625e-06
+          },
+          "error": 0.0020276084542274475,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(0.00, 1.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.0,
+            "y": 0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -0.000240325927734375,
+            "y": 0.07806205749511719,
+            "z": 0.004398345947265625
+          },
+          "error": 0.004812360741198063,
+          "maxJointStep": 0.2406626045703888,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        },
+        {
+          "area": "ROVp - Seabed",
+          "direction": "(0.00, -1.00, 0.00)",
+          "mode": "improved",
+          "requested": {
+            "x": 0.0,
+            "y": -0.07999999821186066,
+            "z": 0.0
+          },
+          "actual": {
+            "x": -3.4332275390625e-05,
+            "y": -0.07795476913452148,
+            "z": 0.0006375312805175781
+          },
+          "error": 0.002142565557733178,
+          "maxJointStep": 0.0,
+          "maxJointAcceleration": 300.091552734375,
+          "jitterRms": 0.0
+        }
+      ],
+      "attempts": [
+        {
+          "area": "ROVp - Pool",
+          "target": "Pool Starfish 1",
+          "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+          "closure": 0.6500000357627869,
+          "thumbGap": 0.07975033670663834,
+          "fingerGap": 0.012070517987012863,
+          "pinchGap": 0.07900836318731308,
+          "lift": 0.0,
+          "attached": false,
+          "lifted": false,
+          "targetPosition": {
+            "x": 0.6064077019691467,
+            "y": 0.19881729781627655,
+            "z": -4.678109645843506
+          },
+          "palm": {
+            "x": 0.5744712352752686,
+            "y": 0.41226935386657715,
+            "z": -4.5139851570129395
+          },
+          "armStatus": "Following position and available wrist twist (4 DOF)",
+          "contact": false
+        },
+        {
+          "area": "ROVp - Pool",
+          "target": "Pool Squid 2",
+          "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+          "closure": 0.6500000357627869,
+          "thumbGap": 0.022912390530109406,
+          "fingerGap": 0.037113212049007416,
+          "pinchGap": 0.025110721588134766,
+          "lift": 0.4707961678504944,
+          "attached": true,
+          "lifted": true,
+          "targetPosition": {
+            "x": 1.0595507621765137,
+            "y": 0.22673463821411133,
+            "z": -4.6224775314331055
+          },
+          "palm": {
+            "x": 0.8852527141571045,
+            "y": 0.40496063232421875,
+            "z": -4.510629177093506
+          },
+          "armStatus": "Following position and available wrist twist (4 DOF)",
+          "contact": false
+        },
+        {
+          "area": "ROVp - Seabed",
+          "target": "Sea Starfish 1",
+          "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+          "closure": 0.6500000357627869,
+          "thumbGap": 0.09755992889404297,
+          "fingerGap": 0.02933543175458908,
+          "pinchGap": 0.09756666421890259,
+          "lift": 0.0,
+          "attached": false,
+          "lifted": false,
+          "targetPosition": {
+            "x": 62.628334045410156,
+            "y": 0.21422867476940155,
+            "z": -4.675714015960693
+          },
+          "palm": {
+            "x": 62.607139587402344,
+            "y": 0.44762665033340454,
+            "z": -4.513474464416504
+          },
+          "armStatus": "Following position and available wrist twist (4 DOF)",
+          "contact": false
+        },
+        {
+          "area": "ROVp - Seabed",
+          "target": "Sea Squid 2",
+          "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+          "closure": 0.6500000357627869,
+          "thumbGap": 0.01957254856824875,
+          "fingerGap": 0.03227700665593147,
+          "pinchGap": 0.027841929346323013,
+          "lift": 0.5113208293914795,
+          "attached": true,
+          "lifted": true,
+          "targetPosition": {
+            "x": 63.08751678466797,
+            "y": 0.24656563997268677,
+            "z": -4.5376410484313965
+          },
+          "palm": {
+            "x": 62.90473175048828,
+            "y": 0.43746477365493774,
+            "z": -4.505225658416748
+          },
+          "armStatus": "Following position and available wrist twist (4 DOF)",
+          "contact": false
+        }
+      ],
+      "graspFeasibilityPassed": false,
+      "scope": "Unity Editor local simulation. Synthetic XR poses and joint drives, not live glove or worn PICO verification."
+    }
+  },
+  "firstSuccessfulRound": {
+    "time": "2026-10-28T14:52:44.8009533+08:00",
+    "passed": true,
+    "checks": [
+      "ROVp - Pool: exactly one starfish + one squid",
+      "ROVp - Pool: explicit sand ignore pairs, solid support collision pairs retained",
+      "ROVp - Pool: hand enters sand by 25 mm without query obstruction",
+      "ROVp - Pool: same hand trajectory blocked at solid support",
+      "ROVp - Pool: swept contact cannot tunnel through bench support",
+      "ROVp - Pool: improved direction (1.00, 0.00, 0.00) error=0.0069",
+      "ROVp - Pool: joint speed limit (1.00, 0.00, 0.00)",
+      "ROVp - Pool: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+      "ROVp - Pool: joint speed limit (-1.00, 0.00, 0.00)",
+      "ROVp - Pool: improved direction (0.00, 1.00, 0.00) error=0.0048",
+      "ROVp - Pool: joint speed limit (0.00, 1.00, 0.00)",
+      "ROVp - Pool: improved direction (0.00, -1.00, 0.00) error=0.0021",
+      "ROVp - Pool: joint speed limit (0.00, -1.00, 0.00)",
+      "ROVp - Seabed: exactly one starfish + one squid",
+      "ROVp - Seabed: explicit sand ignore pairs, solid support collision pairs retained",
+      "ROVp - Seabed: hand enters sand by 25 mm without query obstruction",
+      "ROVp - Seabed: same hand trajectory blocked at solid support",
+      "ROVp - Seabed: swept contact cannot tunnel through bench support",
+      "ROVp - Seabed: improved direction (1.00, 0.00, 0.00) error=0.0069",
+      "ROVp - Seabed: joint speed limit (1.00, 0.00, 0.00)",
+      "ROVp - Seabed: improved direction (-1.00, 0.00, 0.00) error=0.0020",
+      "ROVp - Seabed: joint speed limit (-1.00, 0.00, 0.00)",
+      "ROVp - Seabed: improved direction (0.00, 1.00, 0.00) error=0.0048",
+      "ROVp - Seabed: joint speed limit (0.00, 1.00, 0.00)",
+      "ROVp - Seabed: improved direction (0.00, -1.00, 0.00) error=0.0021",
+      "ROVp - Seabed: joint speed limit (0.00, -1.00, 0.00)"
+    ],
+    "errors": [],
+    "motion": [
+      {
+        "area": "ROVp - Pool",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.08017134666442871,
+          "y": 0.0008139610290527344,
+          "z": 0.006886482238769531
+        },
+        "error": 0.006936535704880953,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7309.72607421875,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.0796276330947876,
+          "y": 3.5762786865234375e-05,
+          "z": 3.6716461181640625e-05
+        },
+        "error": 0.00037587611586786807,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7290.2529296875,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.0002390146255493164,
+          "y": 0.07956719398498535,
+          "z": 0.004539012908935547
+        },
+        "error": 0.004565861076116562,
+        "maxJointStep": 0.16312937438488007,
+        "maxJointAcceleration": 1098.52294921875,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.0517578125e-05,
+          "y": -0.07944965362548828,
+          "z": 0.00063323974609375
+        },
+        "error": 0.0008395254844799638,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 885.1959228515625,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.07772994041442871,
+          "y": -0.00016069412231445312,
+          "z": 0.006519317626953125
+        },
+        "error": 0.006905105896294117,
+        "maxJointStep": 0.2340678572654724,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.07796192169189453,
+          "y": -4.76837158203125e-07,
+          "z": 9.5367431640625e-06
+        },
+        "error": 0.0020380988717079163,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.00024127960205078125,
+          "y": 0.07807540893554688,
+          "z": 0.004399776458740234
+        },
+        "error": 0.004808356519788504,
+        "maxJointStep": 0.2406626045703888,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Pool",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.4928321838378906e-05,
+          "y": -0.07795453071594238,
+          "z": 0.0006375312805175781
+        },
+        "error": 0.0021428028121590614,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.08016586303710938,
+          "y": 0.0008323192596435547,
+          "z": 0.006886005401611328
+        },
+        "error": 0.006938107777386904,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7276.849609375,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.07963180541992188,
+          "y": 3.552436828613281e-05,
+          "z": 3.62396240234375e-05
+        },
+        "error": 0.0003716735518537462,
+        "maxJointStep": 1.0001370906829834,
+        "maxJointAcceleration": 7297.48046875,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.000240325927734375,
+          "y": 0.07955121994018555,
+          "z": 0.0045375823974609375
+        },
+        "error": 0.004566050134599209,
+        "maxJointStep": 0.20174111425876617,
+        "maxJointAcceleration": 1419.1314697265625,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "legacy",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.0517578125e-05,
+          "y": -0.07944965362548828,
+          "z": 0.00063323974609375
+        },
+        "error": 0.0008395254844799638,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 886.1846923828125,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.07772445678710938,
+          "y": -0.00016021728515625,
+          "z": 0.006519317626953125
+        },
+        "error": 0.006906899623572826,
+        "maxJointStep": 0.2306998074054718,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(-1.00, 0.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": -0.07999999821186066,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.077972412109375,
+          "y": -2.384185791015625e-07,
+          "z": 9.5367431640625e-06
+        },
+        "error": 0.0020276084542274475,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, 1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": 0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.000240325927734375,
+          "y": 0.07806205749511719,
+          "z": 0.004398345947265625
+        },
+        "error": 0.004812360741198063,
+        "maxJointStep": 0.2406626045703888,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0
+      },
+      {
+        "area": "ROVp - Seabed",
+        "direction": "(0.00, -1.00, 0.00)",
+        "mode": "improved",
+        "requested": {
+          "x": 0.0,
+          "y": -0.07999999821186066,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -3.4332275390625e-05,
+          "y": -0.07795476913452148,
+          "z": 0.0006375312805175781
+        },
+        "error": 0.002142565557733178,
+        "maxJointStep": 0.0,
+        "maxJointAcceleration": 300.091552734375,
+        "jitterRms": 0.0
+      }
+    ],
+    "attempts": [
+      {
+        "area": "ROVp - Pool",
+        "target": "Pool Starfish 1",
+        "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+        "closure": 0.6500000357627869,
+        "thumbGap": 0.0598149299621582,
+        "fingerGap": 0.019728530198335648,
+        "pinchGap": 0.05795042961835861,
+        "lift": 0.4737291932106018,
+        "attached": true,
+        "lifted": true,
+        "targetPosition": {
+          "x": 0.6062629222869873,
+          "y": 0.19864654541015625,
+          "z": -4.678383827209473
+        },
+        "palm": {
+          "x": 0.5554982423782349,
+          "y": 0.3923759460449219,
+          "z": -4.509063243865967
+        },
+        "armStatus": "Following position and available wrist twist (4 DOF)",
+        "contact": false
+      },
+      {
+        "area": "ROVp - Pool",
+        "target": "Pool Squid 2",
+        "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+        "closure": 0.6500000357627869,
+        "thumbGap": 0.02480608969926834,
+        "fingerGap": 0.03506369888782501,
+        "pinchGap": 0.02645759843289852,
+        "lift": 0.46036797761917114,
+        "attached": true,
+        "lifted": true,
+        "targetPosition": {
+          "x": 1.057941198348999,
+          "y": 0.2266554832458496,
+          "z": -4.625572681427002
+        },
+        "palm": {
+          "x": 0.8849694728851318,
+          "y": 0.40511322021484375,
+          "z": -4.51068115234375
+        },
+        "armStatus": "Following position and available wrist twist (4 DOF)",
+        "contact": false
+      },
+      {
+        "area": "ROVp - Seabed",
+        "target": "Sea Starfish 1",
+        "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+        "closure": 0.6500000357627869,
+        "thumbGap": 0.061031945049762726,
+        "fingerGap": 0.03489655628800392,
+        "pinchGap": 0.05995817109942436,
+        "lift": 0.5161762237548828,
+        "attached": true,
+        "lifted": true,
+        "targetPosition": {
+          "x": 62.62876892089844,
+          "y": 0.21420317888259888,
+          "z": -4.675513744354248
+        },
+        "palm": {
+          "x": 62.57530975341797,
+          "y": 0.4118245244026184,
+          "z": -4.504791259765625
+        },
+        "armStatus": "Following position and available wrist twist (4 DOF)",
+        "contact": false
+      },
+      {
+        "area": "ROVp - Seabed",
+        "target": "Sea Squid 2",
+        "method": "Synthetic articulation drives + real opposing digit geometry; no desktop-assist bypass",
+        "closure": 0.6500000357627869,
+        "thumbGap": 0.01957254856824875,
+        "fingerGap": 0.03227700665593147,
+        "pinchGap": 0.027841929346323013,
+        "lift": 0.5113208293914795,
+        "attached": true,
+        "lifted": true,
+        "targetPosition": {
+          "x": 63.08751678466797,
+          "y": 0.24656563997268677,
+          "z": -4.5376410484313965
+        },
+        "palm": {
+          "x": 62.90473175048828,
+          "y": 0.43746477365493774,
+          "z": -4.505225658416748
+        },
+        "armStatus": "Following position and available wrist twist (4 DOF)",
+        "contact": false
+      }
+    ],
+    "graspFeasibilityPassed": true,
+    "scope": "Unity Editor local simulation. Synthetic XR poses and joint drives, not live glove or worn PICO verification."
+  },
+  "hardwareValidation": {
+    "wornPico": false,
+    "liveUdexRealGlove": false,
+    "manualSuccessRate": "Pending; do not treat the four synthetic-input trials as a user success-rate estimate."
+  },
+  "limits": [
+    "Geometric opposing-digit proximity plus kinematic attachment, not friction or force closure.",
+    "Synthetic XR poses and synthetic articulation drives; no F5 proximity bypass in the feasibility trials.",
+    "Sand is a collider with local robot ignore pairs, not a granular soil solver.",
+    "Grasp depth is measured from the lowest visible hand mesh point to the sand top, not soil compaction.",
+    "Conservative hand and arm guards retain original collision/haptic behavior; real haptic perception still requires wearing PICO.",
+    "Calibrated yaw axis and excursion limits apply to this simulation model; not calibrated physical robot limits.",
+    "Existing radar mask 8/10 excludes layer 11 sand; wrist scan sees the solid support beneath it, not the sand top."
+  ],
+  "historicalRoundPassMeaning": "Initial round passed flags refer to control/collision checks; actual grasp/lift failures remain in each attempts array. Only finalBenchRound.graspFeasibilityPassed represents final all-target feasibility."
+}
