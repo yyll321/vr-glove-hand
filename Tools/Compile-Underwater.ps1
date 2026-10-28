@@ -33,6 +33,7 @@ function Compile-UnityAssembly([string]$assemblyName, [string[]]$extraSources) {
         Tee-Object -FilePath (Join-Path $compileRoot ($assemblyName + '.txt'))
     if ($LASTEXITCODE -ne 0) { throw ($assemblyName + ' compile failed with exit code ' + $LASTEXITCODE) }
 }
+Compile-UnityAssembly 'HandDriver.Runtime' @()
 Compile-UnityAssembly 'Assembly-CSharp' @((Get-ChildItem -LiteralPath (Join-Path $projectRoot 'Assets/Underwater/Runtime') -Filter '*.cs') | ForEach-Object { 'Assets/Underwater/Runtime/' + $_.Name })
 Compile-UnityAssembly 'Assembly-CSharp-Editor' @((Get-ChildItem -LiteralPath (Join-Path $projectRoot 'Assets/Underwater/Editor') -Filter '*.cs') | ForEach-Object { 'Assets/Underwater/Editor/' + $_.Name })
 Write-Output 'PASS runtime and editor assemblies compiled using Unity Roslyn. This does not run Unity or verify HMD rendering.'

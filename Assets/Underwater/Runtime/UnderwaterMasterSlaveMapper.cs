@@ -17,6 +17,9 @@ namespace UnderwaterBaseline
         public Vector3 axisSigns = Vector3.one;
         public Vector3 deadZoneMetres = Vector3.one*.002f;
         public float maxSpeed=.18f,maxAcceleration=.65f,filterSeconds=.075f,positionResponseSeconds=.12f;
+        [Header("Fine positioning limits (independent of free motion)")]
+        public float fineMaxSpeed=.035f,fineMaxAcceleration=.14f;
+        public float ActiveSpeedLimit {get;private set;}
         public float enterInteractionDistance=.22f,exitInteractionDistance=.30f,transitionDwell=.2f;
         public bool recordTelemetry=true;
         public string Stage {get;private set;}="Position";
@@ -31,6 +34,7 @@ namespace UnderwaterBaseline
         Quaternion frame;
         bool position=true,ready;
         float dwell,logTime,contactSeconds;
+        float activeSpeedLimit;
         StreamWriter writer;
 
         public void Begin(Vector3 master,Vector3 slave,Quaternion frozenTrackingRotation)
@@ -39,6 +43,7 @@ namespace UnderwaterBaseline
             Velocity=filteredVelocity=Vector3.zero;RawDelta=Normalized=Vector3.zero;
             position=mode!=Mode.Velocity && (mode==Mode.Position || InteractionDistance()<exitInteractionDistance);
             Stage=position?"Position":"Velocity";ready=true;dwell=0;
+            activeSpeedLimit=position?fineMaxSpeed:maxSpeed;ActiveSpeedLimit=activeSpeedLimit;
             contactSeconds=0;lastPositionGoal=slave;
         }
         float InteractionDistance()
@@ -69,6 +74,11 @@ namespace UnderwaterBaseline
             }
             else dwell=0;
             Stage=position?"Position":"Velocity";RawDelta=master-anchor;
+            float accelerationLimit=Mathf.Max(.001f,position?fineMaxAcceleration:maxAcceleration);
+            // Slew the mode's speed envelope rather than abruptly clipping a
+            // fast free-motion velocity at the fine-mode boundary.
+            activeSpeedLimit=Mathf.MoveTowards(activeSpeedLimit,Mathf.Max(.001f,position?fineMaxSpeed:maxSpeed),accelerationLimit*dt);
+            ActiveSpeedLimit=activeSpeedLimit;
             Vector3 input=Vector3.zero;
             for(int i=0;i<3;i++)input[i]=Mathf.Clamp(ContinuousDeadzone(RawDelta[i],deadZoneMetres[i])*axisSigns[i]/Mathf.Max(.005f,masterHalfRange[i]-deadZoneMetres[i]),-1,1);
             Normalized=input;
@@ -79,7 +89,7 @@ namespace UnderwaterBaseline
                 desired=(lastPositionGoal-Target)/Mathf.Max(.02f,positionResponseSeconds);
             }
             else desired=frame*Vector3.ClampMagnitude(input,1)*maxSpeed;
-            desired=Vector3.ClampMagnitude(desired,Mathf.Max(.001f,maxSpeed));
+            desired=Vector3.ClampMagnitude(desired,activeSpeedLimit);
             if(contactSeconds>0)
             {
                 // Keep tangential adjustments alive instead of re-zeroing all
@@ -95,7 +105,7 @@ namespace UnderwaterBaseline
             ResistanceNewtons=force;
             DesiredVelocity=desired;
             filteredVelocity=Vector3.Lerp(filteredVelocity,desired,1-Mathf.Exp(-dt/Mathf.Max(.001f,filterSeconds)));
-            Velocity=Vector3.MoveTowards(Velocity,filteredVelocity,Mathf.Max(.001f,maxAcceleration)*dt);
+            Velocity=Vector3.MoveTowards(Velocity,Vector3.ClampMagnitude(filteredVelocity,activeSpeedLimit),accelerationLimit*dt);
             Target+=Velocity*dt;
             // Bound tracking lead at limits; retain the rate-control centre so a
             // left/right reversal is not swallowed by repeatedly resetting it.

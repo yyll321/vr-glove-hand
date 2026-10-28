@@ -13,6 +13,8 @@ namespace UnderwaterBaseline
         [Tooltip("Visual only. Hidden marker still defines the optional delivery/counting zone.")]
         public bool showDeliveryMarker;
         public float closeThreshold=.32f,openThreshold=.16f,stableSeconds=.22f;
+        [Header("Release from glove opening intent")]
+        public float releaseOpeningDelta=.12f,releaseDwellSeconds=.06f;
         public float nearDistance=.065f;
         public UnderwaterGraspTarget Held {get;private set;}
         public UnderwaterGraspTarget Candidate {get;private set;}
@@ -24,6 +26,7 @@ namespace UnderwaterBaseline
         public Vector3 palmLocal;
         public Transform Thumb;public Transform[] Fingers;
         float stable;bool armed;UnderwaterGraspTarget stableCandidate;
+        float peakHeldCommand,openingSeconds;
         bool desktopClosed,desktopAssist;readonly Collider[] overlaps=new Collider[32];
         public bool GloveFresh {get;private set;}
         public float ThumbGap {get;private set;}
@@ -48,7 +51,9 @@ namespace UnderwaterBaseline
             else if(key!=null && key.f5Key.wasPressedThisFrame){desktopAssist=true;desktopClosed=!desktopClosed;}
             Closure=GloveFresh?ReadClosure():desktopAssist?(desktopClosed?1:0):0;
             // A stale glove must not create or maintain a grasp.
-            Process(Closure,Time.unscaledDeltaTime,GloveFresh||desktopAssist,desktopAssist);
+            var hold=glove?glove.GetComponent<Wa100JointPoseHold>():null;
+            float releaseCommand=GloveFresh && hold && hold.FreshCommand?hold.CommandClosure:Closure;
+            Process(Closure,Time.unscaledDeltaTime,GloveFresh||desktopAssist,desktopAssist,releaseCommand);
         }
         public float ReadClosure()
         {
@@ -78,18 +83,26 @@ namespace UnderwaterBaseline
             }
             return gap;
         }
-        public void Process(float closure,float dt,bool fresh,bool desktopAssist=false)
+        public void Process(float closure,float dt,bool fresh,bool desktopAssist=false,float releaseCommand=-1)
         {
             Closure=closure;
             if(Held && !fresh){Release("glove data stale");return;}
+            if(Held && fresh)
+            {
+                float command=releaseCommand>=0?releaseCommand:closure;
+                peakHeldCommand=Mathf.Max(peakHeldCommand,command);
+                bool opening=command<=openThreshold || peakHeldCommand-command>=releaseOpeningDelta;
+                openingSeconds=opening?openingSeconds+Mathf.Max(0,dt):0;
+                if(openingSeconds>=releaseDwellSeconds){Release("hand opened");armed=false;return;}
+            }
             if(fresh && closure<=openThreshold){armed=true;stable=0;if(Held)Release("hand opened");}
             if(Held)
             {
                 if(Held.transform.position.y-Held.InitialPosition.y>=Held.liftedHeight)LiftVerified=true;
-                Status=LiftVerified?"HOLD / lifted: move to delivery marker; open to release":"HOLD: lift at least 0.12 m";return;
+                Status=LiftVerified?"HOLD / lifted: open glove to drop naturally":"HOLD: lift at least 0.12 m; open glove to release";return;
             }
             Candidate=null;float nearest=.4f;
-            foreach(var target in targets)if(target && !target.Held && !target.Delivered)
+            foreach(var target in targets)if(target && !target.Held && !target.Delivered && Time.unscaledTime-target.ReleasedAt>.4f)
             {
                 float d=Vector3.Distance(PalmPoint,target.Shape.ClosestPoint(PalmPoint));
                 if(d<nearest){nearest=d;Candidate=target;}
@@ -135,14 +148,15 @@ namespace UnderwaterBaseline
         void TryAttach(UnderwaterGraspTarget target)
         {
             Held=target;LiftVerified=false;armed=false;target.Attach(arm.Wrist);
-            foreach(var h in arm.GetComponentsInChildren<Collider>())if(h!=target.Shape && h.transform!=target.transform && !h.transform.IsChildOf(target.transform))Physics.IgnoreCollision(h,target.Shape,true);
+            peakHeldCommand=Closure;openingSeconds=0;
+            target.IgnoreRobotContacts(arm.GetComponentsInChildren<Collider>());
             if(arm.WholeArmContact)arm.WholeArmContact.Rebuild();arm.Contact.Pulse();Log("attach",target,false);
         }
         public void Release(string reason)
         {
             if(!Held)return;var target=Held;bool success=reason=="hand opened" && LiftVerified && deliveryZone && Vector3.Distance(target.transform.position,deliveryZone.position)<.4f;
-            foreach(var h in arm.GetComponentsInChildren<Collider>())if(h!=target.Shape && !h.transform.IsChildOf(target.transform))Physics.IgnoreCollision(h,target.Shape,false);
             target.Release();Held=null;if(success)target.MarkDelivered();
+            stable=openingSeconds=0;stableCandidate=null;
             if(arm.WholeArmContact)arm.WholeArmContact.Rebuild();Log("release: "+reason,target,success);
             Status=success?"DELIVERED: "+target.targetId:"RELEASED: "+reason;
         }

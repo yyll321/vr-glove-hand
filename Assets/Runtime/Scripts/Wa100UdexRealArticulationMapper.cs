@@ -22,6 +22,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
         [NonSerialized] public float NeutralPrimary;
         [NonSerialized] public float NeutralSecondary;
         [NonSerialized] public float CurrentTarget;
+        [NonSerialized] public float RequestedTarget;
     }
 
     public Network Network;
@@ -166,6 +167,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
 
             float target = mapping.Enabled ? CalculateTarget(mapping) : 0f;
             target = Mathf.Clamp(target, mapping.LowerLimitDegrees, mapping.UpperLimitDegrees);
+            mapping.RequestedTarget=target;
 
             if (SmoothingSpeed > 0f)
             {

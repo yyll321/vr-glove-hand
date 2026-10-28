@@ -4492,7 +4492,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!65 &288165579
@@ -27543,7 +27543,7 @@ MonoBehaviour:
   pressurePerDepth: 18000
   viscousPressure: 500
   toolForceBudget: 35
-  fingerForceBudget: 9
+  fingerForceBudget: 24
   maximumResistance: 200
   visualSurfaceOffset: 0.012
 --- !u!1 &829520703
@@ -36592,7 +36592,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!65 &1048651233
@@ -44071,7 +44071,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!65 &1174944220
@@ -44419,7 +44419,7 @@ MonoBehaviour:
   pressurePerDepth: 18000
   viscousPressure: 500
   toolForceBudget: 35
-  fingerForceBudget: 9
+  fingerForceBudget: 24
   maximumResistance: 200
   visualSurfaceOffset: 0.012
 --- !u!1 &1192745333
@@ -48074,7 +48074,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!65 &1332699126
@@ -51991,6 +51991,8 @@ MonoBehaviour:
   closeThreshold: 0.32
   openThreshold: 0.16
   stableSeconds: 0.22
+  releaseOpeningDelta: 0.12
+  releaseDwellSeconds: 0.06
   nearDistance: 0.065
   palmLocal: {x: -0.00734995, y: 0.12909973, z: 0.0000004814221}
   Thumb: {fileID: 7165589635551090657}
@@ -53536,6 +53538,8 @@ MonoBehaviour:
   closeThreshold: 0.32
   openThreshold: 0.16
   stableSeconds: 0.22
+  releaseOpeningDelta: 0.12
+  releaseDwellSeconds: 0.06
   nearDistance: 0.065
   palmLocal: {x: -0.0073500024, y: 0.12909952, z: 0.00000006017776}
   Thumb: {fileID: 7165589636966183492}
@@ -94496,7 +94500,7 @@ MonoBehaviour:
   - {fileID: 6319012549342351676}
   ControlEnabled: 1
   PositionScale: 1
-  DegreesPerSecond: 90
+  DegreesPerSecond: 45
   SolverIterations: 12
   ContactMask:
     serializedVersion: 2
@@ -94520,7 +94524,7 @@ MonoBehaviour:
   FilterSpeedBeta: 12
   MaximumToolSpeed: 0.22
   MaximumToolAcceleration: 0.9
-  MaximumJointAcceleration: 300
+  MaximumJointAcceleration: 180
   SingularityThreshold: 0.08
   MaximumDamping: 0.1
   JointLimitMargin: 18
@@ -94601,15 +94605,17 @@ MonoBehaviour:
   task: {fileID: 1561189705}
   sand: {fileID: 1190959116}
   masterHalfRange: {x: 0.16, y: 0.12, z: 0.16}
-  slavePositionRange: {x: 0.12, y: 0.09, z: 0.12}
+  slavePositionRange: {x: 0.05, y: 0.04, z: 0.05}
   axisSigns: {x: 1, y: 1, z: 1}
   deadZoneMetres: {x: 0.002, y: 0.002, z: 0.002}
-  maxSpeed: 0.18
-  maxAcceleration: 0.65
-  filterSeconds: 0.075
-  positionResponseSeconds: 0.12
-  enterInteractionDistance: 0.22
-  exitInteractionDistance: 0.3
+  maxSpeed: 0.09
+  maxAcceleration: 0.3
+  filterSeconds: 0.09
+  positionResponseSeconds: 0.16
+  fineMaxSpeed: 0.035
+  fineMaxAcceleration: 0.14
+  enterInteractionDistance: 0.35
+  exitInteractionDistance: 0.45
   transitionDwell: 0.2
   recordTelemetry: 1
 --- !u!114 &8596229464055433150
@@ -94684,7 +94690,7 @@ MonoBehaviour:
   - {fileID: 6319012550073775257}
   ControlEnabled: 1
   PositionScale: 1
-  DegreesPerSecond: 90
+  DegreesPerSecond: 45
   SolverIterations: 12
   ContactMask:
     serializedVersion: 2
@@ -94708,7 +94714,7 @@ MonoBehaviour:
   FilterSpeedBeta: 12
   MaximumToolSpeed: 0.22
   MaximumToolAcceleration: 0.9
-  MaximumJointAcceleration: 300
+  MaximumJointAcceleration: 180
   SingularityThreshold: 0.08
   MaximumDamping: 0.1
   JointLimitMargin: 18
@@ -94789,15 +94795,17 @@ MonoBehaviour:
   task: {fileID: 1529186323}
   sand: {fileID: 817850505}
   masterHalfRange: {x: 0.16, y: 0.12, z: 0.16}
-  slavePositionRange: {x: 0.12, y: 0.09, z: 0.12}
+  slavePositionRange: {x: 0.05, y: 0.04, z: 0.05}
   axisSigns: {x: 1, y: 1, z: 1}
   deadZoneMetres: {x: 0.002, y: 0.002, z: 0.002}
-  maxSpeed: 0.18
-  maxAcceleration: 0.65
-  filterSeconds: 0.075
-  positionResponseSeconds: 0.12
-  enterInteractionDistance: 0.22
-  exitInteractionDistance: 0.3
+  maxSpeed: 0.09
+  maxAcceleration: 0.3
+  filterSeconds: 0.09
+  positionResponseSeconds: 0.16
+  fineMaxSpeed: 0.035
+  fineMaxAcceleration: 0.14
+  enterInteractionDistance: 0.35
+  exitInteractionDistance: 0.45
   transitionDwell: 0.2
   recordTelemetry: 1
 --- !u!114 &8596229464787903011
@@ -96294,7 +96302,7 @@ MonoBehaviour:
   AutoCalibrateNeutralOnFirstPacket: 1
   IsNeutralCalibrated: 0
   ResponseScale: 1
-  SmoothingSpeed: 18
+  SmoothingSpeed: 28
   JointMappings:
   - JointName: Thumb_J1
     LinkName: Thumb_L1
@@ -96460,11 +96468,12 @@ MonoBehaviour:
   blockedLayers:
     serializedVersion: 2
     m_Bits: 1280
-  stiffness: 20000
-  damping: 180
-  forceLimit: 120
+  stiffness: 30000
+  damping: 220
+  forceLimit: 180
   passiveComplianceDegrees: 0.6
-  maximumCommandSpeed: 55
+  maximumCommandSpeed: 150
+  maximumOpeningSpeed: 200
   penetrationTolerance: 0.0005
 --- !u!114 &9045591431793475503
 MonoBehaviour:
@@ -96491,7 +96500,7 @@ MonoBehaviour:
   AutoCalibrateNeutralOnFirstPacket: 1
   IsNeutralCalibrated: 0
   ResponseScale: 1
-  SmoothingSpeed: 18
+  SmoothingSpeed: 28
   JointMappings:
   - JointName: Thumb_J1
     LinkName: Thumb_L1
@@ -96657,11 +96666,12 @@ MonoBehaviour:
   blockedLayers:
     serializedVersion: 2
     m_Bits: 1280
-  stiffness: 20000
-  damping: 180
-  forceLimit: 120
+  stiffness: 30000
+  damping: 220
+  forceLimit: 180
   passiveComplianceDegrees: 0.6
-  maximumCommandSpeed: 55
+  maximumCommandSpeed: 150
+  maximumOpeningSpeed: 200
   penetrationTolerance: 0.0005
 --- !u!33 &9105634264685178253
 MeshFilter:
