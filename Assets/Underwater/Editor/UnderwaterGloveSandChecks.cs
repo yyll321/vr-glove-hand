@@ -20,7 +20,7 @@ namespace UnderwaterBaseline.Editor
         const string Key="UnderwaterGloveSandChecks";
         static UnderwaterGloveSandChecks(){EditorApplication.playModeStateChanged+=s=>{if(s==PlayModeStateChange.EnteredPlayMode && SessionState.GetBool(Key,false)){SessionState.SetBool(Key,false);new GameObject("Glove and sand verification").AddComponent<UnderwaterGloveSandProbe>();}};}
         [MenuItem("Tools/Underwater/Research/35 Verify Glove Mapping and Sand Cavities")]
-        public static void Run(){if(EditorApplication.isPlayingOrWillChangePlaymode)throw new Exception("Exit Play first");UnderwaterPreviewCompatibility.Verify();SessionState.SetBool(Key,true);EditorApplication.isPlaying=true;}
+        public static void Run(){if(EditorApplication.isPlayingOrWillChangePlaymode)throw new Exception("Exit Play first");UnderwaterPreviewCompatibility.Verify();SessionState.SetBool(Key,true);UnderwaterPhysicsTestMode.Enter();}
     }
     public sealed class UnderwaterGloveSandProbe:MonoBehaviour
     {
@@ -53,31 +53,37 @@ namespace UnderwaterBaseline.Editor
             {
                 task.enabled=false;var mapper=task.glove;mapper.Network=receiver;mapper.CharacterName="";mapper.ResolvedCharacterName="";
                 var hold=mapper.GetComponent<Wa100JointPoseHold>();hold.TestCommands=false;
-                var values=new float[23];values[10]=31;values[9]=27;values[14]=18;values[13]=13;
+                var values=new float[23];values[10]=-31;values[9]=-27;values[14]=-18;values[13]=-13;
                 // First frame is deliberately not an open hand.
                 Send(udp,values);yield return new WaitForSecondsRealtime(.35f);
                 Check(mapper.HasFreshFrame && mapper.ResolvedCharacterName=="GloveSandRight",task.name+": one complete role pinned from isolated UDP stream");
                 Check(Mathf.Abs(mapper.JointMappings.First(m=>m.LinkName=="Middle_Finger_L1").RequestedTarget-31)<.01f,task.name+": bent first packet remains 31 degrees, never zero-calibrated");
-                foreach(string digit in new[]{"Middle","Ring"})
+                foreach(string digit in new[]{"Index","Middle","Ring","Little"})
                 {
-                    Array.Clear(values,0,values.Length);int root=digit=="Middle"?10:14;values[root]=40;values[root-1]=30;
+                    Array.Clear(values,0,values.Length);Send(udp,values);yield return new WaitForSecondsRealtime(.4f);
+                    var distal=mapper.JointMappings.First(m=>m.LinkName==digit+"_Finger_L2").Joint;
+                    var tip=distal.GetComponentsInChildren<Renderer>().First();
+                    float openPalmDistance=Vector3.Distance(tip.bounds.center,task.PalmPoint);
+                    Array.Clear(values,0,values.Length);int root=digit=="Index"?6:digit=="Middle"?10:digit=="Ring"?14:18;values[root]=-40;values[root-1]=-30;
                     Send(udp,values);yield return new WaitForSecondsRealtime(.8f);
                     var a=mapper.JointMappings.First(m=>m.LinkName==digit+"_Finger_L1");var b=mapper.JointMappings.First(m=>m.LinkName==digit+"_Finger_L2");
-                    float referenceRoot=digit=="Middle"?reference.middle1.z:reference.ring1.z;
-                    float referenceDistal=digit=="Middle"?reference.middle2.z:reference.ring2.z;
-                    Check(Mathf.Abs(a.RequestedTarget-referenceRoot)<.01f && Mathf.Abs(b.RequestedTarget-referenceDistal)<.01f,task.name+": "+digit+" requested angles equal vendor HandDriver output 40/30 degrees");
+                    float referenceRoot=digit=="Index"?reference.index1.z:digit=="Middle"?reference.middle1.z:digit=="Ring"?reference.ring1.z:reference.pinky1.z;
+                    float referenceDistal=digit=="Index"?reference.index2.z:digit=="Middle"?reference.middle2.z:digit=="Ring"?reference.ring2.z:reference.pinky2.z;
+                    Check(Mathf.Abs(a.RequestedTarget+referenceRoot)<.01f && Mathf.Abs(b.RequestedTarget+referenceDistal)<.01f,task.name+": "+digit+" vendor negative flexion -40/-30 converts to URDF closing +40/+30");
+                    float closedPalmDistance=Vector3.Distance(tip.bounds.center,task.PalmPoint);
+                    Check(closedPalmDistance<openPalmDistance-.005f,task.name+": "+digit+" physically curls toward palm "+openPalmDistance.ToString("F4")+" -> "+closedPalmDistance.ToString("F4")+" m");
                     foreach(var m in mapper.JointMappings)
                     {
                         float actual=Wa100JointPoseHold.ReadAngle(m);joints.Add(new JointRow{area=task.name,command=digit,joint=m.LinkName,axis=m.Axis.ToString(),requested=m.RequestedTarget,actual=actual});
                         Check(Mathf.Abs(actual-m.RequestedTarget)<3,task.name+": isolated "+digit+" channel -> "+m.JointName+" actual="+actual.ToString("F2")+" requested="+m.RequestedTarget.ToString("F2"));
                     }
                     // Unrelated distal sensor must not leak into the second joint.
-                    values[root-2]=75;Send(udp,values);yield return new WaitForSecondsRealtime(.1f);
+                    values[root-2]=-75;Send(udp,values);yield return new WaitForSecondsRealtime(.1f);
                     Check(Mathf.Abs(b.RequestedTarget-30)<.01f,task.name+": "+digit+" distal sensor does not amplify middle joint");
                 }
-                foreach(var command in new[]{new Vector2(0,25),new Vector2(0,-25),new Vector2(45,0),new Vector2(35,20)})
+                foreach(var command in new[]{new Vector2(0,25),new Vector2(0,-25),new Vector2(-45,0),new Vector2(-35,20)})
                 {
-                    Array.Clear(values,0,values.Length);values[2]=command.x;values[3]=command.y;values[1]=24;values[0]=29;
+                    Array.Clear(values,0,values.Length);values[2]=command.x;values[3]=command.y;values[1]=-24;values[0]=-29;
                     Send(udp,values);yield return new WaitForSecondsRealtime(.8f);
                     foreach(var m in mapper.JointMappings.Where(m=>m.LinkName.StartsWith("Thumb")))
                     {
@@ -85,8 +91,36 @@ namespace UnderwaterBaseline.Editor
                         Check(Mathf.Abs(actual-m.RequestedTarget)<3,task.name+": physical "+m.JointName+" requested="+m.RequestedTarget.ToString("F2")+" actual="+actual.ToString("F2"));
                     }
                     var yaw=mapper.JointMappings[0];var pitch=mapper.JointMappings[1];
-                    Check(Mathf.Abs(yaw.RequestedTarget+reference.thumb1.y)<.01f && Mathf.Abs(pitch.RequestedTarget-reference.thumb1.z)<.01f && Mathf.Abs(mapper.JointMappings[2].RequestedTarget-reference.thumb2.z)<.01f && Mathf.Abs(mapper.JointMappings[3].RequestedTarget+reference.thumb3.z)<.01f,task.name+": thumb pitch/yaw/IP channels match HandDriver with URDF axis signs");
+                    Check(Mathf.Abs(yaw.RequestedTarget+reference.thumb1.y)<.01f && Mathf.Abs(pitch.RequestedTarget+reference.thumb1.z)<.01f && Mathf.Abs(mapper.JointMappings[2].RequestedTarget+reference.thumb2.z)<.01f && Mathf.Abs(mapper.JointMappings[3].RequestedTarget-reference.thumb3.z)<.01f,task.name+": signed thumb pitch/yaw/IP channels match vendor motion with URDF axis conversion");
                 }
+                // Replay the actual live negative-flexion sample which the old
+                // positive-only fixtures missed. Never inject into live port 5555.
+                Array.Clear(values,0,values.Length);
+                values[2]=-14.3f;values[3]=-23.4f;values[6]=-21.8f;values[5]=-24.9f;
+                values[10]=-80;values[9]=-100;values[14]=-30;values[13]=-42.4f;values[18]=-9.8f;values[17]=-11.6f;
+                Send(udp,values);yield return new WaitForSecondsRealtime(1);
+                foreach(var m in mapper.JointMappings)
+                {
+                    float expected=Mathf.Clamp(values[int.Parse(m.PrimaryKey.Substring(1))]*m.PrimaryScale,m.LowerLimitDegrees,m.UpperLimitDegrees);
+                    Check(Mathf.Abs(m.RequestedTarget-expected)<.01f && Mathf.Abs(Wa100JointPoseHold.ReadAngle(m)-expected)<3,task.name+": real role 3674 sample -> "+m.JointName+" expected="+expected+" actual="+Wa100JointPoseHold.ReadAngle(m));
+                }
+                // Positive extension must stop at zero, not be reflected into a
+                // closing command by Abs(). Full-fist input exercises all digits.
+                foreach(int sign in new[]{-1,1})
+                {
+                    Array.Clear(values,0,values.Length);
+                    foreach(int channel in new[]{0,1,2,5,6,9,10,13,14,17,18})values[channel]=sign*55;
+                    Send(udp,values);yield return new WaitForSecondsRealtime(.8f);
+                    foreach(var m in mapper.JointMappings.Where(m=>m.CountsForClosure))
+                    {
+                        float expected=sign<0?Mathf.Clamp(values[int.Parse(m.PrimaryKey.Substring(1))]*m.PrimaryScale,m.LowerLimitDegrees,m.UpperLimitDegrees):0;
+                        Check(Mathf.Abs(Wa100JointPoseHold.ReadAngle(m)-expected)<3,task.name+": "+(sign<0?"all-digit fist":"positive extension stays open")+" "+m.JointName);
+                    }
+                }
+                Array.Clear(values,0,values.Length);Send(udp,values);yield return new WaitForSecondsRealtime(.4f);
+                mapper.UseHandDriverMappings();mapper.CharacterName="GloveSandRight";
+                values[6]=-32;values[5]=-26;Send(udp,values);yield return new WaitForSecondsRealtime(.65f);
+                Check(Mathf.Abs(Wa100JointPoseHold.ReadAngle(mapper.JointMappings.First(m=>m.LinkName=="Index_Finger_L1"))-32)<3 && Mathf.Abs(Wa100JointPoseHold.ReadAngle(mapper.JointMappings.First(m=>m.LinkName=="Index_Finger_L2"))-26)<3,task.name+": replacing mapping array while live rebuilds hold bindings without freezing commands");
                 Array.Clear(values,0,values.Length);Send(udp,values);yield return new WaitForSecondsRealtime(.4f);
                 float[] requested=mapper.JointMappings.Select(m=>m.RequestedTarget).ToArray();
                 Send(udp,Enumerable.Repeat(70f,23).ToArray(),"AnotherGlove");yield return new WaitForSecondsRealtime(.15f);

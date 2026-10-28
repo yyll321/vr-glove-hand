@@ -1,4 +1,5 @@
 param([Parameter(Mandatory = $true)][int]$UnityProcessId)
+$ErrorActionPreference='Stop'
 Add-Type @'
 using System;
 using System.Runtime.InteropServices;

@@ -19,7 +19,7 @@ namespace UnderwaterBaseline.Editor
         const string Key="UnderwaterThumbMotionChecks";
         static UnderwaterThumbMotionChecks(){EditorApplication.playModeStateChanged+=s=>{if(s==PlayModeStateChange.EnteredPlayMode && SessionState.GetBool(Key,false)){SessionState.SetBool(Key,false);new GameObject("Thumb motion verification").AddComponent<UnderwaterThumbMotionProbe>();}};}
         [MenuItem("Tools/Underwater/Research/36 Verify Thumb During Arm Descent")]
-        public static void Run(){if(EditorApplication.isPlayingOrWillChangePlaymode)throw new Exception("Exit Play first");UnderwaterPreviewCompatibility.Verify();SessionState.SetBool(Key,true);EditorApplication.isPlaying=true;}
+        public static void Run(){if(EditorApplication.isPlayingOrWillChangePlaymode)throw new Exception("Exit Play first");UnderwaterPreviewCompatibility.Verify();SessionState.SetBool(Key,true);UnderwaterPhysicsTestMode.Enter();}
     }
     public sealed class UnderwaterThumbMotionProbe:MonoBehaviour
     {
@@ -42,7 +42,7 @@ namespace UnderwaterBaseline.Editor
                 task.enabled=false;var arm=task.arm;arm.enabled=false;arm.ResolveBindings();
                 foreach(var old in arm.PreviousControllers)if(old)old.enabled=false;
                 var mapper=task.glove;mapper.enabled=false;var hold=mapper.GetComponent<Wa100JointPoseHold>();hold.TestCommands=true;
-                foreach(var m in mapper.JointMappings)m.CurrentTarget=0;
+                foreach(var m in mapper.JointMappings)m.CurrentTarget=m.LinkName.Contains("Finger")?35:0;
                 mapper.JointMappings[0].CurrentTarget=-12;mapper.JointMappings[1].CurrentTarget=20;
                 for(int i=0;i<150;i++)yield return new WaitForFixedUpdate();
                 var saved=arm.Joints.Select(j=>j.localRotation).ToArray();var thumb=mapper.JointMappings[0].Joint;
@@ -76,7 +76,7 @@ namespace UnderwaterBaseline.Editor
                         }
                     }
                     row.wristDrop=wristStart.y-arm.Wrist.position.y;
-                    Check(row.maxYawError<1.2f && row.maxPitchError<1.2f && row.maxRelativeThumbAngle<2,arm.name+" "+scenario+": constant glove commands preserve thumb; yaw error="+row.maxYawError+", pitch="+row.maxPitchError+", local rotation="+row.maxRelativeThumbAngle);
+                    Check(row.maxYawError<1.2f && row.maxPitchError<1.2f && row.maxJointError<1.2f && row.maxRelativeThumbAngle<2,arm.name+" "+scenario+": constant commands preserve thumb and four bent fingers; yaw error="+row.maxYawError+", pitch="+row.maxPitchError+", all joints="+row.maxJointError+", local rotation="+row.maxRelativeThumbAngle);
                     Check(row.wristDrop>.02f,arm.name+" "+scenario+": wrist actually moves down "+row.wristDrop+" m");
                     arm.transform.position=rootStart;for(int j=0;j<4;j++)arm.Joints[j].localRotation=saved[j];arm.Contact.Hand.SyncMountedRoot();
                     for(int f=0;f<120;f++)yield return new WaitForFixedUpdate();
@@ -131,7 +131,7 @@ namespace UnderwaterBaseline.Editor
         }
         static void Send(UdpClient udp,float yawSensor,float pitchSensor)
         {
-            var values=new float[23];values[3]=yawSensor;values[2]=pitchSensor;
+            var values=new float[23];values[3]=yawSensor;values[2]=-pitchSensor;
             string parameters=string.Join(",",values.Select((v,i)=>"{\"Name\":\"r"+i+"\",\"Value\":"+v.ToString(CultureInfo.InvariantCulture)+"}"));
             byte[] bytes=Encoding.UTF8.GetBytes("{\"ThumbMotionRight\":{\"Parameter\":["+parameters+"]}}");
             udp.Send(bytes,bytes.Length,new IPEndPoint(IPAddress.Loopback,15557));

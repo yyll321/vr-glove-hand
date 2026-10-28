@@ -100,7 +100,7 @@ namespace UnderwaterBaseline
                 var original=mappers.Select(m=>m.Network).ToArray();
                 var originalNames=mappers.Select(m=>m.CharacterName).ToArray();var originalRoles=mappers.Select(m=>m.ResolvedCharacterName).ToArray();
                 foreach(var mapper in mappers){mapper.Network=receiver;mapper.CharacterName="";mapper.ResolvedCharacterName="UnderwaterCheckRight";mapper.AutoBind();mapper.CalibrateNeutral();}
-                Send(udp,35);yield return new WaitForSecondsRealtime(0.25f);
+                Send(udp,-35);yield return new WaitForSecondsRealtime(0.25f);
                 foreach(var mapper in mappers)
                 {
                     mapper.Apply();

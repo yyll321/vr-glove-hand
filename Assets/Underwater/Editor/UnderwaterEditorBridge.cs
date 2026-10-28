@@ -20,6 +20,8 @@ namespace UnderwaterBaseline.Editor
             File.Delete(request);
             try
             {
+                if(command=="stopplay"){EditorApplication.isPlaying=false;File.WriteAllText("Logs/UnderwaterCommandResult.txt","PASS stop Play "+DateTime.Now.ToString("O"));return;}
+                if(command=="handsnapshot"){UnderwaterHandSceneAudit.Snapshot();File.WriteAllText("Logs/UnderwaterCommandResult.txt","PASS hand snapshot "+DateTime.Now.ToString("O"));return;}
                 if(command=="rigaudit")
                 {
                     UnderwaterRigUpgrade.Audit();
@@ -85,6 +87,8 @@ namespace UnderwaterBaseline.Editor
                 else if (command == "glovesandsmoke") UnderwaterGloveSandChecks.Run();
                 else if (command == "thumbmotionsmoke") UnderwaterThumbMotionChecks.Run();
                 else if (command == "thumbmotionrepair") UnderwaterGloveSandUpgrade.RepairThumb();
+                else if (command == "handsceneaudit") UnderwaterHandSceneAudit.Run();
+                else if (command == "signedgloverepair") UnderwaterHandSceneAudit.Repair();
                 else if (command == "handreefclearance") UnderwaterDenseSurveyUpgrade.RepairHandClearance();
                 else throw new Exception("Unknown command " + command);
                 File.WriteAllText("Logs/UnderwaterCommandResult.txt", "PASS " + DateTime.Now.ToString("O"));

@@ -25,6 +25,7 @@ namespace UnderwaterBaseline
         public float CommandClosure {get;private set;}
         [NonSerialized] public bool TestCommands;
         readonly List<State> joints=new List<State>();
+        Wa100UdexRealArticulationMapper.JointMapping[] boundMappings;
         readonly Collider[] nearby=new Collider[96];
         sealed class State
         {
@@ -37,9 +38,12 @@ namespace UnderwaterBaseline
         void Start(){Initialize();}
         public void Initialize()
         {
-            if(joints.Count>0)return;
             if(!mapper)mapper=GetComponent<Wa100UdexRealArticulationMapper>();
             if(!mapper || mapper.JointMappings==null)return;
+            if(joints.Count>0 && boundMappings==mapper.JointMappings)return;
+            // Inspector mapping/reset actions replace the array. Never keep
+            // accepting commands from detached mapping objects after a rebind.
+            RestoreDrives();boundMappings=mapper.JointMappings;
             mapper.UseArticulationDriveLimits=false;
             mapper.ConfigureDriveStrength=false;
             foreach(var m in mapper.JointMappings)if(m!=null && m.Joint && m.Joint.dofCount>0)
@@ -127,9 +131,11 @@ namespace UnderwaterBaseline
         static void SetLock(Wa100UdexRealArticulationMapper.JointMapping m,ArticulationDofLock value)
         {if(m.Axis==Wa100UdexRealArticulationMapper.DriveAxis.Y)m.Joint.swingYLock=value;else if(m.Axis==Wa100UdexRealArticulationMapper.DriveAxis.Z)m.Joint.swingZLock=value;else m.Joint.twistLock=value;}
         void OnDisable()
+        {RestoreDrives();}
+        void RestoreDrives()
         {
             foreach(var s in joints)if(s.mapping.Joint){Wa100UdexRealArticulationMapper.SetDrive(s.mapping,s.original);SetLock(s.mapping,s.originalLock);}
-            joints.Clear();
+            joints.Clear();boundMappings=null;
         }
     }
 }

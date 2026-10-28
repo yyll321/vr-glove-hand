@@ -54,6 +54,8 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
     public string LastStatus;
     [Header("HandDriver angle parity")]
     public bool MatchHandDriverAngles;
+    [Tooltip("Vendor right-hand flexion is negative. Convert signed glove flexion into the URDF closing direction; never take an absolute value.")]
+    public float HandDriverFlexionSign = -1f;
     public string ResolvedCharacterName;
     public string LastInputUtc;
     public bool HasFreshFrame {get;private set;}
@@ -134,6 +136,7 @@ public class Wa100UdexRealArticulationMapper : MonoBehaviour
             SignedMap("Little_Finger_J1","Little_Finger_L1","r18",null,1,0,0,89.95438f,true),
             SignedMap("Little_Finger_J2","Little_Finger_L2","r17",null,1,0,0,89.95438f,true)};
         JointMappings[0].CountsForClosure=false;
+        foreach(var m in JointMappings)if(m.CountsForClosure)m.PrimaryScale*=HandDriverFlexionSign;
         foreach(var m in JointMappings)m.DeadZoneDegrees=.5f;
         ResolvedCharacterName=LastInputUtc=null;frameKeys=null;
         AutoBind();

@@ -52,7 +52,7 @@ namespace UnderwaterBaseline
             get{foreach(var r in enabledRadars)if(r && r.isActiveAndEnabled && (!r.motor ||
                 (r.motor.origin && r.motor.origin.Camera && r.motor.InSeabed==r.seabed)))return true;return false;}
         }
-        void OnEnable(){enabledRadars.Add(this);}
+        void OnEnable(){enabledRadars.Add(this);pending=null;Latest=null;rayIndex=0;}
         void OnDisable(){enabledRadars.Remove(this);StopScan();if(panel)panel.gameObject.SetActive(false);previousActive=false;}
         public event Action<Snapshot> ScanCompleted;
         [Serializable] public sealed class Snapshot
@@ -63,6 +63,7 @@ namespace UnderwaterBaseline
             public double time; public float minimumRange,range,azimuthDegrees,elevationDegrees,tiltDegrees;
             public Vector3 origin; public Quaternion rotation;
             public float[] ranges; public bool[] hits; public Vector3[] points;
+            public bool Complete=>columns>0 && rows>0 && ranges!=null && hits!=null && points!=null && (long)columns*rows==ranges.Length && hits.Length==ranges.Length && points.Length==ranges.Length;
         }
         public Snapshot Latest {get;private set;}
         public string LastExportPath {get;private set;}
@@ -127,7 +128,7 @@ namespace UnderwaterBaseline
             if(label)
             {
                 int hits=0;float nearest=float.PositiveInfinity;string centre="--";
-                if(Latest!=null)
+                if(Latest!=null && Latest.Complete)
                 {
                     for(int i=0;i<Latest.hits.Length;i++)if(Latest.hits[i]){hits++;nearest=Mathf.Min(nearest,Latest.ranges[i]);}
                     int at=(Latest.rows/2)*Latest.columns+Latest.columns/2;if(Latest.hits[at])centre=Latest.ranges[at].ToString("F2")+" m";
@@ -189,7 +190,7 @@ namespace UnderwaterBaseline
         bool IsSelf(Collider c)=>ignoreRoot && (c.transform==ignoreRoot || c.transform.IsChildOf(ignoreRoot));
         void UpdateImage()
         {
-            if(Latest==null)return;
+            if(Latest==null || !Latest.Complete)return;
             if(!image || image.width!=Latest.columns || image.height!=Latest.rows)
             {if(image)Release(image);image=new Texture2D(Latest.columns,Latest.rows,TextureFormat.RGBA32,false,true){filterMode=FilterMode.Point};pixels=new Color32[Latest.ranges.Length];if(display)display.texture=image;}
             for(int i=0;i<pixels.Length;i++)pixels[i]=Latest.hits[i]?(Color32)Color.Lerp(new Color(1,0.64f,0.1f),new Color(0.05f,0.4f,0.7f),Latest.ranges[i]/Latest.range):new Color32(5,12,20,255);
@@ -211,7 +212,7 @@ namespace UnderwaterBaseline
         [ContextMenu("Export Latest Geometry Radar Frame")]
         public void ExportLatest()
         {
-            if(Latest==null){Status="No completed frame to export";return;}
+            if(Latest==null || !Latest.Complete){Status="No completed frame to export";return;}
             string dir=Path.Combine(Application.persistentDataPath,"GeometryRadar");Directory.CreateDirectory(dir);
             string stem=Path.Combine(dir,$"radar-{DateTime.Now:yyyyMMdd-HHmmss-fff}-{Latest.sequence}");
             File.WriteAllText(stem+".json",JsonUtility.ToJson(Latest,true));

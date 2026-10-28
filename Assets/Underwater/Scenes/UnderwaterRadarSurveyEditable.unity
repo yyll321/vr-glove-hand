@@ -72475,7 +72475,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 5
   m_Mass: 0.016795142
-  m_ParentAnchorPosition: {x: -0.030000225, y: -0.00000020302832, z: -0.000000058950604}
+  m_ParentAnchorPosition: {x: -0.029999882, y: -0.00000021420419, z: -0.000000034727606}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071072, w: 0.7071072}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -77312,7 +77312,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 5
   m_Mass: 0.016795648
-  m_ParentAnchorPosition: {x: -0.03000021, y: -0.00000020675361, z: 0.000000039115548}
+  m_ParentAnchorPosition: {x: -0.030000336, y: -0.00000012665987, z: 0.000000014901161}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.70710707, w: 0.70710707}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -77566,7 +77566,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 5
   m_Mass: 0.011593549
-  m_ParentAnchorPosition: {x: 0.000000017353836, y: 0.16453385, z: -0.027421001}
+  m_ParentAnchorPosition: {x: -0.000000016630759, y: 0.17809443, z: -0.019890143}
   m_ParentAnchorRotation: {x: -0.030843616, y: 0.706434, z: -0.030843616, w: 0.70643413}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -78545,7 +78545,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 5
   m_Mass: 0.016794883
-  m_ParentAnchorPosition: {x: -0.029999696, y: -0.00000013969839, z: 0.000000035972334}
+  m_ParentAnchorPosition: {x: -0.030000087, y: 0.000000063329935, z: -0.00000008556526}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.70710707, w: 0.70710707}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -81672,7 +81672,7 @@ Transform:
   m_GameObject: {fileID: 8073443418072093715}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4867317, y: 0.51292694, z: -0.48672995, w: 0.5129251}
-  m_LocalPosition: {x: -0.0013, y: 0.17364, z: 0.040269}
+  m_LocalPosition: {x: -0.0013, y: 0.1872, z: 0.0478}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82440,7 +82440,7 @@ Transform:
   m_GameObject: {fileID: 751755109895020730}
   serializedVersion: 2
   m_LocalRotation: {x: -0.50000185, y: 0.5, z: -0.5, w: 0.4999982}
-  m_LocalPosition: {x: 0, y: 0.179, z: 0.01765}
+  m_LocalPosition: {x: 0.000000009038455, y: 0.1925602, z: 0.025180945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82632,7 +82632,7 @@ Transform:
   m_GameObject: {fileID: 5908481678475850906}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5213338, y: 0.47771442, z: -0.5213338, w: 0.47771442}
-  m_LocalPosition: {x: 0, y: 0.1645339, z: -0.027421175}
+  m_LocalPosition: {x: 0.000000009038455, y: 0.17809409, z: -0.019890228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82848,7 +82848,7 @@ Transform:
   m_GameObject: {fileID: 4768330037665878788}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5129288, y: 0.48672986, z: -0.5129269, w: 0.4867281}
-  m_LocalPosition: {x: 0, y: 0.17433, z: -0.0049871}
+  m_LocalPosition: {x: 0.000000009038455, y: 0.18789019, z: 0.0025438447}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -87330,7 +87330,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 5
   m_Mass: 0.011593555
-  m_ParentAnchorPosition: {x: 0.00000002476537, y: 0.17433022, z: -0.004987035}
+  m_ParentAnchorPosition: {x: 0.000000015546144, y: 0.1878906, z: 0.002543965}
   m_ParentAnchorRotation: {x: -0.018525451, y: 0.70686543, z: -0.018525332, w: 0.70686305}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -88762,7 +88762,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 5
   m_Mass: 0.016795412
-  m_ParentAnchorPosition: {x: -0.03000004, y: -0.00000008195639, z: -0.00000001967419}
+  m_ParentAnchorPosition: {x: -0.030000249, y: -0.00000009872019, z: -0.000000042724423}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071069, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -94784,7 +94784,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 5
   m_Mass: 0.011593549
-  m_ParentAnchorPosition: {x: -0.0013000352, y: 0.17364028, z: 0.040269215}
+  m_ParentAnchorPosition: {x: -0.0013000019, y: 0.18720023, z: 0.047800206}
   m_ParentAnchorRotation: {x: 0.018522859, y: 0.7068657, z: 0.01852274, w: 0.70686316}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -96339,7 +96339,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 5
   m_Mass: 0.011593551
-  m_ParentAnchorPosition: {x: 0.00000001879999, y: 0.17900044, z: 0.017650155}
+  m_ParentAnchorPosition: {x: 0.000000056399966, y: 0.19256012, z: 0.025181053}
   m_ParentAnchorRotation: {x: -0.0000013411045, y: 0.7071084, z: -0.0000013113022, w: 0.70710576}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -96798,7 +96798,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r2
     SecondaryKey: 
-    PrimaryScale: 0.6
+    PrimaryScale: -0.6
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96813,7 +96813,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r1
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96828,7 +96828,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r0
     SecondaryKey: 
-    PrimaryScale: -1
+    PrimaryScale: 1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: -89.95438
@@ -96843,7 +96843,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r6
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96858,7 +96858,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r5
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96873,7 +96873,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r10
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96888,7 +96888,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r9
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96903,7 +96903,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r14
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96918,7 +96918,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r13
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96933,7 +96933,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r18
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96948,7 +96948,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r17
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -96960,6 +96960,7 @@ MonoBehaviour:
   BoundJointCount: 12
   LastStatus: Bound 12/12 WA100 joints
   MatchHandDriverAngles: 1
+  HandDriverFlexionSign: -1
   ResolvedCharacterName: 
   LastInputUtc: 
 --- !u!114 &9045591431065197067
@@ -97036,7 +97037,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r2
     SecondaryKey: 
-    PrimaryScale: 0.6
+    PrimaryScale: -0.6
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97051,7 +97052,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r1
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97066,7 +97067,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r0
     SecondaryKey: 
-    PrimaryScale: -1
+    PrimaryScale: 1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: -89.95438
@@ -97081,7 +97082,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r6
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97096,7 +97097,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r5
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97111,7 +97112,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r10
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97126,7 +97127,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r9
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97141,7 +97142,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r14
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97156,7 +97157,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r13
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97171,7 +97172,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r18
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97186,7 +97187,7 @@ MonoBehaviour:
     CountsForClosure: 1
     PrimaryKey: r17
     SecondaryKey: 
-    PrimaryScale: 1
+    PrimaryScale: -1
     SecondaryScale: 0
     OffsetDegrees: 0
     LowerLimitDegrees: 0
@@ -97198,6 +97199,7 @@ MonoBehaviour:
   BoundJointCount: 12
   LastStatus: Bound 12/12 WA100 joints
   MatchHandDriverAngles: 1
+  HandDriverFlexionSign: -1
   ResolvedCharacterName: 
   LastInputUtc: 
 --- !u!114 &9045591431793475504

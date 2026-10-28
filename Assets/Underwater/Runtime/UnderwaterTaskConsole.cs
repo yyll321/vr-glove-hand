@@ -66,7 +66,13 @@ namespace UnderwaterBaseline
             }
             if(Panel)Panel.gameObject.SetActive(visible && motor.XrActive);
             var radar=ActiveRadar;var task=ActiveTask;string centre="--";
-            if(radar && radar.Latest!=null){var s=radar.Latest;int at=(s.rows/2)*s.columns+s.columns/2;if(s.hits[at])centre=s.ranges[at].ToString("F2")+" m";}
+            if(radar && radar.Latest!=null)
+            {
+                var s=radar.Latest;int at=(s.rows/2)*s.columns+s.columns/2;
+                // Editor hot reload/profile changes can restore an empty scan.
+                // Display -- until a complete frame is available.
+                if(s.rows>0 && s.columns>0 && s.hits!=null && s.ranges!=null && at>=0 && at<s.hits.Length && at<s.ranges.Length && s.hits[at])centre=s.ranges[at].ToString("F2")+" m";
+            }
             CurrentSummary=(radar?(radar.graspScan?"WRIST ":"FRONT ")+(radar.scanning?"RUN":"STOP")+" #"+radar.Frames+" / C "+centre:"Radar module OFF")+"\n"+
                 (task?task.Status+"\nDelivered "+task.DeliveredCount+" / "+task.targets.Length:"No grasp task");
             if(task && task.arm.Contact && task.arm.Contact.Haptics)CurrentSummary+="\n"+task.arm.Contact.Haptics.Status;

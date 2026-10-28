@@ -62,11 +62,15 @@ namespace UnderwaterBaseline
             return flow*flowStrength;
         }
         public Vector3 BodyCurrent => gentleBodyDrift && motor.origin.Camera.transform.position.y<9.8f ? CurrentAt(motor.origin.Camera.transform.position,Time.time)*0.35f:Vector3.zero;
-        void Start()
+        void Start(){EnsureBuffers();}
+        void EnsureBuffers()
         {
-            grassRest=new Quaternion[grass.Length];for(int i=0;i<grass.Length;i++)if(grass[i])grassRest[i]=grass[i].localRotation;
+            if(grass==null)grass=Array.Empty<Transform>();
+            if(grassRest==null || grassRest.Length!=grass.Length){grassRest=new Quaternion[grass.Length];for(int i=0;i<grass.Length;i++)if(grass[i])grassRest[i]=grass[i].localRotation;}
+            if(!environment || environment.snow==null)return;
+            if(particles!=null && particles.Length==environment.snow.Length)return;
             particles=new ParticleSystem.Particle[environment.snow.Length][];
-            foreach(var ps in environment.snow)
+            foreach(var ps in environment.snow)if(ps)
             {
                 // Apply local velocities below. A single emitter-wide velocity made all
                 // particles travel together, even when the eye turned or moved regions.
@@ -78,6 +82,9 @@ namespace UnderwaterBaseline
         }
         void Update()
         {
+            // Nonserialized particle buffers are lost during Editor hot reload;
+            // Start is not rerun for an already enabled component.
+            EnsureBuffers();
             var key=Keyboard.current;
             if(key!=null && key.vKey.wasPressedThisFrame)flowStrength=flowStrength>0?0:1;
             if(Time.time>=nextFlowMapUpdate)
@@ -98,12 +105,12 @@ namespace UnderwaterBaseline
             }
             // Sample each particle's world position at 10 Hz, with smooth drag. Bounded
             // work and reused buffers keep the dense suspension affordable in stereo.
-            if(Time.time>=nextParticleUpdate)
+            if(environment && environment.snow!=null && Time.time>=nextParticleUpdate)
             {
                 nextParticleUpdate=Time.time+0.1f;
                 for(int i=0;i<environment.snow.Length;i++)
                 {
-                    var ps=environment.snow[i];int capacity=ps.main.maxParticles;
+                    var ps=environment.snow[i];if(!ps)continue;int capacity=ps.main.maxParticles;
                     if(particles[i]==null||particles[i].Length<capacity)particles[i]=new ParticleSystem.Particle[capacity];
                     int count=ps.GetParticles(particles[i]);
                     for(int j=0;j<count;j++)
