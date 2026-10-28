@@ -1,0 +1,496 @@
+[
+  {
+    "key": "workspace",
+    "url": "https://api.crossref.org/works?query.title=Spanning+large+workspaces+using+small+haptic+devices&rows=3",
+    "error": "HTTP Error 429: Too Many Requests"
+  },
+  {
+    "key": "bubble",
+    "url": "https://api.crossref.org/works?query.title=The+Bubble+technique+interacting+with+large+virtual+environments+using+haptic+devices+with+limited+workspace&rows=3",
+    "time": "2026-10-28T15:52:14.996615",
+    "records": [
+      {
+        "title": [
+          "The \"Bubble\" Technique: Interacting with Large Virtual Environments Using Haptic Devices with Limited Workspace"
+        ],
+        "DOI": "10.1109/whc.2005.126",
+        "author": [
+          {
+            "given": "L.",
+            "family": "Dominjon",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "A.",
+            "family": "Lecuyer",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "J.",
+            "family": "Burkhardt",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "G.",
+            "family": "Andrade-Barroso",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "S.",
+            "family": "Richir",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "abstract": null,
+        "URL": "https://doi.org/10.1109/whc.2005.126"
+      },
+      {
+        "title": [
+          "A Comparison of Three Techniques to Interact in Large Virtual Environments Using Haptic Devices with Limited Workspace"
+        ],
+        "DOI": "10.1007/11784203_25",
+        "author": [
+          {
+            "given": "Lionel",
+            "family": "Dominjon",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Anatole",
+            "family": "Lécuyer",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jean-Marie",
+            "family": "Burkhardt",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Simon",
+            "family": "Richir",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "abstract": null,
+        "URL": "https://doi.org/10.1007/11784203_25"
+      },
+      {
+        "title": [
+          "Haptic Zoom: An Interaction Model for Desktop Haptic Devices with Limited Workspace"
+        ],
+        "DOI": "10.1080/10447318.2022.2049140",
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-3173-3720",
+            "authenticated-orcid": false,
+            "given": "Alexis",
+            "family": "Gutiérrez-Fernández",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Robotics Group, University of León, León, Spain"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-8705-4786",
+            "authenticated-orcid": false,
+            "given": "Camino",
+            "family": "Fernández-Llamas",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Robotics Group, University of León, León, Spain"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-3645-164X",
+            "authenticated-orcid": false,
+            "given": "Gonzalo",
+            "family": "Esteban",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Robotics Group, University of León, León, Spain"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-5881-7775",
+            "authenticated-orcid": false,
+            "given": "Miguel Á.",
+            "family": "Conde",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Robotics Group, University of León, León, Spain"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "abstract": null,
+        "URL": "https://doi.org/10.1080/10447318.2022.2049140"
+      }
+    ],
+    "europepmc": null
+  },
+  {
+    "key": "touch_ur5",
+    "url": "https://api.crossref.org/works?query.title=Geomagic+Touch+UR5+Kalman+teleoperation&rows=3",
+    "error": "HTTP Error 429: Too Many Requests"
+  },
+  {
+    "key": "jamming",
+    "url": "https://api.crossref.org/works/10.1073/pnas.1003250107",
+    "time": "2026-10-28T15:52:15.573082",
+    "records": [
+      {
+        "title": [
+          "Universal robotic gripper based on the jamming of granular material"
+        ],
+        "DOI": "10.1073/pnas.1003250107",
+        "author": [
+          {
+            "given": "Eric",
+            "family": "Brown",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "James Franck Institute and Department of Physics, University of Chicago, Chicago, IL 60637;"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Nicholas",
+            "family": "Rodenberg",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "James Franck Institute and Department of Physics, University of Chicago, Chicago, IL 60637;"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "John",
+            "family": "Amend",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "School of Mechanical and Aerospace Engineering, Cornell University, Ithaca, NY 14853;"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Annan",
+            "family": "Mozeika",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "iRobot G and I Research, 8 Crosby Drive, Bedford, MA 01730; and"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Erik",
+            "family": "Steltz",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "iRobot G and I Research, 8 Crosby Drive, Bedford, MA 01730; and"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Mitchell R.",
+            "family": "Zakin",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Defense Advanced Research Projects Agency, 3701 North Fairfax Drive, Arlington, VA 22203"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Hod",
+            "family": "Lipson",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "School of Mechanical and Aerospace Engineering, Cornell University, Ithaca, NY 14853;"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Heinrich M.",
+            "family": "Jaeger",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "James Franck Institute and Department of Physics, University of Chicago, Chicago, IL 60637;"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "abstract": "<jats:p>Gripping and holding of objects are key tasks for robotic manipulators. The development of universal grippers able to pick up unfamiliar objects of widely varying shape and surface properties remains, however, challenging. Most current designs are based on the multifingered hand, but this approach introduces hardware and software complexities. These include large numbers of controllable joints, the need for force sensing if objects are to be handled securely without crushing them, and the computational overhead to decide how much stress each finger should apply and where. Here we demonstrate a completely different approach to a universal gripper. Individual fingers are replaced by a single mass of granular material that, when pressed onto a target object, flows around it and conforms to its shape. Upon application of a vacuum the granular material contracts and hardens quickly to pinch and hold the object without requiring sensory feedback. We find that volume changes of less than 0.5% suffice to grip objects reliably and hold them with forces exceeding many times their weight. We show that the operating principle is the ability of granular materials to transition between an unjammed, deformable state and a jammed state with solid-like rigidity. We delineate three separate mechanisms, friction, suction, and interlocking, that contribute to the gripping force. Using a simple model we relate each of them to the mechanical strength of the jammed state. This advance opens up new possibilities for the design of simple, yet highly adaptive systems that excel at fast gripping of complex objects.</jats:p>",
+        "URL": "https://doi.org/10.1073/pnas.1003250107"
+      }
+    ],
+    "europepmc": null
+  },
+  {
+    "key": "terradynamics",
+    "url": "https://api.crossref.org/works/10.1126/science.1229163",
+    "time": "2026-10-28T15:52:15.702510",
+    "records": [
+      {
+        "title": [
+          "A Terradynamics of Legged Locomotion on Granular Media"
+        ],
+        "DOI": "10.1126/science.1229163",
+        "author": [
+          {
+            "given": "Chen",
+            "family": "Li",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "School of Physics, Georgia Institute of Technology, Atlanta, GA 30332, USA."
+              },
+              {
+                "name": "Department of Integrative Biology, University of California, Berkeley, CA 94720, USA."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Tingnan",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "School of Physics, Georgia Institute of Technology, Atlanta, GA 30332, USA."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Daniel I.",
+            "family": "Goldman",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "School of Physics, Georgia Institute of Technology, Atlanta, GA 30332, USA."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "abstract": "<jats:title>Walking on Sand</jats:title>\n                  <jats:p>\n                    Studies of objects moving through air or water have provided detailed models for designing objects with better flow dynamics. Examples include aircraft fins and wings, robots used as underwater probes, and even swimsuits to enhance swimmers' competitiveness. Much less is known about the mechanics of moving objects on or in materials that themselves have non-uniform dynamics. For example, when walking on a granular medium like sand, the moving leg and foot may penetrate to varying depths with small changes in material properties.\n                    <jats:bold>\n                      Li\n                      <jats:italic>et al.</jats:italic>\n                    </jats:bold>\n                    (p.\n                    <jats:related-article xmlns:xlink=\"http://www.w3.org/1999/xlink\" ext-link-type=\"doi\" issue=\"6126\" page=\"1408\" related-article-type=\"in-this-issue\" vol=\"339\" xlink:href=\"10.1126/science.1229163\">1408</jats:related-article>\n                    ; see the Perspective by\n                    <jats:bold>\n                      <jats:related-article xmlns:xlink=\"http://www.w3.org/1999/xlink\" ext-link-type=\"doi\" issue=\"6126\" page=\"1389\" related-article-type=\"in-this-issue\" vol=\"339\" xlink:href=\"10.1126/science.1235276\">Hunt</jats:related-article>\n                    </jats:bold>\n                    ) study this system and develop a model for predicting the motion of legged bodies on granular media for a range of leg shapes and motion speeds. Factors that complicate the motion include leg shape and size and movement direction, as well as the size shape, and uniformity of the granular material.\n                  </jats:p>",
+        "URL": "https://doi.org/10.1126/science.1229163"
+      }
+    ],
+    "europepmc": null
+  },
+  {
+    "key": "jamming_abstract",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1073/pnas.1003250107&format=json",
+    "time": "2026-10-28T15:52:16.847898",
+    "records": [
+      {
+        "title": null,
+        "DOI": null,
+        "author": null,
+        "abstract": null,
+        "URL": null
+      }
+    ],
+    "europepmc": {
+      "result": [
+        {
+          "id": "PMC2973877",
+          "source": "PMC",
+          "pmcid": "PMC2973877",
+          "fullTextIdList": {
+            "fullTextId": [
+              "PMC2973877"
+            ]
+          },
+          "title": "Universal robotic gripper based on the jamming of granular material",
+          "authorString": "Brown E, Rodenberg N, Amend J, Mozeika A, Steltz E, Zakin M, Lipson H, Jaeger H.",
+          "journalTitle": "Proc Natl Acad Sci U S A",
+          "issue": "44",
+          "journalVolume": "107",
+          "pubYear": "2010",
+          "journalIssn": "0027-8424; 1091-6490; ",
+          "pageInfo": "18809-18814",
+          "pubType": "research-article; journal article",
+          "isOpenAccess": "N",
+          "inEPMC": "Y",
+          "inPMC": "Y",
+          "citedByCount": 5,
+          "hasReferences": "Y",
+          "hasTextMinedTerms": "Y",
+          "hasDbCrossReferences": "N",
+          "hasPDF": "Y",
+          "hasBook": "N",
+          "hasSuppl": "Y",
+          "hasLabsLinks": "Y",
+          "hasTMAccessionNumbers": "N",
+          "firstPublicationDate": "2010-10-25",
+          "firstIndexDate": "2011-05-04"
+        }
+      ]
+    }
+  }
+]
