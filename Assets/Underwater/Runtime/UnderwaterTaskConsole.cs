@@ -93,6 +93,9 @@ namespace UnderwaterBaseline
             {
                 var palm=ActiveTask.PalmPoint;look=palm+arm.Wrist.rotation*gripLooks[region];
                 position=palm+arm.Wrist.rotation*gripOffsets[region];up=arm.Wrist.rotation*gripUps[region];
+                var bench=ActiveTask.GetComponentInChildren<UnderwaterGraspBench>();
+                if(bench && bench.sand && !ActiveTask.Held && Vector3.Distance(palm,bench.sand.bounds.center)<1.2f)
+                    look=Vector3.Lerp(palm,bench.sand.bounds.center,.68f);
                 if(Physics.Raycast(palm+Vector3.up*.1f,Vector3.down,out var floor,3,1<<8,QueryTriggerInteraction.Ignore))
                 {look.y=Mathf.Max(look.y,floor.point.y+.02f);position.y=Mathf.Max(position.y,floor.point.y+.08f);}
             }

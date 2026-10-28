@@ -68,6 +68,10 @@ namespace UnderwaterBaseline.Editor
                 else if (command == "inputaudit") UnderwaterDenseSurveyUpgrade.AuditInputs();
                 else if (command == "graspupgrade") UnderwaterGraspUpgrade.Apply();
                 else if (command == "graspsmoke") UnderwaterGraspChecks.Run();
+                else if (command == "benchdiagnose") UnderwaterBenchUpgrade.Diagnose();
+                else if (command == "benchupgrade") UnderwaterBenchUpgrade.Apply();
+                else if (command == "benchsmoke") UnderwaterBenchChecks.Run();
+                else if (command == "benchcontrolsmoke") UnderwaterBenchChecks.RunControls();
                 else if (command == "handreefclearance") UnderwaterDenseSurveyUpgrade.RepairHandClearance();
                 else throw new Exception("Unknown command " + command);
                 File.WriteAllText("Logs/UnderwaterCommandResult.txt", "PASS " + DateTime.Now.ToString("O"));

@@ -30,7 +30,7 @@ namespace UnderwaterBaseline.Editor
             {
                 var console=Object.FindObjectOfType<UnderwaterTaskConsole>();var motor=console.motor;
                 check(console.views.Length==6 && console.views.All(c=>!c.enabled && c.stereoTargetEye==StereoTargetEyeMask.None),"Six cameras remain manual, non-stereo; one shared preview");
-                check(console.tasks.Length==2 && console.tasks.All(t=>t.targets.Length==5),"Five marine targets in each area");
+                check(console.tasks.Length==2 && console.tasks.All(t=>t.targets.Length==2),"One starfish and one squid in each area");
                 for(int region=0;region<2;region++)
                 {
                     motor.transform.position=region==0?new Vector3(0,0,-8):new Vector3(62,.2f,-8);Physics.SyncTransforms();

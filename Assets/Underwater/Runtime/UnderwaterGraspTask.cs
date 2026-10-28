@@ -24,6 +24,9 @@ namespace UnderwaterBaseline
         float stable;bool armed;UnderwaterGraspTarget stableCandidate;
         bool desktopClosed,desktopAssist;readonly Collider[] overlaps=new Collider[32];
         public bool GloveFresh {get;private set;}
+        public float ThumbGap {get;private set;}
+        public float FingerGap {get;private set;}
+        public float PinchGap {get;private set;}
         void LateUpdate()
         {
             if(!arm || !arm.Motor || arm.Motor.InSeabed!=arm.SeabedArea){if(Held)Release("region changed");return;}
@@ -35,19 +38,26 @@ namespace UnderwaterBaseline
             // A stale glove must not create or maintain a grasp.
             Process(Closure,Time.unscaledDeltaTime,GloveFresh||desktopAssist,desktopAssist);
         }
-        float ReadClosure()
+        public float ReadClosure()
         {
             float sum=0;int count=0;
             foreach(var m in glove.JointMappings)if(m!=null && m.Enabled && m.Joint && m.UpperLimitDegrees>m.LowerLimitDegrees)
-            {sum+=Mathf.Clamp01((m.CurrentTarget-m.LowerLimitDegrees)/(m.UpperLimitDegrees-m.LowerLimitDegrees));count++;}
+            {
+                // WA100 thumb joints can close toward a negative limit; zero is
+                // the open calibration. Lower-limit normalization misread an open
+                // negative thumb as fully closed and prevented the initial arming.
+                float closed=Mathf.Abs(m.LowerLimitDegrees)>Mathf.Abs(m.UpperLimitDegrees)?m.LowerLimitDegrees:m.UpperLimitDegrees;
+                if(Mathf.Abs(closed)>.001f){sum+=Mathf.Clamp01(m.CurrentTarget/closed);count++;}
+            }
             return count>0?sum/count:0;
         }
-        bool Touch(UnderwaterGraspTarget target,Transform link)
+        float Gap(UnderwaterGraspTarget target,Transform link)
         {
-            if(!link)return false;
+            if(!link)return float.PositiveInfinity;float gap=float.PositiveInfinity;
             foreach(var c in link.GetComponentsInChildren<Collider>())if(c.enabled && !c.isTrigger &&
-                Vector3.Distance(c.bounds.ClosestPoint(target.Shape.bounds.center),target.Shape.ClosestPoint(c.bounds.center))<nearDistance)return true;
-            return false;
+                c.gameObject.activeInHierarchy)
+                gap=Mathf.Min(gap,Vector3.Distance(c.ClosestPoint(target.Shape.bounds.center),target.Shape.ClosestPoint(c.bounds.center)));
+            return gap;
         }
         public void Process(float closure,float dt,bool fresh,bool desktopAssist=false)
         {
@@ -66,11 +76,18 @@ namespace UnderwaterBaseline
                 if(d<nearest){nearest=d;Candidate=target;}
             }
             if(!Candidate){stable=0;Status="SEARCH: open hand, approach starfish / squid";return;}
-            bool opposing=desktopAssist || Touch(Candidate,Thumb)&&Fingers.Any(f=>Touch(Candidate,f));
-            bool close=nearest<nearDistance && closure>=closeThreshold && fresh && armed && opposing;
+            ThumbGap=Gap(Candidate,Thumb);FingerGap=Fingers.Length>0?Fingers.Min(f=>Gap(Candidate,f)):float.PositiveInfinity;
+            // The grasped item sits between the digits, often beyond the palm
+            // centre on this long WA100 model. Both real digit surface gaps must
+            // still pass; do not enlarge colliders or add remote suction.
+            Vector3 pinch=Thumb && Fingers.Length>0?(Thumb.position+Fingers[0].position)*.5f:PalmPoint;
+            PinchGap=Vector3.Distance(pinch,Candidate.Shape.ClosestPoint(pinch));
+            bool opposing=desktopAssist || ThumbGap<nearDistance && FingerGap<nearDistance;
+            bool withinReach=nearest<nearDistance || nearest<.32f && PinchGap<nearDistance;
+            bool close=withinReach && closure>=closeThreshold && fresh && armed && opposing;
             if(stableCandidate!=Candidate){stable=0;stableCandidate=Candidate;}
             stable=close?stable+dt:0;
-            Status=!armed?"OPEN hand before grasp":"APPROACH "+Candidate.targetId+" | palm "+nearest.ToString("F2")+" m | "+(opposing?"contacts ready":"need thumb + finger contact");
+            Status=!armed?"OPEN hand before grasp":"APPROACH "+Candidate.targetId+" | thumb/finger "+ThumbGap.ToString("F2")+"/"+FingerGap.ToString("F2")+" m | "+(opposing?"contacts ready":"align opposing digits");
             if(stable>=stableSeconds)TryAttach(Candidate);
         }
         void TryAttach(UnderwaterGraspTarget target)
