@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.XR;
 
-// Joint axes follow JXB_angles_input.SetAngle: Y, Z, Z, Y.
+// Legacy axes follow JXB_angles_input.SetAngle; the survey scene explicitly
+// calibrates the imported base yaw axis without changing the saved mesh pose.
 // Solve against the actual scene links so the user's mounting pose is preserved.
 [DefaultExecutionOrder(100)]
 public sealed class PicoArmPoseDriver : MonoBehaviour
@@ -57,6 +58,23 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
     public bool ControllerTracked { get; private set; }
     public int AppliedPoseCount { get; private set; }
     public UnderwaterBaseline.UnderwaterArmSurfaceGuard WholeArmContact;
+    [Header("Bench teleoperation (opt-in for saved scenes)")]
+    public bool UseCalibratedBaseYaw;
+    public Vector3 BaseYawAxisLocal=Vector3.up;
+    public bool SmoothTeleoperation;
+    public float InputDeadbandMetres=.0015f;
+    public float FilterMinimumHz=2f,FilterSpeedBeta=12f;
+    public float MaximumToolSpeed=.22f,MaximumToolAcceleration=.9f;
+    public float MaximumJointAcceleration=300f;
+    public float SingularityThreshold=.08f,MaximumDamping=.10f;
+    public float JointLimitMargin=18f;
+    public float MinimumSingularValue {get;private set;}
+    public float EffectiveDamping {get;private set;}
+    public Vector3 RequestedTarget {get;private set;}
+    public Vector3 FilteredTarget=>filteredTarget;
+    readonly UnderwaterBaseline.UnderwaterTeleopFilter poseFilter=new UnderwaterBaseline.UnderwaterTeleopFilter();
+    readonly float[] jointVelocity=new float[4],jointWeights=new float[3];
+    Vector3 inputAnchorMetres,intentTarget,toolVelocity;Quaternion inputRotationAnchor,mappingRotation;
 
     public void ResolveBindings()
     {
@@ -132,6 +150,9 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             Status = "Hold RIGHT GRIP to move / twist wrist; release to hold";
             return;
         }
+        if(!float.IsFinite(localPosition.x)||!float.IsFinite(localPosition.y)||!float.IsFinite(localPosition.z)||
+           !float.IsFinite(localRotation.x)||!float.IsFinite(localRotation.y)||!float.IsFinite(localRotation.z)||!float.IsFinite(localRotation.w)||Quaternion.Dot(localRotation,localRotation)<.5f)
+        {engaged=false;System.Array.Clear(jointVelocity,0,4);toolVelocity=Vector3.zero;Status="Invalid tracking sample; arm held";return;}
         // XR poses are local to the tracking origin, not Unity world coordinates.
         Vector3 controllerPosition = ArmBase.InverseTransformPoint(TrackingOrigin.TransformPoint(localPosition));
         Quaternion controllerRotation = Quaternion.Inverse(ArmBase.rotation) * TrackingOrigin.rotation * localRotation;
@@ -145,6 +166,9 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             engaged = true;
             filteredTarget = Wrist.position;
             filteredRotation = Wrist.rotation;
+            inputAnchorMetres=localPosition;inputRotationAnchor=localRotation;mappingRotation=TrackingOrigin.rotation;
+            intentTarget=Wrist.position;toolVelocity=Vector3.zero;System.Array.Clear(jointVelocity,0,4);
+            poseFilter.Reset(localPosition,localRotation);
             Status = "Arm calibrated at current pose";
             return;
         }
@@ -153,15 +177,35 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
         Quaternion targetRotation = ArmBase.rotation * controllerRotation *
                                     Quaternion.Inverse(controllerRotationAnchor) * wristRotationAnchor;
         float dt = Mathf.Clamp(deltaTime,0,0.05f);
+        if(dt<=0)return;
+        if(SmoothTeleoperation)
+        {
+            var position=poseFilter.Position(localPosition,dt,FilterMinimumHz,FilterSpeedBeta);
+            var rotation=poseFilter.Rotation(localRotation,dt,FilterMinimumHz,1);
+            // Metre displacement, frozen tracking frame at clutch engagement; no
+            // imported model scale, head yaw, or live observer rotation enters it.
+            target=ArmBase.TransformPoint(wristAnchor)+mappingRotation*((position-inputAnchorMetres)*PositionScale);
+            targetRotation=mappingRotation*rotation*Quaternion.Inverse(inputRotationAnchor)*Quaternion.Inverse(mappingRotation)*ArmBase.rotation*wristRotationAnchor;
+            if(Vector3.Distance(intentTarget,target)>InputDeadbandMetres)
+                intentTarget=Vector3.MoveTowards(target,intentTarget,InputDeadbandMetres);
+            Vector3 desiredVelocity=Vector3.ClampMagnitude((intentTarget-filteredTarget)/Mathf.Max(TargetSmoothingSeconds,.06f),MaximumToolSpeed);
+            toolVelocity=Vector3.MoveTowards(toolVelocity,desiredVelocity,MaximumToolAcceleration*dt);
+            Vector3 advance=toolVelocity*dt;
+            if(Vector3.Dot(advance,intentTarget-filteredTarget)>0 && advance.magnitude>Vector3.Distance(intentTarget,filteredTarget)){filteredTarget=intentTarget;toolVelocity=Vector3.zero;}
+            else filteredTarget+=advance;
+        }
         float blend = TargetSmoothingSeconds>0 ? 1-Mathf.Exp(-dt/TargetSmoothingSeconds) : 1;
-        filteredTarget = Vector3.Lerp(filteredTarget,target,blend);
+        if(!SmoothTeleoperation)filteredTarget = Vector3.Lerp(filteredTarget,target,blend);
         filteredRotation = Quaternion.Slerp(filteredRotation,targetRotation,blend);
+        RequestedTarget=target;
         CaptureJointState();
         if (PreventSurfacePenetration && Contact) { Contact.SurfaceMask=ContactMask; Contact.BeginMotion(); }
         if (PreventSurfacePenetration && WholeArmContact) WholeArmContact.BeginMotion();
         SolvePosition(filteredTarget, dt);
         SolveWristRotation(filteredRotation, dt);
+        if(SmoothTeleoperation)LimitJointAcceleration(dt);
         ApplyContactConstraint();
+        if(SmoothTeleoperation)for(int i=0;i<4;i++)jointVelocity[i]=SurfaceContact?0:JointDelta(i)/dt;
         AppliedPoseCount++;
         PositionError = Vector3.Distance(Wrist.position,filteredTarget);
         RequestedPositionError = Vector3.Distance(Wrist.position,target);
@@ -176,12 +220,36 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             wristAnchor=ArmBase.InverseTransformPoint(Wrist.position);
             wristRotationAnchor=Quaternion.Inverse(ArmBase.rotation)*Wrist.rotation;
             filteredTarget=Wrist.position;filteredRotation=Wrist.rotation;
+            inputAnchorMetres=localPosition;inputRotationAnchor=localRotation;intentTarget=Wrist.position;toolVelocity=Vector3.zero;poseFilter.Reset(localPosition,localRotation);
+        }
+        else if(SmoothTeleoperation && Vector3.Distance(filteredTarget,Wrist.position)>.08f)
+        {
+            // Bounded tracking lead at reach/limit saturation, so reversal need not
+            // undo a large unreachable displacement before the arm responds.
+            inputAnchorMetres=localPosition;inputRotationAnchor=localRotation;
+            wristAnchor=ArmBase.InverseTransformPoint(Wrist.position);wristRotationAnchor=Quaternion.Inverse(ArmBase.rotation)*Wrist.rotation;
+            filteredTarget=intentTarget=Wrist.position;toolVelocity=Vector3.zero;poseFilter.Reset(localPosition,localRotation);
         }
         Status = SurfaceContact ? "Surface contact: hand motion blocked; right-hand pulse" :
             PositionError < 0.025f ? "Following position and available wrist twist (4 DOF)" : "Following; reach / joint-speed / software limit";
     }
 
-    static Vector3 Axis(int i) => i==0 || i==3 ? Vector3.up : Vector3.forward;
+    public Vector3 JointAxisLocal(int i)=>i==0 && UseCalibratedBaseYaw?BaseYawAxisLocal.normalized:i==0||i==3?Vector3.up:Vector3.forward;
+    Vector3 Axis(int i)=>JointAxisLocal(i);
+    float JointDelta(int i)
+    {
+        var delta=Quaternion.Inverse(frameStart[i])*Joints[i].localRotation;
+        return Mathf.DeltaAngle(0,2*Mathf.Atan2(Vector3.Dot(new Vector3(delta.x,delta.y,delta.z),Axis(i)),delta.w)*Mathf.Rad2Deg);
+    }
+    void LimitJointAcceleration(float dt)
+    {
+        for(int i=0;i<4;i++)
+        {
+            float desired=JointDelta(i)/dt;
+            float velocity=Mathf.MoveTowards(jointVelocity[i],desired,MaximumJointAcceleration*dt);
+            SetJointAngle(i,startAngles[i]+velocity*dt,DegreesPerSecond*dt);
+        }
+    }
 
     void CaptureJointState()
     {
@@ -267,22 +335,28 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 Transform joint = Joints[i];
-                Vector3 localAxis = i == 0 ? Vector3.up : Vector3.forward;
+                Vector3 localAxis = Axis(i);
                 Vector3 worldAxis = joint.TransformDirection(localAxis);
                 jacobian[i] = Vector3.Cross(worldAxis, Wrist.position - joint.position);
             }
 
             Matrix4x4 normal = Matrix4x4.zero;
             normal.m33=1; // Embed an invertible 3x3 system in a valid homogeneous matrix.
-            float lambda2 = Damping * Damping;
-            normal.m00 = normal.m11 = normal.m22 = lambda2;
             for (int i = 0; i < 3; i++)
             {
                 Vector3 j = jacobian[i];
-                normal.m00 += j.x * j.x; normal.m01 += j.x * j.y; normal.m02 += j.x * j.z;
-                normal.m10 += j.y * j.x; normal.m11 += j.y * j.y; normal.m12 += j.y * j.z;
-                normal.m20 += j.z * j.x; normal.m21 += j.z * j.y; normal.m22 += j.z * j.z;
+                float margin=Mathf.Min(angles[i]-MinimumAngles[i],MaximumAngles[i]-angles[i]);
+                jointWeights[i]=SmoothTeleoperation?Mathf.Lerp(.08f,1,Mathf.Clamp01(margin/Mathf.Max(1,JointLimitMargin))):1;
+                float w=jointWeights[i];
+                normal.m00 += w*j.x * j.x; normal.m01 += w*j.x * j.y; normal.m02 += w*j.x * j.z;
+                normal.m10 += w*j.y * j.x; normal.m11 += w*j.y * j.y; normal.m12 += w*j.y * j.z;
+                normal.m20 += w*j.z * j.x; normal.m21 += w*j.z * j.y; normal.m22 += w*j.z * j.z;
             }
+            MinimumSingularValue=UnderwaterBaseline.UnderwaterTeleopFilter.SmallestSingularValue(normal);
+            float proximity=1-Mathf.Clamp01(MinimumSingularValue/Mathf.Max(.001f,SingularityThreshold));
+            EffectiveDamping=SmoothTeleoperation?Mathf.Lerp(Damping,MaximumDamping,proximity*proximity):Damping;
+            float lambda2=EffectiveDamping*EffectiveDamping;
+            normal.m00+=lambda2;normal.m11+=lambda2;normal.m22+=lambda2;
             Vector3 solved = normal.inverse.MultiplyVector(Vector3.ClampMagnitude(error,0.08f) * PositionGain);
             for(int i=0;i<3;i++)candidateAngles[i]=angles[i];
             float oldError=error.sqrMagnitude;
@@ -291,7 +365,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             {
                 for(int i=0;i<3;i++)
                 {
-                    float change=Mathf.Clamp(Vector3.Dot(jacobian[i],solved)*Mathf.Rad2Deg,-maxStep,maxStep)*Mathf.Pow(0.5f,line);
+                    float change=Mathf.Clamp(jointWeights[i]*Vector3.Dot(jacobian[i],solved)*Mathf.Rad2Deg,-maxStep,maxStep)*Mathf.Pow(0.5f,line);
                     SetJointAngle(i,candidateAngles[i]+change,budget);
                 }
                 if((Wrist.position-target).sqrMagnitude<=oldError)break;
@@ -305,7 +379,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
         // Exact swing/twist projection onto the real fourth joint axis.
         Transform wristJoint = Joints[3];
         Quaternion delta = target * Quaternion.Inverse(Wrist.rotation);
-        float projection = Vector3.Dot(new Vector3(delta.x, delta.y, delta.z), wristJoint.up);
+        float projection = Vector3.Dot(new Vector3(delta.x, delta.y, delta.z), wristJoint.TransformDirection(Axis(3)));
         if (projection * projection + delta.w * delta.w < 1e-10f) return;
         float twist = Mathf.DeltaAngle(0, 2 * Mathf.Atan2(projection, delta.w) * Mathf.Rad2Deg);
         SetJointAngle(3,angles[3]+twist,Mathf.Max(0,DegreesPerSecond*deltaTime));
