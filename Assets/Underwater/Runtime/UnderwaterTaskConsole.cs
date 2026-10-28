@@ -69,6 +69,7 @@ namespace UnderwaterBaseline
             if(radar && radar.Latest!=null){var s=radar.Latest;int at=(s.rows/2)*s.columns+s.columns/2;if(s.hits[at])centre=s.ranges[at].ToString("F2")+" m";}
             CurrentSummary=(radar?(radar.graspScan?"WRIST ":"FRONT ")+(radar.scanning?"RUN":"STOP")+" #"+radar.Frames+" / C "+centre:"Radar module OFF")+"\n"+
                 (task?task.Status+"\nDelivered "+task.DeliveredCount+" / "+task.targets.Length:"No grasp task");
+            if(task && task.arm.Contact && task.arm.Contact.Haptics)CurrentSummary+="\n"+task.arm.Contact.Haptics.Status;
             if(text)text.text=CurrentSummary;if(viewName)viewName.text=ViewNames[selectedView]+"  [F2/F3/F4]";
             if(text){text.resizeTextForBestFit=true;text.resizeTextMinSize=10;text.resizeTextMaxSize=15;}
             if(radarImage){radarImage.texture=radar && radar.showPanel?radar.RangeImage:null;radarImage.color=radarImage.texture?Color.white:Color.clear;}

@@ -1,0 +1,58 @@
+{
+    "time": "2026-10-28T18:08:16.3027323+08:00",
+    "scope": "Editor real provider calls and synthetic contact fixtures; physical vibration requires wearer confirmation.",
+    "passed": true,
+    "checks": [
+        "Pool Grasp Task: delivery marker hidden, optional counting transform retained",
+        "Pool Grasp Task: every WA100 articulation link forwards native contacts",
+        "Pool Grasp Task: fingertip contact detected on external layer 8 (External fingertip tactile fixture)",
+        "Pool Grasp Task: fingertip contact detected on external layer 10 (External fingertip tactile fixture)",
+        "Pool Grasp Task: fingertip contact detected on external layer 11 (External fingertip tactile fixture)",
+        "Pool Grasp Task: fingertip contact detected on external layer 0 (External fingertip tactile fixture)",
+        "Pool Grasp Task: touch/stay repeats without Grip or joint motion; active=True, pulses=8, rendered frames=73",
+        "Pool Grasp Task: every pulse records actual transport accept/reject result",
+        "Pool Grasp Task: leaving all surfaces clears contact",
+        "Pool Grasp Task: no pulse requests in free space",
+        "Pool Grasp Task: own ROV/hand collider excluded",
+        "Pool Grasp Task: decorative trigger volumes excluded",
+        "Pool Grasp Task: ignored sand collision pair still produces tactile contact (Compressible sand - finger resistance - targets supported)",
+        "Pool Grasp Task: solid blocking mask and original 3 mm skin unchanged",
+        "Seabed Grasp Task: delivery marker hidden, optional counting transform retained",
+        "Seabed Grasp Task: every WA100 articulation link forwards native contacts",
+        "Seabed Grasp Task: fingertip contact detected on external layer 8 (External fingertip tactile fixture)",
+        "Seabed Grasp Task: fingertip contact detected on external layer 10 (External fingertip tactile fixture)",
+        "Seabed Grasp Task: fingertip contact detected on external layer 11 (External fingertip tactile fixture)",
+        "Seabed Grasp Task: fingertip contact detected on external layer 0 (External fingertip tactile fixture)",
+        "Seabed Grasp Task: touch/stay repeats without Grip or joint motion; active=True, pulses=7, rendered frames=59",
+        "Seabed Grasp Task: every pulse records actual transport accept/reject result",
+        "Seabed Grasp Task: leaving all surfaces clears contact",
+        "Seabed Grasp Task: no pulse requests in free space",
+        "Seabed Grasp Task: own ROV/hand collider excluded",
+        "Seabed Grasp Task: decorative trigger volumes excluded",
+        "Seabed Grasp Task: ignored sand collision pair still produces tactile contact (Compressible sand - finger resistance - targets supported)",
+        "Seabed Grasp Task: solid blocking mask and original 3 mm skin unchanged"
+    ],
+    "errors": [],
+    "transports": [
+        {
+            "area": "Pool Grasp Task",
+            "details": "PICO Live Preview Controller-Right InputSystem code=1",
+            "status": "No contact | last PICO Live Preview Controller-Right InputSystem code=1",
+            "episodes": 1,
+            "requests": 8,
+            "accepted": 8,
+            "rejected": 0,
+            "actualVibrationUserVerified": false
+        },
+        {
+            "area": "Seabed Grasp Task",
+            "details": "PICO Live Preview Controller-Right InputSystem code=1",
+            "status": "No contact | last PICO Live Preview Controller-Right InputSystem code=1",
+            "episodes": 1,
+            "requests": 8,
+            "accepted": 8,
+            "rejected": 0,
+            "actualVibrationUserVerified": false
+        }
+    ]
+}

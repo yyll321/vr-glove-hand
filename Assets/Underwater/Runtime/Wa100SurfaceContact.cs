@@ -13,6 +13,7 @@ public sealed class Wa100SurfaceContact : MonoBehaviour
     public LayerMask SurfaceMask = 1 << 8;
     [Min(0)] public float Skin = 0.003f;
     public bool HapticsEnabled = true;
+    public UnderwaterBaseline.Wa100ContactHaptics Haptics;
     public bool InContact { get; private set; }
     public Vector3 Normal { get; private set; } = Vector3.up;
     public string SurfaceName { get; private set; } = "";
@@ -135,6 +136,7 @@ public sealed class Wa100SurfaceContact : MonoBehaviour
 
     public void Pulse()
     {
+        if(Haptics && Haptics.enabled){Haptics.RequestPulse();return;}
         if (!HapticsEnabled || Time.unscaledTime < nextPulse) return;
         if (!Arm || !Arm.Motor || !Arm.Motor.XrActive || Arm.Motor.InSeabed != Arm.SeabedArea) return;
         nextPulse = Time.unscaledTime + 0.12f;

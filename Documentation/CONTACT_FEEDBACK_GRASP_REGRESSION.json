@@ -1,0 +1,524 @@
+{
+    "time": "2026-10-28T18:09:54.8109896+08:00",
+    "scope": "Editor synthetic XR poses and articulation commands; no F5. Worn PICO/glove feel not measured.",
+    "passed": true,
+    "graspPassed": true,
+    "checks": [
+        "Continuous deadzone: no motion inside 2 mm; 10 um continuous output immediately outside",
+        "72/90/120 Hz speed and acceleration bounded: 0.1572 m/s, 0.6500 m/s2",
+        "Rate-to-position transition rebases command with bounded displacement",
+        "Frozen tracking rotation maps raw right axis consistently after 90 degree yaw",
+        "Right-axis mapping linear after deadzone: raw=0.0020 m output=0.00000 m",
+        "Right-axis mapping linear after deadzone: raw=0.0021 m output=0.00008 m",
+        "Right-axis mapping linear after deadzone: raw=0.0120 m output=0.00759 m",
+        "Right-axis mapping linear after deadzone: raw=0.0420 m output=0.03038 m",
+        "Right-axis mapping linear after deadzone: raw=0.0820 m output=0.06076 m",
+        "Position mapping attenuates 4 mm / 17 Hz stationary jitter: RMS=0.000012 m",
+        "Contact discards inward normal motion while preserving tangential adjustment",
+        "ROVp - Pool: one starfish and one squid",
+        "ROVp - Pool: starfish local Z 75 mm / upright collider 78 mm",
+        "ROVp - Pool: sand collision ignored / solid support not ignored",
+        "ROVp - Pool: resistance increases with depth and area",
+        "ROVp - Pool: insertion has computed nonzero resistance 1.336 N",
+        "ROVp - Pool: isolated X- error=0.0001 m",
+        "ROVp - Pool: left/right ramp has no reverse step above 0.3 mm (0.000000 m)",
+        "ROVp - Pool: isolated X+ error=0.0045 m",
+        "ROVp - Pool: left/right ramp has no reverse step above 0.3 mm (0.000075 m)",
+        "ROVp - Pool: isolated Y- error=0.0001 m",
+        "ROVp - Pool: isolated Y+ error=0.0029 m",
+        "ROVp - Pool: isolated Z- error=0.0001 m",
+        "ROVp - Pool: isolated Z+ error=0.0009 m",
+        "ROVp - Pool: stale/no-command joint at 25.19 deg under +/-2 Nm external torque holds within 0.000 degrees",
+        "ROVp - Pool: commanded closure stops at solid, max penetration=0.0000 m; rejected commands=205",
+        "ROVp - Pool: hand can enter sand 25 mm",
+        "ROVp - Pool: solid support still blocks same trajectory",
+        "ROVp - Pool: original solid sweep retained",
+        "ROVp - Seabed: one starfish and one squid",
+        "ROVp - Seabed: starfish local Z 75 mm / upright collider 78 mm",
+        "ROVp - Seabed: sand collision ignored / solid support not ignored",
+        "ROVp - Seabed: resistance increases with depth and area",
+        "ROVp - Seabed: insertion has computed nonzero resistance 1.336 N",
+        "ROVp - Seabed: isolated X- error=0.0001 m",
+        "ROVp - Seabed: left/right ramp has no reverse step above 0.3 mm (0.000000 m)",
+        "ROVp - Seabed: isolated X+ error=0.0045 m",
+        "ROVp - Seabed: left/right ramp has no reverse step above 0.3 mm (0.000092 m)",
+        "ROVp - Seabed: isolated Y- error=0.0001 m",
+        "ROVp - Seabed: isolated Y+ error=0.0029 m",
+        "ROVp - Seabed: isolated Z- error=0.0006 m",
+        "ROVp - Seabed: isolated Z+ error=0.0009 m",
+        "ROVp - Seabed: stale/no-command joint at 25.19 deg under +/-2 Nm external torque holds within 0.000 degrees",
+        "ROVp - Seabed: commanded closure stops at solid, max penetration=0.0000 m; rejected commands=205",
+        "ROVp - Seabed: hand can enter sand 25 mm",
+        "ROVp - Seabed: solid support still blocks same trajectory",
+        "ROVp - Seabed: original solid sweep retained"
+    ],
+    "errors": [],
+    "axes": [
+        {
+            "area": "ROVp - Pool",
+            "axis": "X-",
+            "raw": {
+                "x": -0.08100000023841858,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "mapped": {
+                "x": -0.059999704360961917,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.060004591941833499,
+                "y": 0.0000021457672119140627,
+                "z": -0.0000667572021484375
+            },
+            "joints": {
+                "x": 2.734351396560669,
+                "y": -1.4947509765625,
+                "z": 5.215794086456299
+            },
+            "joint3": 0.09180580824613571,
+            "error": 0.00006694943294860423,
+            "sigma": 0.029119739308953286,
+            "damping": 0.061292510479688647,
+            "maximumReverseStep": 0.0
+        },
+        {
+            "area": "ROVp - Pool",
+            "axis": "X+",
+            "raw": {
+                "x": 0.08100000023841858,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "mapped": {
+                "x": 0.059999704360961917,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.059526801109313968,
+                "y": -0.00011110305786132813,
+                "z": 0.004515647888183594
+            },
+            "joints": {
+                "x": -2.72216796875,
+                "y": 0.6222478747367859,
+                "z": -2.185577392578125
+            },
+            "joint3": -0.1695556640625,
+            "error": 0.004541732836514711,
+            "sigma": 0.0,
+            "damping": 0.10000000149011612,
+            "maximumReverseStep": 0.00007486343383789063
+        },
+        {
+            "area": "ROVp - Pool",
+            "axis": "Y-",
+            "raw": {
+                "x": 0.0,
+                "y": -0.08066666126251221,
+                "z": 0.0
+            },
+            "mapped": {
+                "x": 0.0,
+                "y": -0.059999704360961917,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.0000040531158447265629,
+                "y": -0.060045719146728519,
+                "z": 0.0000782012939453125
+            },
+            "joints": {
+                "x": -0.000152587890625,
+                "y": -2.9705810546875,
+                "z": -0.069793701171875
+            },
+            "joint3": -0.067138671875,
+            "error": 0.00009067652717931196,
+            "sigma": 0.008417011238634587,
+            "damping": 0.08704189211130142,
+            "maximumReverseStep": 0.0
+        },
+        {
+            "area": "ROVp - Pool",
+            "axis": "Y+",
+            "raw": {
+                "x": 0.0,
+                "y": 0.08066666126251221,
+                "z": 0.0
+            },
+            "mapped": {
+                "x": 0.0,
+                "y": 0.059999704360961917,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.00015676021575927734,
+                "y": 0.059777259826660159,
+                "z": 0.0028510093688964845
+            },
+            "joints": {
+                "x": -0.004852294921875,
+                "y": 3.6087329387664797,
+                "z": -2.186553955078125
+            },
+            "joint3": 0.0312870591878891,
+            "error": 0.0028639903757721187,
+            "sigma": 0.000027786376449512318,
+            "damping": 0.09995485842227936,
+            "maximumReverseStep": 0.00007700920104980469
+        },
+        {
+            "area": "ROVp - Pool",
+            "axis": "Z-",
+            "raw": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -0.08100000023841858
+            },
+            "mapped": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -0.060001373291015628
+            },
+            "actual": {
+                "x": 0.0000069141387939453129,
+                "y": -0.0001049041748046875,
+                "z": -0.06009340286254883
+            },
+            "joints": {
+                "x": 0.25370022654533389,
+                "y": -4.219696044921875,
+                "z": 13.379875183105469
+            },
+            "joint3": -0.5428466796875,
+            "error": 0.0001406308583682403,
+            "sigma": 0.060368798673152927,
+            "damping": 0.03891405835747719,
+            "maximumReverseStep": 0.00012922286987304688
+        },
+        {
+            "area": "ROVp - Pool",
+            "axis": "Z+",
+            "raw": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.08100000023841858
+            },
+            "mapped": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.059999942779541019
+            },
+            "actual": {
+                "x": -0.00005245208740234375,
+                "y": 0.0005185604095458984,
+                "z": 0.06069040298461914
+            },
+            "joints": {
+                "x": -0.281341552734375,
+                "y": -16.08770751953125,
+                "z": 59.002418518066409
+            },
+            "joint3": 0.44623836874961855,
+            "error": 0.0008650515810586512,
+            "sigma": 0.2263142615556717,
+            "damping": 0.03500000014901161,
+            "maximumReverseStep": 0.00015425682067871094
+        },
+        {
+            "area": "ROVp - Seabed",
+            "axis": "X-",
+            "raw": {
+                "x": -0.08100000023841858,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "mapped": {
+                "x": -0.05999755859375,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.059978485107421878,
+                "y": 0.000002384185791015625,
+                "z": -0.00006771087646484375
+            },
+            "joints": {
+                "x": 2.733100652694702,
+                "y": -1.494110107421875,
+                "z": 5.2135796546936039
+            },
+            "joint3": 0.09181208163499832,
+            "error": 0.0000710864260327071,
+            "sigma": 0.029108799993991853,
+            "damping": 0.061303816735744479,
+            "maximumReverseStep": 0.0
+        },
+        {
+            "area": "ROVp - Seabed",
+            "axis": "X+",
+            "raw": {
+                "x": 0.08100000023841858,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "mapped": {
+                "x": 0.05999755859375,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.05951690673828125,
+                "y": -0.00011110305786132813,
+                "z": 0.0045146942138671879
+            },
+            "joints": {
+                "x": -2.72174072265625,
+                "y": 0.6222499012947083,
+                "z": -2.185577392578125
+            },
+            "joint3": -0.1695556640625,
+            "error": 0.00454182643443346,
+            "sigma": 0.00004935549441142939,
+            "damping": 0.09991981834173203,
+            "maximumReverseStep": 0.000091552734375
+        },
+        {
+            "area": "ROVp - Seabed",
+            "axis": "Y-",
+            "raw": {
+                "x": 0.0,
+                "y": -0.08066666126251221,
+                "z": 0.0
+            },
+            "mapped": {
+                "x": 0.0,
+                "y": -0.059999704360961917,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.000003814697265625,
+                "y": -0.06004500389099121,
+                "z": 0.0000762939453125
+            },
+            "joints": {
+                "x": -0.00018310546875,
+                "y": -2.968231201171875,
+                "z": -0.077850341796875
+            },
+            "joint3": -0.067291259765625,
+            "error": 0.00008866108692018315,
+            "sigma": 0.008385034278035164,
+            "damping": 0.08708839118480683,
+            "maximumReverseStep": 0.0
+        },
+        {
+            "area": "ROVp - Seabed",
+            "axis": "Y+",
+            "raw": {
+                "x": 0.0,
+                "y": 0.08066666126251221,
+                "z": 0.0
+            },
+            "mapped": {
+                "x": 0.0,
+                "y": 0.059999704360961917,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.000156402587890625,
+                "y": 0.0597834587097168,
+                "z": 0.0028514862060546877
+            },
+            "joints": {
+                "x": -0.004791259765625,
+                "y": 3.608841896057129,
+                "z": -2.18585205078125
+            },
+            "joint3": 0.03131159022450447,
+            "error": 0.0028639701195061208,
+            "sigma": 0.0,
+            "damping": 0.10000000149011612,
+            "maximumReverseStep": 0.00007915496826171875
+        },
+        {
+            "area": "ROVp - Seabed",
+            "axis": "Z-",
+            "raw": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -0.08100000023841858
+            },
+            "mapped": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -0.060001373291015628
+            },
+            "actual": {
+                "x": 0.0000152587890625,
+                "y": -0.0005626678466796875,
+                "z": -0.060303688049316409
+            },
+            "joints": {
+                "x": 0.25421759486198428,
+                "y": -4.190887451171875,
+                "z": 13.197052955627442
+            },
+            "joint3": -0.54620361328125,
+            "error": 0.0006395741947926581,
+            "sigma": 0.060088861733675,
+            "damping": 0.03902648016810417,
+            "maximumReverseStep": 0.00008535385131835938
+        },
+        {
+            "area": "ROVp - Seabed",
+            "axis": "Z+",
+            "raw": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.08100000023841858
+            },
+            "mapped": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.059999942779541019
+            },
+            "actual": {
+                "x": -0.00005340576171875,
+                "y": 0.0005166530609130859,
+                "z": 0.06068849563598633
+            },
+            "joints": {
+                "x": -0.28131103515625,
+                "y": -16.08770751953125,
+                "z": 59.001914978027347
+            },
+            "joint3": 0.44620481133461,
+            "error": 0.0008624445763416588,
+            "sigma": 0.2263127863407135,
+            "damping": 0.03500000014901161,
+            "maximumReverseStep": 0.00015425682067871094
+        }
+    ],
+    "grasps": [
+        {
+            "area": "ROVp - Pool",
+            "target": "Pool Starfish 1",
+            "attached": true,
+            "lifted": true,
+            "envelope": true,
+            "lift": 0.3158298134803772,
+            "thumbGap": 0.010801981203258038,
+            "fingerGap": 0.0,
+            "insertionDepth": 0.07843980193138123,
+            "supportClearance": 0.08156020194292069,
+            "closure": 0.3800000250339508,
+            "palm": {
+                "x": 0.6085512638092041,
+                "y": 0.4259810447692871,
+                "z": -4.465376853942871
+            },
+            "pinch": {
+                "x": 0.6314948797225952,
+                "y": 0.25944784283638,
+                "z": -4.581306457519531
+            },
+            "targetCentre": {
+                "x": 0.6100046038627625,
+                "y": 0.3044741749763489,
+                "z": -4.561770915985107
+            },
+            "result": "Opposed lower-side contacts and lift verified"
+        },
+        {
+            "area": "ROVp - Pool",
+            "target": "Pool Squid 2",
+            "attached": true,
+            "lifted": true,
+            "envelope": true,
+            "lift": 0.31367260217666628,
+            "thumbGap": 0.0,
+            "fingerGap": 0.0,
+            "insertionDepth": 0.050569891929626468,
+            "supportClearance": 0.10943011194467545,
+            "closure": 0.5999999642372131,
+            "palm": {
+                "x": 0.8834142684936523,
+                "y": 0.44967126846313479,
+                "z": -4.466806411743164
+            },
+            "pinch": {
+                "x": 1.0115922689437867,
+                "y": 0.34126633405685427,
+                "z": -4.555948734283447
+            },
+            "targetCentre": {
+                "x": 1.0215578079223633,
+                "y": 0.3354249596595764,
+                "z": -4.565847873687744
+            },
+            "result": "Opposed lower-side contacts and lift verified"
+        },
+        {
+            "area": "ROVp - Seabed",
+            "target": "Sea Starfish 1",
+            "attached": true,
+            "lifted": true,
+            "envelope": true,
+            "lift": 0.3224644660949707,
+            "thumbGap": 0.016184264793992044,
+            "fingerGap": 0.0,
+            "insertionDepth": 0.0803556740283966,
+            "supportClearance": 0.07964430749416352,
+            "closure": 0.3800000250339508,
+            "palm": {
+                "x": 62.65435028076172,
+                "y": 0.45760875940322878,
+                "z": -4.451901435852051
+            },
+            "pinch": {
+                "x": 62.67645263671875,
+                "y": 0.2868993282318115,
+                "z": -4.56638765335083
+            },
+            "targetCentre": {
+                "x": 62.63046646118164,
+                "y": 0.32005026936531069,
+                "z": -4.543716907501221
+            },
+            "result": "Opposed lower-side contacts and lift verified"
+        },
+        {
+            "area": "ROVp - Seabed",
+            "target": "Sea Squid 2",
+            "attached": true,
+            "lifted": true,
+            "envelope": true,
+            "lift": 0.32292938232421877,
+            "thumbGap": 0.0,
+            "fingerGap": 0.0,
+            "insertionDepth": 0.059865787625312808,
+            "supportClearance": 0.10013419389724732,
+            "closure": 0.5999999642372131,
+            "palm": {
+                "x": 62.90889358520508,
+                "y": 0.45905929803848269,
+                "z": -4.464860916137695
+            },
+            "pinch": {
+                "x": 63.037086486816409,
+                "y": 0.3449375033378601,
+                "z": -4.54885196685791
+            },
+            "targetCentre": {
+                "x": 63.04529571533203,
+                "y": 0.3377196490764618,
+                "z": -4.552180767059326
+            },
+            "result": "Opposed lower-side contacts and lift verified"
+        }
+    ]
+}

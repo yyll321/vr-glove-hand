@@ -10,6 +10,8 @@ namespace UnderwaterBaseline
     {
         public PicoArmPoseDriver arm;public Wa100UdexRealArticulationMapper glove;
         public UnderwaterGraspTarget[] targets;public Transform deliveryZone;
+        [Tooltip("Visual only. Hidden marker still defines the optional delivery/counting zone.")]
+        public bool showDeliveryMarker;
         public float closeThreshold=.32f,openThreshold=.16f,stableSeconds=.22f;
         public float nearDistance=.065f;
         public UnderwaterGraspTarget Held {get;private set;}
@@ -32,6 +34,11 @@ namespace UnderwaterBaseline
         public bool EnvelopeReady {get;private set;}
         public Vector3 ThumbContactPoint {get;private set;}
         public Vector3 FingerContactPoint {get;private set;}
+        void Start(){RefreshDeliveryMarker();}
+        public void RefreshDeliveryMarker()
+        {
+            if(deliveryZone)foreach(var renderer in deliveryZone.GetComponentsInChildren<Renderer>(true))renderer.enabled=showDeliveryMarker;
+        }
         void LateUpdate()
         {
             if(!arm || !arm.Motor || arm.Motor.InSeabed!=arm.SeabedArea){if(Held)Release("region changed");return;}

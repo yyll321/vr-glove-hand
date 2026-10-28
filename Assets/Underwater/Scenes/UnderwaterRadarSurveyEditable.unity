@@ -51987,6 +51987,7 @@ MonoBehaviour:
   - {fileID: 1174944218}
   - {fileID: 1048651231}
   deliveryZone: {fileID: 1771502160}
+  showDeliveryMarker: 0
   closeThreshold: 0.32
   openThreshold: 0.16
   stableSeconds: 0.22
@@ -53531,6 +53532,7 @@ MonoBehaviour:
   - {fileID: 288165577}
   - {fileID: 1332699124}
   deliveryZone: {fileID: 1815994726}
+  showDeliveryMarker: 0
   closeThreshold: 0.32
   openThreshold: 0.16
   stableSeconds: 0.22
@@ -62228,7 +62230,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771502159}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -63258,7 +63260,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815994725}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -94459,6 +94461,7 @@ GameObject:
   - component: {fileID: 8596229464055433147}
   - component: {fileID: 8596229464055433148}
   - component: {fileID: 8596229464055433149}
+  - component: {fileID: 8596229464055433150}
   m_Layer: 8
   m_Name: ROVp - Pool
   m_TagString: Untagged
@@ -94541,6 +94544,7 @@ MonoBehaviour:
     m_Bits: 256
   Skin: 0.003
   HapticsEnabled: 1
+  Haptics: {fileID: 8596229464055433150}
 --- !u!114 &8596229464055433147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94608,6 +94612,28 @@ MonoBehaviour:
   exitInteractionDistance: 0.3
   transitionDwell: 0.2
   recordTelemetry: 1
+--- !u!114 &8596229464055433150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8596229464055433144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9128ea966b96194bb42ba81ed25e191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contact: {fileID: 8596229464055433146}
+  task: {fileID: 1561189705}
+  amplitude: 0.8
+  pulseSeconds: 0.12
+  repeatSeconds: 0.18
+  queryHz: 30
+  contactSkin: 0.004
+  feedbackMask:
+    serializedVersion: 2
+    m_Bits: 4294967259
 --- !u!1 &8596229464787903005
 GameObject:
   m_ObjectHideFlags: 0
@@ -94623,6 +94649,7 @@ GameObject:
   - component: {fileID: 8596229464787903008}
   - component: {fileID: 8596229464787903009}
   - component: {fileID: 8596229464787903010}
+  - component: {fileID: 8596229464787903011}
   m_Layer: 8
   m_Name: ROVp - Seabed
   m_TagString: Untagged
@@ -94705,6 +94732,7 @@ MonoBehaviour:
     m_Bits: 256
   Skin: 0.003
   HapticsEnabled: 1
+  Haptics: {fileID: 8596229464787903011}
 --- !u!114 &8596229464787903008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94772,6 +94800,28 @@ MonoBehaviour:
   exitInteractionDistance: 0.3
   transitionDwell: 0.2
   recordTelemetry: 1
+--- !u!114 &8596229464787903011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8596229464787903005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9128ea966b96194bb42ba81ed25e191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contact: {fileID: 8596229464787903007}
+  task: {fileID: 1529186323}
+  amplitude: 0.8
+  pulseSeconds: 0.12
+  repeatSeconds: 0.18
+  queryHz: 30
+  contactSkin: 0.004
+  feedbackMask:
+    serializedVersion: 2
+    m_Bits: 4294967259
 --- !u!4 &8620886332096446418
 Transform:
   m_ObjectHideFlags: 0

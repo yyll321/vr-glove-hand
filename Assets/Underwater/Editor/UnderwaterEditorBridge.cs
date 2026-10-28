@@ -74,6 +74,8 @@ namespace UnderwaterBaseline.Editor
                 else if (command == "benchcontrolsmoke") UnderwaterBenchChecks.RunControls();
                 else if (command == "hybridupgrade") UnderwaterHybridUpgrade.Apply();
                 else if (command == "hybridsmoke") UnderwaterHybridChecks.Run();
+                else if (command == "contactfeedbackupgrade") UnderwaterContactFeedbackUpgrade.Apply();
+                else if (command == "contactfeedbacksmoke") UnderwaterContactFeedbackChecks.Run();
                 else if (command == "handreefclearance") UnderwaterDenseSurveyUpgrade.RepairHandClearance();
                 else throw new Exception("Unknown command " + command);
                 File.WriteAllText("Logs/UnderwaterCommandResult.txt", "PASS " + DateTime.Now.ToString("O"));
