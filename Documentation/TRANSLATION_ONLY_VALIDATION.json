@@ -1,0 +1,651 @@
+{
+  "final": {
+    "time": "2026-10-28T19:01:49.1390990+08:00",
+    "scope": "Synthetic XR position/rotation through production ApplyControllerPose; worn PICO feel not measured.",
+    "passed": true,
+    "checks": [
+      "ROVp - Seabed: saved controller wrist rotation disabled",
+      "ROVp - Seabed: X- independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: X- translates in requested direction, error=0.00098 m, guard=False",
+      "ROVp - Seabed: X- + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: X- + rotation translates in requested direction, error=0.00098 m, guard=False",
+      "ROVp - Seabed: controller rotation cannot alter X- + rotation translation",
+      "ROVp - Seabed: X+ independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: X+ translates in requested direction, error=0.00142 m, guard=False",
+      "ROVp - Seabed: X+ + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: X+ + rotation translates in requested direction, error=0.00142 m, guard=False",
+      "ROVp - Seabed: controller rotation cannot alter X+ + rotation translation",
+      "ROVp - Seabed: Y- independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: Y- translates in requested direction, error=0.00068 m, guard=False",
+      "ROVp - Seabed: Y- + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: Y- + rotation translates in requested direction, error=0.00068 m, guard=False",
+      "ROVp - Seabed: controller rotation cannot alter Y- + rotation translation",
+      "ROVp - Seabed: Y+ independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: Y+ translates in requested direction, error=0.00089 m, guard=False",
+      "ROVp - Seabed: Y+ + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: Y+ + rotation translates in requested direction, error=0.00089 m, guard=False",
+      "ROVp - Seabed: controller rotation cannot alter Y+ + rotation translation",
+      "ROVp - Seabed: X- independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: X- translates in requested direction, error=0.00098 m, guard=True",
+      "ROVp - Seabed: X- + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: X- + rotation translates in requested direction, error=0.00098 m, guard=True",
+      "ROVp - Seabed: controller rotation cannot alter X- + rotation translation",
+      "ROVp - Seabed: X+ independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: X+ translates in requested direction, error=0.00142 m, guard=True",
+      "ROVp - Seabed: X+ + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: X+ + rotation translates in requested direction, error=0.00142 m, guard=True",
+      "ROVp - Seabed: controller rotation cannot alter X+ + rotation translation",
+      "ROVp - Seabed: Y- independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: Y- translates in requested direction, error=0.00068 m, guard=True",
+      "ROVp - Seabed: Y- + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: Y- + rotation translates in requested direction, error=0.00068 m, guard=True",
+      "ROVp - Seabed: controller rotation cannot alter Y- + rotation translation",
+      "ROVp - Seabed: Y+ independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: Y+ translates in requested direction, error=0.00089 m, guard=True",
+      "ROVp - Seabed: Y+ + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Seabed: Y+ + rotation translates in requested direction, error=0.00089 m, guard=True",
+      "ROVp - Seabed: controller rotation cannot alter Y+ + rotation translation",
+      "ROVp - Seabed: rotating controller in place produces no arm/wrist movement",
+      "ROVp - Seabed: original sand entry retained",
+      "ROVp - Seabed: original solid support block retained",
+      "ROVp - Seabed: solid sweep retained",
+      "ROVp - Pool: saved controller wrist rotation disabled",
+      "ROVp - Pool: X- independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: X- translates in requested direction, error=0.00098 m, guard=False",
+      "ROVp - Pool: X- + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: X- + rotation translates in requested direction, error=0.00098 m, guard=False",
+      "ROVp - Pool: controller rotation cannot alter X- + rotation translation",
+      "ROVp - Pool: X+ independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: X+ translates in requested direction, error=0.00142 m, guard=False",
+      "ROVp - Pool: X+ + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: X+ + rotation translates in requested direction, error=0.00142 m, guard=False",
+      "ROVp - Pool: controller rotation cannot alter X+ + rotation translation",
+      "ROVp - Pool: Y- independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: Y- translates in requested direction, error=0.00068 m, guard=False",
+      "ROVp - Pool: Y- + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: Y- + rotation translates in requested direction, error=0.00068 m, guard=False",
+      "ROVp - Pool: controller rotation cannot alter Y- + rotation translation",
+      "ROVp - Pool: Y+ independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: Y+ translates in requested direction, error=0.00089 m, guard=False",
+      "ROVp - Pool: Y+ + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: Y+ + rotation translates in requested direction, error=0.00089 m, guard=False",
+      "ROVp - Pool: controller rotation cannot alter Y+ + rotation translation",
+      "ROVp - Pool: X- independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: X- translates in requested direction, error=0.00098 m, guard=True",
+      "ROVp - Pool: X- + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: X- + rotation translates in requested direction, error=0.00098 m, guard=True",
+      "ROVp - Pool: controller rotation cannot alter X- + rotation translation",
+      "ROVp - Pool: X+ independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: X+ translates in requested direction, error=0.00142 m, guard=True",
+      "ROVp - Pool: X+ + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: X+ + rotation translates in requested direction, error=0.00142 m, guard=True",
+      "ROVp - Pool: controller rotation cannot alter X+ + rotation translation",
+      "ROVp - Pool: Y- independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: Y- translates in requested direction, error=0.00068 m, guard=True",
+      "ROVp - Pool: Y- + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: Y- + rotation translates in requested direction, error=0.00068 m, guard=True",
+      "ROVp - Pool: controller rotation cannot alter Y- + rotation translation",
+      "ROVp - Pool: Y+ independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: Y+ translates in requested direction, error=0.00089 m, guard=True",
+      "ROVp - Pool: Y+ + rotation independent wrist joint holds, max=0.00000 deg",
+      "ROVp - Pool: Y+ + rotation translates in requested direction, error=0.00089 m, guard=True",
+      "ROVp - Pool: controller rotation cannot alter Y+ + rotation translation",
+      "ROVp - Pool: rotating controller in place produces no arm/wrist movement",
+      "ROVp - Pool: original sand entry retained",
+      "ROVp - Pool: original solid support block retained",
+      "ROVp - Pool: solid sweep retained"
+    ],
+    "errors": [],
+    "axes": [
+      {
+        "area": "ROVp - Seabed",
+        "input": "X-",
+        "contactProtection": false,
+        "mapped": {
+          "x": -0.0246734619140625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.02474212646484375,
+          "y": -0.0004096031188964844,
+          "z": -0.0008902549743652344
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.000981713063083589
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "X- + rotation",
+        "contactProtection": false,
+        "mapped": {
+          "x": -0.0246734619140625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.02474212646484375,
+          "y": -0.0004096031188964844,
+          "z": -0.0008902549743652344
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.000981713063083589
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "X+",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0246734619140625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.024593353271484375,
+          "y": -3.504753112792969e-05,
+          "z": 0.0014200210571289062
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.001423313980922103
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "X+ + rotation",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0246734619140625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.024593353271484375,
+          "y": -3.504753112792969e-05,
+          "z": 0.0014200210571289062
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.001423313980922103
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "Y-",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0,
+          "y": -0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.9073486328125e-05,
+          "y": -0.02585315704345703,
+          "z": -0.00034236907958984375
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0006802657153457403
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "Y- + rotation",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0,
+          "y": -0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.9073486328125e-05,
+          "y": -0.02585315704345703,
+          "z": -0.00034236907958984375
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0006802657153457403
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "Y+",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0,
+          "y": 0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -4.9591064453125e-05,
+          "y": 0.02629256248474121,
+          "z": 0.0008792877197265625
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0008930534240789711
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "Y+ + rotation",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0,
+          "y": 0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -4.9591064453125e-05,
+          "y": 0.02629256248474121,
+          "z": 0.0008792877197265625
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0008930534240789711
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "X-",
+        "contactProtection": true,
+        "mapped": {
+          "x": -0.0246734619140625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.02474212646484375,
+          "y": -0.0004096031188964844,
+          "z": -0.0008902549743652344
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.000981713063083589
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "X- + rotation",
+        "contactProtection": true,
+        "mapped": {
+          "x": -0.0246734619140625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.02474212646484375,
+          "y": -0.0004096031188964844,
+          "z": -0.0008902549743652344
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.000981713063083589
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "X+",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0246734619140625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.024593353271484375,
+          "y": -3.504753112792969e-05,
+          "z": 0.0014200210571289062
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.001423313980922103
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "X+ + rotation",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0246734619140625,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.024593353271484375,
+          "y": -3.504753112792969e-05,
+          "z": 0.0014200210571289062
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.001423313980922103
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "Y-",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0,
+          "y": -0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.9073486328125e-05,
+          "y": -0.02585315704345703,
+          "z": -0.00034236907958984375
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0006802657153457403
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "Y- + rotation",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0,
+          "y": -0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.9073486328125e-05,
+          "y": -0.02585315704345703,
+          "z": -0.00034236907958984375
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0006802657153457403
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "Y+",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0,
+          "y": 0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -4.9591064453125e-05,
+          "y": 0.026292800903320312,
+          "z": 0.0008792877197265625
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0008930139010772109
+      },
+      {
+        "area": "ROVp - Seabed",
+        "input": "Y+ + rotation",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0,
+          "y": 0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -4.9591064453125e-05,
+          "y": 0.026292800903320312,
+          "z": 0.0008792877197265625
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0008930139010772109
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "X-",
+        "contactProtection": false,
+        "mapped": {
+          "x": -0.024683654308319092,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.024744391441345215,
+          "y": -0.00040984153747558594,
+          "z": -0.0008902549743652344
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0009819503175094724
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "X- + rotation",
+        "contactProtection": false,
+        "mapped": {
+          "x": -0.024683654308319092,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.024744391441345215,
+          "y": -0.00040984153747558594,
+          "z": -0.0008902549743652344
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0009819503175094724
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "X+",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.024683654308319092,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.024578452110290527,
+          "y": -3.4809112548828125e-05,
+          "z": 0.0014190673828125
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.001423379173502326
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "X+ + rotation",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.024683654308319092,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.024578452110290527,
+          "y": -3.4809112548828125e-05,
+          "z": 0.0014190673828125
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.001423379173502326
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "Y-",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0,
+          "y": -0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.8715858459472656e-05,
+          "y": -0.025852441787719727,
+          "z": -0.00034236907958984375
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0006808736361563206
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "Y- + rotation",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0,
+          "y": -0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.8715858459472656e-05,
+          "y": -0.025852441787719727,
+          "z": -0.00034236907958984375
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0006808736361563206
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "Y+",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0,
+          "y": 0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -4.839897155761719e-05,
+          "y": 0.026292800903320312,
+          "z": 0.0008792877197265625
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0008929485338740051
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "Y+ + rotation",
+        "contactProtection": false,
+        "mapped": {
+          "x": 0.0,
+          "y": 0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -4.839897155761719e-05,
+          "y": 0.026292800903320312,
+          "z": 0.0008792877197265625
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0008929485338740051
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "X-",
+        "contactProtection": true,
+        "mapped": {
+          "x": -0.024683654308319092,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.024744391441345215,
+          "y": -0.00040984153747558594,
+          "z": -0.0008902549743652344
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0009819503175094724
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "X- + rotation",
+        "contactProtection": true,
+        "mapped": {
+          "x": -0.024683654308319092,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -0.024744391441345215,
+          "y": -0.00040984153747558594,
+          "z": -0.0008902549743652344
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0009819503175094724
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "X+",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.024683654308319092,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.024581193923950195,
+          "y": -3.504753112792969e-05,
+          "z": 0.0014190673828125
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0014231852255761623
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "X+ + rotation",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.024683654308319092,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 0.024581193923950195,
+          "y": -3.504753112792969e-05,
+          "z": 0.0014190673828125
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0014231852255761623
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "Y-",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0,
+          "y": -0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.8715858459472656e-05,
+          "y": -0.025852441787719727,
+          "z": -0.00034236907958984375
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0006808736361563206
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "Y- + rotation",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0,
+          "y": -0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": 1.8715858459472656e-05,
+          "y": -0.025852441787719727,
+          "z": -0.00034236907958984375
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0006808736361563206
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "Y+",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0,
+          "y": 0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -4.839897155761719e-05,
+          "y": 0.026292800903320312,
+          "z": 0.0008792877197265625
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0008929485338740051
+      },
+      {
+        "area": "ROVp - Pool",
+        "input": "Y+ + rotation",
+        "contactProtection": true,
+        "mapped": {
+          "x": 0.0,
+          "y": 0.026440739631652832,
+          "z": 0.0
+        },
+        "actual": {
+          "x": -4.839897155761719e-05,
+          "y": 0.026292800903320312,
+          "z": 0.0008792877197265625
+        },
+        "wristJointChangeDegrees": 0.0,
+        "error": 0.0008929485338740051
+      }
+    ]
+  },
+  "source_sha256": {
+    "Assets/Underwater/Runtime/PicoArmPoseDriver.cs": "a95d19b8eaf6ebc6dee729a17fa131089f1cd21ff8362282ccba536f112f793c",
+    "Assets/Underwater/Editor/UnderwaterTranslationOnlyChecks.cs": "3836f5928875ac11021713666945f6183063be240923588c99461a040dc4f815",
+    "Assets/Underwater/Scenes/UnderwaterRadarSurveyEditable.unity": "b7500dff379a6686da07ab7a1d6a9e6b5c3c04babba216b8059c482c997ee1be"
+  }
+}

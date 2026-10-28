@@ -15,6 +15,8 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
     public Transform[] Joints;
     public Behaviour[] PreviousControllers;
     public bool ControlEnabled = true;
+    [Tooltip("Opt-in independent wrist twist from controller rotation. Off keeps joint 4 at its current local angle; XYZ translation still uses joints 1-3.")]
+    public bool EnableControllerWristRotation;
     [Min(0.01f)] public float PositionScale = 1f;
     [Min(1f)] public float DegreesPerSecond = 90f;
     [Range(1, 24)] public int SolverIterations = 12;
@@ -162,7 +164,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
         if (!grip)
         {
             engaged = false;
-            Status = "Hold RIGHT GRIP to move / twist wrist; release to hold";
+            Status = EnableControllerWristRotation ? "Hold RIGHT GRIP to move / twist wrist; release to hold" : "Hold RIGHT GRIP for XYZ translation; wrist twist locked; release to hold";
             return;
         }
         if(!float.IsFinite(localPosition.x)||!float.IsFinite(localPosition.y)||!float.IsFinite(localPosition.z)||
@@ -224,14 +226,15 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
         if (PreventSurfacePenetration && Contact) { Contact.SurfaceMask=ContactMask; Contact.BeginMotion(); }
         if (PreventSurfacePenetration && WholeArmContact) WholeArmContact.BeginMotion();
         SolvePosition(filteredTarget, dt);
-        SolveWristRotation(filteredRotation, dt);
+        if(EnableControllerWristRotation)SolveWristRotation(filteredRotation, dt);
+        else jointVelocity[3]=0; // Also discard residual angular acceleration after disabling twist.
         if(SmoothTeleoperation || hybrid)LimitJointAcceleration(dt);
         ApplyContactConstraint();
         if(SmoothTeleoperation || hybrid)for(int i=0;i<4;i++)jointVelocity[i]=SurfaceContact?0:JointDelta(i)/dt;
         AppliedPoseCount++;
         PositionError = Vector3.Distance(Wrist.position,filteredTarget);
         RequestedPositionError = Vector3.Distance(Wrist.position,target);
-        OrientationErrorDegrees = Quaternion.Angle(Wrist.rotation,targetRotation);
+        OrientationErrorDegrees = EnableControllerWristRotation ? Quaternion.Angle(Wrist.rotation,targetRotation) : 0;
         if(SurfaceContact)
         {
             // Contact is a clutch: discard the rejected motion instead of accumulating
@@ -254,7 +257,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
             filteredTarget=intentTarget=Wrist.position;toolVelocity=Vector3.zero;poseFilter.Reset(localPosition,localRotation);
         }
         Status = SurfaceContact ? "Surface contact: hand motion blocked; right-hand pulse" :
-            PositionError < 0.025f ? "Following position and available wrist twist (4 DOF)" : "Following; reach / joint-speed / software limit";
+            PositionError < 0.025f ? (EnableControllerWristRotation ? "Following position and available wrist twist (4 DOF)" : "Following XYZ position; independent wrist twist locked") : "Following; reach / joint-speed / software limit";
         if(hybrid){Status=MasterSlave.Stage+" | "+Status;MasterSlave.Trace(this,dt);}
     }
 
@@ -269,6 +272,7 @@ public sealed class PicoArmPoseDriver : MonoBehaviour
     {
         for(int i=0;i<4;i++)
         {
+            if(i==3 && !EnableControllerWristRotation){jointVelocity[i]=0;continue;}
             float desired=JointDelta(i)/dt;
             float velocity=Mathf.MoveTowards(jointVelocity[i],desired,MaximumJointAcceleration*dt);
             SetJointAngle(i,startAngles[i]+velocity*dt,DegreesPerSecond*dt);

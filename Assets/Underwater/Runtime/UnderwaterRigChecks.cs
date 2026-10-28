@@ -73,7 +73,8 @@ namespace UnderwaterBaseline
                     var twist=Quaternion.AngleAxis(30,arm.TrackingOrigin.InverseTransformDirection(arm.Joints[3].up));
                     for(int frame=0;frame<90;frame++)arm.ApplyControllerPose(start,twist,true,1f/72);
                     float rotated=Quaternion.Angle(beforeRotation,arm.Joints[3].localRotation);
-                    check(rotated>25 && rotated<35,$"{arm.name}: wrist follows available Y-axis twist ({rotated:F2} degrees)");
+                    check(arm.EnableControllerWristRotation ? rotated>25 && rotated<35 : rotated<.01f,
+                        $"{arm.name}: wrist rotation {(arm.EnableControllerWristRotation?"enabled":"locked")} ({rotated:F2} degrees)");
                     var held=arm.Joints.Select(j=>j.localRotation).ToArray();
                     arm.ApplyControllerPose(start+Vector3.one,Quaternion.Euler(50,40,30),false,1f/72);
                     check(arm.Joints.All(j=>Quaternion.Angle(j.localRotation,held[Array.IndexOf(arm.Joints,j)])<0.01f),arm.name+": releasing right grip holds arm pose");

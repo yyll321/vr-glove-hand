@@ -94499,6 +94499,7 @@ MonoBehaviour:
   - {fileID: 7392260729534510254}
   - {fileID: 6319012549342351676}
   ControlEnabled: 1
+  EnableControllerWristRotation: 0
   PositionScale: 1
   DegreesPerSecond: 45
   SolverIterations: 12
@@ -94689,6 +94690,7 @@ MonoBehaviour:
   - {fileID: 7392260730261721355}
   - {fileID: 6319012550073775257}
   ControlEnabled: 1
+  EnableControllerWristRotation: 0
   PositionScale: 1
   DegreesPerSecond: 45
   SolverIterations: 12
